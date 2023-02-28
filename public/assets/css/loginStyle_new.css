@@ -1,0 +1,37 @@
+html,
+body {
+  height: 100%;
+}
+
+.form-content {
+
+  border-radius: 30px;
+  background-color: rgba(215, 215, 215, 0.750);  
+  padding: 50px;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.login-container {
+  display: table;
+  height: 100%;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.logo-container {
+  margin-bottom: 0.5rem;
+  display: flex;
+  height: 6rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.logo-container h1 {
+  color: #033f7c;
+  padding-top: 10px;
+  font-size: 4rem;
+}
+

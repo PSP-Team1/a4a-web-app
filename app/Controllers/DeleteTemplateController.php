@@ -6,6 +6,6 @@ class DeleteTemplateController extends BaseController
 {
     public function index()
     {
-        return view('deleteTemplate');
+        return view('AdminDeleteTemplate');
     }
 }

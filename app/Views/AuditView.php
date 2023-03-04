@@ -154,7 +154,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-success btn-outline"
-                                                href="/AuditController/openAudit/<?=$item['audit_id']?>" role="button">
+                                                href="/AuditController/OpenAudit/<?=$item['audit_id']?>" role="button">
                                                 <i class="fa fa-eye"></i> View</a>
                                         </td>
                                         <td>

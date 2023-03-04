@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class deleteModel extends Model
+class DeleteModel extends Model
 {
 
     function deleteUser()

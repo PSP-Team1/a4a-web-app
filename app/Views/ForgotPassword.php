@@ -136,7 +136,7 @@
                         </div>
                         <hr>
                         <div class="d-grid">
-                           <a href="<?= base_url() ?>/login" class="btn btn-light">Return To Login</a>
+                           <a href="<?= base_url() ?>/Login" class="btn btn-light">Return To Login</a>
                         </div>
                      </form>
                   </div>

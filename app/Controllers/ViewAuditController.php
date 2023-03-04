@@ -8,6 +8,6 @@ class ViewAuditController extends Controller
 {
     public function index()
     {
-        echo view('viewAudits');
+        echo view('ViewAudits');
     }
 }

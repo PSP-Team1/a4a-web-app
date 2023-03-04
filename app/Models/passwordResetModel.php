@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class passwordResetModel extends Model
+class PasswordResetModel extends Model
 {
 
     function resetPass()

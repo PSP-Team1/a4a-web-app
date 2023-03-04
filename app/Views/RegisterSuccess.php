@@ -36,9 +36,9 @@
                     <p style="font-size: 20px">You have created a new company user. You can now login to the customer
                         portal using the credentials you provided.</p>
                     <hr>
-                    If you would like to login click <a href="/login" class="alert-link">here</a>. Alternatively, if you
+                    If you would like to login click <a href="/Login" class="alert-link">here</a>. Alternatively, if you
                     would like to create another account you can click
-                    <a href="/register" class="alert-link">here</a>.
+                    <a href="/Register" class="alert-link">here</a>.
 
                     <p>Redirecting to login in <span id="countdown"></span> seconds</p>
 
@@ -57,7 +57,7 @@
             count--;
             if (count === 0) {
                 clearInterval(interval);
-                window.location.href = "<?=base_url()?>/login";
+                window.location.href = "<?=base_url()?>/Login";
             }
         }, 1000);
     </script>

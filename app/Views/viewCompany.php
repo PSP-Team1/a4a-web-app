@@ -36,7 +36,7 @@
 
       <div class="ibox-content">
 
-        <a class="btn btn-success btn-outline" href="/createTemplate" role="button"> <i class="bx bx-list-ul  "></i>
+        <a class="btn btn-success btn-outline" href="/AdminCreateTemplate" role="button"> <i class="bx bx-list-ul  "></i>
           View Company Audit(s)</a>
 
       </div>

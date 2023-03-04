@@ -4,8 +4,13 @@ namespace App\Controllers;
 
 class InboxController extends BaseController
 {
-    public function index()
+    public function adminInbox()
     {
-        return view('clientInbox');
+        return view('AdminInbox');
+    }
+
+    public function customerInbox()
+    {
+        return view('CustomerInbox');
     }
 }

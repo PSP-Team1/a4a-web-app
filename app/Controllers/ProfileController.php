@@ -13,12 +13,12 @@ class ProfileController extends BaseController
         $session = session();
         $role = $session->get('type');
         if ($role == "client") {
-            return redirect()->to('/clientPortal');
+            return redirect()->to('/AdminDashboard');
         } elseif ($role == "customer") {
-            return redirect()->to('/customerPortal');
+            return redirect()->to('/CustomerDashboard');
         }
         elseif ($role == "admin") {
-            return redirect()->to('/adminPortal');
+            return redirect()->to('/AdminDashboard');
         }
          else {
             // Don't know if this actually works, but shouldn't be needed

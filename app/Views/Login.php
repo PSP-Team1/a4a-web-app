@@ -142,8 +142,8 @@
                            <button type="submit" class="btn btn-success">Login</button>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
-                           <a style="color: darkgreen;" href="/forgotPassword">Forgot Password</a> | 
-                           <a style="color: darkgreen;" href="/register">Register Account</a>
+                           <a style="color: darkgreen;" href="/ForgotPassword">Forgot Password</a> | 
+                           <a style="color: darkgreen;" href="/Register">Register Account</a>
                         </div>
                         <hr>
                         <div class="d-grid">

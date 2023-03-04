@@ -114,8 +114,14 @@ $avatar = (isset($_SESSION['avatar']))? $_SESSION['avatar']: "Jack.jpg";
       <div class="avatar">
       </div>
 
-      <a class="btn btn-outline btn-primary" href="/clientInbox" role="button"> <i class="fa fa-envelope-o"></i> View
+      <?php if($role == "customer") : ?>
+        <a class="btn btn-outline btn-primary" href="/CustomerInbox" role="button"> <i class="fa fa-envelope-o"></i> View
         Inbox</a>
+      <?php endif; ?>
+      <?php if($role == "client") : ?>
+        <a class="btn btn-outline btn-primary" href="/AdminInbox" role="button"> <i class="fa fa-envelope-o"></i> View
+        Inbox</a>
+      <?php endif; ?>
     </div>
 
   </header>
@@ -143,32 +149,32 @@ $avatar = (isset($_SESSION['avatar']))? $_SESSION['avatar']: "Jack.jpg";
 
         <?php if($role == "client") : ?>
         <div class="nav_list">
-          <a href="<?= base_url() ?>/clientPortal"
-            class="nav_link <?= ($activePage == "clientPortal" ? "active" : "") ?>">
+          <a href="<?= base_url() ?>/AdminDashboard"
+            class="nav_link <?= ($activePage == "AdminDashboard" ? "active" : "") ?>">
             <i class='bx bx-grid-alt nav_icon'></i>
             <span class="nav_name">Admin Dashboard</span>
           </a>
 
-          <a href="<?= base_url() ?>/createTemplate"
-            class="nav_link <?= ($activePage == "createTemplate" ? "active" : "") ?>">
+          <a href="<?= base_url() ?>/AdminCreateTemplate"
+            class="nav_link <?= ($activePage == "AdminCreateTemplate" ? "active" : "") ?>">
             <i class='bx bx-list-ul nav_icon'></i>
             <span class="nav_name">Create Template(s)</span>
           </a>
 
-          <a href="<?= base_url() ?>/deleteTemplate"
-            class="nav_link <?= ($activePage == "deleteTemplate" ? "active" : "") ?>">
+          <a href="<?= base_url() ?>/AdminDeleteTemplate"
+            class="nav_link <?= ($activePage == "AdminDeleteTemplate" ? "active" : "") ?>">
             <i class='bx bx-trash nav_icon'></i>
             <span class="nav_name">Delete Template(s)</span>
           </a>
 
-          <a href="<?= base_url() ?>/clientInbox"
-            class="nav_link <?= ($activePage == "clientInbox" ? "active" : "") ?>">
+          <a href="<?= base_url() ?>/AdminInbox"
+            class="nav_link <?= ($activePage == "AdminInbox" ? "active" : "") ?>">
             <i class='bx bx-envelope nav_icon'></i>
             <span class="nav_name">View Inbox</span>
           </a>
 
-          <a href="<?= base_url() ?>/clientSettings"
-            class="nav_link <?= ($activePage == "clientSettings" ? "active" : "") ?>">
+          <a href="<?= base_url() ?>/AdminSettings"
+            class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">
             <i class='bx bx-cog nav_icon'></i>
             <span class="nav_name">Settings</span>
           </a>
@@ -179,8 +185,8 @@ $avatar = (isset($_SESSION['avatar']))? $_SESSION['avatar']: "Jack.jpg";
         <?php if($role == "customer") : ?>
         <div class="nav_list">
 
-          <a href="<?= base_url() ?>/customerPortal"
-            class="nav_link <?= ($activePage == "customerPortal" ? "active" : "") ?>">
+          <a href="<?= base_url() ?>/CustomerDashboard"
+            class="nav_link <?= ($activePage == "CustomerDashboard" ? "active" : "") ?>">
             <i class='bx bx-grid-alt nav_icon'></i>
             <span class="nav_name">Dashboard</span>
           </a>
@@ -190,7 +196,7 @@ $avatar = (isset($_SESSION['avatar']))? $_SESSION['avatar']: "Jack.jpg";
                         <span class="nav_name">Start New Audit</span>
                     </a> -->
 
-          <a href="<?= base_url() ?>/viewAudits" class="nav_link <?= ($activePage == "viewAudits" ? "active" : "") ?>">
+          <a href="<?= base_url() ?>/ViewAudits" class="nav_link <?= ($activePage == "ViewAudits" ? "active" : "") ?>">
             <i class='bx bx-list-ul nav_icon'></i>
             <span class="nav_name">View Audit(s)</span>
           </a>
@@ -205,14 +211,14 @@ $avatar = (isset($_SESSION['avatar']))? $_SESSION['avatar']: "Jack.jpg";
                         <span class="nav_name">View FAQ</span>
                     </a>
 
-                    <a href="<?= base_url() ?>/Analysis" class="nav_link <?= ($activePage == "clientPortal" ? "active" : "") ?>">
+                    <a href="<?= base_url() ?>/Analysis" class="nav_link <?= ($activePage == "AdminDashboard" ? "active" : "") ?>">
                         <i class='bi bi-search nav_icon'></i>
                         <span class="nav_name">Analysis</span>
                     </a> -->
 
           <div class="dropdown">
             <a href="<?= base_url() ?>/Analysis"
-              class="nav_link <?= ($activePage == "clientPortal" ? "active" : "") ?>">
+              class="nav_link <?= ($activePage == "AdminDashboard" ? "active" : "") ?>">
               <i class='bx bxs-universal-access'></i>
               <span class="nav_name">Accessibility</span>
             </a>

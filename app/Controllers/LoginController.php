@@ -39,7 +39,7 @@ class LoginController extends Controller
             }
         } else {
             $session->setFlashdata('msg', 'That email doesn\'t exist.');
-            return redirect()->to('/forgotPassword');
+            return redirect()->to('/ForgotPassword');
         }
     }
 
@@ -74,11 +74,11 @@ class LoginController extends Controller
                 return redirect()->to('/profileController');
             } else {
                 $session->setFlashdata('msg', 'Invalid email or password.');
-                return redirect()->to('/login');
+                return redirect()->to('/Login');
             }
         } else {
             $session->setFlashdata('msg', 'Invalid email or password.');
-            return redirect()->to('/login');
+            return redirect()->to('/Login');
         }
     }
 
@@ -87,6 +87,6 @@ class LoginController extends Controller
 
         $session = session();
         $session->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/Login');
     }
 }

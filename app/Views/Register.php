@@ -305,7 +305,7 @@
                         <button type="submit" name="submit" class="btn btn-success">Register</button>
                      </div>
                      <div class="d-flex justify-content-center align-items-center mt-4">
-                        <a style="text-align: center; color: darkgreen;" href="/login">Already have a company account?</a>
+                        <a style="text-align: center; color: darkgreen;" href="/Login">Already have a company account?</a>
                      </div>
                      <hr>
                      <div class="d-grid">

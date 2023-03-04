@@ -108,7 +108,7 @@ class AuditController extends BaseController
         $data['summary'] = $am->getAuditSummary($i);
         $data['question_data'] = $am->getQuestions($i);
         $data['audit_id'] = $i;
-        return view('viewAudit', $data);
+        return view('ViewAudit', $data);
     }
 
     

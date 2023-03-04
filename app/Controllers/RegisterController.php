@@ -20,7 +20,7 @@ class RegisterController extends Controller
         $registerModel = new RegisterModel();
         $registerModel->addNewCompany();
         if ($registerModel) {
-            return redirect()->to('/registerSuccess');
+            return redirect()->to('/RegisterSuccess');
         }
     }
 
@@ -30,7 +30,7 @@ class RegisterController extends Controller
         $registerModel = new RegisterModel();
         $registerModel->addNewCompany();
         if ($registerModel) {
-            return redirect()->to('/adminPortal');
+            return redirect()->to('/AdminDashboard');
         }
     }
 
@@ -38,7 +38,7 @@ class RegisterController extends Controller
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/Login');
     }
 
 

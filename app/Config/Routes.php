@@ -52,17 +52,20 @@ if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 
 
 $routes->get('/Home', 'Home::index', ['filter' => 'authGuard']);
-$routes->get('/audit', 'AuditController::index');
-$routes->get('/clientPortal', 'ClientDashboard::index');
-$routes->get('/customerPortal', 'BusinessDashboard::index');
-$routes->get('/login', 'LoginController::index');
-$routes->get('/adminPortal','AdminDashboard::index');
-$routes->get('/register', 'RegisterController::index');
-$routes->get('/registerSuccess', 'RegisterSuccessController::index');
-$routes->get('/qr', 'qrcontroller::index');
-$routes->get('/viewAudits', 'ViewAuditController::index');
-$routes->get('/createTemplate', 'CreateTemplateController::index');
-$routes->get('/deleteTemplate', 'DeleteTemplateController::index');
-$routes->get('/clientInbox', 'InboxController::index');
-$routes->get('/clientSettings', 'ClientSettingsController::index');
-$routes->get('/forgotPassword', 'LoginController::forgotPassword');
+$routes->get('/AdminDashboard', 'AdminDashboard::index');
+$routes->get('/AdminCreateTemplate', 'CreateTemplateController::index');
+$routes->get('/AdminDeleteTemplate', 'DeleteTemplateController::index');
+$routes->get('/AdminInbox', 'InboxController::adminInbox');
+$routes->get('/AdminSettings', 'AdminSettingsController::index');
+$routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');
+$routes->get('/AdminUpdatePassword', 'AdminSettingsController::updatePassword');
+$routes->get('/CustomerDashboard', 'CustomerDashboard::index');
+$routes->get('/CustomerInbox', 'InboxController::customerInbox');
+$routes->get('/Audit', 'AuditController::index');
+$routes->get('/Login', 'LoginController::index');
+$routes->get('/Register', 'RegisterController::index');
+$routes->get('/RegisterSuccess', 'RegisterSuccessController::index');
+$routes->get('/QR', 'QRController::index');
+$routes->get('/FAQ', 'FAQController::index');
+$routes->get('/ViewAudits', 'ViewAuditController::index');
+$routes->get('/ForgotPassword', 'LoginController::ForgotPassword');

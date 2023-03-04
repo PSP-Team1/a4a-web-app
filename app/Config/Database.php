@@ -24,24 +24,30 @@ class Database extends Config
     /**
      * The default database connection.
      */
-    public array $default = [
+    public $default = [
         'DSN'      => '',
-        'hostname' => 'db',
-        'username' => 'root',
-        'password' => 'ci',
-        'database' => '',
+        'hostname' => '',
+        'username' => '',
+        'password' => '',
+        'database' => 'ci_app',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
-        'DBDebug'  => true,
-        'charset'  => 'utf8',
-        'DBCollat' => 'utf8_general_ci',
+        'DBDebug'  => (ENVIRONMENT !== 'production'),
+        'cacheOn'  => false,
+        'cacheDir' => '',
+        'charset'  => 'utf8mb4',
+        'DBCollat' => 'utf8mb4_general_ci',
         'swapPre'  => '',
-        'encrypt'  => false,
+        'encrypt'  => [
+            'ssl_ca' => '',
+            'ssl_verify' => true
+        ],
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
         'port'     => 3306,
+        'MYSQLI_CLIENT_FLAGS' => MYSQLI_CLIENT_SSL
     ];
 
     /**

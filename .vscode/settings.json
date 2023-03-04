@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "ci-db.mysql.database.azure.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "db-az",
+            "database": "ci_app",
+            "username": "psp_admin"
+        }
+    ]
+}

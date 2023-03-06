@@ -25,10 +25,12 @@ $email = $session->get('email');
         </div>
         <div class="ibox-content">
 
-            <form method="post" enctype="multipart/form-data" action="update_picture.php">
+            <form method="post" enctype="multipart/form-data"  action="<?php echo base_url(); ?>/AdminSettingsController/updatePicture">
                 <input type="file" name="picture" id="picture" accept="image/*">
 
                 <br>
+
+                <input type="hidden" name="id" value="<?php echo $id ?>">
 
                 <div id="preview"></div>
 

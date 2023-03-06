@@ -16,6 +16,11 @@ class AdminSettingsController extends BaseController
         return view('AdminChangeDetails');
     }
 
+    public function changePicture()
+    {
+        return view('AdminChangePicture');
+    }
+
     public function updatePassword()
     {
         return view('AdminUpdatePassword');

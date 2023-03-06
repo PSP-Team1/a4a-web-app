@@ -21,7 +21,7 @@ $email = $session->get('email');
 
     <div class="ibox">
         <div class="ibox-title">
-            <h2>Change Picture</h2>
+            <h2>Change Profile Picture</h2>
         </div>
         <div class="ibox-content">
 

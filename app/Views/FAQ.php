@@ -16,7 +16,9 @@
               color: purple;
             }
             </style>
-            
+             <div class="logo-container">
+                        <img style="position: relative; top: -15px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff);" src="/assets/img/Everybody-Welcome-logo.png" alt="">
+                     </div>
 </head>
 <body>
 	<div class="container">

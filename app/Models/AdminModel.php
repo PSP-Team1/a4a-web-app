@@ -45,6 +45,29 @@ class AdminModel extends Model{
     
         $db->close();
     }
+
+    public function updatePicture($id, $imageName) {
+
+        $db = db_connect();
+        $query = "UPDATE sys_users SET avatar=? WHERE id=?";
+        $result = $db->query($query, [$imageName, $id]);
+    
+        $query = "SELECT avatar FROM sys_users WHERE id=?";
+        $result = $db->query($query, [$id]);
+    
+        if (!$result) {
+            $error = $db->error();
+            throw new \Exception('Database error: ' . $error['message']);
+        }
+    
+        $user = $result->getRow();
+
+        $db->close();
+
+        $session = session();
+        $session->set('avatar', $user->avatar);
+
+    }
     
     
 }

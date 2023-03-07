@@ -34,7 +34,7 @@
             <a class="btn btn-outline btn-secondary" href="<?php echo base_url(); ?>/AdminUpdatePassword" role="button"> <i
                             class="fa fa-cog"></i> Change Password</a>
 
-            <a class="btn btn-outline btn-secondary" href="<?php echo base_url(); ?>/AdminController/pwordReset" role="button"> <i
+            <a class="btn btn-outline btn-secondary" href="<?php echo base_url(); ?>/AdminChangePicture" role="button"> <i
             class="fa fa-user"></i> Change Profile Picture</a>
             </div>
 

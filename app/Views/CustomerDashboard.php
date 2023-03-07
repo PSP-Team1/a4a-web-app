@@ -103,11 +103,16 @@
                             <td class="footable-visible"><?= $venue['address'] ?></td>
                             <td class="footable-visible"><?= $venue['postcode'] ?></td>
                             <td class="footable-visible footable-last-column">
-                                <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button"> View</a>
-                                <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button"> Publish</a>
+                            <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                            <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                <i class="fas fa-check"></i> Publish
+                            </a>
+
                             <td class="footable-visible footable-last-column">
                             <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
                             </div>
                         </tr>
                         <?php endforeach; ?>

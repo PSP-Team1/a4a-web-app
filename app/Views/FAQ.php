@@ -1,175 +1,79 @@
-<div class="container">
-    <style>
-@import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FAQ Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+	body {
+            background-image: url('https://images.wallpaperscraft.com/image/single/texture_spots_lemon_143188_1920x1080.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            }
 
-$bg: #fff;
-$text: #7288a2;
-$gray: #4d5974;
-$lightgray: #e5e5e5;
-$blue: #03b5d2;
-
-* {
-  box-sizing: border-box;
-  &::before, &::after {
-    box-sizing: border-box;
-  }
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Hind', sans-serif;
-  background: $bg;
-  color: $gray;
-  display: flex;
-  min-height: 100vh;
-}
-
-.container {
-  margin: 0 auto;
-  padding: 4rem;
-  width: 48rem;
-}
-
-.accordion {
-  .accordion-item {
-    border-bottom: 1px solid $lightgray;
-    button[aria-expanded='true'] {
-      border-bottom: 1px solid $blue;
-    }
-  }
-  button {
-    position: relative;
-    display: block;
-    text-align: left;
-    width: 100%;
-    padding: 1em 0;
-    color: $text;
-    font-size: 1.15rem;
-    font-weight: 400;
-    border: none;
-    background: none;
-    outline: none;
-    &:hover, &:focus {
-      cursor: pointer;
-      color: $blue;
-      &::after {
-        cursor: pointer;
-        color: $blue;
-        border: 1px solid $blue;
-      }
-    }
-    .accordion-title {
-      padding: 1em 1.5em 1em 0;
-    }
-    .icon {
-      display: inline-block;
-      position: absolute;
-      top: 18px;
-      right: 0;
-      width: 22px;
-      height: 22px;
-      border: 1px solid;
-      border-radius: 22px;
-      &::before {
-        display: block;
-        position: absolute;
-        content: '';
-        top: 9px;
-        left: 5px;
-        width: 10px;
-        height: 2px;
-        background: currentColor;
-      }
-      &::after {
-        display: block;
-        position: absolute;
-        content: '';
-        top: 5px;
-        left: 9px;
-        width: 2px;
-        height: 10px;
-        background: currentColor;
-      }
-    }
-  }
-  button[aria-expanded='true'] {
-    color: $blue;
-    .icon {
-      &::after {
-        width: 0;
-      }
-    }
-    + .accordion-content {
-      opacity: 1;
-      max-height: 9em;
-      transition: all 200ms linear;
-      will-change: opacity, max-height;
-    }
-  }
-  .accordion-content {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 200ms linear, max-height 200ms linear;
-    will-change: opacity, max-height;
-    p {
-      font-size: 1rem;
-      font-weight: 300;
-      margin: 2em 0;
-    }
-  }
-}
-</style>
-  <h2>Frequently Asked Questions</h2>
-  <div class="accordion">
-    <div class="accordion-item">
-      <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Why is the moon sometimes out during the day?</span><span class="icon" aria-hidden="true"></span></button>
-      <div class="accordion-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">Why is the sky blue?</span><span class="icon" aria-hidden="true"></span></button>
-      <div class="accordion-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">Will we ever discover aliens?</span><span class="icon" aria-hidden="true"></span></button>
-      <div class="accordion-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">How much does the Earth weigh?</span><span class="icon" aria-hidden="true"></span></button>
-      <div class="accordion-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">How do airplanes stay up?</span><span class="icon" aria-hidden="true"></span></button>
-      <div class="accordion-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-  </div>
+            .h1{
+              color: purple;
+            }
+            </style>
+            
+</head>
+<body>
+	<div class="container">
+		
+    <h1 class="h1">Frequently Asked Questions</h1>
+  
+		<div class="card">
+			<div class="card-header">
+				<h3 class="mb-0">
+					<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+						Question 1: q?
+					</button>
+				</h3>
+			</div>
+			<div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
+				<div class="card-body">
+					answer
+				</div>
+			</div>
+		</div>
+		
+    <div class="card">
+		<div class="card-header">
+			<h3 class="mb-0">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+					Question 2: q?
+				</button>
+			</h3>
+		</div>
+		<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+			<div class="card-body">
+				answer
+			</div>
+		</div>
+	</div>
+	
+	<div class="card">
+		<div class="card-header">
+			<h3 class="mb-0">
+				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+					Question 3: q?
+				</button>
+			</h3>
+		</div>
+		<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+			<div class="card-body">
+				answer
+			</div>
+		</div>
+	</div>
+	
 </div>
-<script>
-const items = document.querySelectorAll(".accordion button");
 
-function toggleAccordion() {
-  const itemToggle = this.getAttribute('aria-expanded');
-  
-  for (i = 0; i < items.length; i++) {
-    items[i].setAttribute('aria-expanded', 'false');
-  }
-  
-  if (itemToggle == 'false') {
-    this.setAttribute('aria-expanded', 'true');
-  }
-}
-
-items.forEach(item => item.addEventListener('click', toggleAccordion));
-
-</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+		
+	

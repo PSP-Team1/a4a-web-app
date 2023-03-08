@@ -210,7 +210,7 @@
       </div>
    </div>
 
-   <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark pt-5">
+   <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
       <div class="container-fluid">
 
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">

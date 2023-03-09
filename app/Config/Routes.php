@@ -70,3 +70,5 @@ $routes->get('/QR', 'QRController::index');
 $routes->get('/FAQ', 'FAQController::index');
 $routes->get('/ViewAudits', 'ViewAuditController::index');
 $routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
+
+$routes->get('/venue/search', 'VenueController::search');

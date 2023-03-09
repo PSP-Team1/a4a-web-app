@@ -14,196 +14,16 @@
    <link href="<?= base_url(); ?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
    <!-- <meta http-equiv="refresh" content="5"> -->
 
-
-   <style>
-      .fluid-banner {
-
-         background-color: rgb(46, 193, 205);
-      }
-
-      .banner-search {
-         height: 7rem;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         gap: 12%;
-      }
+   <link href="<?= base_url(); ?>/assets/css/venueSearch/style.css" rel="stylesheet">
 
 
-      /* input search */
-
-      .search-input::placeholder {
-         font-family: Arial, sans-serif;
-         font-size: 1.5rem;
-         font-weight: bold;
-         color: lightblue;
-      }
-
-
-      /* Styles for the loader overlay */
-
-      .overlay-blur {
-         background-color: rgba(255, 255, 255, 0.5);
-         /* fallback for browsers that don't support backdrop-filter */
-         -webkit-backdrop-filter: blur(15px);
-         /* for Safari */
-         backdrop-filter: blur(15px);
-         /* for Chrome */
-      }
-
-      .overlay::before {
-         content: "";
-         display: block;
-         position: fixed;
-         top: 0;
-         left: 0;
-         background-color: rgba(0, 0, 0, 0.5);
-         /* semi-transparent black */
-         z-index: 9999;
-      }
-
-
-
-      /* container overrides */
-
-      .container {
-         max-width: 80vw
-      }
-
-      .container-fluid.main-content {
-         background-color: rgb(245, 245, 245);
-         height: 100vh;
-      }
-
-      .v-search-container {
-         background-color: white;
-      }
-
-
-      /* loader */
-      .overlay {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         z-index: 9999;
-         background-color: rgba(0, 0, 0, 0.5);
-         display: flex;
-         justify-content: center;
-         align-items: center;
-      }
-
-      /* Style the loader */
-      .loader {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-
-      }
-
-      .svg-loader {
-         height: 10rem;
-         width: 36rem;
-
-      }
-
-
-      /* list group items */
-
-      .list-group li {
-         width: 100%;
-         position: relative;
-         background-color: white;
-         height: 2.5rem;
-         transition: 0.3s;
-         display: flex;
-         vertical-align: middle;
-         flex-direction: row;
-         flex-basis: fit-content;
-         padding: 10px;
-         border-bottom: solid 1px rgb(46, 193, 205);
-
-      }
-
-      .list-group li:hover {
-         background-color: lightblue;
-         transition: 0.3s;
-      }
-
-      .list-group li a {
-         text-decoration: none;
-         color: black;
-         padding-left: 10px;
-         margin-top: 10px;
-         font-size: 1.4rem;
-      }
-
-      #socialAccordion .accordion-header button,
-      #venueTypeAccordion .accordion-header button,
-      #accommodationAccordion .accordion-header button {
-         border-radius: 0;
-      }
-
-      .accordion-body {
-         padding: 0;
-      }
-
-      .accordion-button:not(.collapsed) {
-         background-color: rgb(46, 193, 205);
-         color: white;
-      }
-
-
-      /* Star rating */
-
-      .clip-star {
-         background: gold;
-         clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-         display: inline-block;
-         height: 2rem;
-         width: 2rem;
-      }
-
-      .rating {
-         align-items: center;
-         display: flex;
-         justify-content: center;
-      }
-
-      .venue-summary {
-         display: flex;
-         flex-direction: row;
-         justify-content: space-between;
-         align-content: center;
-         align-items: flex-start;
-      }
-
-      .access-icon-group {
-         display: flex;
-         flex-direction: row;
-         justify-content: flex-start;
-         gap: 5rem;
-         color: green
-      }
-
-
-      /* temporary */
-
-      #showLoaderBtn {
-         position: fixed;
-         bottom: 20px;
-         right: 20px;
-      }
-   </style>
 </head>
 
 <body>
    <button type="button" class="btn btn-primary" id="showLoaderBtn">
       Test Loader
    </button>
-   <div class="overlay d-none">
+   <div id="overlay" class="overlay d-none">
       <div class="loader">
          <!-- <h2 class="text-white">Loading...</h3> -->
          <object class="svg-loader" type="image/svg+xml" data="<?= base_url(); ?>/assets/img/vectors/a4a-circles.svg"></object>
@@ -365,51 +185,8 @@
                </div>
             </div>
 
-            <div class="col-lg-10">
-               <div class="ibox">
-                  <div class="ibox-title">
-                     <div class="venue-summary">
-                        <h2>Wimpole Hall</h2>
-                        <div class="rating">
-
-                           <div class="clip-star"></div>
-                           <div class="clip-star"></div>
-                           <div class="clip-star"></div>
-                           <div class="clip-star"></div>
-                           <div class="clip-star"></div>
-                        </div>
-                     </div>
-
-                  </div>
-                  <div class="ibox-content">
-                     <div class="row">
-                        <div class="col-lg-7">
-                           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi beatae aliquam ullam odit sapiente id veritatis incidunt ipsam iusto, saepe quo iure nostrum voluptates quam ratione vitae pariatur cumque! Aut.
-                           Laborum eos quaerat quo magni illum harum excepturi, ipsa quasi cupiditate ullam inventore eius vitae velit mollitia tempora molestiae. Delectus at aspernatur modi eum. Consequatur similique ipsum eligendi! Facere, ex.
-                           Ad dolorum quo, eius, quidem possimus nisi eveniet voluptas adipisci fugit similique at voluptates rem dolore alias! Inventore maxime est dolores dolor nulla molestiae incidunt sequi tempore mollitia ipsum! Corrupti!
-                        </div>
-                        <div class="col-lg-5">
-                           <div class="photos">
-                              <a target="_blank" href="#"> <img alt="image" class="feed-photo" src="https://picsum.photos/100?random"></a>
-                              <a target="_blank" href="#"> <img alt="image" class="feed-photo" src="https://picsum.photos/100?random"></a>
-                              <a target="_blank" href="#"> <img alt="image" class="feed-photo" src="https://picsum.photos/100?random"></a>
-                              <a target="_blank" href="#"> <img alt="image" class="feed-photo" src="https://picsum.photos/100"></a>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="ibox-footer mt-4">
-
-                        <div class="access-icon-group">
-                           <i class="fa fa-3x fa-wheelchair"></i>
-                           <i class="fa fa-3x fa-low-vision"></i>
-                           <i class="fa fa-3x fa-volume-up"></i>
-                        </div>
-
-                     </div>
-                  </div>
-
-               </div>
+            <!-- results container -->
+            <div class="col-lg-10" id="venue-container">
             </div>
          </div>
       </div>
@@ -430,6 +207,122 @@
       overlayElement.addEventListener('click', function() {
          overlayElement.classList.add('d-none');
       });
+   </script>
+
+   <script>
+      document.addEventListener("DOMContentLoaded", function() {
+         // Get overlay element
+         const overlayElement = document.getElementById('overlay');
+
+         // Add overlay to the body
+         overlayElement.classList.add('d-none');
+
+         // Fetch data from server
+         fetch('/venue/search')
+            .then(response => response.json())
+            .then(data => {
+               // Get venue container element
+               const venueContainer = document.getElementById('venue-container');
+
+               // Loop through venues and create HTML element for each one
+               data.venues.forEach(function(venue) {
+                  const venueName = venue.venue_name;
+                  const venueAbout = venue.about;
+
+                  const venueElement = document.createElement('div');
+                  venueElement.classList.add('ibox');
+
+                  const titleElement = document.createElement('div');
+                  titleElement.classList.add('ibox-title');
+
+                  const venueSummaryElement = document.createElement('div');
+                  venueSummaryElement.classList.add('venue-summary');
+
+                  const venueNameElement = document.createElement('h2');
+                  venueNameElement.textContent = venueName;
+
+                  const ratingElement = document.createElement('div');
+                  ratingElement.classList.add('rating');
+
+                  for (let i = 0; i < 5; i++) {
+                     const clipStarElement = document.createElement('div');
+                     clipStarElement.classList.add('clip-star');
+                     ratingElement.appendChild(clipStarElement);
+                  }
+
+                  venueSummaryElement.appendChild(venueNameElement);
+                  venueSummaryElement.appendChild(ratingElement);
+
+                  titleElement.appendChild(venueSummaryElement);
+
+                  const contentElement = document.createElement('div');
+                  contentElement.classList.add('ibox-content');
+
+                  const rowElement = document.createElement('div');
+                  rowElement.classList.add('row');
+
+                  const leftColumnElement = document.createElement('div');
+                  leftColumnElement.classList.add('col-lg-7');
+                  leftColumnElement.textContent = venueAbout || "No information available.";
+
+                  const rightColumnElement = document.createElement('div');
+                  rightColumnElement.classList.add('col-lg-5');
+
+                  const photosElement = document.createElement('div');
+                  photosElement.classList.add('photos');
+
+                  for (let i = 0; i < 4; i++) {
+                     const photoLinkElement = document.createElement('a');
+                     photoLinkElement.setAttribute('href', '#');
+                     const photoElement = document.createElement('img');
+                     photoElement.setAttribute('alt', 'image');
+                     photoElement.classList.add('feed-photo');
+                     photoElement.setAttribute('src', 'https://picsum.photos/100?random');
+                     photoLinkElement.appendChild(photoElement);
+                     photosElement.appendChild(photoLinkElement);
+                  }
+
+                  rightColumnElement.appendChild(photosElement);
+
+                  rowElement.appendChild(leftColumnElement);
+                  rowElement.appendChild(rightColumnElement);
+
+                  contentElement.appendChild(rowElement);
+
+                  const footerElement = document.createElement('div');
+                  footerElement.classList.add('ibox-footer', 'mt-4');
+
+                  const accessIconGroupElement = document.createElement('div');
+
+                  accessIconGroupElement.classList.add('access-icon-group');
+
+                  const wheelchairIconElement = document.createElement('i');
+                  wheelchairIconElement.classList.add('fa', 'fa-3x', 'fa-wheelchair');
+                  const lowVisionIconElement = document.createElement('i');
+                  lowVisionIconElement.classList.add('fa', 'fa-3x', 'fa-low-vision');
+                  const volumeIconElement = document.createElement('i');
+                  volumeIconElement.classList.add('fa', 'fa-3x', 'fa-volume-up');
+
+                  accessIconGroupElement.appendChild(wheelchairIconElement);
+                  accessIconGroupElement.appendChild(lowVisionIconElement);
+                  accessIconGroupElement.appendChild(volumeIconElement);
+
+                  footerElement.appendChild(accessIconGroupElement);
+
+                  venueElement.appendChild(titleElement);
+                  venueElement.appendChild(contentElement);
+                  venueElement.appendChild(footerElement);
+
+                  venueContainer.appendChild(venueElement);
+               });
+
+               overlayElement.classList.add('d-none');
+            })
+            .catch(error => {
+               console.error('Error:', error.message || String(error));
+               overlayElement.classList.remove('d-none');
+            });
+      })
    </script>
 </body>
 

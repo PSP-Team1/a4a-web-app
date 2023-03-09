@@ -20,4 +20,17 @@ class VenueModel extends Model
         return $results;
     }
 
+    public function insertVenue()
+    {
+        $session_id = session()->get('id');
+        $venueName = $_POST['venueName'];
+        $venueAddress = $_POST['venueAddress'];
+        $venuePostcode = $_POST['venuePostcode'];
+
+        $db = db_connect();
+        $query = "INSERT INTO company_venue (company_id, venue_name, address, postcode) values (?, ?, ?, ?)";
+        $db->query($query, [$session_id, $venueName, $venueAddress, $venuePostcode]);
+        $db->close();
+    }
+
 }

@@ -61,6 +61,7 @@ $routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');
 $routes->get('/AdminUpdatePassword', 'AdminSettingsController::updatePassword');
 $routes->get('/AdminChangePicture', 'AdminSettingsController::changePicture');
 $routes->get('/CustomerDashboard', 'CustomerDashboard::index');
+$routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
 $routes->get('/CustomerInbox', 'InboxController::customerInbox');
 $routes->get('/Audit', 'AuditController::index');
 $routes->get('/Login', 'LoginController::index');

@@ -59,7 +59,7 @@
                     <i class="fas fa-search"></i> View My Accessibility Audit(s)
                     </a>
 
-                    <a class="btn btn-success btn-outline" href="/Audit" role="button">
+                    <a class="btn btn-success btn-outline" href="/CustomerNewVenue" role="button">
                     <i class="fa fa-plus"></i> Add New Venue
                     </a>
 

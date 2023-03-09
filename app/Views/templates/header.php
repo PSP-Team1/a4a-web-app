@@ -184,30 +184,10 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Dashboard</span>
             </a>
 
-            <!-- <a href="<?= base_url() ?>/PmDash" class="nav_link <?= ($activePage == "newAudit" ? "active" : "") ?>">
-                        <i class='bx bx-file nav_icon'></i>
-                        <span class="nav_name">Start New Audit</span>
-                    </a> -->
-
             <a href="<?= base_url() ?>/ViewAudits" class="nav_link <?= ($activePage == "ViewAudits" ? "active" : "") ?>">
               <i class='bx bx-list-ul nav_icon'></i>
               <span class="nav_name">View Audit(s)</span>
             </a>
-
-            <!-- <a href="<?= base_url() ?>/PmDash" class="nav_link <?= ($activePage == "deleteAudit" ? "active" : "") ?>">
-                        <i class='bx bx-trash nav_icon'></i>
-                        <span class="nav_name">Delete Audit(s)</span>
-                    </a>
-
-                    <a href="<?= base_url() ?>/PmDash" class="nav_link <?= ($activePage == "viewFaq" ? "active" : "") ?>">
-                        <i class='bx bx-help-circle nav_icon'></i>
-                        <span class="nav_name">View FAQ</span>
-                    </a>
-
-                    <a href="<?= base_url() ?>/Analysis" class="nav_link <?= ($activePage == "AdminDashboard" ? "active" : "") ?>">
-                        <i class='bi bi-search nav_icon'></i>
-                        <span class="nav_name">Analysis</span>
-                    </a> -->
 
             <div class="dropdown">
               <a href="<?= base_url() ?>/Analysis" class="nav_link <?= ($activePage == "AdminDashboard" ? "active" : "") ?>">

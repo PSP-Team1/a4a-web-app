@@ -75,10 +75,12 @@
             </div>
             <div class="ibox-content">
 
-
                 <div class="row">
 
-                <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded">
+                <?php if (empty($venues)): ?>
+                    <p>There are no venues to display.</p>
+                <?php else: ?>
+                    <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded">
                     <thead>
                         <tr>
 
@@ -97,101 +99,45 @@
                     </thead>
                     <tbody>
                         <?php foreach ($venues as $venue): ?>
+                            <?php
+                            $venueFields = array('venue_name', 'address', 'postcode', 'about', 'opening_hours', 'images', 'accessibility');
+                            $completedFields = 0;
+                            foreach ($venueFields as $field) {
+                                if (!empty($venue[$field])) {
+                                    $completedFields++;
+                                }
+                            }
+                            $progress = round(($completedFields / count($venueFields)) * 100);
+                        ?>
+
                         <tr class="footable-even" style="">
                             <td class="footable-visible footable-first-column"><span
                                     class="footable-toggle"></span><?= $venue['venue_name'] ?></td>
                             <td class="footable-visible"><?= $venue['address'] ?></td>
                             <td class="footable-visible"><?= $venue['postcode'] ?></td>
                             <td class="footable-visible footable-last-column">
-                            <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                            <a class="btn btn-success btn-outline" href="/CustomerDashboard/ViewVenue/<?= $venue['id'] ?>" role="button">
                                 <i class="fas fa-eye"></i> View
                             </a>
-                            <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
-                                <i class="fas fa-check"></i> Publish
-                            </a>
+
+                            <?php if ($progress != 100) { ?>
+                                <a class="btn btn-danger btn-outline disabled" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                    <i class="fas fa-x"></i> Publish
+                                </a>
+                            <?php } ?>
+
+                            <?php if ($progress == 100) { ?>
+                                <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                    <i class="fas fa-check"></i> Publish
+                                </a>
+                            <?php } ?>
 
                             <td class="footable-visible footable-last-column">
                             <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $progress; ?>%</div>
                             </div>
                         </tr>
                         <?php endforeach; ?>
-                        <tr class="footable-row-detail" style="display: none;">
-                            <td class="footable-row-detail-cell" colspan="4">
-                                <div class="footable-row-detail-inner">
-                                    <div class="footable-row-detail-row">
-                                        <div class="footable-row-detail-name">Company:</div>
-                                        <div class="footable-row-detail-value">Erat Volutpat</div>
-                                    </div>
-                                    <div class="footable-row-detail-row">
-                                        <div class="footable-row-detail-name">Completed:</div>
-                                        <div class="footable-row-detail-value"><span class="pie">3,1</span></div>
-                                    </div>
-                                    <div class="footable-row-detail-row">
-                                        <div class="footable-row-detail-name">Task:</div>
-                                        <div class="footable-row-detail-value">75%</div>
-                                    </div>
-                                    <div class="footable-row-detail-row">
-                                        <div class="footable-row-detail-name">Date:</div>
-                                        <div class="footable-row-detail-value">Jul 18, 2013</div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="footable-even" style="display: none;">
-                            <td class="footable-visible footable-first-column"><span
-                                    class="footable-toggle"></span>Gamma project</td>
-                            <td class="footable-visible">Anna Jordan</td>
-                            <td class="footable-visible">(016977) 0648</td>
-                            <td style="display: none;">Tellus Ltd</td>
-                            <td style="display: none;"><span class="pie">4,9</span></td>
-                            <td style="display: none;">18%</td>
-                            <td style="display: none;">Jul 22, 2013</td>
-                            <td class="footable-visible footable-last-column"><a href="#"><i
-                                        class="fa fa-check text-navy"></i></a>
-                            </td>
-                        </tr>
-                        <tr class="footable-odd" style="display: none;">
-                            <td class="footable-visible footable-first-column"><span
-                                    class="footable-toggle"></span>Alpha project</td>
-                            <td class="footable-visible">Alice Jackson</td>
-                            <td class="footable-visible">0500 780909</td>
-                            <td style="display: none;">Nec Euismod In Company</td>
-                            <td style="display: none;"><span class="pie">6,9</span></td>
-                            <td style="display: none;">40%</td>
-                            <td style="display: none;">Jul 16, 2013</td>
-                            <td class="footable-visible footable-last-column"><a href="#"><i
-                                        class="fa fa-check text-navy"></i></a>
-                            </td>
-                        </tr>
-                        <tr class="footable-even" style="display: none;">
-                            <td class="footable-visible footable-first-column"><span
-                                    class="footable-toggle"></span>Project
-                                <small>This is example of project</small>
-                            </td>
-                            <td class="footable-visible">Patrick Smith</td>
-                            <td class="footable-visible">0800 051213</td>
-                            <td style="display: none;">Inceptos Hymenaeos Ltd</td>
-                            <td style="display: none;"><span class="pie">0.52/1.561</span></td>
-                            <td style="display: none;">20%</td>
-                            <td style="display: none;">Jul 14, 2013</td>
-                            <td class="footable-visible footable-last-column"><a href="#"><i
-                                        class="fa fa-check text-navy"></i></a>
-                            </td>
-                        </tr>
-                        <tr class="footable-odd" style="display: none;">
-                            <td class="footable-visible footable-first-column"><span
-                                    class="footable-toggle"></span>Gamma project</td>
-                            <td class="footable-visible">Anna Jordan</td>
-                            <td class="footable-visible">(016977) 0648</td>
-                            <td style="display: none;">Tellus Ltd</td>
-                            <td style="display: none;"><span class="pie">4,9</span></td>
-                            <td style="display: none;">18%</td>
-                            <td style="display: none;">Jul 22, 2013</td>
-                            <td class="footable-visible footable-last-column"><a href="#"><i
-                                        class="fa fa-check text-navy"></i></a>
-                            </td>
-                        </tr>
                     </tbody>
                     <tfoot>
                         <tr>
@@ -209,6 +155,7 @@
                         </tr>
                     </tfoot>
                 </table>
+                <?php endif; ?>
 
                 </div>
             </div>

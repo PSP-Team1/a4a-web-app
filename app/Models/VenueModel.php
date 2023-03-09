@@ -33,4 +33,19 @@ class VenueModel extends Model
         $db->close();
     }
 
+    public function getVenueById($id)
+    {
+        return $this->asArray()
+                    ->where(['id' => $id])
+                    ->first();
+    }
+
+    public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription)
+    {
+        $db = db_connect();
+        $query = "UPDATE company_venue SET venue_name=?, address=?, postcode=?, about=? WHERE id=?";
+        $db->query($query, [$venueName, $venueAddress, $venuePostcode, $venueDescription, $venueId]);
+        $db->close();
+    }
+
 }

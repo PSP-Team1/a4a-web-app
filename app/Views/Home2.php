@@ -85,7 +85,7 @@
 </head>
 
 <body>
-   <button class="btn-scroll-top" title="Scroll to top"><i class="fa fa-chevron-up"></i></button>
+   <button aria-label="scroll to top" class="btn-scroll-top" title="Scroll to top"><i class="fa fa-chevron-up"></i></button>
 
    <!-- <button type="button" class="btn btn-primary" id="showLoaderBtn">
       Test Loader
@@ -100,7 +100,7 @@
    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
       <div class="container-fluid">
 
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+         <button aria-label="toggle navbar" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
 
@@ -126,7 +126,7 @@
 
             <div class="input-group">
                <input id="search-input" type="text" placeholder="Search for location..." class="form-control search-input">
-               <span class="input-group-append"> <button type="button" class="search-btn btn btn-primary">
+               <span class="input-group-append"> <button aria-label="search for attractions" type="button" class="search-btn btn btn-primary">
                      <i class="fa fa-map-marker fa-3x text-white"></i>
                   </button>
                </span>
@@ -142,7 +142,7 @@
          <div class="row">
             <div class="col-lg-2">
 
-               <button class="btn btn-primary" id="update-results-btn">Update Results <span id="search-changes"></span></button>
+               <button aria-label="update search results button" class="btn btn-primary" id="update-results-btn">Update Results <span id="search-changes"></span></button>
 
             </div>
 
@@ -160,7 +160,7 @@
                   <div class="accordion" id="venueTypeAccordion">
                      <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#venueTypeSubMenu" aria-expanded="true" aria-controls="venueTypeSubMenu">
+                           <button aria-label="expand venue types menu" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#venueTypeSubMenu" aria-expanded="true" aria-controls="venueTypeSubMenu">
                               Venue Type
                            </button>
                         </h2>
@@ -190,7 +190,7 @@
                   <div class="accordion" id="socialAccordion">
                      <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
-                           <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#socialSubMenu" aria-expanded="true" aria-controls="socialSubMenu">
+                           <button aria-label="expand social venues button" class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#socialSubMenu" aria-expanded="true" aria-controls="socialSubMenu">
                               Social
                            </button>
                         </h2>
@@ -213,7 +213,7 @@
                   <div class="accordion" id="activitiesAccordion">
                      <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#activitiesSubMenu" aria-expanded="false" aria-controls="activitiesSubMenu">
+                           <button aria-label="expand activities button" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#activitiesSubMenu" aria-expanded="false" aria-controls="activitiesSubMenu">
                               Activities
                            </button>
                         </h2>
@@ -239,7 +239,7 @@
                   <div class="accordion" id="venueTypeAccordion">
                      <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accommodationSubMenu" aria-expanded="false" aria-controls="accommodationSubMenu">
+                           <button aria-label="expand accomodation menu button" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accommodationSubMenu" aria-expanded="false" aria-controls="accommodationSubMenu">
                               Accommodation
                            </button>
                         </h2>

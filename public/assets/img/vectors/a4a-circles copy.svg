@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 782.93 39.41">
+  <defs>
+    <style>
+    svg {
+  overflow: visible;
+}
+circle {
+  fill: #00adf5;
+  animation-name: bounce;
+  animation-duration: .7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--index) * 0.1s); /* add delay based on index */
+  animation-fill-mode: both; /* keep the final state of the animation */
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+    animation-delay: calc(var(--index) * 0.2s + 2.6s); /* add extra delay to restart after full iteration */
+  }
+}
+
+
+
+    </style>
+
+  </defs>
+  <g id="Layer_2" data-name="Layer 1">
+    <circle class="cls-1" style="fill: #4bac3d;  --index: 1;" cx="19.71" cy="19.71" r="19.71"/>
+    <circle class="cls-2" style="fill: #edc953;  --index: 2;" cx="76.9" cy="19.71" r="19.71"/>
+    <circle class="cls-3" style="fill: #85d0d5;  --index: 3;" cx="134.09" cy="19.71" r="19.71"/>
+    <circle class="cls-4" style="fill: #e8701f;  --index: 4;" cx="191.29" cy="19.71" r="19.71"/>
+    <circle class="cls-5" style="fill: #d701db;  --index: 5;" cx="248.48" cy="19.71" r="19.71"/>
+    <circle class="cls-6" style="fill: #c1cb1e;  --index: 6;" cx="305.67" cy="19.71" r="19.71"/>
+    <circle class="cls-7" style="fill: #00adf5;  --index: 7;" cx="362.87" cy="19.71" r="19.71"/>
+    <circle class="cls-8" style="fill: #263a88;  --index: 8;" cx="420.06" cy="19.71" r="19.71"/>
+    <circle class="cls-9" style="fill: #e23326;  --index: 9;" cx="477.25" cy="19.71" r="19.71"/>
+    <circle class="cls-10" style="fill: #1a818e; --index: 10;" cx="534.45" cy="19.71" r="19.71"/>
+    <circle class="cls-11" style="fill: #fae114; --index: 11;" cx="591.64" cy="19.71" r="19.71"/>
+    <circle class="cls-12" style="fill: #e10e80; --index: 12;" cx="648.83" cy="19.71" r="19.71"/>
+    <circle class="cls-13" style="fill: #ded5e9; --index: 13;" cx="706.03" cy="19.71" r="19.71"/>
+    <circle class="cls-14" style="fill: #f06c65; --index: 14;" cx="763.22" cy="19.71" r="19.71"/>
+  </g>
+</svg>

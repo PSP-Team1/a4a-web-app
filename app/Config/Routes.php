@@ -59,7 +59,9 @@ $routes->get('/AdminInbox', 'InboxController::adminInbox');
 $routes->get('/AdminSettings', 'AdminSettingsController::index');
 $routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');
 $routes->get('/AdminUpdatePassword', 'AdminSettingsController::updatePassword');
+$routes->get('/AdminChangePicture', 'AdminSettingsController::changePicture');
 $routes->get('/CustomerDashboard', 'CustomerDashboard::index');
+$routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
 $routes->get('/CustomerInbox', 'InboxController::customerInbox');
 $routes->get('/Audit', 'AuditController::index');
 $routes->get('/Login', 'LoginController::index');
@@ -69,3 +71,5 @@ $routes->get('/QR', 'QRController::index');
 $routes->get('/FAQ', 'FAQController::index');
 $routes->get('/ViewAudits', 'ViewAuditController::index');
 $routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
+
+$routes->get('/venue/search', 'VenueController::search');

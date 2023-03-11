@@ -14,4 +14,18 @@ class CompanyModel extends Model
                     ->where(['id' => $id])
                     ->first();
     }
+
+    public function getVenues()
+    {
+        $session_id = session()->get('id');
+
+        $db = db_connect();
+        
+        $query = $db->table('company_venue')
+                    ->where('company_id', $session_id)
+                    ->get();
+
+        return $query->getResult();
+
+    }
 }

@@ -279,12 +279,18 @@
 
 
          let tags = [];
-         let searchKey = '';
+         let searchTerm = '';
+         let encTags;
+         let encTerm;
+         let url;
 
-
-         // will be initialy null on load, update controller to handle this
+         //metho to get the data, encoded params
          const getData = () => {
-            const url = `/venue/search?tags=${tags.join(',')}&searchKey=${searchKey}`;
+            encTags = tags.map(tag => encodeURIComponent(tag)).join(",");
+            encTerm = encodeURIComponent(searchTerm);
+            url = `/venue/search?tags=${encTags}&searchTerm=${encTerm}`;
+            // url = '/venue/search?tags=Museum,Castles%20%26%20Stately%20Homes,Art%20Gallery&searchTerm=';
+            console.log(url)
             return fetch(url)
                .then(response => response.json())
                .catch(error => {
@@ -295,14 +301,17 @@
 
          // button event listeres , when search input is clicked, update results is cliecked
          const searchInput = document.querySelector('#search-input');
-         searchInput.addEventListener('input', (event) => {
-            updateSearchKey(event.target.value);
+         searchInput.addEventListener('change', (event) => {
+            updateSearchCriteria(event.target.value);
          });
 
          // fetch updated data (i.e. update res is clicked
          const updateResultsBtn = document.getElementById('update-results-btn');
          updateResultsBtn.addEventListener('click', () => {
+            tags = JSON.parse(sessionStorage.getItem('search_tags'));
+            console.log(tags);
             getData().then(data => {
+               detectChanges()
                renderResults(data)
             });
          });
@@ -311,9 +320,10 @@
          const chipList = document.querySelector('#chip-list');
 
 
-         // Add tje new items to the key
-         const updateSearchKey = (value) => {
-            searchKey = value.trim();
+         // UPdate search term and tags and call get data method
+         const updateSearchCriteria = (value) => {
+            searchTerm = value.trim();
+            tags = JSON.parse(sessionStorage.getItem('search_tags'));
             getData().then(data => {
                renderResults(data)
             });
@@ -448,13 +458,13 @@
 
       const chipList = document.querySelector('.chip-list');
       const venueTypes = document.querySelector('.venue-types');
-      let searchKey = sessionStorage.getItem('searchKey');
+      let searchTags = sessionStorage.getItem('search_tags');
       let tags = [];
 
-      if (searchKey) {
-         tags = JSON.parse(searchKey);
+      if (searchTags) {
+         tags = JSON.parse(searchTags);
       } else {
-         sessionStorage.setItem('searchKey', JSON.stringify(tags));
+         sessionStorage.setItem('search_tags', JSON.stringify(tags));
       }
 
 
@@ -476,10 +486,9 @@
 
       // Add the item
       const addTag = (tag) => {
-         console.log(tags);
          if (!tags.includes(tag)) {
             tags.push(tag);
-            sessionStorage.setItem('searchKey', JSON.stringify(tags));
+            sessionStorage.setItem('search_tags', JSON.stringify(tags));
             chipList.appendChild(createTagElement(tag));
             detectChanges()
          }
@@ -489,7 +498,7 @@
       // Remove tag with data attr, avoids collisions KW
       const removeTag = (tag) => {
          tags = tags.filter(t => t !== tag);
-         sessionStorage.setItem('searchKey', JSON.stringify(tags));
+         sessionStorage.setItem('search_tags', JSON.stringify(tags));
          chipList.querySelectorAll('.chip').forEach(chip => {
             const chipTag = chip.getAttribute('data-tag');
             if (chipTag === tag) {
@@ -521,17 +530,16 @@
       // Set on load to same as the search term - can't think of a better solution FIXME
 
       const updateResultsBtn = document.getElementById('update-results-btn');
-      if (searchKey) {
-         sessionStorage.setItem('loaded', searchKey) //store initial state
+      if (searchTags) {
+         sessionStorage.setItem('loaded', searchTags) //store initial state
       }
 
       // detect changes to search
       const detectChanges = () => {
-         console.log('triggered')
-         const searchKey = sessionStorage.getItem('searchKey');
+         const searchTags = sessionStorage.getItem('search_tags');
          const loadedSearchKey = sessionStorage.getItem('loaded');
 
-         if (searchKey !== loadedSearchKey) {
+         if (searchTags !== loadedSearchKey) {
             updateResultsBtn.style.display = 'block';
          } else {
             updateResultsBtn.style.display = 'none';

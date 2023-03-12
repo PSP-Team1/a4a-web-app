@@ -121,13 +121,13 @@
                             </a>
 
                             <?php if ($progress != 100) { ?>
-                                <a class="btn btn-danger btn-outline disabled" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                <a class="btn btn-danger btn disabled" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
                                     <i class="fas fa-x"></i> Publish
                                 </a>
                             <?php } ?>
 
                             <?php if ($progress == 100) { ?>
-                                <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                <a class="btn btn-success btn" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
                                     <i class="fas fa-check"></i> Publish
                                 </a>
                             <?php } ?>

@@ -40,11 +40,30 @@ class VenueModel extends Model
                     ->first();
     }
 
-    public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription)
+    public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags)
     {
         $db = db_connect();
-        $query = "UPDATE company_venue SET venue_name=?, address=?, postcode=?, about=? WHERE id=?";
-        $db->query($query, [$venueName, $venueAddress, $venuePostcode, $venueDescription, $venueId]);
+
+        try {
+            $tagsArray = json_decode($venueTags);
+        
+            if ($tagsArray !== null) {
+                $tagValues = array();
+                foreach ($tagsArray as $tagObject) {
+                    if (isset($tagObject->value)) {
+                        $tagValues[] = $tagObject->value;
+                    }
+                }
+                $tags = implode(', ', $tagValues);
+            } else {
+                $tags = '';
+            }
+        } catch (Exception $e) {
+            $tags = '';
+        }
+
+        $query = "UPDATE company_venue SET venue_name=?, address=?, postcode=?, about=?, tags=? WHERE id=?";
+        $db->query($query, [$venueName, $venueAddress, $venuePostcode, $venueDescription, $tags, $venueId]);
         $db->close();
     }
 

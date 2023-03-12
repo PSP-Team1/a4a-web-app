@@ -5,6 +5,10 @@
    $email = $session->get('email');
    
    ?>
+<head>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
+</head>
 <script>
    function validateForm() {
      var newPassword = document.getElementById("newPassword").value;
@@ -57,54 +61,62 @@
                </div>
             </div>
             <br>
-            <!-- <div style="display: flex;">
-               <div class="form-group" style="flex: 1; margin-right: 10px;">
-                  <h2>Opening Hours</h2>
-                  <table id="opening-hours" name="opening-hours">
-                     <tr>
-                        <th>Day</th>
-                        <th>Hours</th>
-                     </tr>
-                     <tr>
-                        <td>Monday</td>
-                        <td><input type="text" name="monday" value="9am - 5pm"></td>
-                     </tr>
-                     <tr>
-                        <td>Tuesday</td>
-                        <td><input type="text" name="tuesday" value="9am - 5pm"></td>
-                     </tr>
-                     <tr>
-                        <td>Wednesday</td>
-                        <td><input type="text" name="wednesday" value="9am - 5pm"></td>
-                     </tr>
-                     <tr>
-                        <td>Thursday</td>
-                        <td><input type="text" name="thursday" value="9am - 5pm"></td>
-                     </tr>
-                     <tr>
-                        <td>Friday</td>
-                        <td><input type="text" name="friday" value="9am - 5pm"></td>
-                     </tr>
-                     <tr>
-                        <td>Saturday</td>
-                        <td><input type="text" name="saturday" value="9am - 5pm"></td>
-                     </tr>
-                     <tr>
-                        <td>Sunday</td>
-                        <td><input type="text" name="sunday" value="9am - 5pm"></td>
-                     </tr>
-                  </table>
-               </div>
-            </div> -->
-            <br>
+            <div class="form-group">
+               <h2>Venue Tags:</h2>
+               <input name="tags" id="tags" value="<?php echo $venue['tags']?>" class="form-control">
+            </div><br>
             <button type="submit" class="btn btn-outline-success">Update Details</button>
             <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
          </form>
+         <script>
+            var input = document.querySelector('#tags');
+            new Tagify(input, {
+            removable: true
+            });
+         </script>
+         <!-- <div style="display: flex;">
+            <div class="form-group" style="flex: 1; margin-right: 10px;">
+               <h2>Opening Hours</h2>
+               <table id="opening-hours" name="opening-hours">
+                  <tr>
+                     <th>Day</th>
+                     <th>Hours</th>
+                  </tr>
+                  <tr>
+                     <td>Monday</td>
+                     <td><input type="text" name="monday" value="9am - 5pm"></td>
+                  </tr>
+                  <tr>
+                     <td>Tuesday</td>
+                     <td><input type="text" name="tuesday" value="9am - 5pm"></td>
+                  </tr>
+                  <tr>
+                     <td>Wednesday</td>
+                     <td><input type="text" name="wednesday" value="9am - 5pm"></td>
+                  </tr>
+                  <tr>
+                     <td>Thursday</td>
+                     <td><input type="text" name="thursday" value="9am - 5pm"></td>
+                  </tr>
+                  <tr>
+                     <td>Friday</td>
+                     <td><input type="text" name="friday" value="9am - 5pm"></td>
+                  </tr>
+                  <tr>
+                     <td>Saturday</td>
+                     <td><input type="text" name="saturday" value="9am - 5pm"></td>
+                  </tr>
+                  <tr>
+                     <td>Sunday</td>
+                     <td><input type="text" name="sunday" value="9am - 5pm"></td>
+                  </tr>
+               </table>
+            </div>
+            </div> -->
       </div>
    </div>
 </div>
 </div>
 </div>
 </div>
-
 <?= view('templates/footer'); ?>

@@ -100,7 +100,7 @@
                     <tbody>
                         <?php foreach ($venues as $venue): ?>
                             <?php
-                            $venueFields = array('venue_name', 'address', 'postcode', 'about', 'opening_hours', 'images', 'accessibility');
+                            $venueFields = array('venue_name', 'address', 'postcode', 'about', 'opening_hours', 'images', 'accessibility', 'tags');
                             $completedFields = 0;
                             foreach ($venueFields as $field) {
                                 if (!empty($venue[$field])) {

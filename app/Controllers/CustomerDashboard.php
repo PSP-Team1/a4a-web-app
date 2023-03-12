@@ -42,9 +42,10 @@ class CustomerDashboard extends BaseController
         $venueAddress = $this->request->getPost('venueAddress');
         $venuePostcode = $this->request->getPost('venuePostcode');
         $venueDescription = $this->request->getPost('venueDescription');
+        $venueTags = $this->request->getPost('tags');
 
         $venueModel = new VenueModel();
-        $venueModel->updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription);
+        $venueModel->updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags);
 
         return redirect()->to('CustomerDashboard');
 

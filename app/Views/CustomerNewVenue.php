@@ -38,7 +38,7 @@ function validateForm() {
 
     <div class="ibox">
         <div class="ibox-title">
-            <h2><b>Submit New Venue</b></h2>
+            <h2><b>Add New Venue</b></h2>
         </div>
         <div class="ibox-content">
 

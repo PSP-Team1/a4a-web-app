@@ -1,5 +1,8 @@
 <?= view('templates/header'); ?>
 
+<head>
+<script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+
 <div class="container">
 
     <?php
@@ -100,7 +103,7 @@
                     <tbody>
                         <?php foreach ($venues as $venue): ?>
                             <?php
-                            $venueFields = array('venue_name', 'address', 'postcode', 'about', 'opening_hours', 'images', 'accessibility');
+                            $venueFields = array('venue_name', 'address', 'postcode', 'about', 'opening_hours', 'images', 'accessibility', 'tags');
                             $completedFields = 0;
                             foreach ($venueFields as $field) {
                                 if (!empty($venue[$field])) {
@@ -121,21 +124,38 @@
                             </a>
 
                             <?php if ($progress != 100) { ?>
-                                <a class="btn btn-danger btn-outline disabled" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                <a class="btn btn-danger btn disabled" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
                                     <i class="fas fa-x"></i> Publish
                                 </a>
                             <?php } ?>
 
                             <?php if ($progress == 100) { ?>
-                                <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+                                <a class="btn btn-success btn" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
                                     <i class="fas fa-check"></i> Publish
                                 </a>
                             <?php } ?>
 
                             <td class="footable-visible footable-last-column">
                             <div class="progress">
-                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $progress; ?>%</div>
+                                <div class="progress-bar progress-bar-striped bg-success animated" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $progress; ?>%</div>
                             </div>
+
+                            <style>
+
+                                @keyframes progress-bar-stripes {
+                                from {
+                                    background-position-x: 1rem;
+                                }
+                                to {
+                                    background-position-x: 0;
+                                }
+                                }
+
+                                .progress-bar.animated {
+                                animation: progress-bar-stripes 1s linear infinite;
+                                }
+                            </style>
+
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

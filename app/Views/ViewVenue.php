@@ -73,6 +73,10 @@
                   <h2>Venue Tags</h2>
                   <input name="tags" id="tags" value="<?php echo $venue['tags']?>" class="form-control">
                </div>
+
+               <br>
+               <button type="submit" class="btn btn-outline-success">Update Details</button>
+               <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
             </form>
          </div>
          <div id="tab2" class="tabcontent">
@@ -122,8 +126,6 @@
             <p>Image content goes here.</p>
          </div>
          <br>
-         <button type="submit" class="btn btn-outline-success">Update Details</button>
-         <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
          <style>
             .tabcontent {
             display: none;

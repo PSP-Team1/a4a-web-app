@@ -12,10 +12,11 @@ class VenueModel extends Model
     {
         $session_id = session()->get('id');
         $db = db_connect();
-        
-        $sql = "
-        SELECT * FROM company_venue 
-        WHERE company_id = $session_id";
+
+        $sql = "select cv.* from sys_users su 
+        join company_venue cv on cv.company_id = su.company_id
+       
+       where su.id = $session_id";
         $results = $db->query($sql)->getResult('array');
         return $results;
     }
@@ -36,8 +37,8 @@ class VenueModel extends Model
     public function getVenueById($id)
     {
         return $this->asArray()
-                    ->where(['id' => $id])
-                    ->first();
+            ->where(['id' => $id])
+            ->first();
     }
 
     public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags)
@@ -46,7 +47,7 @@ class VenueModel extends Model
 
         try {
             $tagsArray = json_decode($venueTags);
-        
+
             if ($tagsArray !== null) {
                 $tagValues = array();
                 foreach ($tagsArray as $tagObject) {
@@ -66,5 +67,4 @@ class VenueModel extends Model
         $db->query($query, [$venueName, $venueAddress, $venuePostcode, $venueDescription, $tags, $venueId]);
         $db->close();
     }
-
 }

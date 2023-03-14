@@ -23,7 +23,7 @@ class VenueModel extends Model
 
     public function insertVenue()
     {
-        $session_id = session()->get('id');
+        $session_id = session()->get('company_id');
         $venueName = $_POST['venueName'];
         $venueAddress = $_POST['venueAddress'];
         $venuePostcode = $_POST['venuePostcode'];

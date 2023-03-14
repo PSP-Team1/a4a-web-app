@@ -72,7 +72,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
     object-fit: cover;
     background-image: url('<?= base_url(); ?>/assets/img/avatars/<?= $avatar ?>');
     background-position: center;
-    background-size: 80%;
+    background-size: 105%;
     background-repeat: no-repeat;
     border-radius: 50%;
     border: solid 1px grey;

@@ -3,6 +3,28 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
 
+<style>
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+.table td, .table th {
+    padding: 8px;
+    text-align: left;
+}
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+</style>
+
 <div class="container">
 
     <?php
@@ -22,7 +44,7 @@
     $session = session();
     $user = $session->get('email');
     $contact = $session->get('name');
-?>
+    ?>
 
     <div class="row">
         <div class="col-lg-6">

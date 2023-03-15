@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\AuditModel;
 use App\Models\DashboardModel;
 use App\Models\CompanyModel;
+use App\Models\VenueModel;
 
 
 class AdminDashboard extends BaseController
@@ -17,25 +18,14 @@ class AdminDashboard extends BaseController
         return view('AdminDashboard', $data);
     }
 
-
-    public function test()
-    {
-
-        $dm = new DashboardModel();
-
-        $data['b_cust'] = $dm->getCustomers();
-        
-        return view('AdminDashboard', $data);
-    }
-
-
-    // VIew company info
-
     public function viewCompany($id)
     {
-
         $model = new CompanyModel();
         $data['company'] = $model->getCompanyById($id);
+
+        $venueModel = new VenueModel();
+        $data['venues'] = $venueModel->getVenues();
+
         return view('ViewCompany', $data);
     }
 

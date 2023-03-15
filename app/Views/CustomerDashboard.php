@@ -2,6 +2,8 @@
 
 <head>
 <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 
 <style>
 .table {
@@ -24,6 +26,52 @@
     background-color: #f5f5f5;
 }
 </style>
+
+<head>
+
+<script>
+    toastr.options.progressBar = true;
+</script>
+
+<?php if(isset($_GET['published'])): ?>
+<br>
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="published-alert">
+  <strong>Your venue has been published and is now being displayed on the homepage!</strong>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  setTimeout(function() {
+    $('#published-alert').animate({
+      opacity: 0
+    }, 1000, function() {
+      $(this).remove();
+      $('container').css('padding-top', $('nav').outerHeight());
+    });
+  }, 3000);
+</script>
+
+<?php endif; ?>
+
+<?php if(isset($_GET['unpublished'])): ?>
+<br>
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="published-alert">
+  <strong>Your venue has been unpublished and is now hidden from the homepage!</strong>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  setTimeout(function() {
+    $('#published-alert').animate({
+      opacity: 0
+    }, 1000, function() {
+      $(this).remove();
+      $('container').css('padding-top', $('nav').outerHeight());
+    });
+  }, 3000);
+</script>
+
+<?php endif; ?>
 
 <div class="container">
 

@@ -55,7 +55,7 @@ class CustomerDashboard extends BaseController
         $venueId = $this->request->getPost('id');
         $model = new VenueModel();
         $model->publishVenue($venueId);
-        return redirect()->to('CustomerDashboard');
+        return redirect()->to('CustomerDashboard?published=true');
     }
 
     public function unpublishVenue()
@@ -63,6 +63,6 @@ class CustomerDashboard extends BaseController
         $venueId = $this->request->getPost('id');
         $model = new VenueModel();
         $model->unpublishVenue($venueId);
-        return redirect()->to('CustomerDashboard');
+        return redirect()->to('CustomerDashboard?unpublished=true');
     }
 }

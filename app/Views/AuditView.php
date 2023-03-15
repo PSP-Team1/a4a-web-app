@@ -35,8 +35,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>/assets/css/auditView.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -138,35 +137,34 @@
                                 </thead>
                                 <tbody>
 
-                                    <?php foreach ($audit_data as $item){
-                
-                $qCount = $item['audit_total'];
-                $cCount = $item['audit_prog'];
-                $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
-                ?>
+                                    <?php foreach ($audit_data as $item) {
 
-                                    <tr>
-                                        <td><?= $item['audit_version'] ?></td>
-                                        <td>
-                                            <div class="progress progress-small">
-                                                <div style="width: <?=$percComplete;?>%;" class="progress-bar"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a class="btn btn-success btn-outline"
-                                                href="/AuditController/OpenAudit/<?=$item['audit_id']?>" role="button">
-                                                <i class="fa fa-eye"></i> View</a>
-                                        </td>
-                                        <td>
+                                        $qCount = $item['audit_total'];
+                                        $cCount = $item['audit_prog'];
+                                        $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
+                                    ?>
+
+                                        <tr>
+                                            <td><?= $item['audit_version'] ?></td>
+                                            <td>
+                                                <div class="progress progress-small">
+                                                    <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
+                                                    <i class="fa fa-eye"></i> View</a>
+                                            </td>
+                                            <td>
 
 
-                                            <?php 
-                                                $datetime = new DateTime( $item['date_created']);
+                                                <?php
+                                                $datetime = new DateTime($item['date_created']);
                                                 $formattedDate = $datetime->format('Y-m-d');
                                                 ?>
-                                            <?= $formattedDate?></td>
-                                    </tr>
-                                    <?php }?>
+                                                <?= $formattedDate ?></td>
+                                        </tr>
+                                    <?php } ?>
 
                                 </tbody>
                             </table>

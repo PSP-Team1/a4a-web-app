@@ -1,5 +1,12 @@
-<?= view('templates/header');
+<?= view('templates/accessibilityPortal') ?>
+<?= view('templates/header'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+</head>
 
+<?php
 date_default_timezone_set('Europe/London');
 
 $hour = date('G');
@@ -39,7 +46,7 @@ $user = $session->get('name');
 }
 </style>
 
-
+<body>
 <div class="container">
 
 
@@ -114,20 +121,20 @@ $user = $session->get('name');
                     </thead>
                     <tbody>
                         <?php foreach ($companies as $company): ?>
-                        <tr class="footable-even" style="">
+                        <tr class="footable-even">
                             <td class="footable-visible footable-first-column"><span
                                     class="footable-toggle"></span><?= $company['email'] ?></td>
                             <td class="footable-visible"><?= $company['contact'] ?></td>
                             <td class="footable-visible"><?= $company['tel'] ?></td>
-                            <td style="footable-visible""><?= $company['companyName'] ?></td>
-                            <td style=" footable-visible""><?= $company['companyNumber'] ?></td>
-                            <td style="footable-visible""><?= $company['address'] ?></td>
-                            <td style=" footable-visible""><?= $company['date_created'] ?></td>
+                            <td style="footable-visible"><?= $company['companyName'] ?></td>
+                            <td style=" footable-visible"><?= $company['companyNumber'] ?></td>
+                            <td style="footable-visible"><?= $company['address'] ?></td>
+                            <td style=" footable-visible"><?= $company['date_created'] ?></td>
                             <td class="footable-visible footable-last-column">
                                 <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button"> View</a>
                         </tr>
                         <?php endforeach; ?>
-                        <tr class="footable-row-detail" style="display: none;">
+                        <tr class="footable-even" style="display: none;">
                             <td class="footable-row-detail-cell" colspan="4">
                                 <div class="footable-row-detail-inner">
                                     <div class="footable-row-detail-row">
@@ -232,3 +239,5 @@ $user = $session->get('name');
 </a>
 
 <?= view('templates/footer'); ?>
+</body>
+</html>

@@ -1,3 +1,4 @@
+<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header');?>
 
 <div class="container">

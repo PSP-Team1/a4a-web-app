@@ -4,9 +4,6 @@
          <b>Accessibility</b>
          </button>
       </div>
-      <div class="login-container">
-      <section class="Login-form">
-
 
       <div id="accessibilityModal" class="modal fade">
          <div class="modal-dialog">
@@ -54,7 +51,8 @@
             </div>
          </div>
       </div>
-<script>
+
+      <script>
       const increaseFontBtn = document.querySelector("#increase-font");
            let fontSize = 14;
          
@@ -151,8 +149,4 @@
               button.checked = false;
               buttons.checked = false;
             });
-
-
-         
-         
       </script>

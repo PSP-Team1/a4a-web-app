@@ -32,6 +32,13 @@ class VenueModel extends Model
         return $results;
     }
 
+    public function getVenueById($id)
+    {
+        return $this->asArray()
+            ->where(['id' => $id])
+            ->first();
+    }
+
     public function insertVenue()
     {
         $session_id = session()->get('company_id');

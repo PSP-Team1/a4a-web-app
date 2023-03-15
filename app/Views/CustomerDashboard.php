@@ -118,6 +118,8 @@
                                     class="footable-sort-indicator"></span></th>
                             <th data-type="all" class="footable-visible footable-sortable">Action<span
                             class="footable-sort-indicator"></span></th>
+                            <th data-type="all" class="footable-visible footable-sortable">Publish Status<span
+                            class="footable-sort-indicator"></span></th>
                             <th class="footable-visible footable-last-column footable-sortable">Venue Completion<span
                             class="footable-sort-indicator"></span></th>
                         </tr>
@@ -152,10 +154,80 @@
                             <?php } ?>
 
                             <?php if ($progress == 100) { ?>
-                                <a class="btn btn-success btn" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
+
+                                <a class="btn btn-success btn" href="#" role="button" data-toggle="modal" data-target="#myModal">
                                     <i class="fas fa-check"></i> Publish
                                 </a>
+
+                                <?php if ($venue['published'] == 0) { ?>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="myModalLabel">Publish Your Venue</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Congratulations, you are now eligible to publish your venue onto the homepage!
+
+                                        <br><br>
+
+                                        <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/publishVenue">
+                                            <div style="text-align:center;">
+                                                 <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                                                 <button type="submit" class="btn btn-primary btn-lg" style="display:block; width: 50%; margin: 0 auto;"><i class="fas fa-check"></i> Publish</button>
+                                            </div>
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <?php } ?>
+
+                                <?php if ($venue['published'] == 1) { ?>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="myModalLabel">Publish Your Venue</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your venue has already been published onto the homepage, would you like to unpublish it?
+                                        <!-- <p>The venue ID is: <?= $venue['id'] ?></p> -->
+
+                                        <br><br>
+
+                                        <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/unpublishVenue">
+                                            <div style="text-align:center;">
+                                                 <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                                                 <button type="submit" class="btn btn-danger btn-lg" style="display:block; width: 50%; margin: 0 auto;"><i class="fas fa-x"></i> Unpublish Your Venue</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <?php } ?>
+
                             <?php } ?>
+
+                            <td class="footable-visible">
+                                <?php if ($venue['published'] == 0) { ?>
+                                    <b><p style="color: #E74C3C;">Unpublished</p></b>
+                                <?php } ?>
+
+                                <?php if ($venue['published'] == 1) { ?>
+                                    <b><p style="color: green;">Published</p></b>
+                                <?php } ?>
+                            </td>
 
                             <td class="footable-visible footable-last-column">
                             <div class="progress">

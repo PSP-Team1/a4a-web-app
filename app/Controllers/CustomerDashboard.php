@@ -49,4 +49,20 @@ class CustomerDashboard extends BaseController
 
         return redirect()->to('CustomerDashboard');
     }
+
+    public function publishVenue()
+    {
+        $venueId = $this->request->getPost('id');
+        $model = new VenueModel();
+        $model->publishVenue($venueId);
+        return redirect()->to('CustomerDashboard');
+    }
+
+    public function unpublishVenue()
+    {
+        $venueId = $this->request->getPost('id');
+        $model = new VenueModel();
+        $model->unpublishVenue($venueId);
+        return redirect()->to('CustomerDashboard');
+    }
 }

@@ -78,4 +78,22 @@ class VenueModel extends Model
         $db->query($query, [$venueName, $venueAddress, $venuePostcode, $venueDescription, $tags, $venueId]);
         $db->close();
     }
+
+    public function publishVenue($id)
+    {
+        $db = db_connect();
+
+        $query = "UPDATE company_venue SET published=1 WHERE id=?";
+        $db->query($query, [$id]);
+        $db->close();
+    }
+
+    public function unpublishVenue($id)
+    {
+        $db = db_connect();
+
+        $query = "UPDATE company_venue SET published=0 WHERE id=?";
+        $db->query($query, [$id]);
+        $db->close();
+    }
 }

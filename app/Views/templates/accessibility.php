@@ -119,17 +119,40 @@
              document.body.classList.toggle('negative-contrast');
            });
          
-         const resetButton = document.getElementById('reset-button');
+      
+          const resetButton = document.getElementById('reset-button');
+          resetButton.addEventListener('click', function() {
+              // Reset font size
+              fontSize = 14;
+              document.querySelectorAll("body *").forEach(el => {
+                el.style.fontSize = "";
+              });
+
+              // Reset grayscale
+              htmlTag.classList.remove('grayscale');
+
+              // Reset light background
+              document.querySelector("body").style.backgroundColor = "";
+              const existingImage = document.querySelector("#white-image");
+              if (existingImage) {
+                existingImage.remove();
+              }
+
+              // Reset high contrast
+              document.body.classList.remove('high-contrast');
+
+              // Reset negative contrast
+              document.body.classList.remove('negative-contrast');
+
+              // Reset toggle buttons
+              decreaseFontBtn.checked = false;
+              toggleButton.checked = false;
+              lightBackgroundBtn.checked = false;
+              button.checked = false;
+              buttons.checked = false;
+            });
+
+
          
-         resetButton.addEventListener('click', () => {
-         document.getElementsByTagName('html')[0].classList.remove('grayscale');
-         document.body.classList.remove('high-contrast');
-         document.body.classList.remove('negative-contrast');
-         document.body.style.backgroundColor = '';
-         image.style.display = "block";
-         document.querySelectorAll('body *').forEach(el => {
-         el.style.fontSize = '';
-         });
-         });
          
       </script>

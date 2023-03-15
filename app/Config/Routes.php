@@ -51,25 +51,60 @@ if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 }
 
 
-$routes->get('/Home', 'Home::index', ['filter' => 'authGuard']);
-$routes->get('/AdminDashboard', 'AdminDashboard::index');
-$routes->get('/AdminCreateTemplate', 'CreateTemplateController::index');
-$routes->get('/AdminDeleteTemplate', 'DeleteTemplateController::index');
-$routes->get('/AdminInbox', 'InboxController::adminInbox');
-$routes->get('/AdminSettings', 'AdminSettingsController::index');
-$routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');
-$routes->get('/AdminUpdatePassword', 'AdminSettingsController::updatePassword');
-$routes->get('/AdminChangePicture', 'AdminSettingsController::changePicture');
-$routes->get('/CustomerDashboard', 'CustomerDashboard::index');
-$routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
-$routes->get('/CustomerInbox', 'InboxController::customerInbox');
-$routes->get('/Audit', 'AuditController::index');
+// search page - no auth required
+$routes->get('/venue/search', 'VenueController::search');
+
+
+//grouped routes
+$routes->group('', ['filter' => 'authGuard'], function ($routes) {
+    $routes->get('/Home', 'Home::index');
+    $routes->get('/AdminDashboard', 'AdminDashboard::index');
+    $routes->get('/AdminCreateTemplate', 'CreateTemplateController::index');
+    $routes->get('/AdminDeleteTemplate', 'DeleteTemplateController::index');
+    $routes->get('/AdminInbox', 'InboxController::adminInbox');
+    $routes->get('/AdminSettings', 'AdminSettingsController::index');
+    $routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');
+    $routes->get('/AdminUpdatePassword', 'AdminSettingsController::updatePassword');
+    $routes->get('/AdminChangePicture', 'AdminSettingsController::changePicture');
+    $routes->get('/CustomerDashboard', 'CustomerDashboard::index');
+    $routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
+    $routes->get('/CustomerInbox', 'InboxController::customerInbox');
+    $routes->get('/Audit', 'AuditController::index');
+    $routes->get('/Audit/auditConfirmation', 'AuditController::auditConfirmation');
+    $routes->get('/AuditController/OpenAudit/(:num)', 'AuditController::openAudit/$1');
+    $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');
+    $routes->get('/ViewAudits', 'ViewAuditController::index');
+    $routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
+});
+
 $routes->get('/Login', 'LoginController::index');
 $routes->get('/Register', 'RegisterController::index');
 $routes->get('/RegisterSuccess', 'RegisterSuccessController::index');
 $routes->get('/QR', 'QRController::index');
 $routes->get('/FAQ', 'FAQController::index');
-$routes->get('/ViewAudits', 'ViewAuditController::index');
-$routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
 
-$routes->get('/venue/search', 'VenueController::search');
+
+
+// $routes->get('/Home', 'Home::index', ['filter' => 'authGuard']);
+// $routes->get('/AdminDashboard', 'AdminDashboard::index');
+// $routes->get('/AdminCreateTemplate', 'CreateTemplateController::index');
+// $routes->get('/AdminDeleteTemplate', 'DeleteTemplateController::index');
+// $routes->get('/AdminInbox', 'InboxController::adminInbox');
+// $routes->get('/AdminSettings', 'AdminSettingsController::index');
+// $routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');
+// $routes->get('/AdminUpdatePassword', 'AdminSettingsController::updatePassword');
+// $routes->get('/AdminChangePicture', 'AdminSettingsController::changePicture');
+// $routes->get('/CustomerDashboard', 'CustomerDashboard::index');
+// $routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
+// $routes->get('/CustomerInbox', 'InboxController::customerInbox');
+// $routes->get('/Audit', 'AuditController::index', ['filter' => 'authGuard']);
+// $routes->get('/Login', 'LoginController::index');
+// $routes->get('/Register', 'RegisterController::index');
+// $routes->get('/RegisterSuccess', 'RegisterSuccessController::index');
+// $routes->get('/QR', 'QRController::index');
+// $routes->get('/FAQ', 'FAQController::index');
+// $routes->get('/ViewAudits', 'ViewAuditController::index');
+// $routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
+
+// $routes->get('/Audit/auditConfirmation', 'AuditController::auditConfirmation');
+// $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AuditModel;
+use App\Models\ApiKeyModel;
 
 
 class AuditController extends BaseController
@@ -45,14 +46,13 @@ class AuditController extends BaseController
         $am = new AuditModel();
 
         echo json_encode($am->getQuestions(21), JSON_PRETTY_PRINT);
-
     }
 
 
     public function addResponse()
     {
         $model = new AuditModel();
-    
+
         if ($this->request->getMethod() === 'post') {
             // Retrieve the form data
             $data = [
@@ -60,39 +60,35 @@ class AuditController extends BaseController
                 'response' => intval($this->request->getVar('response')),
                 'notes' => $this->request->getVar('notes'),
             ];
-    
+
             $res = $model->updateResponse($data);
 
             if ($res['success_status']) {
-                return $this->response->setJSON(['success' => true, 'message' => 'Response added successfully.', 'percent'=> $res['percent']]);
+                return $this->response->setJSON(['success' => true, 'message' => 'Response added successfully.', 'percent' => $res['percent']]);
             } else {
-                return $this->response->setJSON(['success' => false, 'message' => 'Error updating database.','details'=>json_encode($data,true)]);
+                return $this->response->setJSON(['success' => false, 'message' => 'Error updating database.', 'details' => json_encode($data, true)]);
             }
         } else {
             return $this->response->setJSON(['success' => false, 'message' => 'Invalid request method.']);
         }
     }
-    
+
     public function mediaUpload()
     {
         $uploadedFiles = $this->request->getFiles();
         $filenames = [];
         $errors = [];
-    
-        foreach ($uploadedFiles['images'] as $file)
-        {
-            if ($file->isValid() && ! $file->hasMoved())
-            {
+
+        foreach ($uploadedFiles['images'] as $file) {
+            if ($file->isValid() && !$file->hasMoved()) {
                 $newName = $file->getRandomName();
                 $file->move('./uploads', $newName);
                 $filenames[] = $newName;
-            }
-            else
-            {
+            } else {
                 $errors[] = $file->getErrorString();
             }
         }
-    
+
         return $this->response->setJSON([
             'success' => true,
             'filenames' => $filenames,
@@ -100,9 +96,10 @@ class AuditController extends BaseController
         ]);
     }
 
-    
 
-    public function openAudit($i){
+
+    public function openAudit($i)
+    {
 
         $am = new AuditModel();
         $data['summary'] = $am->getAuditSummary($i);
@@ -111,13 +108,40 @@ class AuditController extends BaseController
         return view('ViewAudit', $data);
     }
 
-    
-    public function auditViewDataTest(){
+
+    public function auditViewDataTest()
+    {
 
         $model = new AuditModel();
         $data['question_data'] = $model->getQuestions(21);
 
-        echo json_encode($data,JSON_PRETTY_PRINT);
+        echo json_encode($data, JSON_PRETTY_PRINT);
     }
-    
+
+
+    public function auditConfirmation()
+    {
+        return view('AuditConfirmation');
+    }
+    public function completeAudit()
+    {
+        $auditId = $this->request->getVar('auditId');
+
+
+        // set audit to complete
+        $am = new AuditModel();
+        $result = $am->setAuditComplete($auditId);
+
+
+        //Generate API jey abd store in the DB
+        $akm = new ApiKeyModel();
+        $akm->generateApiKey($auditId);
+
+
+        // Generate QR code
+        // create fuctionality
+
+        // FIX ME: at the moment this only returns status of setting audit to
+        return $this->response->setJSON($result);
+    }
 }

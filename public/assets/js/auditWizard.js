@@ -83,6 +83,16 @@ navLinks.forEach(function (link) {
 
 // progress update
 
+const enableSubmit = () => {
+  const submit = document.getElementById('rpt-button');
+  submit.classList.remove('disabled');
+  submit.classList.add('btn-primary');
+  submit.classList.remove('btn-outline-danger');
+  submit.removeAttribute('disabled');
+  submit.setAttribute('title', 'Audit complete');
+  submit.innerHTML = '<i class="fa fa-check"></i> Finished';
+}
+
 
 const progUpdate = (value) => {
   var prog = document.getElementById('prog');
@@ -90,6 +100,8 @@ const progUpdate = (value) => {
 
   prog.style.width = value + '%';
   // titleProg.innerHTML = value + '%';
+
+  (value == 100) && enableSubmit()
 
   console.log("value", value)
 }

@@ -69,7 +69,7 @@ function validateForm() {
 
                 <button type="submit" class="btn btn-outline-success">Add Venue</button>
                 <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-                <a style="margin-left: 510px" data-toggle="modal" data-target="#myModal" class="btn btn-outline-info">Need Help?</a>
+                <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-info">Need Help?</a>
 
                 
             </form>

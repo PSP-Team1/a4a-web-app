@@ -9,7 +9,6 @@
 <!-- Mainly scripts -->
 <script src="<?= base_url(); ?>/assets/js/plugins/fullcalendar/moment.min.js"></script>
 <script src="<?= base_url(); ?>/assets/js/jquery-3.1.1.min.js"></script>
-<script src="<?= base_url(); ?>/assets/js/popper.min.js"></script>
 <script src="<?= base_url(); ?>/assets/js/bootstrap.js"></script>
 <script src="<?= base_url(); ?>/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="<?= base_url(); ?>/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>

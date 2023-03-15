@@ -67,6 +67,7 @@ class LoginController extends Controller
                     'email' => $data['email'],
                     'role' => $data['role'],
                     'avatar' => $data['avatar'],
+                    'company_id' => $data['company_id'],
                     'type' => $data['company_type'],
                     'isLoggedIn' => TRUE
                 ];

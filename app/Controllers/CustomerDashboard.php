@@ -48,6 +48,5 @@ class CustomerDashboard extends BaseController
         $venueModel->updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags);
 
         return redirect()->to('CustomerDashboard');
-
     }
 }

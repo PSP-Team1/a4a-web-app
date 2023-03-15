@@ -9,7 +9,7 @@
   height: 60px;    
   font-size: 32px; 
   cursor: pointer; 
-  z-index: -1;
+  z-index: 999;
 }
 
 .accessButton {
@@ -36,3 +36,31 @@
   color: #fff;
   transform: translateY(-10px);
 }
+
+.grayscale {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  }
+
+  .light-background {
+  display: block;
+  }
+  #white-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  }
+
+  .high-contrast {
+  background: black;
+  color: white;
+  filter: invert(100%);
+  }
+
+  .negative-contrast {
+  filter: invert(1) hue-rotate(180deg);
+  background: black;
+  }

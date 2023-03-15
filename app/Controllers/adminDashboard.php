@@ -24,7 +24,7 @@ class AdminDashboard extends BaseController
         $data['company'] = $model->getCompanyById($id);
 
         $venueModel = new VenueModel();
-        $data['venues'] = $venueModel->getVenues();
+        $data['venues'] = $venueModel->getVenuesById($id);
 
         return view('ViewCompany', $data);
     }

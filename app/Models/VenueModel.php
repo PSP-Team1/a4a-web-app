@@ -21,6 +21,17 @@ class VenueModel extends Model
         return $results;
     }
 
+    public function getVenuesById($id)
+    {
+        $db = db_connect();
+
+        $sql = "select * from company_venue
+        where company_id = $id";
+       
+        $results = $db->query($sql)->getResult('array');
+        return $results;
+    }
+
     public function insertVenue()
     {
         $session_id = session()->get('company_id');
@@ -32,13 +43,6 @@ class VenueModel extends Model
         $query = "INSERT INTO company_venue (company_id, venue_name, address, postcode) values (?, ?, ?, ?)";
         $db->query($query, [$session_id, $venueName, $venueAddress, $venuePostcode]);
         $db->close();
-    }
-
-    public function getVenueById($id)
-    {
-        return $this->asArray()
-            ->where(['id' => $id])
-            ->first();
     }
 
     public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags)

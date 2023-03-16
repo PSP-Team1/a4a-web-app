@@ -74,7 +74,6 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/AuditController/OpenAudit/(:num)', 'AuditController::openAudit/$1');
     $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');
     $routes->get('/ViewAudits', 'ViewAuditController::index');
-    $routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
 });
 
 $routes->get('/Login', 'LoginController::index');
@@ -82,6 +81,7 @@ $routes->get('/Register', 'RegisterController::index');
 $routes->get('/RegisterSuccess', 'RegisterSuccessController::index');
 $routes->get('/QR', 'QRController::index');
 $routes->get('/FAQ', 'FAQController::index');
+$routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
 
 
 

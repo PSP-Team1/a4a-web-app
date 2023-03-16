@@ -79,9 +79,11 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
 $routes->get('/Login', 'LoginController::index');
 $routes->get('/Register', 'RegisterController::index');
 $routes->get('/RegisterSuccess', 'RegisterSuccessController::index');
+$routes->get('/ForgotPasswordSuccess', 'LoginController::forgotPasswordSuccess');
 $routes->get('/QR', 'QRController::index');
 $routes->get('/FAQ', 'FAQController::index');
-$routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
+$routes->get('/ForgotPassword', 'LoginController::forgotPassword');
+$routes->get('/UpdatePasswordHash', 'LoginController::updatePasswordHash');
 
 
 

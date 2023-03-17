@@ -23,6 +23,16 @@ class PasswordResetModel extends Model
         return $result ? $result->email : null;
     }
     
+    public function checkHashExists($password_hash) {
+        $db = db_connect();
+    
+        $query = "SELECT COUNT(*) as count FROM sys_users WHERE password_hash=?";
+        $result = $db->query($query, [$password_hash]);
+        $resultArray = $result->getResultArray();
+        $count = $resultArray[0]['count'];
+            
+        return $count > 0;        
+    }
 
     public function checkHash($email, $password_hash) {
         $db = db_connect();

@@ -35,7 +35,15 @@ class LoginController extends Controller
     {
         $session = session();
         helper(['form']);
-        echo view('UpdatePasswordHash');
+        $model = new PasswordResetModel();
+        $hash = $_GET['hash'];
+        $checkHashExists = $model->checkHashExists($hash);
+        if ($checkHashExists == 1) {
+            echo view('UpdatePasswordHash');
+        }
+        else {
+            echo view('UpdatePasswordHashError');
+        }
     }
 
     public function resetPasswordWithHash()

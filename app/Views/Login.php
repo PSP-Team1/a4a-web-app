@@ -78,6 +78,12 @@
                         <?= session()->getFlashdata('msg') ?>
                      </div>
                      <?php endif; ?>
+
+                     <?php if (session()->getFlashdata('success')) : ?>
+                     <div class="alert alert-success">
+                        <?= session()->getFlashdata('success') ?>
+                     </div>
+                     <?php endif; ?>
                      <form action="<?php echo base_url(); ?>/LoginController/loginAuth" method="post">
                         <div class="form-group mb-3">
                            <input required type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>" class="form-control">

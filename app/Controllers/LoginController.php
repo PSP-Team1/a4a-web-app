@@ -56,6 +56,9 @@ class LoginController extends Controller
         if ($checkPasswordHash == 1) {
             $model->updatePassword($email, $newPassword);
             $model->removeHash($email);
+              
+            $session = \Config\Services::session();
+            $session->setFlashdata('success', 'Your password has been updated!');            
             return redirect()->to('/Login');
         }
         else {

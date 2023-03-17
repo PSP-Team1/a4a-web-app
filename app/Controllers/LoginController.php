@@ -84,14 +84,38 @@ class LoginController extends Controller
             if (!$authenticateEmail) {		
                 $to = $email;
                 $subject = 'Access For All - Password Reset';
-                $message = 'http://localhost:8080/UpdatePasswordHash?hash='.$passwordHash;
-                
+
+                $message = '<html>
+                                <head>
+                                    <style>
+                                        .button {
+                                            background-color: #4CAF50; /* Green */
+                                            border: none;
+                                            border-radius: 50px;
+                                            color: black !important;                                            ;
+                                            padding: 15px 32px;
+                                            text-align: center;
+                                            text-decoration: none;
+                                            display: inline-block;
+                                            font-size: 16px;
+                                            margin: 4px 2px;
+                                            cursor: pointer;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+                                    <p>Hello,</p>
+                                    <p>You have requested to reset your password for your Access For All account. Please click the button below to reset your password:</p>
+                                    <a href="http://localhost:8080/UpdatePasswordHash?hash=' . $passwordHash . '" class="button">Reset Password</a>
+                                </body>
+                            </html>';
+
                 $email = \Config\Services::email();
-         
                 $email->setTo($to);
                 $email->setFrom('accessforallproject@gmail.com', 'Access For All');
                 $email->setSubject($subject);
                 $email->setMessage($message);
+                $email->setMailType('html'); 
          
                 if ($email->send()) {
                     $response = 'Email successfully sent';

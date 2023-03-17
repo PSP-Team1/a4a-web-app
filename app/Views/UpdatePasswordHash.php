@@ -93,7 +93,6 @@
                      <?php endif; ?>
                      <form action="<?php echo base_url(); ?>/LoginController/resetPasswordWithHash" method="post">
                         <div class="form-group mb-3">
-                           <input required type="hidden" name="email" id="email" value="<?php echo $_GET['email'] ?>" class="form-control">
                            <input required type="hidden" name="hash" id="hash" value="<?php echo $_GET['hash'] ?>" class="form-control">
                            <input required type="password" name="newPassword" id="newPassword" placeholder="New Password" class="form-control">
                         </div>

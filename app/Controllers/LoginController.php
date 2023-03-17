@@ -42,8 +42,8 @@ class LoginController extends Controller
     {
         $newPassword = $this->request->getPost('newPassword');
         $hash = $this->request->getPost('hash');
-        $email = $this->request->getPost('email');
         $model = new PasswordResetModel();
+        $email = $model->getEmailFromHash($hash);
         $checkPasswordHash = $model->checkHash($email, $hash);
         if ($checkPasswordHash == 1) {
             $model->updatePassword($email, $newPassword);
@@ -65,7 +65,7 @@ class LoginController extends Controller
         $email = $this->request->getVar('email');
 
         $data = $userModel->where('email', $email)->first();
-        $passwordHash = md5(time().$email);
+        $passwordHash = bin2hex(random_bytes(32));
 
         if ($data) {
             $emailData = $data['email'];
@@ -73,7 +73,7 @@ class LoginController extends Controller
             if (!$authenticateEmail) {		
                 $to = $email;
                 $subject = 'Access For All - Password Reset';
-                $message = 'http://localhost:8080/UpdatePasswordHash?email='.$to.'&hash='.$passwordHash;
+                $message = 'http://localhost:8080/UpdatePasswordHash?hash='.$passwordHash;
                 
                 $email = \Config\Services::email();
          

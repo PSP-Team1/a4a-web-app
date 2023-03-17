@@ -14,6 +14,16 @@ class PasswordResetModel extends Model
         $db->close();
     }
 
+    public function getEmailFromHash($passwordHash)
+    {
+        $db = db_connect();
+        $query = "SELECT email FROM sys_users WHERE password_hash=?";
+        $result = $db->query($query, [$passwordHash])->getRow();
+        $db->close();
+        return $result ? $result->email : null;
+    }
+    
+
     public function checkHash($email, $password_hash) {
         $db = db_connect();
     

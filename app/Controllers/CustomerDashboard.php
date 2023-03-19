@@ -15,13 +15,20 @@ class CustomerDashboard extends BaseController
         return view('CustomerDashboard', $data);
     }
 
+   
     public function addNewVenue()
-    {
-        $venueModel = new VenueModel();
-        $venueModel->insertVenue();
+{
+    $venueModel = new VenueModel();
+    $venueModel->insertVenue();
 
-        return redirect()->to(base_url('CustomerDashboard'));
-    }
+    // Assign a unique identifier to the new venue
+    $newVenueId = $venueModel->getInsertID();
+    $QRCode = uniqid();
+    $venueModel->updateVenue($newVenueId, null, null, null, null, null, $QRCode);
+
+    return redirect()->to(base_url('CustomerDashboard'));
+}
+
 
     public function newVenue()
     {

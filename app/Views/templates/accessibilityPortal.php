@@ -54,100 +54,133 @@
       </div>
 
       <script>
-      const increaseFontBtn = document.querySelector("#increase-font");
-           let fontSize = 14;
-         
-           increaseFontBtn.addEventListener("click", () => {
-             fontSize += 2;
-             document.querySelectorAll("body *").forEach(el => {
-               el.style.fontSize = `${fontSize}px`;
-             });
-           });
-         
-         const decreaseFontBtn = document.querySelector("#decrease-font");
-         
-         decreaseFontBtn.addEventListener("click", () => {
-           fontSize -= 2;
-           document.querySelectorAll("body *").forEach(el => {
-             el.style.fontSize = `${fontSize}px`;
-           });
-         });
-         
-         const toggleButton = document.getElementById('grayscale-toggle');
-         const htmlTag = document.getElementsByTagName('html')[0];
-         
-         function toggleGrayscale() {
-           if (htmlTag.classList.contains('grayscale')) {
-             htmlTag.classList.remove('grayscale');
-           } else {
-             htmlTag.classList.add('grayscale');
-           }
-         }
-         
-         toggleButton.addEventListener('click', toggleGrayscale);
-         
-         const lightBackgroundBtn = document.querySelector("#light-background");
-         
-         function toggleLightBackground() {
-           const body = document.querySelector("body");
-           const whiteImage = document.createElement("img");
-           whiteImage.setAttribute("src", "assets/img/whitebackground.jpg");
-           whiteImage.setAttribute("id", "white-image");
-           
-           if (body.style.backgroundColor) {
-             body.style.backgroundColor = "";
-             const existingImage = document.querySelector("#white-image");
-             if (existingImage) {
-               existingImage.remove();
-             }
-           } else {
-             body.style.backgroundColor = "#ffffff";
-             body.appendChild(whiteImage);
-           }
-         }
-         
-         lightBackgroundBtn.addEventListener("click", toggleLightBackground);
-         
-         const button = document.getElementById('high-contrast-button');
-         button.addEventListener('click', function() {
-           document.body.classList.toggle('high-contrast');
-         });
-         
-         const buttons = document.getElementById('negative-contrast-button');
-           buttons.addEventListener('click', function() {
-             document.body.classList.toggle('negative-contrast');
-           });
-         
-      
-          const resetButton = document.getElementById('reset-button');
-          resetButton.addEventListener('click', function() {
-              // Reset font size
-              fontSize = 14;
-              document.querySelectorAll("body *").forEach(el => {
-                el.style.fontSize = "";
-              });
+            const increaseFontBtn = document.querySelector("#increase-font");
+let fontSize = getFontSizeCookie() || 14;
 
-              // Reset grayscale
-              htmlTag.classList.remove('grayscale');
+increaseFontBtn.addEventListener("click", () => {
+  fontSize += 2;
+  document.querySelectorAll("body *").forEach(el => {
+    el.style.fontSize = `${fontSize}px`;
+  });
+  setFontSizeCookie(fontSize);
+});
 
-              // Reset light background
-              document.querySelector("body").style.backgroundColor = "";
-              const existingImage = document.querySelector("#white-image");
-              if (existingImage) {
-                existingImage.remove();
-              }
+const decreaseFontBtn = document.querySelector("#decrease-font");
 
-              // Reset high contrast
-              document.body.classList.remove('high-contrast');
+decreaseFontBtn.addEventListener("click", () => {
+  fontSize -= 2;
+  document.querySelectorAll("body *").forEach(el => {
+    el.style.fontSize = `${fontSize}px`;
+  });
+  setFontSizeCookie(fontSize);
+});
 
-              // Reset negative contrast
-              document.body.classList.remove('negative-contrast');
+const toggleButton = document.getElementById('grayscale-toggle');
+const htmlTag = document.getElementsByTagName('html')[0];
 
-              // Reset toggle buttons
-              decreaseFontBtn.checked = false;
-              toggleButton.checked = false;
-              lightBackgroundBtn.checked = false;
-              button.checked = false;
-              buttons.checked = false;
-            });
-      </script>
+toggleButton.addEventListener('click', () => {
+  toggleGrayscale();
+  setGrayscaleCookie(htmlTag.classList.contains('grayscale'));
+});
+
+function toggleGrayscale() {
+  if (htmlTag.classList.contains('grayscale')) {
+    htmlTag.classList.remove('grayscale');
+  } else {
+    htmlTag.classList.add('grayscale');
+  }
+}
+
+const lightBackgroundBtn = document.querySelector("#light-background");
+
+lightBackgroundBtn.addEventListener("click", () => {
+  toggleLightBackground();
+  setLightBackgroundCookie(document.querySelector("body").style.backgroundColor === "#ffffff");
+});
+
+function toggleLightBackground() {
+  const body = document.querySelector("body");
+  const whiteImage = document.createElement("img");
+  whiteImage.setAttribute("src", "assets/img/whitebackground.jpg");
+  whiteImage.setAttribute("id", "white-image");
+
+  if (body.style.backgroundColor) {
+    body.style.backgroundColor = "";
+    const existingImage = document.querySelector("#white-image");
+    if (existingImage) {
+      existingImage.remove();
+    }
+  } else {
+    body.style.backgroundColor = "#ffffff";
+    body.appendChild(whiteImage);
+  }
+}
+
+const highContrastBtn = document.getElementById('high-contrast-button');
+highContrastBtn.addEventListener('click', () => {
+  document.body.classList.toggle('high-contrast');
+  setHighContrastCookie(document.body.classList.contains('high-contrast'));
+});
+
+const negativeContrastBtn = document.getElementById('negative-contrast-button');
+negativeContrastBtn.addEventListener('click', () => {
+  document.body.classList.toggle('negative-contrast');
+  setNegativeContrastCookie(document.body.classList.contains('negative-contrast'));
+});
+
+const resetButton = document.getElementById('reset-button');
+resetButton.addEventListener('click', () => {
+  resetPreferences();
+});
+
+function resetPreferences() {
+  // Reset font size
+  fontSize = 14;
+  document.querySelectorAll("body *").forEach(el => {
+    el.style.fontSize = "";
+  });
+  setFontSizeCookie(fontSize);
+
+  // Reset grayscale
+  htmlTag.classList.remove('grayscale');
+  setGrayscaleCookie(false);
+
+  // Reset light background
+  document.querySelector("body").style.backgroundColor = "";
+  const existingImage = document.querySelector("#white-image");
+  if (existingImage) {
+    existingImage.remove();
+  }
+  setLightBackgroundCookie(false);
+
+  // Reset high contrast
+  document.body.classList.remove('high-contrast');
+  setHighContrastCookie(false);
+
+  // Reset negative contrast
+  document.body.classList.remove('negative-contrast');
+  setNegativeContrastCookie(false);
+
+  // Reset toggle buttons
+  decreaseFontBtn.checked = false;
+  toggleButton.checked = false;
+  lightBackgroundBtn.checked = false;
+  highContrastBtn.checked = false;
+  negativeContrastBtn.checked = false;
+}
+
+function setFontSizeCookie(fontSize) {
+  document.cookie = "fontSize=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "grayscale=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "lightBackground=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "highContrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "negativeContrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+</script>
+
+
+
+
+
+

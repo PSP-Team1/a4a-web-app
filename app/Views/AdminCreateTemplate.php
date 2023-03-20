@@ -54,6 +54,10 @@
         margin-top: 1.5rem;
     }
 </style>
+
+
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<script src="./assets/js/accessibility.js"></script>
 <div class="container">
 
     <div class="row">

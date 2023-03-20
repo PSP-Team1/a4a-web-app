@@ -1,3 +1,4 @@
+<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header');
    $session = session();
    $id = $session->get('id');
@@ -8,6 +9,8 @@
 <head>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
+   <link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+   <script src="./assets/js/accessibility.js"></script>
 </head>
 <script>
    function validateForm() {

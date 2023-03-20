@@ -9,43 +9,12 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
       <link rel="stylesheet" href="./assets/css/registerStyle.css" />
       <link rel="stylesheet" href="./assets/css/accessiblity.css" />
+      <script src="./assets/js/accessibility.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
       <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-      <style>
-         .grayscale {
-         filter: grayscale(100%);
-         -webkit-filter: grayscale(100%);
-         }
-      </style>
-      <style>
-         .light-background {
-         display: block;
-         }
-         #white-image {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         z-index: -1;
-         }
-      </style>
-      <style>
-         .high-contrast {
-         background: black;
-         color: white;
-         filter: invert(100%);
-         }
-      </style>
-      <style>
-         .negative-contrast {
-         filter: invert(1) hue-rotate(180deg);
-         background: black;
-         }
-      </style>
    </head>
    <script>
       toastr.options.progressBar = true;

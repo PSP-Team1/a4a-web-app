@@ -1,9 +1,10 @@
+<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header'); ?>
-
 <head>
 <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<script src="./assets/js/accessibility.js"></script>
 
 <style>
 .table {

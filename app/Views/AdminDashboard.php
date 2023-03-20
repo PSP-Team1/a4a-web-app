@@ -225,7 +225,7 @@ $user = $session->get('name');
         <span class="nav_name">SignOut</span>
     </a>
 
-    <?= view('templates/footer'); ?>
 </body>
 
 </html>
+<?= view('templates/footer'); ?>

@@ -39,20 +39,32 @@ class VenueModel extends Model
             ->first();
     }
 
+
     public function insertVenue()
-    {
-        $session_id = session()->get('company_id');
-        $venueName = $_POST['venueName'];
-        $venueAddress = $_POST['venueAddress'];
-        $venuePostcode = $_POST['venuePostcode'];
+{
+    $session_id = session()->get('company_id');
+    $venueName = $_POST['venueName'];
+    $venueAddress = $_POST['venueAddress'];
+    $venuePostcode = $_POST['venuePostcode'];
 
-        $db = db_connect();
-        $query = "INSERT INTO company_venue (company_id, venue_name, address, postcode) values (?, ?, ?, ?)";
-        $db->query($query, [$session_id, $venueName, $venueAddress, $venuePostcode]);
-        $db->close();
-    }
+    // Generate QR code using Google Charts API, (will be replaced by api)
+    $data = 'https://example.com'; // Data to encode in the QR code
+    $size = '200x200'; // Size of the QR code image
+    $encoding = 'UTF-8'; // Character encoding
 
-    public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags)
+    // Construct the URL
+    $url = "https://chart.googleapis.com/chart?cht=qr&chs=$size&chl=$data&choe=$encoding";
+
+    // Get the image data
+    $QRCode = file_get_contents($url);
+
+    $db = db_connect();
+    $query = "INSERT INTO company_venue (company_id, venue_name, address, postcode, QR_code) values (?, ?, ?, ?, ?)";
+    $db->query($query, [$session_id, $venueName, $venueAddress, $venuePostcode,$QRCode]);
+    $db->close();
+}
+
+    public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags,)
     {
         $db = db_connect();
 
@@ -96,4 +108,18 @@ class VenueModel extends Model
         $db->query($query, [$id]);
         $db->close();
     }
+
+    public function getQRCode($venueId)
+{
+    $db = db_connect();
+    $query = "SELECT QR_code FROM company_venue WHERE id = ?";
+    $result = $db->query($query, [$venueId])->getRowArray();
+    $db->close();
+
+    if ($result) {
+        return $result['QR_code'];
+    } else {
+        return null;
+    }
+}
 }

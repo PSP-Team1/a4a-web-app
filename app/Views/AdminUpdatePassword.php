@@ -1,3 +1,4 @@
+<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header');
 
 $session = session();
@@ -22,7 +23,8 @@ function validateForm() {
 }
 
 </script>
-
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<script src="./assets/js/accessibility.js"></script>
 
 <style>
     .container {

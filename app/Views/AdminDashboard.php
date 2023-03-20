@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+    <script src="./assets/js/accessibility.js"></script>
 </head>
 
 <?php

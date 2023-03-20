@@ -14,7 +14,7 @@ class AdminDashboard extends BaseController
     public function index()
     {
         $clientDashModel = new AuditModel();
-        $data['companies'] = $clientDashModel->getCompanies();
+        $data['companies'] = $clientDashModel->getCompaniesNew();
         return view('AdminDashboard', $data);
     }
 
@@ -29,4 +29,11 @@ class AdminDashboard extends BaseController
         return view('ViewCompany', $data);
     }
 
+    public function test()
+    {
+
+        $clientDashModel = new AuditModel();
+        $payload = $clientDashModel->getCompaniesNew();
+        return $this->response->setJSON($payload);
+    }
 }

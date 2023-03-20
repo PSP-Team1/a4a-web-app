@@ -197,4 +197,35 @@ class AuditModel extends Model
             return ['success' => false, 'message' => $numPending];
         }
     }
+
+    public function getCompaniesNew()
+    {
+
+        $db = db_connect();
+
+        $sql = "
+            SELECT 
+                c.id, 
+                c.companyName, 
+                c.email,
+                c.contact,
+                c.tel,
+                c.address, 
+                c.companyNumber, 
+                c.date_created, 
+                agg.v_cnt
+            FROM
+                company c
+                    JOIN
+                (SELECT 
+                    c.id AS cid, COUNT(cv.company_id) AS v_cnt
+                FROM
+                    company c
+                JOIN company_venue cv ON cv.company_id = c.id
+                GROUP BY cid) agg ON agg.cid = c.id;";
+
+
+        $query = $db->query($sql);
+        return $query->getResult('array');
+    }
 }

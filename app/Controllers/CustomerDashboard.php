@@ -15,19 +15,19 @@ class CustomerDashboard extends BaseController
         return view('CustomerDashboard', $data);
     }
 
-   
+
     public function addNewVenue()
-{
-    $venueModel = new VenueModel();
-    $venueModel->insertVenue();
+    {
+        $venueModel = new VenueModel();
+        $venueModel->insertVenue();
 
-    // Assign a unique identifier to the new venue
-    $newVenueId = $venueModel->getInsertID();
-    $QRCode = uniqid();
-    $venueModel->updateVenue($newVenueId, null, null, null, null, null, $QRCode);
+        // Assign a unique identifier to the new venue
+        $newVenueId = $venueModel->getInsertID();
+        $QRCode = uniqid();
+        $venueModel->updateVenue($newVenueId, null, null, null, null, null, $QRCode);
 
-    return redirect()->to(base_url('CustomerDashboard'));
-}
+        return redirect()->to(base_url('CustomerDashboard'));
+    }
 
 
     public function newVenue()
@@ -71,8 +71,8 @@ class CustomerDashboard extends BaseController
         $model = new VenueModel();
         $venue = $model->getVenueById($id);
 
-        $QRCodeUrl = $this->generateQrCodeUrl($venue['qr_code']);
-        $venue['qr_code_url'] = $QRCodeUrl;
+        // $QRCodeUrl = $this->generateQrCodeUrl($venue['qr_code']);
+        // $venue['qr_code_url'] = $QRCodeUrl;
 
         $data['venue'] = $venue;
 
@@ -94,7 +94,3 @@ class CustomerDashboard extends BaseController
         return $QRCodeUrl;
     }
 }
-
-
-
-

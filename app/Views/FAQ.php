@@ -1,3 +1,4 @@
+<?= view('templates/accessibilityPortal') ?>
 <!DOCTYPE html>
 <html>
 <head>

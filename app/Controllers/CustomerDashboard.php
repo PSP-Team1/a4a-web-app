@@ -35,12 +35,6 @@ class CustomerDashboard extends BaseController
         return view('CustomerNewVenue');
     }
 
-    public function viewVenue($id)
-    {
-        $model = new VenueModel();
-        $data['venue'] = $model->getVenueById($id);
-        return view('ViewVenue', $data);
-    }
 
     public function updateVenueDetails()
     {
@@ -72,4 +66,35 @@ class CustomerDashboard extends BaseController
         $model->unpublishVenue($venueId);
         return redirect()->to('CustomerDashboard?unpublished=true');
     }
+    public function viewVenue($id)
+    {
+        $model = new VenueModel();
+        $venue = $model->getVenueById($id);
+
+        $QRCodeUrl = $this->generateQrCodeUrl($venue['qr_code']);
+        $venue['qr_code_url'] = $QRCodeUrl;
+
+        $data['venue'] = $venue;
+
+        return view('ViewVenue', $data);
+    }
+
+    private function generateQrCodeUrl($QRCode)
+    {
+        $baseUrl = 'https://chart.googleapis.com/chart?';
+        $QRCodeParams = [
+            'cht' => 'qr',
+            'chl' => $QRCode,
+            'chs' => '300x300',
+            'choe' => 'UTF-8',
+            'chld' => 'L|0',
+        ];
+        $QRCodeUrl = $baseUrl . http_build_query($QRCodeParams);
+
+        return $QRCodeUrl;
+    }
 }
+
+
+
+

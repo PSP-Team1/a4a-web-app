@@ -47,20 +47,38 @@ class VenueModel extends Model
     $venueAddress = $_POST['venueAddress'];
     $venuePostcode = $_POST['venuePostcode'];
 
-    // Generate QR code using Google Charts API, (will be replaced by api)
-    $data = 'https://example.com'; // Data to encode in the QR code
-    $size = '200x200'; // Size of the QR code image
-    $encoding = 'UTF-8'; // Character encoding
-
-    // Construct the URL
-    $url = "https://chart.googleapis.com/chart?cht=qr&chs=$size&chl=$data&choe=$encoding";
-
-    // Get the image data
-    $QRCode = file_get_contents($url);
-
+    // Connect to database
     $db = db_connect();
-    $query = "INSERT INTO company_venue (company_id, venue_name, address, postcode, QR_code) values (?, ?, ?, ?, ?)";
-    $db->query($query, [$session_id, $venueName, $venueAddress, $venuePostcode,$QRCode]);
+    
+    // Insert venue information into database
+    $query = "INSERT INTO company_venue (company_id, venue_name, address, postcode) values (?, ?, ?, ?)";
+    $db->query($query, [$session_id, $venueName, $venueAddress, $venuePostcode]);
+    
+    // Get the ID of the inserted record
+    $id = $db->insertID();
+    
+    // Generate QR code using Google Charts API (will be replaced by api)
+     // Data to encode in QR code
+     // Include ID and venue name at end of URL
+     // Use urlencode to encode data for use in URL format
+     $data = 'https://example.com?id=' . urlencode($id) . '&name=' . urlencode($venueName);
+     
+     // Size of QR code image and character encoding
+     $size = '200x200';
+     $encoding = 'UTF-8';
+
+     // Construct URL for Google Charts API
+     // Encode data in URL format using urlencode function
+     $url = "https://chart.googleapis.com/chart?cht=qr&chs=$size&chl=" . urlencode($data) . "&choe=$encoding";
+
+     // Get image data from Google Charts API
+     $QRCode = file_get_contents($url);
+
+     // Update record with QR code data
+     $query = "UPDATE company_venue SET QR_code=? WHERE id=?";
+     $db->query($query, [$QRCode,$id]);
+     
+     // Close database connection
     $db->close();
 }
 

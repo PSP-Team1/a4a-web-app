@@ -79,7 +79,7 @@ class CustomerDashboard extends BaseController
         return view('ViewVenue', $data);
     }
 
-    private function generateQrCodeUrl($QRCode)
+    public function generateQrCodeUrl($QRCode)
     {
         $baseUrl = 'https://chart.googleapis.com/chart?';
         $QRCodeParams = [

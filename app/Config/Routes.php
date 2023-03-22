@@ -84,6 +84,7 @@ $routes->get('/QR', 'QRController::index');
 $routes->get('/FAQ', 'FAQController::index');
 $routes->get('/ForgotPassword', 'LoginController::forgotPassword');
 $routes->get('/UpdatePasswordHash', 'LoginController::updatePasswordHash');
+$routes->get('/AuditReportView/(:num)', 'ReportController::viewAuditReport/$1');
 
 
 

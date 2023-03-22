@@ -85,9 +85,10 @@
 
     <div class="container">
 
-    <h1 style="font-size: 32px; color: #333;">Access For All - Audit Report</h1>
+    <h1 style="font-size: 32px; color: #333;">Access For All - <span style="color: #4CAF50;">Audit Report &#10004;</span></h1>
+
     <br>
-    <h2 style="font-size: 24px; color: #333;">Audit Results</h2>
+    <h2 style="font-size: 26px; color: #333;">Audit Results</h2>
         <br>
         <table>
   <thead>
@@ -123,7 +124,14 @@
             ?>
             <?php echo $q_item['category']; ?>
             </td>
-            <td style="color:<?php echo ($q_item['response'] == '1') ? 'green' : 'red'; ?>; font-weight:bold;"><?php echo ($q_item['response'] == '1') ? 'Yes' : 'No'; ?></td>
+            <td style="color:<?php echo ($q_item['response'] == '1') ? 'green' : 'red'; ?>; font-weight:bold;">
+            <?php if ($q_item['response'] == '1'): ?>
+                <i class="fas fa-check"></i> Yes
+            <?php else: ?>
+                <i class="fas fa-times"></i> No
+            <?php endif; ?>
+            </td>
+
         </tr>
       <?php }
     } ?>

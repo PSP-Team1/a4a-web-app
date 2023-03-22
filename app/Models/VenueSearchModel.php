@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class VenueSearchModel extends Model
 {
-    protected $table = 'company_venue';
+    // protected $table = 'company_venue';
 
     public function searchTags(array $tags)
     {
@@ -43,10 +43,11 @@ class VenueSearchModel extends Model
 
     public function getAllCompanies()
     {
-        $query = $this->db->table('company_venue')
-            ->select('*')
-            ->limit(50);
+        $db = db_connect();
 
-        return $query->get()->getResultArray();
+        $sql = "SELECT * from company_venue";
+        $query = $db->query($sql);
+
+        return $query->getResult();
     }
 }

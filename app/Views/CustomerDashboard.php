@@ -1,7 +1,78 @@
+<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header'); ?>
-
 <head>
 <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<script src="./assets/js/accessibility.js"></script>
+
+<style>
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+.table td, .table th {
+    padding: 8px;
+    text-align: left;
+}
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+</style>
+
+<head>
+
+<script>
+    toastr.options.progressBar = true;
+</script>
+
+<?php if(isset($_GET['published'])): ?>
+<br>
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="published-alert">
+  <strong>Your venue has been published and is now being displayed on the homepage!</strong>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  setTimeout(function() {
+    $('#published-alert').animate({
+      opacity: 0
+    }, 1000, function() {
+      $(this).remove();
+      $('container').css('padding-top', $('nav').outerHeight());
+    });
+  }, 3000);
+</script>
+
+<?php endif; ?>
+
+<?php if(isset($_GET['unpublished'])): ?>
+<br>
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="published-alert">
+  <strong>Your venue has been unpublished and is now hidden from the homepage!</strong>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  setTimeout(function() {
+    $('#published-alert').animate({
+      opacity: 0
+    }, 1000, function() {
+      $(this).remove();
+      $('container').css('padding-top', $('nav').outerHeight());
+    });
+  }, 3000);
+</script>
+
+<?php endif; ?>
 
 <div class="container">
 
@@ -22,7 +93,7 @@
     $session = session();
     $user = $session->get('email');
     $contact = $session->get('name');
-?>
+    ?>
 
     <div class="row">
         <div class="col-lg-6">
@@ -96,6 +167,8 @@
                                     class="footable-sort-indicator"></span></th>
                             <th data-type="all" class="footable-visible footable-sortable">Action<span
                             class="footable-sort-indicator"></span></th>
+                            <th data-type="all" class="footable-visible footable-sortable">Publish Status<span
+                            class="footable-sort-indicator"></span></th>
                             <th class="footable-visible footable-last-column footable-sortable">Venue Completion<span
                             class="footable-sort-indicator"></span></th>
                         </tr>
@@ -130,10 +203,88 @@
                             <?php } ?>
 
                             <?php if ($progress == 100) { ?>
-                                <a class="btn btn-success btn" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
-                                    <i class="fas fa-check"></i> Publish
+
+                                <?php if ($venue['published'] == 1) { ?>
+                                <a class="btn btn-success btn" href="#" role="button" data-toggle="modal" data-target="#myModal">
+                                    Unpublish
                                 </a>
+                                <?php } ?>
+
+                                <?php if ($venue['published'] == 0) { ?>
+                                <a class="btn btn-success btn" href="#" role="button" data-toggle="modal" data-target="#myModal">
+                                <i class="fas fa-check"></i> Publish
+                                </a>
+                                <?php } ?>
+
+                                <?php if ($venue['published'] == 0) { ?>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="myModalLabel">Publish Your Venue</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Congratulations, you are now eligible to publish your venue onto the homepage!
+
+                                        <br><br>
+
+                                        <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/publishVenue">
+                                            <div style="text-align:center;">
+                                                 <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                                                 <button type="submit" class="btn btn-primary btn-lg" style="display:block; width: 50%; margin: 0 auto;"><i class="fas fa-check"></i> Publish</button>
+                                            </div>
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <?php } ?>
+
+                                <?php if ($venue['published'] == 1) { ?>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="myModalLabel">Unpublish Your Venue</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your venue has already been published onto the homepage, would you like to unpublish it?
+                                        <!-- <p>The venue ID is: <?= $venue['id'] ?></p> -->
+
+                                        <br><br>
+
+                                        <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/unpublishVenue">
+                                            <div style="text-align:center;">
+                                                 <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                                                 <button type="submit" class="btn btn-danger btn-lg" style="display:block; width: 50%; margin: 0 auto;"><i class="fas fa-x"></i> Unpublish Your Venue</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <?php } ?>
+
                             <?php } ?>
+
+                            <td class="footable-visible">
+                                <?php if ($venue['published'] == 0) { ?>
+                                    <b><p style="color: #E74C3C;">Unpublished</p></b>
+                                <?php } ?>
+
+                                <?php if ($venue['published'] == 1) { ?>
+                                    <b><p style="color: green;">Published</p></b>
+                                <?php } ?>
+                            </td>
 
                             <td class="footable-visible footable-last-column">
                             <div class="progress">

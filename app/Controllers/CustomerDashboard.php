@@ -15,25 +15,26 @@ class CustomerDashboard extends BaseController
         return view('CustomerDashboard', $data);
     }
 
+
     public function addNewVenue()
     {
         $venueModel = new VenueModel();
         $venueModel->insertVenue();
 
+        // Assign a unique identifier to the new venue
+        $newVenueId = $venueModel->getInsertID();
+        $QRCode = uniqid();
+        $venueModel->updateVenue($newVenueId, null, null, null, null, null, $QRCode);
+
         return redirect()->to(base_url('CustomerDashboard'));
     }
+
 
     public function newVenue()
     {
         return view('CustomerNewVenue');
     }
 
-    public function viewVenue($id)
-    {
-        $model = new VenueModel();
-        $data['venue'] = $model->getVenueById($id);
-        return view('ViewVenue', $data);
-    }
 
     public function updateVenueDetails()
     {
@@ -49,4 +50,33 @@ class CustomerDashboard extends BaseController
 
         return redirect()->to('CustomerDashboard');
     }
+
+    public function publishVenue()
+    {
+        $venueId = $this->request->getPost('id');
+        $model = new VenueModel();
+        $model->publishVenue($venueId);
+        return redirect()->to('CustomerDashboard?published=true');
+    }
+
+    public function unpublishVenue()
+    {
+        $venueId = $this->request->getPost('id');
+        $model = new VenueModel();
+        $model->unpublishVenue($venueId);
+        return redirect()->to('CustomerDashboard?unpublished=true');
+    }
+    public function viewVenue($id)
+    {
+        $model = new VenueModel();
+        $venue = $model->getVenueById($id);
+
+
+        $data['venue'] = $venue;
+
+        return view('ViewVenue', $data);
+    }
+
+   
 }
+?>

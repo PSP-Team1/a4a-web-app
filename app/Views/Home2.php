@@ -1,4 +1,3 @@
-<?= view('templates/accessibility');?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +10,14 @@
    <link href="<?= base_url(); ?>/assets/css/style_theme.css" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
    <link rel="stylesheet" href="./assets/css/accessiblity.css" />
+
    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
    <link href="<?= base_url(); ?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
    <!-- <meta http-equiv="refresh" content="5"> -->
 
    <link href="<?= base_url(); ?>/assets/css/venueSearch/style.css" rel="stylesheet">
 
-  
+
    <style>
       /* chips */
       .chip-container {
@@ -86,6 +86,7 @@
 </head>
 
 <body>
+   <?= view('templates/accessibility'); ?>
    <button aria-label="scroll to top" class="btn-scroll-top" title="Scroll to top"><i class="fa fa-chevron-up"></i></button>
 
    <!-- <button type="button" class="btn btn-primary" id="showLoaderBtn">
@@ -290,12 +291,14 @@
             encTags = tags.map(tag => encodeURIComponent(tag)).join(",");
             encTerm = encodeURIComponent(searchTerm);
             url = `/venue/search?tags=${encTags}&searchTerm=${encTerm}`;
+
+            console.log(url);
             // url = '/venue/search?tags=Museum,Castles%20%26%20Stately%20Homes,Art%20Gallery&searchTerm=';
             console.log(url)
             return fetch(url)
                .then(response => response.json())
                .catch(error => {
-                  console.error('Error:', error.message || String(error));
+                  // console.error('Error:', error.message || String(error));
                   throw error;
                });
          };
@@ -448,13 +451,15 @@
          showOverlay()
          getData()
             .then(data => {
+               console.log('ssss');
                renderResults(data);
                hideOverlay()
             })
             .catch(error => {
-               console.error('Error:', error.message || String(error));
+               // console.error('Error:', error.message || String(error));
                overlayElement.classList.remove('d-none');
             });
+
       });
 
       const chipList = document.querySelector('.chip-list');
@@ -569,6 +574,9 @@
          });
       });
    </script>
+
+
+   <script src="./assets/js/accessibility.js"></script>
 
 </body>
 

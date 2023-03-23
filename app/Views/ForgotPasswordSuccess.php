@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/registerStyle.css" />
     <script src="./assets/js/accessibility.js"></script>
+    <link rel="stylesheet" href="./assets/css/accessiblity.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
@@ -34,17 +35,12 @@
                 </div>
 
                 <div class="alert alert-success" role="alert">
-                    <h2 class="alert-heading">Congratulations!</h2>
-                    <p style="font-size: 20px">You have created a new company user. You can now login to the customer
-                        portal using the credentials you provided.</p>
+                    <h2 class="alert-heading">Password Reset</h2>
+                    <p style="font-size: 20px">You have requested to reset your password. To continue please follow the instructions sent to your email address.</p>
                     <hr>
                     If you would like to login click <a href="/Login" class="alert-link">here</a>. Alternatively, if you
                     would like to create another account you can click
                     <a href="/Register" class="alert-link">here</a>.
-
-                    <p>Redirecting to login in <span id="countdown"></span> seconds</p>
-
-
                 </div>
 
         </div>
@@ -52,15 +48,4 @@
     </div>
     </div>
 
-    <script>
-        var count = 10;
-        var interval = setInterval(function () {
-            document.getElementById("countdown").innerHTML = count;
-            count--;
-            if (count === 0) {
-                clearInterval(interval);
-                window.location.href = "<?=base_url()?>/Login";
-            }
-        }, 1000);
-    </script>
 </body>

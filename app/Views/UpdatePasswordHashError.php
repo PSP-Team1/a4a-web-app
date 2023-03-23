@@ -84,26 +84,14 @@
                <section class="Login-form">
                   <div class="form-content">
                      <div>
-                        <h3 style="text-shadow: 1px 1px 1px white; color: black; text-align: center;">Reset Password</h3>
+                        <h3 style="text-shadow: 1px 1px 1px white; color: black; text-align: center;">Email Error</h3>
                      </div>
+                     <br>
+                     <b><p style="color: maroon; text-align: center;">We are unable to verify your identity to reset your password. Please try again by requesting another password reset.</p></b>
                      <hr>
-                     <?php if (session()->getFlashdata('msg')) : ?>
-                     <div class="alert alert-danger">
-                        <?= session()->getFlashdata('msg') ?>
-                     </div>
-                     <?php endif; ?>
-                     <form action="<?php echo base_url(); ?>/LoginController/forgotPasswordAuth" method="post">
-                        <div class="form-group mb-3">
-                           <input required type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>" class="form-control">
-                        </div>
-                        <div class="d-grid">
-                           <button type="submit" class="btn btn-success">Request Password Reset</button>
-                        </div>
-                        <hr>
-                        <div class="d-grid">
+                     <div class="d-grid">
                            <a href="<?= base_url() ?>/Login" class="btn btn-light">Return To Login</a>
                         </div>
-                     </form>
                   </div>
                </section>
             </div>

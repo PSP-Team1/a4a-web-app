@@ -84,7 +84,7 @@
                <section class="Login-form">
                   <div class="form-content">
                      <div>
-                        <h3 style="text-shadow: 1px 1px 1px white; color: black; text-align: center;">Reset Password</h3>
+                        <h3 style="text-shadow: 1px 1px 1px white; color: black; text-align: center;">Update Password</h3>
                      </div>
                      <hr>
                      <?php if (session()->getFlashdata('msg')) : ?>
@@ -92,12 +92,13 @@
                         <?= session()->getFlashdata('msg') ?>
                      </div>
                      <?php endif; ?>
-                     <form action="<?php echo base_url(); ?>/LoginController/forgotPasswordAuth" method="post">
+                     <form action="<?php echo base_url(); ?>/LoginController/resetPasswordWithHash" method="post">
                         <div class="form-group mb-3">
-                           <input required type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>" class="form-control">
+                           <input required type="hidden" name="hash" id="hash" value="<?php echo $_GET['hash'] ?>" class="form-control">
+                           <input required type="password" name="newPassword" id="newPassword" placeholder="New Password" class="form-control">
                         </div>
                         <div class="d-grid">
-                           <button type="submit" class="btn btn-success">Request Password Reset</button>
+                           <button type="submit" class="btn btn-success">Update Password</button>
                         </div>
                         <hr>
                         <div class="d-grid">

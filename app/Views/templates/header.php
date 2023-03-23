@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-
+  <link rel="stylesheet" href="./assets/css/accessiblity.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
@@ -194,37 +194,9 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
                 <i class='bx bxs-universal-access'></i>
                 <span class="nav_name">Accessibility</span>
               </a>
-              <div class="dropdown-menu">
+             
 
-                <button class="btn btn-secondary" id="increase-font">Increase Font Size</button>
-                <!-- increase font button -->
-
-                <button class="btn btn-secondary" id="decrease-font">Decrease Font Size</button>
-                <!-- decrease font button-->
-
-                <hr>
-
-                <button class="btn btn-secondary" id="negative-contrast-button">Negative Contrast</button>
-                <!--negative contrast button -->
-
-                <button class="btn btn-secondary" id="high-contrast-button">High Contrast</button>
-                <!--high contrast button -->
-
-                <hr>
-
-                <button class="btn btn-secondary" id="grayscale-toggle">Toggle Greyscale</button>
-                <!--grayscale button-->
-
-                <button class="btn btn-secondary" id="light-background">Light Background</button>
-                <!--light background button -->
-
-                <div class="modal-footer">
-                  <button class="btn btn-secondary" id="reset-button">Reset</button>
-                  <!--reset button -->
-
-                </div>
-
-              </div>
+              
             </div>
 
 

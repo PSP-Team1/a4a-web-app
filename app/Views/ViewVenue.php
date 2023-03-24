@@ -327,7 +327,6 @@
             }
          </style>
          <script>
-            
             function openTab(evt, tabName) {
                var i, tabcontent, tablinks;
                tabcontent = document.getElementsByClassName("tabcontent");
@@ -343,27 +342,22 @@
             }
             
             window.onload = function() {
-  // Read the "tab" parameter value from the URL
-  var urlParams = new URLSearchParams(window.location.search);
-  var tabIndexFromUrl = urlParams.get('tab');
-  
-  // Find the tab button with the specified index and trigger a click event on it
-  if (tabIndexFromUrl !== null) {
-    var tabs = document.querySelectorAll('.tablinks');
-    var tabButton = tabs[tabIndexFromUrl - 1]; // subtract 1 because array indexing starts from 0
-    if (tabButton) {
-      tabButton.click();
-    }
-  } else {
-    // If the "tab" parameter is not present, activate the first tab
-    var firstTabButton = document.querySelector('.tablinks');
-    if (firstTabButton) {
-      firstTabButton.click();
-    }
-  }
-};
-
-
+            var urlParams = new URLSearchParams(window.location.search);
+            var tabIndexFromUrl = urlParams.get('tab');
+            
+            if (tabIndexFromUrl !== null) {
+            var tabs = document.querySelectorAll('.tablinks');
+            var tabButton = tabs[tabIndexFromUrl - 1]; 
+            if (tabButton) {
+            tabButton.click();
+            }
+            } else {
+            var firstTabButton = document.querySelector('.tablinks');
+            if (firstTabButton) {
+            firstTabButton.click();
+            }
+            }
+            };
             
             var input = document.querySelector('#tags');
             new Tagify(input, {removable: true});

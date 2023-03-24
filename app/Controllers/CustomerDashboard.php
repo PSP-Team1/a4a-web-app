@@ -48,7 +48,69 @@ class CustomerDashboard extends BaseController
         $venueModel = new VenueModel();
         $venueModel->updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags);
 
-        return redirect()->to('CustomerDashboard');
+        return redirect()->to('CustomerDashboard/ViewVenue/'.$venueId.'?tab=1');
+    }
+
+    public function updateOpeningHours()
+    {
+        $venueId = $this->request->getPost('id');
+        $openingHours = [
+            'monday' => [
+                'opening_hours' => $this->request->getPost('monday-opening-hours'),
+                'ampm_opening' => $this->request->getPost('monday-ampm-opening'),
+                'closing_hours' => $this->request->getPost('monday-closing-hours'),
+                'ampm_closing' => $this->request->getPost('monday-ampm-closing'),
+                'closed' => $this->request->getPost('monday-openclosed'),
+            ],
+            'tuesday' => [
+                'opening_hours' => $this->request->getPost('tuesday-opening-hours'),
+                'ampm_opening' => $this->request->getPost('tuesday-ampm-opening'),
+                'closing_hours' => $this->request->getPost('tuesday-closing-hours'),
+                'ampm_closing' => $this->request->getPost('tuesday-ampm-closing'),
+                'closed' => $this->request->getPost('tuesday-openclosed'),
+            ],
+            'wednesday' => [
+                'opening_hours' => $this->request->getPost('wednesday-opening-hours'),
+                'ampm_opening' => $this->request->getPost('wednesday-ampm-opening'),
+                'closing_hours' => $this->request->getPost('wednesday-closing-hours'),
+                'ampm_closing' => $this->request->getPost('wednesday-ampm-closing'),
+                'closed' => $this->request->getPost('wednesday-openclosed'),
+            ],
+            'thursday' => [
+                'opening_hours' => $this->request->getPost('thursday-opening-hours'),
+                'ampm_opening' => $this->request->getPost('thursday-ampm-opening'),
+                'closing_hours' => $this->request->getPost('thursday-closing-hours'),
+                'ampm_closing' => $this->request->getPost('thursday-ampm-closing'),
+                'closed' => $this->request->getPost('thursday-openclosed'),
+            ],
+            'friday' => [
+                'opening_hours' => $this->request->getPost('friday-opening-hours'),
+                'ampm_opening' => $this->request->getPost('friday-ampm-opening'),
+                'closing_hours' => $this->request->getPost('friday-closing-hours'),
+                'ampm_closing' => $this->request->getPost('friday-ampm-closing'),
+                'closed' => $this->request->getPost('friday-openclosed'),
+            ],
+            'saturday' => [
+                'opening_hours' => $this->request->getPost('saturday-opening-hours'),
+                'ampm_opening' => $this->request->getPost('saturday-ampm-opening'),
+                'closing_hours' => $this->request->getPost('saturday-closing-hours'),
+                'ampm_closing' => $this->request->getPost('saturday-ampm-closing'),
+                'closed' => $this->request->getPost('saturday-openclosed'),
+            ],
+            'sunday' => [
+                'opening_hours' => $this->request->getPost('sunday-opening-hours'),
+                'ampm_opening' => $this->request->getPost('sunday-ampm-opening'),
+                'closing_hours' => $this->request->getPost('sunday-closing-hours'),
+                'ampm_closing' => $this->request->getPost('sunday-ampm-closing'),
+                'closed' => $this->request->getPost('sunday-openclosed'),
+            ]
+            ];
+            
+
+        $venueModel = new VenueModel();
+        $venueModel->updateOpeningHours($venueId, $openingHours);
+
+        return redirect()->to('CustomerDashboard/ViewVenue/'.$venueId.'?tab=2');
     }
 
     public function publishVenue()
@@ -70,7 +132,6 @@ class CustomerDashboard extends BaseController
     {
         $model = new VenueModel();
         $venue = $model->getVenueById($id);
-
 
         $data['venue'] = $venue;
 

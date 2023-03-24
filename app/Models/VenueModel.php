@@ -109,6 +109,18 @@ class VenueModel extends Model
         $db->close();
     }
 
+    public function updateOpeningHours($venueId, $openingHours)
+    {
+        $db = db_connect();
+
+        $openingHours = json_encode($openingHours);
+
+        $query = "UPDATE company_venue SET opening_hours=? WHERE id=?";
+        $db->query($query, [$openingHours, $venueId]);
+        $db->close();
+    }
+
+
     public function publishVenue($id)
     {
         $db = db_connect();

@@ -392,11 +392,16 @@
             </script>
          </div>
          <div id="tab4" class="tabcontent">
-            <form>
-               <label for="imageUpload">Upload up to 4 images:</label>
+            <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateImages" onsubmit="return validateForm()" enctype="multipart/form-data">
+               <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+               <p>Please provide any venue images which will be displayed on the homepage.</p>
                <input type="file" id="imageUpload" name="imageUpload[]" accept="image/*" multiple>
+               <br><br>
+               <div id="imagePreview"></div>
+               <br>
+               <button type="submit" class="btn btn-outline-success">Update Images</button>
+               <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
             </form>
-            <div id="imagePreview"></div>
          </div>
          <style>
             .preview-img {

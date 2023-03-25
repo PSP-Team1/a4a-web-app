@@ -102,58 +102,54 @@
                </div>
                <script>
                   $(document).ready(function() {
-                  $('#add-tag-btn').click(function() {
-                     var selectedTag = $('#tag-select option:selected').text().trim();
-                     var currentTags = $('#tags').val().trim();
-                  
-                     try {
+                    $('#add-tag-btn').click(function() {
+                      var selectedTag = $('#tag-select option:selected').text().trim();
+                      var currentTags = $('#tags').val().trim();
+                    
+                      try {
                         currentTags = JSON.parse(currentTags);
                         if (!Array.isArray(currentTags)) {
-                        currentTags = [];
+                          currentTags = [];
                         }
-                     } catch (e) {
-                        currentTags = currentTags.split(',').map(function(tag) {
-                        return {value: tag.trim()};
-                        });
-                     }
-                     currentTags.push({value: selectedTag});
-                     $('#tags').val(JSON.stringify(currentTags));
-                  });
-                  
-                  $('#remove-tag-btn').click(function() {
-                     var selectedTag = $('#tag-select option:selected').text().trim();
-                     var currentTags = $('#tags').val().trim();
-                  
-                     try {
+                      } catch (e) {
+                        currentTags = [];
+                      }
+                      currentTags.push({value: selectedTag});
+                      $('#tags').val(JSON.stringify(currentTags));
+                    });
+                    
+                    $('#remove-tag-btn').click(function() {
+                      var selectedTag = $('#tag-select option:selected').text().trim();
+                      var currentTags = $('#tags').val().trim();
+                    
+                      try {
                         currentTags = JSON.parse(currentTags);
                         if (!Array.isArray(currentTags)) {
-                        currentTags = [];
+                          currentTags = [];
                         }
-                     } catch (e) {
-                        currentTags = currentTags.split(',').map(function(tag) {
-                        return {value: tag.trim()};
-                        });
-                     }
-                  
-                     currentTags = currentTags.filter(function(tag) {
+                      } catch (e) {
+                        currentTags = [];
+                      }
+                    
+                      currentTags = currentTags.filter(function(tag) {
                         return tag.value !== selectedTag;
-                     });
-                  
-                     $('#tags').val(JSON.stringify(currentTags));
-                  });
-                  
-                  $('#tags').on('change', function() {
-                     var currentValue = $(this).val().trim();
-                     try {
+                      });
+                    
+                      $('#tags').val(JSON.stringify(currentTags));
+                    });
+                    
+                    $('#tags').on('change', function() {
+                      var currentValue = $(this).val().trim();
+                      try {
                         currentValue = JSON.parse(currentValue);
-                     } catch (e) {}
-                     if (!Array.isArray(currentValue)) {
+                      } catch (e) {}
+                      if (!Array.isArray(currentValue)) {
                         currentValue = currentValue.split(',').map(function(tag) {
-                        return {value: tag.trim()};
+                          return {value: tag.trim()};
                         });
                         $(this).val(JSON.stringify(currentValue));
-                     }
-                  });
+                      }
+                    });
                   });
                </script>
                <br>

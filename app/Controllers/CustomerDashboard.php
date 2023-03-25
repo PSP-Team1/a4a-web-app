@@ -132,8 +132,10 @@ class CustomerDashboard extends BaseController
     {
         $model = new VenueModel();
         $venue = $model->getVenueById($id);
+        $tags = $model->getDefaultTags();
 
         $data['venue'] = $venue;
+        $data['tags'] = $tags;
 
         return view('ViewVenue', $data);
     }

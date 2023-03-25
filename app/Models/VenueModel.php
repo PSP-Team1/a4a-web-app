@@ -140,17 +140,25 @@ class VenueModel extends Model
     }
 
     public function getQRCode($venueId)
-{
-    $db = db_connect();
-    $query = "SELECT QR_code FROM company_venue WHERE id = ?";
-    $result = $db->query($query, [$venueId])->getRowArray();
-    $db->close();
+    {
+        $db = db_connect();
+        $query = "SELECT QR_code FROM company_venue WHERE id = ?";
+        $result = $db->query($query, [$venueId])->getRowArray();
+        $db->close();
 
-    if ($result) {
-        return $result['QR_code'];
-    } else {
-        return null;
+        if ($result) {
+            return $result['QR_code'];
+        } else {
+            return null;
+        }
     }
-}
+
+    public function getDefaultTags()
+    {
+        $db = db_connect();
+        $sql = "SELECT * FROM venue_tags_default";
+        $results = $db->query($sql)->getResult('array');
+        return $results;
+    }
 }
 ?>

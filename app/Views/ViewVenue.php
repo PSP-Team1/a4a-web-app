@@ -357,11 +357,109 @@
             </form>
          </div>
          <div id="tab3" class="tabcontent">
-            <p>Accessibility content goes here.</p>
+            <h2>Accessibility Information</h2>
+            <p>Please provide any accessibility information about the venue. For example, you
+               could explain how the venue has accessible toilets, accessible parking, wheelchair access and any
+               other accessibility information.
+            </p>
+            <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateAccessibility" onsubmit="return validateForm()">
+               <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+               <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="112" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
+               <p id="char-count">0 / 500</p>
+               <br>
+               <button type="submit" class="btn btn-outline-success">Update Accessibility</button>
+               <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+            </form>
+            <script>
+               const textarea = document.querySelector('#other-accessibility-info');
+               const charCount = document.querySelector('#char-count');
+               
+               const currentCharCount = textarea.value.length;
+               charCount.textContent = currentCharCount + ' / 500';
+               if (currentCharCount === 500) {
+                  charCount.style.color = 'red';
+               }
+               
+               textarea.addEventListener('input', function() {
+                  const currentCharCount = textarea.value.length;
+                  charCount.textContent = currentCharCount + ' / 500';
+                  if (currentCharCount === 500) {
+                     charCount.style.color = 'red';
+                  } else {
+                     charCount.style.color = '';
+                  }
+               });
+            </script>
          </div>
          <div id="tab4" class="tabcontent">
-            <p>Image content goes here.</p>
+            <form>
+               <label for="imageUpload">Upload up to 4 images:</label>
+               <input type="file" id="imageUpload" name="imageUpload[]" accept="image/*" multiple>
+            </form>
+            <div id="imagePreview"></div>
          </div>
+         <style>
+            .preview-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            }
+            .preview-img-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            }
+            .delete-btn {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            }
+         </style>
+         <script>
+            function previewImages() {
+              var preview = document.querySelector('#imagePreview');
+              var files   = document.querySelector('input[type=file]').files;
+            
+              preview.innerHTML = '';
+              if (files.length === 0) {
+                var p = document.createElement('p');
+                p.textContent = 'No images selected for upload';
+                preview.appendChild(p);
+              } else if (files.length > 4) {
+                var p = document.createElement('p');
+                p.textContent = 'Please select a maximum of 4 images';
+                preview.appendChild(p);
+              } else {
+                for (var i = 0; i < files.length; i++) {
+                  if (i > 3) break; // Only show the first 4 images
+                  var file = files[i];
+                  var img = document.createElement('img');
+                  img.src = URL.createObjectURL(file);
+                  img.classList.add('preview-img');
+                  img.addEventListener('load', function() {
+                    URL.revokeObjectURL(this.src);
+                  });
+                  var deleteBtn = document.createElement('button');
+                  deleteBtn.textContent = 'Delete';
+                  deleteBtn.classList.add('btn', 'btn-danger', 'delete-btn');
+                  deleteBtn.addEventListener('click', function() {
+                    var imgContainer = this.parentNode;
+                    preview.removeChild(imgContainer);
+                  });
+            
+                  var imgContainer = document.createElement('div');
+                  imgContainer.classList.add('preview-img-container');
+                  imgContainer.appendChild(img);
+                  imgContainer.appendChild(deleteBtn);
+                  preview.appendChild(imgContainer);
+                }
+              }
+            }
+            
+            document.querySelector('#imageUpload').addEventListener('change', previewImages);
+         </script>
          <br>
          <style>
             .tabcontent {

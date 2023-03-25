@@ -113,6 +113,40 @@ class CustomerDashboard extends BaseController
         return redirect()->to('CustomerDashboard/ViewVenue/'.$venueId.'?tab=2');
     }
 
+    public function updateAccessibility()
+    {
+        $venueId = $this->request->getPost('id');
+        $accessibilityInfo = $this->request->getPost('other-accessibility-info');
+
+        $venueModel = new VenueModel();
+        $venueModel->updateAccessibility($venueId, $accessibilityInfo);
+
+        return redirect()->to('CustomerDashboard/ViewVenue/'.$venueId.'?tab=3');
+    }
+
+    public function updateImages()
+    {
+        $files = $this->request->getFiles();
+
+        $images = [];
+    
+        foreach ($files['imageUpload'] as $file) {
+            if ($file->isValid() && $file->getSize() > 0) {
+                $newName = $file->getRandomName();
+                $file->move('assets/img/venue_images', $newName);
+                $images[] = $newName;
+            }
+        }
+    
+        $id = $this->request->getPost('id');
+    
+        $venueModel = new VenueModel();
+        $venueModel->updateImages($id, $images);
+    
+        return redirect()->to(base_url('CustomerDashboard'))->with('success', 'Images updated successfully');
+    
+    }
+
     public function publishVenue()
     {
         $venueId = $this->request->getPost('id');

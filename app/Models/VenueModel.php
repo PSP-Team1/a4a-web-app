@@ -120,7 +120,34 @@ class VenueModel extends Model
         $db->close();
     }
 
+    public function updateAccessibility($venueId, $accessibilityInfo)
+    {
+        $db = db_connect();
+        $query = "UPDATE company_venue SET accessibility=? WHERE id=?";
+        $db->query($query, [$accessibilityInfo, $venueId]);
+        $db->close();
+    }
 
+    public function updateImages(int $id, array $imageNames)
+    {
+        $db = db_connect();
+        $db->transStart();
+    
+        $data = [
+            'images' => implode(',', $imageNames),
+        ];
+        $db->table('company_venue')->where('id', $id)->update($data);
+    
+        $db->transComplete();
+    
+        if ($db->transStatus() === false) {
+            throw new \Exception('Failed to update images');
+        }
+    
+        $db->close();
+    }
+    
+    
     public function publishVenue($id)
     {
         $db = db_connect();

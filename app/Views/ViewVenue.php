@@ -100,352 +100,350 @@
                   <h2>Current Venue Tags</h2>
                   <input name="tags" id="tags" value="<?php echo $venue['tags']?>" class="form-control" readonly>
                </div>
-         </div>
-      </div>
-      <script>
-         $(document).ready(function() {
-         $('#add-tag-btn').click(function() {
-            var selectedTag = $('#tag-select option:selected').text().trim();
-            var currentTags = $('#tags').val().trim();
-         
-            try {
-               currentTags = JSON.parse(currentTags);
-               if (!Array.isArray(currentTags)) {
-               currentTags = [];
-               }
-            } catch (e) {
-               currentTags = currentTags.split(',').map(function(tag) {
-               return {value: tag.trim()};
-               });
-            }
-            currentTags.push({value: selectedTag});
-            $('#tags').val(JSON.stringify(currentTags));
-         });
-         
-         $('#remove-tag-btn').click(function() {
-            var selectedTag = $('#tag-select option:selected').text().trim();
-            var currentTags = $('#tags').val().trim();
-         
-            try {
-               currentTags = JSON.parse(currentTags);
-               if (!Array.isArray(currentTags)) {
-               currentTags = [];
-               }
-            } catch (e) {
-               currentTags = currentTags.split(',').map(function(tag) {
-               return {value: tag.trim()};
-               });
-            }
-         
-            currentTags = currentTags.filter(function(tag) {
-               return tag.value !== selectedTag;
-            });
-         
-            $('#tags').val(JSON.stringify(currentTags));
-         });
-         
-         $('#tags').on('change', function() {
-            var currentValue = $(this).val().trim();
-            try {
-               currentValue = JSON.parse(currentValue);
-            } catch (e) {}
-            if (!Array.isArray(currentValue)) {
-               currentValue = currentValue.split(',').map(function(tag) {
-               return {value: tag.trim()};
-               });
-               $(this).val(JSON.stringify(currentValue));
-            }
-         });
-         });
-      </script>
-      <br>
-      <button type="submit" class="btn btn-outline-success">Update Details</button>
-      <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-      </form>
-   </div>
-   <div id="tab2" class="tabcontent">
-      <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateOpeningHours" onsubmit="return validateForm()">
-         <div style="display: flex; justify-content: center;">
-            <div class="form-group" style="flex: 1; margin-right: 10px;">
-               <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-               <table id="opening-hours" name="opening-hours" style="width: 100%; font-size: 18px">
-                  <tr>
-                     <th>Day</th>
-                     <th>Hours</th>
-                     <th>Open/Closed</th>
-                  </tr>
-                  <tr>
-                     <td>Monday</td>
-                     <td>
-                        <input id="monday-opening-hours" type="text" name="monday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="monday-ampm-opening" name="monday-ampm-opening">
-                           <option value="1">AM</option>
-                           <option value="2">PM</option>
-                        </select>
-                        <span> - </span>
-                        <input id="monday-closing-hours" type="text" name="monday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="monday-ampm-closing" name="monday-ampm-closing">
-                           <option value="1">PM</option>
-                           <option value="2">AM</option>
-                        </select>
-                     </td>
-                     <td>
-                        <select id="monday-openclosed" name="monday-openclosed">
-                           <option value="1">Open</option>
-                           <option value="2">Closed</option>
-                        </select>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>Tuesday</td>
-                     <td>
-                        <input id="tuesday-opening-hours" type="text" name="tuesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="tuesday-ampm-opening" name="tuesday-ampm-opening">
-                           <option value="1">AM</option>
-                           <option value="2">PM</option>
-                        </select>
-                        <span> - </span>
-                        <input id="tuesday-closing-hours" type="text" name="tuesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="tuesday-ampm-closing" name="tuesday-ampm-closing">
-                           <option value="1">PM</option>
-                           <option value="2">AM</option>
-                        </select>
-                     </td>
-                     <td>
-                        <select id="tuesday-openclosed" name="tuesday-openclosed">
-                           <option value="1">Open</option>
-                           <option value="2">Closed</option>
-                        </select>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>Wednesday</td>
-                     <td>
-                        <input id="wednesday-opening-hours" type="text" name="wednesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="wednesday-ampm-opening" name="wednesday-ampm-opening">
-                           <option value="1">AM</option>
-                           <option value="2">PM</option>
-                        </select>
-                        <span> - </span>
-                        <input id="wednesday-closing-hours" type="text" name="wednesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="wednesday-ampm-closing" name="wednesday-ampm-closing">
-                           <option value="1">PM</option>
-                           <option value="2">AM</option>
-                        </select>
-                     </td>
-                     <td>
-                        <select id="wednesday-openclosed" name="wednesday-openclosed">
-                           <option value="1">Open</option>
-                           <option value="2">Closed</option>
-                        </select>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>Thursday</td>
-                     <td>
-                        <input id="thursday-opening-hours" type="text" name="thursday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="thursday-ampm-opening" name="thursday-ampm-opening">
-                           <option value="1">AM</option>
-                           <option value="2">PM</option>
-                        </select>
-                        <span> - </span>
-                        <input id="thursday-closing-hours" type="text" name="thursday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="thursday-ampm-closing" name="thursday-ampm-closing">
-                           <option value="1">PM</option>
-                           <option value="2">AM</option>
-                        </select>
-                     </td>
-                     <td>
-                        <select id="thursday-openclosed" name="thursday-openclosed">
-                           <option value="1">Open</option>
-                           <option value="2">Closed</option>
-                        </select>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>Friday</td>
-                     <td>
-                        <input id="friday-opening-hours" type="text" name="friday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="friday-ampm-opening" name="friday-ampm-opening">
-                           <option value="1">AM</option>
-                           <option value="2">PM</option>
-                        </select>
-                        <span> - </span>
-                        <input id="friday-closing-hours" type="text" name="friday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="friday-ampm-closing" name="friday-ampm-closing">
-                           <option value="1">PM</option>
-                           <option value="2">AM</option>
-                        </select>
-                     </td>
-                     <td>
-                        <select id="friday-openclosed" name="friday-openclosed">
-                           <option value="1">Open</option>
-                           <option value="2">Closed</option>
-                        </select>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>Saturday</td>
-                     <td>
-                        <input id="saturday-opening-hours" type="text" name="saturday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="saturday-ampm-opening" name="saturday-ampm-opening">
-                           <option value="1">AM</option>
-                           <option value="2">PM</option>
-                        </select>
-                        <span> - </span>
-                        <input id="saturday-closing-hours" type="text" name="saturday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="saturday-ampm-closing" name="saturday-ampm-closing">
-                           <option value="1">PM</option>
-                           <option value="2">AM</option>
-                        </select>
-                     </td>
-                     <td>
-                        <select id="saturday-openclosed" name="saturday-openclosed">
-                           <option value="1">Open</option>
-                           <option value="2">Closed</option>
-                        </select>
-                     </td>
-                  </tr>
-                  <tr>
-                     <td>Sunday</td>
-                     <td>
-                        <input id="sunday-opening-hours" type="text" name="sunday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="sunday-ampm-opening" name="sunday-ampm-opening">
-                           <option value="1">AM</option>
-                           <option value="2">PM</option>
-                        </select>
-                        <span> - </span>
-                        <input id="sunday-closing-hours" type="text" name="sunday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                        <select id="sunday-ampm-closing" name="sunday-ampm-closing">
-                           <option value="1">PM</option>
-                           <option value="2">AM</option>
-                        </select>
-                     </td>
-                     <td>
-                        <select id="sunday-openclosed" name="sunday-openclosed">
-                           <option value="1">Open</option>
-                           <option value="2">Closed</option>
-                        </select>
-                     </td>
-                  </tr>
-               </table>
                <script>
-                  const openingHours = <?php echo $venue['opening_hours'] ?>;
-                  for (const day in openingHours) {
-                  const openingHoursElement = document.getElementById(`${day}-opening-hours`);
-                  const closingHoursElement = document.getElementById(`${day}-closing-hours`);
-                  const ampmOpeningElement = document.getElementById(`${day}-ampm-opening`);
-                  const ampmClosingElement = document.getElementById(`${day}-ampm-closing`);
-                  const closed = openingHours[day].closed;
+                  $(document).ready(function() {
+                  $('#add-tag-btn').click(function() {
+                     var selectedTag = $('#tag-select option:selected').text().trim();
+                     var currentTags = $('#tags').val().trim();
                   
-                  openingHoursElement.value = openingHours[day].opening_hours;
-                  closingHoursElement.value = openingHours[day].closing_hours;
-                  ampmOpeningElement.value = openingHours[day].ampm_opening;
-                  ampmClosingElement.value = openingHours[day].ampm_closing;
-                  document.getElementById(`${day}-openclosed`).value = closed;
-                  }
+                     try {
+                        currentTags = JSON.parse(currentTags);
+                        if (!Array.isArray(currentTags)) {
+                        currentTags = [];
+                        }
+                     } catch (e) {
+                        currentTags = currentTags.split(',').map(function(tag) {
+                        return {value: tag.trim()};
+                        });
+                     }
+                     currentTags.push({value: selectedTag});
+                     $('#tags').val(JSON.stringify(currentTags));
+                  });
                   
-                     
+                  $('#remove-tag-btn').click(function() {
+                     var selectedTag = $('#tag-select option:selected').text().trim();
+                     var currentTags = $('#tags').val().trim();
+                  
+                     try {
+                        currentTags = JSON.parse(currentTags);
+                        if (!Array.isArray(currentTags)) {
+                        currentTags = [];
+                        }
+                     } catch (e) {
+                        currentTags = currentTags.split(',').map(function(tag) {
+                        return {value: tag.trim()};
+                        });
+                     }
+                  
+                     currentTags = currentTags.filter(function(tag) {
+                        return tag.value !== selectedTag;
+                     });
+                  
+                     $('#tags').val(JSON.stringify(currentTags));
+                  });
+                  
+                  $('#tags').on('change', function() {
+                     var currentValue = $(this).val().trim();
+                     try {
+                        currentValue = JSON.parse(currentValue);
+                     } catch (e) {}
+                     if (!Array.isArray(currentValue)) {
+                        currentValue = currentValue.split(',').map(function(tag) {
+                        return {value: tag.trim()};
+                        });
+                        $(this).val(JSON.stringify(currentValue));
+                     }
+                  });
+                  });
                </script>
                <br>
-               <button type="submit" class="btn btn-outline-success">Update Opening Hours</button>
+               <button type="submit" class="btn btn-outline-success">Update Details</button>
                <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-            </div>
+            </form>
          </div>
-      </form>
+         <div id="tab2" class="tabcontent">
+            <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateOpeningHours" onsubmit="return validateForm()">
+               <div style="display: flex; justify-content: center;">
+                  <div class="form-group" style="flex: 1; margin-right: 10px;">
+                     <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                     <table id="opening-hours" name="opening-hours" style="width: 100%; font-size: 18px">
+                        <tr>
+                           <th>Day</th>
+                           <th>Hours</th>
+                           <th>Open/Closed</th>
+                        </tr>
+                        <tr>
+                           <td>Monday</td>
+                           <td>
+                              <input id="monday-opening-hours" type="text" name="monday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="monday-ampm-opening" name="monday-ampm-opening">
+                                 <option value="1">AM</option>
+                                 <option value="2">PM</option>
+                              </select>
+                              <span> - </span>
+                              <input id="monday-closing-hours" type="text" name="monday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="monday-ampm-closing" name="monday-ampm-closing">
+                                 <option value="1">PM</option>
+                                 <option value="2">AM</option>
+                              </select>
+                           </td>
+                           <td>
+                              <select id="monday-openclosed" name="monday-openclosed">
+                                 <option value="1">Open</option>
+                                 <option value="2">Closed</option>
+                              </select>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Tuesday</td>
+                           <td>
+                              <input id="tuesday-opening-hours" type="text" name="tuesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="tuesday-ampm-opening" name="tuesday-ampm-opening">
+                                 <option value="1">AM</option>
+                                 <option value="2">PM</option>
+                              </select>
+                              <span> - </span>
+                              <input id="tuesday-closing-hours" type="text" name="tuesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="tuesday-ampm-closing" name="tuesday-ampm-closing">
+                                 <option value="1">PM</option>
+                                 <option value="2">AM</option>
+                              </select>
+                           </td>
+                           <td>
+                              <select id="tuesday-openclosed" name="tuesday-openclosed">
+                                 <option value="1">Open</option>
+                                 <option value="2">Closed</option>
+                              </select>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Wednesday</td>
+                           <td>
+                              <input id="wednesday-opening-hours" type="text" name="wednesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="wednesday-ampm-opening" name="wednesday-ampm-opening">
+                                 <option value="1">AM</option>
+                                 <option value="2">PM</option>
+                              </select>
+                              <span> - </span>
+                              <input id="wednesday-closing-hours" type="text" name="wednesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="wednesday-ampm-closing" name="wednesday-ampm-closing">
+                                 <option value="1">PM</option>
+                                 <option value="2">AM</option>
+                              </select>
+                           </td>
+                           <td>
+                              <select id="wednesday-openclosed" name="wednesday-openclosed">
+                                 <option value="1">Open</option>
+                                 <option value="2">Closed</option>
+                              </select>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Thursday</td>
+                           <td>
+                              <input id="thursday-opening-hours" type="text" name="thursday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="thursday-ampm-opening" name="thursday-ampm-opening">
+                                 <option value="1">AM</option>
+                                 <option value="2">PM</option>
+                              </select>
+                              <span> - </span>
+                              <input id="thursday-closing-hours" type="text" name="thursday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="thursday-ampm-closing" name="thursday-ampm-closing">
+                                 <option value="1">PM</option>
+                                 <option value="2">AM</option>
+                              </select>
+                           </td>
+                           <td>
+                              <select id="thursday-openclosed" name="thursday-openclosed">
+                                 <option value="1">Open</option>
+                                 <option value="2">Closed</option>
+                              </select>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Friday</td>
+                           <td>
+                              <input id="friday-opening-hours" type="text" name="friday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="friday-ampm-opening" name="friday-ampm-opening">
+                                 <option value="1">AM</option>
+                                 <option value="2">PM</option>
+                              </select>
+                              <span> - </span>
+                              <input id="friday-closing-hours" type="text" name="friday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="friday-ampm-closing" name="friday-ampm-closing">
+                                 <option value="1">PM</option>
+                                 <option value="2">AM</option>
+                              </select>
+                           </td>
+                           <td>
+                              <select id="friday-openclosed" name="friday-openclosed">
+                                 <option value="1">Open</option>
+                                 <option value="2">Closed</option>
+                              </select>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Saturday</td>
+                           <td>
+                              <input id="saturday-opening-hours" type="text" name="saturday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="saturday-ampm-opening" name="saturday-ampm-opening">
+                                 <option value="1">AM</option>
+                                 <option value="2">PM</option>
+                              </select>
+                              <span> - </span>
+                              <input id="saturday-closing-hours" type="text" name="saturday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="saturday-ampm-closing" name="saturday-ampm-closing">
+                                 <option value="1">PM</option>
+                                 <option value="2">AM</option>
+                              </select>
+                           </td>
+                           <td>
+                              <select id="saturday-openclosed" name="saturday-openclosed">
+                                 <option value="1">Open</option>
+                                 <option value="2">Closed</option>
+                              </select>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Sunday</td>
+                           <td>
+                              <input id="sunday-opening-hours" type="text" name="sunday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="sunday-ampm-opening" name="sunday-ampm-opening">
+                                 <option value="1">AM</option>
+                                 <option value="2">PM</option>
+                              </select>
+                              <span> - </span>
+                              <input id="sunday-closing-hours" type="text" name="sunday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                              <select id="sunday-ampm-closing" name="sunday-ampm-closing">
+                                 <option value="1">PM</option>
+                                 <option value="2">AM</option>
+                              </select>
+                           </td>
+                           <td>
+                              <select id="sunday-openclosed" name="sunday-openclosed">
+                                 <option value="1">Open</option>
+                                 <option value="2">Closed</option>
+                              </select>
+                           </td>
+                        </tr>
+                     </table>
+                     <script>
+                        const openingHours = <?php echo $venue['opening_hours'] ?>;
+                        for (const day in openingHours) {
+                        const openingHoursElement = document.getElementById(`${day}-opening-hours`);
+                        const closingHoursElement = document.getElementById(`${day}-closing-hours`);
+                        const ampmOpeningElement = document.getElementById(`${day}-ampm-opening`);
+                        const ampmClosingElement = document.getElementById(`${day}-ampm-closing`);
+                        const closed = openingHours[day].closed;
+                        
+                        openingHoursElement.value = openingHours[day].opening_hours;
+                        closingHoursElement.value = openingHours[day].closing_hours;
+                        ampmOpeningElement.value = openingHours[day].ampm_opening;
+                        ampmClosingElement.value = openingHours[day].ampm_closing;
+                        document.getElementById(`${day}-openclosed`).value = closed;
+                        }
+                        
+                           
+                     </script>
+                     <br>
+                     <button type="submit" class="btn btn-outline-success">Update Opening Hours</button>
+                     <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div id="tab3" class="tabcontent">
+            <p>Accessibility content goes here.</p>
+         </div>
+         <div id="tab4" class="tabcontent">
+            <p>Image content goes here.</p>
+         </div>
+         <br>
+         <style>
+            .tabcontent {
+            display: none;
+            }
+            .tablinks {
+            background-color: #eee;
+            color: #333;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            }
+            .opening-hours {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            font-family: Arial, sans-serif;
+            color: #444;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+            thead {
+            background-color: #f7f7f7;
+            font-weight: bold;
+            }
+            th, td {
+            padding: 10px;
+            text-align: left;
+            }
+            th {
+            border-bottom: 2px solid #ddd;
+            }
+            tr {
+            background-color: #f2f2f2;
+            }
+            input[id="day"] {
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            width: 100%;
+            }
+         </style>
+         <script>
+            function openTab(evt, tabName) {
+               var i, tabcontent, tablinks;
+               tabcontent = document.getElementsByClassName("tabcontent");
+               for (i = 0; i < tabcontent.length; i++) {
+                  tabcontent[i].style.display = "none";
+               }
+               tablinks = document.getElementsByClassName("tablinks");
+               for (i = 0; i < tablinks.length; i++) {
+                  tablinks[i].className = tablinks[i].className.replace(" active", "");
+               }
+               document.getElementById(tabName).style.display = "block";
+               evt.currentTarget.className += " active";
+            }
+            
+            window.onload = function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var tabIndexFromUrl = urlParams.get('tab');
+            
+            if (tabIndexFromUrl !== null) {
+            var tabs = document.querySelectorAll('.tablinks');
+            var tabButton = tabs[tabIndexFromUrl - 1]; 
+            if (tabButton) {
+            tabButton.click();
+            }
+            } else {
+            var firstTabButton = document.querySelector('.tablinks');
+            if (firstTabButton) {
+            firstTabButton.click();
+            }
+            }
+            };
+            
+            var input = document.querySelector('#tags');
+            new Tagify(input, {removable: true});
+         </script>
+      </div>
    </div>
-   <div id="tab3" class="tabcontent">
-      <p>Accessibility content goes here.</p>
-   </div>
-   <div id="tab4" class="tabcontent">
-      <p>Image content goes here.</p>
-   </div>
-   <br>
-   <style>
-      .tabcontent {
-      display: none;
-      }
-      .tablinks {
-      background-color: #eee;
-      color: #333;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      }
-      .opening-hours {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-      table {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 600px;
-      font-family: Arial, sans-serif;
-      color: #444;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-      thead {
-      background-color: #f7f7f7;
-      font-weight: bold;
-      }
-      th, td {
-      padding: 10px;
-      text-align: left;
-      }
-      th {
-      border-bottom: 2px solid #ddd;
-      }
-      tr {
-      background-color: #f2f2f2;
-      }
-      input[id="day"] {
-      border: none;
-      border-radius: 5px;
-      padding: 5px;
-      width: 100%;
-      }
-   </style>
-   <script>
-      function openTab(evt, tabName) {
-         var i, tabcontent, tablinks;
-         tabcontent = document.getElementsByClassName("tabcontent");
-         for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-         }
-         tablinks = document.getElementsByClassName("tablinks");
-         for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-         }
-         document.getElementById(tabName).style.display = "block";
-         evt.currentTarget.className += " active";
-      }
-      
-      window.onload = function() {
-      var urlParams = new URLSearchParams(window.location.search);
-      var tabIndexFromUrl = urlParams.get('tab');
-      
-      if (tabIndexFromUrl !== null) {
-      var tabs = document.querySelectorAll('.tablinks');
-      var tabButton = tabs[tabIndexFromUrl - 1]; 
-      if (tabButton) {
-      tabButton.click();
-      }
-      } else {
-      var firstTabButton = document.querySelector('.tablinks');
-      if (firstTabButton) {
-      firstTabButton.click();
-      }
-      }
-      };
-      
-      var input = document.querySelector('#tags');
-      new Tagify(input, {removable: true});
-   </script>
-</div>
-</div>
 </div>
 </div>
 </div>

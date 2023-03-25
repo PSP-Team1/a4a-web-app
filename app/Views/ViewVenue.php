@@ -78,6 +78,10 @@
                <div class="form-group">
                   <h2>Choose Venue Tags</h2>
                   <div class="input-group mb-3">
+                     <?php
+                        $tag_names = array_column($tags, 'tag');
+                        array_multisort($tag_names, SORT_ASC, $tags);
+                        ?>
                      <select class="form-control select2" id="tag-select" style="height: 38px;">
                         <?php foreach ($tags as $tag) { ?>
                         <option value="<?php echo $tag['id']; ?>"><?php echo $tag['tag']; ?></option>

@@ -95,6 +95,7 @@
                      <div class="input-group-append" style="margin-left: 5px;">
                         <button class="btn btn-primary" type="button" id="add-tag-btn">Add Tag</button>
                         <button class="btn btn-secondary" type="button" id="remove-tag-btn">Remove Tag</button>
+                        <button class="btn btn-danger" type="button" id="remove-all-tags-btn">Remove All Tags</button>
                      </div>
                   </div>
                   <h2>Current Venue Tags</h2>
@@ -105,7 +106,7 @@
                     $('#add-tag-btn').click(function() {
                       var selectedTag = $('#tag-select option:selected').text().trim();
                       var currentTags = $('#tags').val().trim();
-                    
+                  
                       try {
                         currentTags = JSON.parse(currentTags);
                         if (!Array.isArray(currentTags)) {
@@ -114,14 +115,15 @@
                       } catch (e) {
                         currentTags = [];
                       }
+                  
                       currentTags.push({value: selectedTag});
                       $('#tags').val(JSON.stringify(currentTags));
                     });
-                    
+                  
                     $('#remove-tag-btn').click(function() {
                       var selectedTag = $('#tag-select option:selected').text().trim();
                       var currentTags = $('#tags').val().trim();
-                    
+                  
                       try {
                         currentTags = JSON.parse(currentTags);
                         if (!Array.isArray(currentTags)) {
@@ -130,14 +132,20 @@
                       } catch (e) {
                         currentTags = [];
                       }
-                    
+                  
                       currentTags = currentTags.filter(function(tag) {
                         return tag.value !== selectedTag;
                       });
-                    
+                  
                       $('#tags').val(JSON.stringify(currentTags));
                     });
-                    
+                  
+                    $('#remove-all-tags-btn').click(function() {
+                      if (confirm("Are you sure you want to remove all tags?")) {
+                        $('#tags').val('');
+                      }
+                    });
+                  
                     $('#tags').on('change', function() {
                       var currentValue = $(this).val().trim();
                       try {

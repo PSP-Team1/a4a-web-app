@@ -87,6 +87,15 @@ $routes->get('/ForgotPassword', 'LoginController::forgotPassword');
 $routes->get('/UpdatePasswordHash', 'LoginController::updatePasswordHash');
 $routes->get('/AuditReportView/(:num)', 'ReportController::viewAuditReport/$1');
 
+// api routes
+$routes->group('', ['filter' => 'cors'], function ($routes) {
+    $routes->get('/embedApi', 'Api::index');
+    $routes->get('/embedScript', 'Api::serveEmbedScript');
+    $routes->options('/embedApi', 'Api::options');
+});
+
+
+
 
 
 // $routes->get('/Home', 'Home::index', ['filter' => 'authGuard']);

@@ -68,7 +68,7 @@ class AuditModel extends Model
 
             LEFT JOIN audit_questions aq ON aq.id = car.question_id
 
-            WHERE ca.id = " . $id . " ;";
+            WHERE ca.id = " . $id . " order by category asc, response desc;";
 
         // XXX remove hardcoded query
 
@@ -227,5 +227,40 @@ class AuditModel extends Model
 
         $query = $db->query($sql);
         return $query->getResult('array');
+    }
+
+
+    // Used by API functions
+    public function generateReport($companyId)
+    {
+
+        $db = \Config\Database::connect();
+
+        $query = $db->query("
+                SELECT 
+                    ca.id AS audit_id,
+                    atemp.audit_version,
+                    atemp.legislation_version,
+                    ca.company_id,
+                    aq.category,
+                    aq.question,
+                    car.id AS car_id,
+                    car.response,
+                    car.notes
+                FROM company c
+                INNER JOIN company_audit ca ON c.id = ca.company_id
+                INNER JOIN audit_template atemp ON ca.audit_template = atemp.id
+                JOIN company_audit_response car ON car.audit_id = ca.id
+                LEFT JOIN audit_questions aq ON aq.id = car.question_id
+                INNER JOIN (
+                    SELECT company_id, MAX(date_created) AS max_date
+                    FROM company_audit
+                    WHERE company_id = $companyId AND audit_status = 'Complete'
+                    GROUP BY company_id
+                ) AS subquery ON ca.company_id = subquery.company_id AND ca.date_created = subquery.max_date
+                ORDER BY aq.category ASC, car.response DESC;
+            ");
+
+        return $query->getResultArray();
     }
 }

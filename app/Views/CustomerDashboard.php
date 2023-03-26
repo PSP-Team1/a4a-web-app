@@ -204,9 +204,17 @@
 
                             <?php if ($progress == 100) { ?>
 
+                                <?php if ($venue['published'] == 1) { ?>
                                 <a class="btn btn-success btn" href="#" role="button" data-toggle="modal" data-target="#myModal">
-                                    <i class=""></i> Unpublish
+                                    Unpublish
                                 </a>
+                                <?php } ?>
+
+                                <?php if ($venue['published'] == 0) { ?>
+                                <a class="btn btn-success btn" href="#" role="button" data-toggle="modal" data-target="#myModal">
+                                <i class="fas fa-check"></i> Publish
+                                </a>
+                                <?php } ?>
 
                                 <?php if ($venue['published'] == 0) { ?>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

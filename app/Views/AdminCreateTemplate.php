@@ -56,7 +56,7 @@
 </style>
 
 
-<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css" />
 <script src="./assets/js/accessibility.js"></script>
 <div class="container">
 
@@ -65,7 +65,7 @@
 
             <div class="ibox">
                 <div class="ibox-title">
-                    <h1>New Audit Template</h1>
+                    <h1>New Accessibility Audit Template</h1>
                 </div>
                 <div class="ibox-content">
                     <div class="row pb-2">

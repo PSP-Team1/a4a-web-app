@@ -70,7 +70,8 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
     $routes->get('/CustomerInbox', 'InboxController::customerInbox');
     $routes->get('/Audit', 'AuditController::index');
-    $routes->get('/Audit/auditConfirmation', 'AuditController::auditConfirmation');
+    // $routes->get('/Audit/auditConfirmation', 'AuditController::auditConfirmation');
+    $routes->get('/Audit/auditConfirmation/(:num)', 'AuditController::auditConfirmation/$1');
     $routes->get('/AuditController/OpenAudit/(:num)', 'AuditController::openAudit/$1');
     $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');
     $routes->get('/ViewAudits', 'ViewAuditController::index');
@@ -84,6 +85,16 @@ $routes->get('/QR', 'QRController::index');
 $routes->get('/FAQ', 'FAQController::index');
 $routes->get('/ForgotPassword', 'LoginController::forgotPassword');
 $routes->get('/UpdatePasswordHash', 'LoginController::updatePasswordHash');
+$routes->get('/AuditReportView/(:num)', 'ReportController::viewAuditReport/$1');
+
+// api routes
+$routes->group('', ['filter' => 'cors'], function ($routes) {
+    $routes->get('/embedApi', 'Api::index');
+    $routes->get('/embedScript', 'Api::serveEmbedScript');
+    $routes->options('/embedApi', 'Api::options');
+});
+
+
 
 
 

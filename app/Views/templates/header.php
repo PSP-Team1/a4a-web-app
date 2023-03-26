@@ -140,8 +140,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
         <a href="#" class="nav_logo">
 
           <div style="height:15px">
-            <img style="height: 100%; " src="" alt="">
-            <span class="nav_logo-name">A4A</span>
+            <span class="nav_logo-name">Access For All</span>
 
           </div>
         </a>
@@ -194,9 +193,9 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
                 <i class='bx bxs-universal-access'></i>
                 <span class="nav_name">Accessibility</span>
               </a>
-             
 
-              
+
+
             </div>
 
 

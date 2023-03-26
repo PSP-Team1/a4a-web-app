@@ -18,7 +18,7 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
-<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css" />
 <script src="./assets/js/accessibility.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -262,7 +262,7 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
 
             viewReportBtn.classList.add('btn', 'btn-primary', 'w-100');
             viewReportBtn.addEventListener('click', () => {
-              window.location.href = '/Audit/auditConfirmation';
+              window.location.href = `/Audit/auditConfirmation/${auditId}`;
             });
 
             const cancelBtn = document.getElementById('cancel-btn');

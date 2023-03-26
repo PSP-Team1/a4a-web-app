@@ -1,4 +1,4 @@
-<?= view('templates/accessibility'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -20,7 +20,7 @@
       toastr.options.progressBar = true;
    </script>`
    <body class="animate__animated animate__fadeIn">
-     
+      <?= view('templates/accessibility'); ?>
       <div class="login-container">
       <section class="Login-form">
       <div class="fusion-separator fusion-no-medium-visibility fusion-no-large-visibility fusion-full-width-sep"

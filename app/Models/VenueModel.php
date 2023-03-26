@@ -109,6 +109,45 @@ class VenueModel extends Model
         $db->close();
     }
 
+    public function updateOpeningHours($venueId, $openingHours)
+    {
+        $db = db_connect();
+
+        $openingHours = json_encode($openingHours);
+
+        $query = "UPDATE company_venue SET opening_hours=? WHERE id=?";
+        $db->query($query, [$openingHours, $venueId]);
+        $db->close();
+    }
+
+    public function updateAccessibility($venueId, $accessibilityInfo)
+    {
+        $db = db_connect();
+        $query = "UPDATE company_venue SET accessibility=? WHERE id=?";
+        $db->query($query, [$accessibilityInfo, $venueId]);
+        $db->close();
+    }
+
+    public function updateImages(int $id, array $imageNames)
+    {
+        $db = db_connect();
+        $db->transStart();
+    
+        $data = [
+            'images' => implode(',', $imageNames),
+        ];
+        $db->table('company_venue')->where('id', $id)->update($data);
+    
+        $db->transComplete();
+    
+        if ($db->transStatus() === false) {
+            throw new \Exception('Failed to update images');
+        }
+    
+        $db->close();
+    }
+    
+    
     public function publishVenue($id)
     {
         $db = db_connect();
@@ -128,17 +167,25 @@ class VenueModel extends Model
     }
 
     public function getQRCode($venueId)
-{
-    $db = db_connect();
-    $query = "SELECT QR_code FROM company_venue WHERE id = ?";
-    $result = $db->query($query, [$venueId])->getRowArray();
-    $db->close();
+    {
+        $db = db_connect();
+        $query = "SELECT QR_code FROM company_venue WHERE id = ?";
+        $result = $db->query($query, [$venueId])->getRowArray();
+        $db->close();
 
-    if ($result) {
-        return $result['QR_code'];
-    } else {
-        return null;
+        if ($result) {
+            return $result['QR_code'];
+        } else {
+            return null;
+        }
     }
-}
+
+    public function getDefaultTags()
+    {
+        $db = db_connect();
+        $sql = "SELECT * FROM venue_tags_default";
+        $results = $db->query($sql)->getResult('array');
+        return $results;
+    }
 }
 ?>

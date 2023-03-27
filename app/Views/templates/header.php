@@ -187,20 +187,10 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <i class='bx bx-list-ul nav_icon'></i>
               <span class="nav_name">View Audit(s)</span>
             </a>
-
             <div class="dropdown">
-              <a href="<?= base_url() ?>/Analysis" class="nav_link <?= ($activePage == "AdminDashboard" ? "active" : "") ?>">
-                <i class='bx bxs-universal-access'></i>
-                <span class="nav_name">Accessibility</span>
+              
               </a>
-
-
-
             </div>
-
-
-
-
           </div>
         <?php endif; ?>
 

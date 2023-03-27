@@ -85,14 +85,26 @@ buttons.addEventListener('click', function() {
   localStorage.setItem("negativeContrast", document.body.classList.contains('negative-contrast'));
 });
 
-const resetButton = document.getElementById('reset-button');
+//text to speech
+const checkbox = document.getElementById('text-speech');
+function speakPageText() {
+  const pageText = document.body.innerText;
+  const msg = new SpeechSynthesisUtterance(pageText);
+
+  if (checkbox.checked) {
+    window.speechSynthesis.speak(msg);
+  } else {
+    window.speechSynthesis.cancel();
+  }
+}
+
 resetButton.addEventListener('click', function() {
-    // Reset font size
-    fontSize = 14;
-    document.querySelectorAll("body *").forEach(el => {
-      el.style.fontSize = "";
-    });
-    localStorage.setItem("fontSize", fontSize);
+  // Reset font size
+  fontSize = 14;
+  document.querySelectorAll("body *").forEach(el => {
+    el.style.fontSize = "";
+  });
+  localStorage.setItem("fontSize", fontSize);
 
   // Reset grayscale
   if (localStorage.getItem("grayscale") === "true") {
@@ -118,6 +130,13 @@ resetButton.addEventListener('click', function() {
   }
   localStorage.setItem("negativeContrast", false);
 
+  if (localStorage.getItem("text-speech") === "true") {
+    const checkbox = document.getElementById('text-speech');
+    checkbox.checked = true;
+    speakPageText();
+  }
+  localStorage.setItem("text-speech", false);
+
   // Reset toggle buttons
   increaseFontBtn.checked = false;
   decreaseFontBtn.checked = false;
@@ -129,45 +148,3 @@ resetButton.addEventListener('click', function() {
 
 });
 
-
-//text to speech
-function speakPageText() {
-  var checkbox = document.getElementById('text-speech');
-  if (checkbox.checked) {
-    var pageText = document.body.innerText;
-    var msg = new SpeechSynthesisUtterance(pageText);
-    window.speechSynthesis.speak(msg);
-  } else {
-    window.speechSynthesis.cancel();
-  }
-}
-
-
-
-// Retrieve user preferences from local storage on page load
-if (localStorage.getItem("grayscale") === "true") {
-  toggleGrayscale();
-  toggleButton.checked = true;
-}
-
-if (localStorage.getItem("lightBackground") === "true") {
-  toggleLightBackground();
-  lightBackgroundBtn.checked = true;
-}
-
-if (localStorage.getItem("highContrast") === "true") {
-  toggleHighContrast();
-  button.checked = true;
-}
-
-if (localStorage.getItem("negativeContrast") === "true") {
-  toggleNegativeContrast();
-  buttons.checked = true;
-}
-
-if (localStorage.getItem("fontSize")) {
-    fontSize = localStorage.getItem("fontSize");
-    document.querySelectorAll("body *").forEach(el => {
-      el.style.fontSize = `${fontSize}px`;
-});
-}

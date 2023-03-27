@@ -3,3 +3,12 @@ writable/logs/*
 writable/session/*
 app/Views/AdminCreateTemplate.php
 writable/debug*
+vendor/*
+system/*
+system/ThirdParty/*
+.DS_Store
+app/.DS_Store
+public/.DS_Store
+.DS_Store
+.DS_Store
+.DS_Store

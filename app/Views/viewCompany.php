@@ -2,8 +2,8 @@
 <?= view('templates/header');
 
 ?>
-<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
-<script src="./assets/js/accessibility.js"></script>
+<link rel="stylesheet" href="/assets/css/accessibilityPortal.css"/>
+<script src="/assets/js/accessibility.js"></script>
 
 <div class="container">
 

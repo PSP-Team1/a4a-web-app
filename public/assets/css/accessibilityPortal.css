@@ -37,7 +37,7 @@
   transform: translateY(-10px);
 }
 
-.grayscale {
+  .grayscale {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   }
@@ -54,13 +54,13 @@
   z-index: -1;
   }
 
-  .high-contrast {
+  .high-contrast .header {
   background: black;
   color: white;
   filter: invert(100%);
   }
 
-  .negative-contrast {
+  .negative-contrast .header {
   filter: invert(1) hue-rotate(180deg);
   background: black;
   }

@@ -228,7 +228,7 @@
                             <?php if ($progress == 100) { ?>
 
                                 <?php if ($venue['published'] == 1) { ?>
-                                <a class="btn btn-success btn" href="#" role="button" data-toggle="modal" data-target="#myModal">
+                                <a class="btn btn-danger btn" href="#" role="button" data-toggle="modal" data-target="#myModal">
                                     Unpublish
                                 </a>
                                 <?php } ?>

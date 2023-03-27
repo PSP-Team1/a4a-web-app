@@ -216,7 +216,7 @@ class AuditModel extends Model
                 agg.v_cnt
             FROM
                 company c
-                    JOIN
+                    left JOIN
                 (SELECT 
                     c.id AS cid, COUNT(cv.company_id) AS v_cnt
                 FROM

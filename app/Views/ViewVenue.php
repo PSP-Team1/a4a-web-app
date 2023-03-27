@@ -364,7 +364,7 @@
             </p>
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateAccessibility" onsubmit="return validateForm()">
                <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-               <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="112" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
+               <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="98" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
                <p id="char-count">0 / 500</p>
                <br>
                <button type="submit" class="btn btn-outline-success">Update Accessibility</button>

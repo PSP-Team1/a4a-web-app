@@ -196,6 +196,29 @@
                                 <i class="fas fa-eye"></i> View
                             </a>
 
+                            <a class="btn btn-danger btn-outline" href="#" role="button" data-toggle="modal" data-target="#deleteVenueModal<?= $venue['id'] ?>">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteVenueModal<?= $venue['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteVenueModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="deleteVenueModalLabel">Confirm Deletion</h2>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete <?= $venue['venue_name'] ?>?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <a class="btn btn-danger" href="/CustomerDashboard/deleteVenue/<?= $venue['id'] ?>">Delete</a>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+
                             <?php if ($progress != 100) { ?>
                                 <a class="btn btn-danger btn disabled" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
                                     <i class="fas fa-x"></i> Publish

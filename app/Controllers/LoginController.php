@@ -40,8 +40,7 @@ class LoginController extends Controller
         $checkHashExists = $model->checkHashExists($hash);
         if ($checkHashExists == 1) {
             echo view('UpdatePasswordHash');
-        }
-        else {
+        } else {
             echo view('UpdatePasswordHashError');
         }
     }
@@ -56,18 +55,17 @@ class LoginController extends Controller
         if ($checkPasswordHash == 1) {
             $model->updatePassword($email, $newPassword);
             $model->removeHash($email);
-              
+
             $session = \Config\Services::session();
-            $session->setFlashdata('success', 'Your password has been updated!');            
+            $session->setFlashdata('success', 'Your password has been updated!');
             return redirect()->to('/Login');
-        }
-        else {
+        } else {
             $session = \Config\Services::session();
             $session->setFlashdata('msg', 'Unable to reset password. Please try again.');
             return redirect()->to('/Login');
         }
     }
-    
+
 
     public function forgotPasswordAuth()
     {
@@ -81,7 +79,7 @@ class LoginController extends Controller
         if ($data) {
             $emailData = $data['email'];
             $authenticateEmail = strcmp($email, $emailData);
-            if (!$authenticateEmail) {		
+            if (!$authenticateEmail) {
                 $to = $email;
                 $subject = 'Access For All - Password Reset';
 
@@ -106,7 +104,7 @@ class LoginController extends Controller
                                 <body>
                                     <p>Hello,</p>
                                     <p>You have requested to reset your password for your Access For All account. Please click the button below to reset your password:</p>
-                                    <a href="http://localhost:8080/UpdatePasswordHash?hash=' . $passwordHash . '" class="button">Reset Password</a>
+                                    <a href="' . base_url() . '/UpdatePasswordHash?hash=' . $passwordHash . '" class="button">Reset Password</a>
                                 </body>
                             </html>';
 
@@ -115,17 +113,15 @@ class LoginController extends Controller
                 $email->setFrom('accessforallproject@gmail.com', 'Access For All');
                 $email->setSubject($subject);
                 $email->setMessage($message);
-                $email->setMailType('html'); 
-         
+                $email->setMailType('html');
+
                 if ($email->send()) {
                     $response = 'Email successfully sent';
                     $model = new PasswordResetModel();
                     $model->insertHash($to, $passwordHash);
-                } 
-                else 
-                {
+                } else {
                     $data = $email->printDebugger(['headers']);
-                    $response ='Email send failed';
+                    $response = 'Email send failed';
                 }
                 return redirect()->to('/ForgotPasswordSuccess');
             } else {

@@ -11,6 +11,7 @@ class CustomerDashboard extends BaseController
     {
         $venueModel = new VenueModel();
         $data['venues'] = $venueModel->getVenues();
+        $data['venues'] = $venueModel->getVenues();
 
         return view('CustomerDashboard', $data);
     }
@@ -25,6 +26,14 @@ class CustomerDashboard extends BaseController
         $newVenueId = $venueModel->getInsertID();
         $QRCode = uniqid();
         $venueModel->updateVenue($newVenueId, null, null, null, null, null, $QRCode);
+
+        return redirect()->to(base_url('CustomerDashboard'));
+    }
+
+    public function deleteVenue($venueId)
+    {
+        $venueModel = new VenueModel();
+        $venueModel->deleteVenue($venueId);
 
         return redirect()->to(base_url('CustomerDashboard'));
     }
@@ -176,4 +185,3 @@ class CustomerDashboard extends BaseController
 
    
 }
-?>

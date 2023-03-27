@@ -31,7 +31,7 @@
 </script>
 <style>
    .container {
-   max-width: 75%;
+   max-width: 100%;
    }
    label {
    font-size: 1.5rem !important;
@@ -554,7 +554,7 @@
             <style>
                .table {
                width: 100%;
-               max-width: 1200px;
+               max-width: 1400px;
                margin: auto;
                }
             </style>

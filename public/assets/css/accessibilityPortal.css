@@ -1,7 +1,7 @@
 .floating-btn {
   position: fixed; 
-  bottom: 20px;
-  left: 1600px; 
+  bottom: 1600px;
+  left: 20px;   
   color: #fff;    
   border: none;    
   border-radius: 50%;  
@@ -11,6 +11,7 @@
   cursor: pointer; 
   z-index: 999;
 }
+
 .accessButton {
   width: 140px;
   height: 45px;

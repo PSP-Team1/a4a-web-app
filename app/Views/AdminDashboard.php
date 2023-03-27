@@ -128,8 +128,68 @@
                      </div>
                   </div>
                   <br>
+                  <br>
                   <div style="clear: both;"></div>
                </div>
+
+               <br>
+
+               <div class="ibox-title">
+                  <h2>Application Statistics Graph</h2>
+               </div>
+               <div class="ibox-content">
+                <canvas id="myChart" width="200" height="65"></canvas>
+                </div>
+
+
+                  <script>
+                     // Get the canvas element
+                     var ctx = document.getElementById('myChart').getContext('2d');
+                     
+                     // Create the bar chart
+                     var myChart = new Chart(ctx, {
+                     type: 'bar',
+                     data: {
+                     labels: ['Customers (This Week)', 'Venues (This Week)', 'Customers (All Time)', 'Venues (All Time)'],
+                     datasets: [{
+                     label: 'Number of Registered Users',
+                     data: [<?= count($customersWeek) ?>, <?= count($venueWeek) ?>, <?= count($customersAllTime) ?>, <?= count($venueAllTime) ?>],
+                     backgroundColor: [
+                     'rgba(213, 245, 227)',
+                     'rgba(213, 245, 227)',
+                     'rgba(249, 231, 159)',
+                     'rgba(249, 231, 159)'
+                     ],
+                     borderColor: [
+                     'rgba(81, 90, 90)',
+                     'rgba(81, 90, 90)',
+                     'rgba(81, 90, 90)',
+                     'rgba(81, 90, 90)'
+                     ],
+                     borderWidth: 1
+                     }]
+                     },
+                     options: {
+                     scales: {
+                     yAxes: [{
+                     ticks: {
+                     beginAtZero: true
+                     }
+                     }]
+                     },
+                     legend: {
+                     display: true,
+                     position: 'bottom'
+                     },
+                     title: {
+                     display: true,
+                     text: 'Application Statistics'
+                     }
+                     }
+                     });
+                     
+                  </script>
+
                <style>
                   .left-box {
                   float: left;

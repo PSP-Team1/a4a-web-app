@@ -187,5 +187,14 @@ class VenueModel extends Model
         $results = $db->query($sql)->getResult('array');
         return $results;
     }
+
+    public function deleteVenue($venueId)
+    {
+        $db = db_connect();
+        $sql = "DELETE FROM company_venue WHERE id = $venueId";
+        $db->query($sql);
+        return true;
+    }
+    
 }
 ?>

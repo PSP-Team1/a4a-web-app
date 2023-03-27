@@ -73,6 +73,9 @@
 			</div>
 		</div>
 	</div>
+
+	<br>
+	<a href="<?= base_url() ?>/home" class="btn btn-light">Return To Homepage</a>
 	
 </div>
 

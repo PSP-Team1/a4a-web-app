@@ -30,6 +30,14 @@ class CustomerDashboard extends BaseController
         return redirect()->to(base_url('CustomerDashboard'));
     }
 
+    public function deleteVenue($venueId)
+    {
+        $venueModel = new VenueModel();
+        $venueModel->deleteVenue($venueId);
+
+        return redirect()->to(base_url('CustomerDashboard'));
+    }
+
 
     public function newVenue()
     {

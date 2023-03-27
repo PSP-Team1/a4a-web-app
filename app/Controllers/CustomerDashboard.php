@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\VenueModel;
+use App\Models\AuditModel;
 
 
 class CustomerDashboard extends BaseController
@@ -173,11 +174,13 @@ class CustomerDashboard extends BaseController
     public function viewVenue($id)
     {
         $model = new VenueModel();
+        $am = new AuditModel();
         $venue = $model->getVenueById($id);
         $tags = $model->getDefaultTags();
 
         $data['venue'] = $venue;
         $data['tags'] = $tags;
+        $data['audit_data'] = $am->getAudits();
 
         return view('ViewVenue', $data);
     }

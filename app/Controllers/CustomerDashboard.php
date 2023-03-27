@@ -12,6 +12,7 @@ class CustomerDashboard extends BaseController
     {
         $venueModel = new VenueModel();
         $data['venues'] = $venueModel->getVenues();
+        $data['venues'] = $venueModel->getVenues();
 
         return view('CustomerDashboard', $data);
     }
@@ -187,4 +188,3 @@ class CustomerDashboard extends BaseController
 
    
 }
-?>

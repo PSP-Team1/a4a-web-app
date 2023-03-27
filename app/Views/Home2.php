@@ -127,7 +127,7 @@
    <div class="container-fluid px-0 fluid-banner sticky-top">
       <div class="container">
          <div class="banner-search">
-            <img src="<?= base_url(); ?>/assets/img/Everybody-Welcome-logo.png" alt="Bootstrap" height="80">
+            <img src="<?= base_url(); ?>/assets/img/Making-Everybody-Welcome.png" alt="Bootstrap" height="80">
 
             <div class="input-group">
                <input id="search-input" type="text" placeholder="Search for location..." class="form-control search-input">

@@ -42,7 +42,7 @@
                <section class="Login-form">
                   <div class="form-content">
                      <div class="logo-container">
-                        <img style="position: relative; top: -15px; filter: drop-shadow(1px 2px 1px #ffffff);" src="/assets/img/Everybody-Welcome-logo.png" alt="">
+                        <img style="position: relative; top: -15px; filter: drop-shadow(1px 2px 1px #ffffff);" src="/assets/img/Making-Everybody-Welcome.png" alt="">
                      </div>
                      <?php if (session()->getFlashdata('msg')) : ?>
                      <div class="alert alert-danger">

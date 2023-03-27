@@ -206,9 +206,9 @@
                         <div class="fusion-logo" data-margin-top="31px" data-margin-bottom="31px" data-margin-left="0px" data-margin-right="0px">
                            <a class="fusion-logo-link"  href="https://accessandinclusion.com/" >
                               <!-- standard logo -->
-                              <img src="/assets/img/Everybody-Welcome-logo.png" srcset="/assets/img/Everybody-Welcome-logo.png 1x, /assets/img/Everybody-Welcome-logo.png 2x" width="298" height="130" style="max-height:130px;height:auto;" alt="Access &amp; Inclusion UK Logo" data-retina_logo_url="/assets/img/Everybody-Welcome-logo.png" class="fusion-standard-logo" />
+                              <img src="/assets/img/Making-Everybody-Welcome.png" srcset="/assets/img/Making-Everybody-Welcome.png 1x, /assets/img/Making-Everybody-Welcome.png 2x" width="298" height="130" style="max-height:130px;height:auto;" alt="Access &amp; Inclusion UK Logo" data-retina_logo_url="/assets/img/Making-Everybody-Welcome.png" class="fusion-standard-logo" />
                               <!-- mobile logo -->
-                              <img src="/assets/img/Everybody-Welcome-logo.png" srcset="/assets/img/Everybody-Welcome-logo.png 1x" width="298" height="130" alt="Access &amp; Inclusion UK Logo" data-retina_logo_url="" class="fusion-mobile-logo" />
+                              <img src="/assets/img/Making-Everybody-Welcome.png" srcset="/assets/img/Making-Everybody-Welcome.png 1x" width="298" height="130" alt="Access &amp; Inclusion UK Logo" data-retina_logo_url="" class="fusion-mobile-logo" />
                            </a>
                         </div>
                         <nav class="fusion-main-menu" aria-label="Main Menu">

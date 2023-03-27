@@ -1,7 +1,7 @@
 .floating-btn {
   position: fixed; 
-  bottom: 1600px;
-  left: 20px;   
+  bottom: 20px;
+  left: 1600px;   
   color: #fff;    
   border: none;    
   border-radius: 50%;  

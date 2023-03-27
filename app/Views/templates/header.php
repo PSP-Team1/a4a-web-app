@@ -95,7 +95,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
       <div class="header_img">
 
       </div>
-      <img src="/assets/img/Everybody-Welcome-logo.png" alt="Description of the image" max-width:="" 50px;="" style="
+      <img src="/assets/img/Making-Everybody-Welcome.png" alt="Description of the image" max-width:="" 50px;="" style="
     max-width: 100px;
     position: relative;
     left: 0px;
@@ -112,15 +112,6 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
       <h4 style="position: relative; left: 15px;">Signed in as: <span style="color: purple"><?= isset($_SESSION['name']) ? $_SESSION['name'] : ""; ?></h4>
       <div class="avatar">
       </div>
-
-      <?php if ($role == "customer") : ?>
-        <a class="btn btn-outline btn-primary" href="/CustomerInbox" role="button"> <i class="fa fa-envelope-o"></i> View
-          Inbox</a>
-      <?php endif; ?>
-      <?php if ($role == "client") : ?>
-        <a class="btn btn-outline btn-primary" href="/AdminInbox" role="button"> <i class="fa fa-envelope-o"></i> View
-          Inbox</a>
-      <?php endif; ?>
     </div>
 
   </header>
@@ -162,11 +153,6 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Delete Template(s)</span>
             </a>
 
-            <a href="<?= base_url() ?>/AdminInbox" class="nav_link <?= ($activePage == "AdminInbox" ? "active" : "") ?>">
-              <i class='bx bx-envelope nav_icon'></i>
-              <span class="nav_name">View Inbox</span>
-            </a>
-
             <a href="<?= base_url() ?>/AdminSettings" class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">
               <i class='bx bx-cog nav_icon'></i>
               <span class="nav_name">Settings</span>
@@ -187,20 +173,10 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <i class='bx bx-list-ul nav_icon'></i>
               <span class="nav_name">View Audit(s)</span>
             </a>
-
             <div class="dropdown">
-              <a href="<?= base_url() ?>/Analysis" class="nav_link <?= ($activePage == "AdminDashboard" ? "active" : "") ?>">
-                <i class='bx bxs-universal-access'></i>
-                <span class="nav_name">Accessibility</span>
+              
               </a>
-
-
-
             </div>
-
-
-
-
           </div>
         <?php endif; ?>
 

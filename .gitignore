@@ -9,3 +9,4 @@ system/ThirdParty/*
 .DS_Store
 app/.DS_Store
 public/.DS_Store
+.DS_Store

@@ -1,7 +1,7 @@
 .floating-btn {
   position: fixed; 
   bottom: 20px;
-  left: 1600px; 
+  left: 1600px;   
   color: #fff;    
   border: none;    
   border-radius: 50%;  
@@ -11,6 +11,7 @@
   cursor: pointer; 
   z-index: 999;
 }
+
 .accessButton {
   width: 140px;
   height: 45px;
@@ -36,7 +37,7 @@
   transform: translateY(-10px);
 }
 
-.grayscale {
+  .grayscale {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   }
@@ -53,13 +54,13 @@
   z-index: -1;
   }
 
-  .high-contrast {
+  .high-contrast .header {
   background: black;
   color: white;
   filter: invert(100%);
   }
 
-  .negative-contrast {
+  .negative-contrast .header {
   filter: invert(1) hue-rotate(180deg);
   background: black;
   }

@@ -9,8 +9,8 @@
 <head>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
-   <link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
-   <script src="./assets/js/accessibility.js"></script>
+   <link rel="stylesheet" href="/assets/css/accessibilityPortal.css"/>
+   <script src="/assets/js/accessibility.js"></script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -31,7 +31,7 @@
 </script>
 <style>
    .container {
-   max-width: 75%;
+   max-width: 100%;
    }
    label {
    font-size: 1.5rem !important;
@@ -48,6 +48,7 @@
             <button class="btn btn-primary tablinks" onclick="openTab(event, 'tab2')">Opening Hours</button>
             <button class="btn btn-primary tablinks" onclick="openTab(event, 'tab3')">Accessibility</button>
             <button class="btn btn-primary tablinks" onclick="openTab(event, 'tab4')">Images</button>
+            <button class="btn btn-primary tablinks" onclick="openTab(event, 'tab5')">Audits</button>
          </div>
          <br>
          <div id="tab1" class="tabcontent">
@@ -364,7 +365,7 @@
             </p>
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateAccessibility" onsubmit="return validateForm()">
                <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-               <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="112" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
+               <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="98" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
                <p id="char-count">0 / 500</p>
                <br>
                <button type="submit" class="btn btn-outline-success">Update Accessibility</button>
@@ -549,6 +550,52 @@
             var input = document.querySelector('#tags');
             new Tagify(input, {removable: true});
          </script>
+         <div id="tab5" class="tabcontent">
+            <style>
+               .table {
+               width: 100%;
+               max-width: 1400px;
+               margin: auto;
+               }
+            </style>
+            <table class="table table-hover margin bottom">
+               <thead>
+                  <tr>
+                     <th>Version</th>
+                     <th>Status</th>
+                     <th>View</th>
+                     <th>Audit Date</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <?php foreach ($audit_data as $item) {
+                     $qCount = $item['audit_total'];
+                     $cCount = $item['audit_prog'];
+                     $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
+                     ?>
+                  <tr>
+                     <td><?= $item['audit_version'] ?></td>
+                     <td>
+                        <div class="progress progress-small">
+                           <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
+                        </div>
+                     </td>
+                     <td class="text-center">
+                        <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
+                        <i class="fa fa-eye"></i> View</a>
+                     </td>
+                     <td>
+                        <?php
+                           $datetime = new DateTime($item['date_created']);
+                           $formattedDate = $datetime->format('Y-m-d');
+                           ?>
+                        <?= $formattedDate ?>
+                     </td>
+                  </tr>
+                  <?php } ?>
+               </tbody>
+            </table>
+         </div>
       </div>
    </div>
 </div>

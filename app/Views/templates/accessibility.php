@@ -41,6 +41,13 @@
                   Light Background
                </label>
             </div>
+
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="text-speech" onclick="speakPageText()">
+            <label class="form-check-label" for="text-speech">
+               Text to speech
+            </label>
+</div>
          </div>
          <div class="modal-footer">
             <button class="btn btn-secondary" id="reset-button">Reset</button>

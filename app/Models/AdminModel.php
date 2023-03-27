@@ -3,6 +3,28 @@ namespace App\Models;
 use CodeIgniter\Model;
   
 class AdminModel extends Model{
+    
+    public function getRecentCustomers()
+    {
+        $pastWeek = date('Y-m-d', strtotime('-1 week'));
+        return $this->db->table('company')->where('date_created >', $pastWeek)->get()->getResult();
+    }
+
+    public function getAllCustomers()
+    {
+        return $this->db->table('company')->get()->getResult();
+    }  
+
+    public function getRecentVenues()
+    {
+        $pastWeek = date('Y-m-d', strtotime('-1 week'));
+        return $this->db->table('company_venue')->where('date_created >', $pastWeek)->get()->getResult();
+    }
+    
+    public function getAllVenues()
+    {
+        return $this->db->table('company_venue')->get()->getResult();
+    }    
 
     public function updateUser($id, $name, $email) {
 
@@ -68,6 +90,4 @@ class AdminModel extends Model{
         $session->set('avatar', $user->avatar);
 
     }
-    
-    
 }

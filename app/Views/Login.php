@@ -1,4 +1,5 @@
 
+<?= view('templates/accessibility'); ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -20,7 +21,7 @@
       toastr.options.progressBar = true;
    </script>`
    <body class="animate__animated animate__fadeIn">
-      <?= view('templates/accessibility'); ?>
+      
       <div class="login-container">
       <section class="Login-form">
       <div class="fusion-separator fusion-no-medium-visibility fusion-no-large-visibility fusion-full-width-sep"
@@ -41,7 +42,7 @@
                <section class="Login-form">
                   <div class="form-content">
                      <div class="logo-container">
-                        <img style="position: relative; top: -15px; filter: drop-shadow(1px 2px 1px #ffffff);" src="/assets/img/Everybody-Welcome-logo.png" alt="">
+                        <img style="position: relative; top: -15px; filter: drop-shadow(1px 2px 1px #ffffff);" src="/assets/img/Making-Everybody-Welcome.png" alt="">
                      </div>
                      <?php if (session()->getFlashdata('msg')) : ?>
                      <div class="alert alert-danger">

@@ -85,14 +85,72 @@ buttons.addEventListener('click', function() {
   localStorage.setItem("negativeContrast", document.body.classList.contains('negative-contrast'));
 });
 
-const resetButton = document.getElementById('reset-button');
+//text to speech
+const checkbox = document.getElementById('text-speech');
+
+function speakPageText(event) {
+  let utterance = null;
+  let hoveredElement = null;
+  
+  function speakText(text) {
+    if (window.speechSynthesis && !window.speechSynthesis.speaking) {
+      utterance = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+  
+  function stopSpeaking() {
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      utterance = null;
+    }
+  }
+  
+  function handleHover(event) {
+    const target = event.target;
+  
+    if (target !== hoveredElement) {
+      stopSpeaking();
+  
+      if (checkbox.checked) {
+        const text = target.textContent;
+        speakText(text);
+      }
+  
+      hoveredElement = target;
+    }
+  }
+  
+  document.addEventListener('mouseover', handleHover);target = event.target;
+  if (target.textContent.trim()) {
+    const msg = new SpeechSynthesisUtterance(target.textContent);
+    if (checkbox.checked) {
+      window.speechSynthesis.speak(msg);
+    } else {
+      window.speechSynthesis.cancel();
+    }
+  }
+}
+
+checkbox.addEventListener("change", () => {
+  if (checkbox.checked) {
+    document.body.addEventListener("mouseover", speakPageText);
+  } else {
+    document.body.removeEventListener("mouseover", speakPageText);
+    window.speechSynthesis.cancel();
+  }
+  localStorage.setItem("textSpeech", checkbox.checked);
+});
+
+
+const resetButton = document.querySelector("#reset-button");
 resetButton.addEventListener('click', function() {
-    // Reset font size
-    fontSize = 14;
-    document.querySelectorAll("body *").forEach(el => {
-      el.style.fontSize = "";
-    });
-    localStorage.setItem("fontSize", fontSize);
+  // Reset font size
+  fontSize = 14;
+  document.querySelectorAll("body *").forEach(el => {
+    el.style.fontSize = "";
+  });
+  localStorage.setItem("fontSize", fontSize);
 
   // Reset grayscale
   if (localStorage.getItem("grayscale") === "true") {
@@ -118,6 +176,13 @@ resetButton.addEventListener('click', function() {
   }
   localStorage.setItem("negativeContrast", false);
 
+  if (localStorage.getItem("text-speech") === "true") {
+    const checkbox = document.getElementById('text-speech');
+    checkbox.checked = true;
+    speakPageText();
+  }
+  localStorage.setItem("text-speech", false);
+
   // Reset toggle buttons
   increaseFontBtn.checked = false;
   decreaseFontBtn.checked = false;
@@ -125,32 +190,7 @@ resetButton.addEventListener('click', function() {
   lightBackgroundBtn.checked = false;
   button.checked = false;
   buttons.checked = false;
+  checkbox.checked = false;
+
 });
 
-// Retrieve user preferences from local storage on page load
-if (localStorage.getItem("grayscale") === "true") {
-  toggleGrayscale();
-  toggleButton.checked = true;
-}
-
-if (localStorage.getItem("lightBackground") === "true") {
-  toggleLightBackground();
-  lightBackgroundBtn.checked = true;
-}
-
-if (localStorage.getItem("highContrast") === "true") {
-  toggleHighContrast();
-  button.checked = true;
-}
-
-if (localStorage.getItem("negativeContrast") === "true") {
-  toggleNegativeContrast();
-  buttons.checked = true;
-}
-
-if (localStorage.getItem("fontSize")) {
-    fontSize = localStorage.getItem("fontSize");
-    document.querySelectorAll("body *").forEach(el => {
-      el.style.fontSize = `${fontSize}px`;
-});
-}

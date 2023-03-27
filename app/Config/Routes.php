@@ -76,6 +76,7 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/AuditController/OpenAudit/(:num)', 'AuditController::openAudit/$1');
     $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');
     $routes->get('/ViewAudits', 'ViewAuditController::index');
+    $routes->get('/Review', 'ReviewController::index');
 });
 
 $routes->get('/Login', 'LoginController::index');

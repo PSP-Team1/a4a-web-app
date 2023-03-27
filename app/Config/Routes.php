@@ -68,6 +68,7 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/AdminChangePicture', 'AdminSettingsController::changePicture');
     $routes->get('/CustomerDashboard', 'CustomerDashboard::index');
     $routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
+    $routes->get('/Checkout', 'PaymentController::checkout');
     $routes->get('/CustomerInbox', 'InboxController::customerInbox');
     $routes->get('/Audit', 'AuditController::index');
     // $routes->get('/Audit/auditConfirmation', 'AuditController::auditConfirmation');

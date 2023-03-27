@@ -3,3 +3,6 @@ writable/logs/*
 writable/session/*
 app/Views/AdminCreateTemplate.php
 writable/debug*
+vendor/*
+system/*
+system/ThirdParty/*

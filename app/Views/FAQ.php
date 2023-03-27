@@ -1,4 +1,4 @@
-<?= view('templates/accessibilityPortal') ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +18,8 @@
             }
             </style>
              <div class="logo-container">
-                        <img style="position: relative; top: -15px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff);" src="/assets/img/Making-Everybody-Welcome.png" alt="">
-                     </div>
+  <img style="position: relative; top: 10px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff); width: 15%;" src="/assets/img/Making-Everybody-Welcome.png" alt="">
+</div>
 </head>
 <body>
 	<div class="container">

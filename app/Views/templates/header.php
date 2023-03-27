@@ -112,15 +112,6 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
       <h4 style="position: relative; left: 15px;">Signed in as: <span style="color: purple"><?= isset($_SESSION['name']) ? $_SESSION['name'] : ""; ?></h4>
       <div class="avatar">
       </div>
-
-      <?php if ($role == "customer") : ?>
-        <a class="btn btn-outline btn-primary" href="/CustomerInbox" role="button"> <i class="fa fa-envelope-o"></i> View
-          Inbox</a>
-      <?php endif; ?>
-      <?php if ($role == "client") : ?>
-        <a class="btn btn-outline btn-primary" href="/AdminInbox" role="button"> <i class="fa fa-envelope-o"></i> View
-          Inbox</a>
-      <?php endif; ?>
     </div>
 
   </header>
@@ -160,11 +151,6 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
             <a href="<?= base_url() ?>/AdminDeleteTemplate" class="nav_link <?= ($activePage == "AdminDeleteTemplate" ? "active" : "") ?>">
               <i class='bx bx-trash nav_icon'></i>
               <span class="nav_name">Delete Template(s)</span>
-            </a>
-
-            <a href="<?= base_url() ?>/AdminInbox" class="nav_link <?= ($activePage == "AdminInbox" ? "active" : "") ?>">
-              <i class='bx bx-envelope nav_icon'></i>
-              <span class="nav_name">View Inbox</span>
             </a>
 
             <a href="<?= base_url() ?>/AdminSettings" class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">

@@ -29,14 +29,15 @@
 		<div class="card">
 			<div class="card-header">
 				<h3 class="mb-0">
-					<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-						Question 1: q?
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+						Question: Is my disability included?
 					</button>
 				</h3>
 			</div>
-			<div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
+			<div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
 				<div class="card-body">
-					answer
+					Our comprehensive auditing system allows for accessibility features for a huge range of diabilities to be tested by a business.
+					This ensures that whatever your disability, it will be taken into account to allow you to know whether a business is suitable for you.
 				</div>
 			</div>
 		</div>
@@ -45,13 +46,15 @@
 		<div class="card-header">
 			<h3 class="mb-0">
 				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-					Question 2: q?
+					Question: I have a business, how can i get started with your system?
 				</button>
 			</h3>
 		</div>
 		<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
 			<div class="card-body">
-				answer
+				To get started, you can register for an account and upload your business to our site.
+				This will allow you to begin with a simple audit to allow us to give you a basic accessibility ranking and recieve
+				a listing on our business search page. More in depth audits can be accquired as part of our premium offerings
 			</div>
 		</div>
 	</div>
@@ -60,13 +63,13 @@
 		<div class="card-header">
 			<h3 class="mb-0">
 				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-					Question 3: q?
+					Question: How is the pricing for premium offerings?
 				</button>
 			</h3>
 		</div>
 		<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
 			<div class="card-body">
-				answer
+				All pricings for premium audit offerings can be accessed from within the business dashboard.
 			</div>
 		</div>
 	</div>

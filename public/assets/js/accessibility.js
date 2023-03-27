@@ -87,17 +87,63 @@ buttons.addEventListener('click', function() {
 
 //text to speech
 const checkbox = document.getElementById('text-speech');
-function speakPageText() {
-  const pageText = document.body.innerText;
-  const msg = new SpeechSynthesisUtterance(pageText);
 
-  if (checkbox.checked) {
-    window.speechSynthesis.speak(msg);
-  } else {
-    window.speechSynthesis.cancel();
+function speakPageText(event) {
+  let utterance = null;
+  let hoveredElement = null;
+  
+  function speakText(text) {
+    if (window.speechSynthesis && !window.speechSynthesis.speaking) {
+      utterance = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+  
+  function stopSpeaking() {
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      utterance = null;
+    }
+  }
+  
+  function handleHover(event) {
+    const target = event.target;
+  
+    if (target !== hoveredElement) {
+      stopSpeaking();
+  
+      if (checkbox.checked) {
+        const text = target.textContent;
+        speakText(text);
+      }
+  
+      hoveredElement = target;
+    }
+  }
+  
+  document.addEventListener('mouseover', handleHover);target = event.target;
+  if (target.textContent.trim()) {
+    const msg = new SpeechSynthesisUtterance(target.textContent);
+    if (checkbox.checked) {
+      window.speechSynthesis.speak(msg);
+    } else {
+      window.speechSynthesis.cancel();
+    }
   }
 }
 
+checkbox.addEventListener("change", () => {
+  if (checkbox.checked) {
+    document.body.addEventListener("mouseover", speakPageText);
+  } else {
+    document.body.removeEventListener("mouseover", speakPageText);
+    window.speechSynthesis.cancel();
+  }
+  localStorage.setItem("textSpeech", checkbox.checked);
+});
+
+
+const resetButton = document.querySelector("#reset-button");
 resetButton.addEventListener('click', function() {
   // Reset font size
   fontSize = 14;

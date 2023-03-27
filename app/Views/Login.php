@@ -1,6 +1,5 @@
-
-<?= view('templates/accessibility'); ?>
 <!DOCTYPE html>
+<?= view('templates/accessibility'); ?>
 <html lang="en">
    <head>
  
@@ -20,6 +19,7 @@
    <script>
       toastr.options.progressBar = true;
    </script>`
+   
    <body class="animate__animated animate__fadeIn">
       
       <div class="login-container">
@@ -28,6 +28,7 @@
          style="align-self: center;margin-left: auto;margin-right: auto;margin-top:80px;margin-bottom:10px;width:100%;">
       </div>
       <style>
+         
          body {
          background-image: url('https://images.wallpaperscraft.com/image/single/texture_spots_lemon_143188_1920x1080.jpg');
          background-repeat: no-repeat;

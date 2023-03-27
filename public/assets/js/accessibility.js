@@ -1,196 +1,143 @@
-const increaseFontBtn = document.querySelector("#increase-font");
-let fontSize = localStorage.getItem("fontSize") || 14;
+// Get the current font size from localStorage, or use a default value
+let fontSize = localStorage.getItem('fontSize') || 16;
 
-increaseFontBtn.addEventListener("click", () => {
-  fontSize = parseInt(fontSize) + 2;
-  document.querySelectorAll("body *").forEach(el => {
-    el.style.fontSize = `${fontSize}px`;
-  });
-  localStorage.setItem("fontSize", fontSize);
+// Set the font size of the document body
+document.body.style.fontSize = fontSize + 'px';
+
+// Increase font size
+document.getElementById('increase-font').addEventListener('click', function() {
+  fontSize++;
+  document.body.style.fontSize = fontSize + 'px';
+  localStorage.setItem('fontSize', fontSize);
 });
 
-const decreaseFontBtn = document.querySelector("#decrease-font");
-
-decreaseFontBtn.addEventListener("click", () => {
-  fontSize = parseInt(fontSize) - 2;
-  document.querySelectorAll("body *").forEach(el => {
-    el.style.fontSize = `${fontSize}px`;
-  });
-  localStorage.setItem("fontSize", fontSize);
+// Decrease font size
+document.getElementById('decrease-font').addEventListener('click', function() {
+  fontSize--;
+  document.body.style.fontSize = fontSize + 'px';
+  localStorage.setItem('fontSize', fontSize);
 });
-const toggleButton = document.getElementById('grayscale-toggle');
-const htmlTag = document.getElementsByTagName('html')[0];
-
-function toggleGrayscale() {
-  if (htmlTag.classList.contains('grayscale')) {
-    htmlTag.classList.remove('grayscale');
-    localStorage.setItem("grayscale", false);
+// Negative contrast
+document.getElementById("negative-contrast-button").addEventListener("change", function() {
+  if (this.checked) {
+     document.body.classList.add("negative-contrast");
+     localStorage.setItem("negative-contrast", true);
   } else {
-    htmlTag.classList.add('grayscale');
-    localStorage.setItem("grayscale", true);
+     document.body.classList.remove("negative-contrast");
+     localStorage.setItem("negative-contrast", false);
   }
+});
+
+// High contrast
+document.getElementById("high-contrast-button").addEventListener("change", function() {
+  if (this.checked) {
+     document.body.classList.add("high-contrast");
+     localStorage.setItem("high-contrast", true);
+  } else {
+     document.body.classList.remove("high-contrast");
+     localStorage.setItem("high-contrast", false);
+  }
+});
+
+// Greyscale
+document.getElementById("grayscale-toggle").addEventListener("change", function() {
+  if (this.checked) {
+     document.body.classList.add("grayscale");
+     localStorage.setItem("grayscale", true);
+  } else {
+     document.body.classList.remove("grayscale");
+     localStorage.setItem("grayscale", false);
+  }
+});
+
+// Light background
+const lightBackgroundToggle = document.getElementById("light-background");
+
+lightBackgroundToggle.addEventListener("change", function() {
+  if (this.checked) {
+     document.body.classList.add("light-background");
+     localStorage.setItem("light-background", true);
+  } else {
+     document.body.classList.remove("light-background");
+     localStorage.setItem("light-background", false);
+  }
+});
+
+// Text to speech
+function speakPageText() {
+  var textToSpeak = document.body.innerText;
+  var speech = new SpeechSynthesisUtterance();
+  speech.text = textToSpeak;
+  speech.lang = "en-UK";
+  window.speechSynthesis.speak(speech);
+  localStorage.setItem("text-to-speech", true);
 }
 
-// Toggle high contrast
-function toggleHighContrast() {
-    const body = document.body;
-    body.classList.toggle('high-contrast');
-    localStorage.setItem('highContrast', body.classList.contains('high-contrast'));
-  }
-  
-  // Toggle negative contrast
-  function toggleNegativeContrast() {
-    const body = document.body;
-    body.classList.toggle('negative-contrast');
-    localStorage.setItem('negativeContrast', body.classList.contains('negative-contrast'));
-  }
-  
+// Reset button
+document.getElementById("reset-button").addEventListener("click", function() {
+  localStorage.clear();
+  location.reload();
+});
 
-toggleButton.addEventListener('click', toggleGrayscale);
-
-const lightBackgroundBtn = document.querySelector("#light-background");
-
-function toggleLightBackground() {
-  const body = document.querySelector("body");
-  const whiteImage = document.createElement("img");
-  whiteImage.setAttribute("src", "assets/img/whitebackground.jpg");
-  whiteImage.setAttribute("id", "white-image");
-
-  if (body.style.backgroundColor) {
-    body.style.backgroundColor = "";
-    const existingImage = document.querySelector("#white-image");
-    if (existingImage) {
-      existingImage.remove();
-    }
-    localStorage.setItem("lightBackground", false);
-  } else {
-    body.style.backgroundColor = "#ffffff";
-    body.appendChild(whiteImage);
-    localStorage.setItem("lightBackground", true);
+// Load saved settings
+if (localStorage.getItem("font-size")) {
+  document.body.style.fontSize = localStorage.getItem("font-size");
+}
+if (localStorage.getItem("negative-contrast")) {
+  if (localStorage.getItem("negative-contrast") === "true") {
+     document.body.classList.add("negative-contrast");
+     document.getElementById("negative-contrast-button").checked = true;
   }
 }
-
-lightBackgroundBtn.addEventListener("click", toggleLightBackground);
-
-const button = document.getElementById('high-contrast-button');
-
-button.addEventListener('click', function() {
-  document.body.classList.toggle('high-contrast');
-  localStorage.setItem("highContrast", document.body.classList.contains('high-contrast'));
-});
-
-const buttons = document.getElementById('negative-contrast-button');
-buttons.addEventListener('click', function() {
-  document.body.classList.toggle('negative-contrast');
-  localStorage.setItem("negativeContrast", document.body.classList.contains('negative-contrast'));
-});
-
-//text to speech
-const checkbox = document.getElementById('text-speech');
-
-function speakPageText(event) {
-  let utterance = null;
-  let hoveredElement = null;
-  
-  function speakText(text) {
-    if (window.speechSynthesis && !window.speechSynthesis.speaking) {
-      utterance = new SpeechSynthesisUtterance(text);
-      window.speechSynthesis.speak(utterance);
-    }
-  }
-  
-  function stopSpeaking() {
-    if (window.speechSynthesis && window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
-      utterance = null;
-    }
-  }
-  
-  function handleHover(event) {
-    const target = event.target;
-  
-    if (target !== hoveredElement) {
-      stopSpeaking();
-  
-      if (checkbox.checked) {
-        const text = target.textContent;
-        speakText(text);
-      }
-  
-      hoveredElement = target;
-    }
-  }
-  
-  document.addEventListener('mouseover', handleHover);target = event.target;
-  if (target.textContent.trim()) {
-    const msg = new SpeechSynthesisUtterance(target.textContent);
-    if (checkbox.checked) {
-      window.speechSynthesis.speak(msg);
-    } else {
-      window.speechSynthesis.cancel();
-    }
+if (localStorage.getItem("high-contrast")) {
+  if (localStorage.getItem("high-contrast") === "true") {
+     document.body.classList.add("high-contrast");
+     document.getElementById("high-contrast-button").checked = true;
   }
 }
-
-checkbox.addEventListener("change", () => {
-  if (checkbox.checked) {
-    document.body.addEventListener("mouseover", speakPageText);
-  } else {
-    document.body.removeEventListener("mouseover", speakPageText);
-    window.speechSynthesis.cancel();
-  }
-  localStorage.setItem("textSpeech", checkbox.checked);
-});
-
-
-const resetButton = document.querySelector("#reset-button");
-resetButton.addEventListener('click', function() {
-  // Reset font size
-  fontSize = 14;
-  document.querySelectorAll("body *").forEach(el => {
-    el.style.fontSize = "";
-  });
-  localStorage.setItem("fontSize", fontSize);
-
-  // Reset grayscale
+if (localStorage.getItem("grayscale")) {
   if (localStorage.getItem("grayscale") === "true") {
-    toggleGrayscale();
+     document.body.classList.add("grayscale");
+     document.getElementById("grayscale-toggle").checked = true;
   }
-  localStorage.setItem("grayscale", false);
-
-  // Reset light background
-  if (localStorage.getItem("lightBackground") === "true") {
-    toggleLightBackground();
+}
+if (localStorage.getItem("light-background")) {
+  if (localStorage.getItem("light-background") === "true") {
+     document.body.classList.add("light-background");
+     document.getElementById("light-background").checked = true;
   }
-  localStorage.setItem("lightBackground", false);
-
-  // Reset high contrast
-  if (localStorage.getItem("highContrast") === "true") {
-    toggleHighContrast();
+}
+if (localStorage.getItem("text-to-speech")) {
+  if (localStorage.getItem("text-to-speech") === "true") {
+     document.body.classList.add("text-speech");
+     document.getElementById("text-speech").checked = true;
   }
-  localStorage.setItem("highContrast", false);
+}
 
-  // Reset negative contrast
-  if (localStorage.getItem("negativeContrast") === "true") {
-    toggleNegativeContrast();
-  }
-  localStorage.setItem("negativeContrast", false);
+// Get the reset button element
+const resetButton = document.querySelector('#reset-button');
 
-  if (localStorage.getItem("text-speech") === "true") {
-    const checkbox = document.getElementById('text-speech');
-    checkbox.checked = true;
-    speakPageText();
-  }
-  localStorage.setItem("text-speech", false);
+// Add an event listener to the reset button
+resetButton.addEventListener('click', function() {
+  // Clear all saved preferences from local storage
+  localStorage.clear();
 
-  // Reset toggle buttons
-  increaseFontBtn.checked = false;
-  decreaseFontBtn.checked = false;
-  toggleButton.checked = false;
-  lightBackgroundBtn.checked = false;
-  button.checked = false;
-  buttons.checked = false;
-  checkbox.checked = false;
-
+  // Set all accessibility features to their default values
+  setDefaultAccessibilitySettings();
 });
 
+// Function to set all accessibility features to their default values
+function setDefaultAccessibilitySettings() {
+  // Set font size to default (16px)
+  document.body.style.fontSize = '16px';
+
+  // Uncheck all checkboxes
+  document.querySelector('#negative-contrast-button').checked = false;
+  document.querySelector('#high-contrast-button').checked = false;
+  document.querySelector('#grayscale-toggle').checked = false;
+  document.querySelector('#light-background').checked = false;
+  document.querySelector('#text-speech').checked = false;
+
+  // Stop text to speech if it's currently active
+  window.speechSynthesis.cancel();
+}

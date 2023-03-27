@@ -95,7 +95,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
       <div class="header_img">
 
       </div>
-      <img src="/assets/img/Everybody-Welcome-logo.png" alt="Description of the image" max-width:="" 50px;="" style="
+      <img src="/assets/img/Making-Everybody-Welcome.png" alt="Description of the image" max-width:="" 50px;="" style="
     max-width: 100px;
     position: relative;
     left: 0px;

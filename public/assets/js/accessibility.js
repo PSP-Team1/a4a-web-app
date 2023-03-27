@@ -125,7 +125,24 @@ resetButton.addEventListener('click', function() {
   lightBackgroundBtn.checked = false;
   button.checked = false;
   buttons.checked = false;
+  checkbox.checked = false;
+
 });
+
+
+//text to speech
+function speakPageText() {
+  var checkbox = document.getElementById('text-speech');
+  if (checkbox.checked) {
+    var pageText = document.body.innerText;
+    var msg = new SpeechSynthesisUtterance(pageText);
+    window.speechSynthesis.speak(msg);
+  } else {
+    window.speechSynthesis.cancel();
+  }
+}
+
+
 
 // Retrieve user preferences from local storage on page load
 if (localStorage.getItem("grayscale") === "true") {

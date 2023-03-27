@@ -119,10 +119,16 @@ class AuditController extends BaseController
     }
 
 
-    public function auditConfirmation()
+    public function auditConfirmation($i)
     {
-        return view('AuditConfirmation');
+
+        $am = new AuditModel();
+        $data['summary'] = $am->getAuditSummary($i);
+        $data['question_data'] = $am->getQuestions($i);
+        $data['audit_id'] = $i;
+        return view('AuditConfirmation', $data);
     }
+
     public function completeAudit()
     {
         $auditId = $this->request->getVar('auditId');

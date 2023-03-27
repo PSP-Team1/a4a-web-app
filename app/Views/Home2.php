@@ -116,6 +116,9 @@
                   <a class="nav-link active btn btn-outline-secondary btn-success" aria-current="page" href="#">Affiliates</a>
 
                </li>
+               <li class="nav-item me-3">
+   <a class="nav-link active btn btn-outline-secondary" aria-current="page" href="/FAQ">FAQ</a>
+</li>
             </ul>
          </div>
       </div>
@@ -286,7 +289,7 @@
          let encTerm;
          let url;
 
-         //metho to get the data, encoded params
+         //method to get the data, encoded params
          const getData = () => {
             encTags = tags.map(tag => encodeURIComponent(tag)).join(",");
             encTerm = encodeURIComponent(searchTerm);

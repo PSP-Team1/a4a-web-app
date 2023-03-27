@@ -7,7 +7,9 @@ use CodeIgniter\Model;
 class ApiKeyModel extends Model
 {
     protected $table = 'auth_keys';
-    protected $allowedFields = ['company_id', 'text', 'exp', 'audit_id'];
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['company_id', 'text', 'date_created', 'last_updated', 'exp', 'audit_id'];
+
 
     public function generateApiKey($auditId)
     {

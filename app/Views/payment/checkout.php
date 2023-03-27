@@ -1,6 +1,5 @@
 <?= view('templates/header') ?>
 
-<h2>Checkout</h2>
 
 <?php if (session()->has('error')) : ?>
     <div class="alert alert-danger"><?= session('error') ?></div>
@@ -8,23 +7,71 @@
 
 <div class="container">
     <div class="row">
+
         <div class="col-lg-12">
-            <form action="<?= site_url('PaymentController/checkout') ?>" method="post" id="payment-form">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="cardholder-name" class="form-label">Cardholder Name</label>
-                        <input type="text" class="form-control" id="cardholder-name" name="cardholder-name" placeholder="John Doe" required>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="card-number" class="form-label">Card Number</label>
-                        <div id="card-number" class="form-control"></div>
-                        <div class="invalid-feedback"></div>
-                    </div>
+
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h1>Complete Your Order</h1>
                 </div>
-                <input type="hidden" id="amount" name="amount" value="100">
-                <button type="submit" class="btn btn-primary">Submit Payment</button>
-            </form>
+                <div class="ibox-content">
+                    <h2>Order Details</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">Accessibility Audit Credit</td>
+                                <td>5</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Embedded report & hosting services</td>
+                                <td>1</td>
+                                <td>Premium listing services</td>
+                            </tr>
+                            <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                                <td><b>Total (inc. VAT)</b> £99.99</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ibox-title">
+                    <h2><i class="fa fa-lock"></i> Payment Details</h2>
+                    <p><i class="fa fa-info-cirle text-success"></i> Check out securely with our PCI-DSS compliant payment system. We never store your credit card details.</p>
+                </div>
+
+                <div class="ibox-content">
+                    <form action="<?= site_url('PaymentController/checkout') ?>" method="post" id="payment-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cardholder-name" class="form-label">Cardholder Name</label>
+                                <input type="text" class="form-control" id="cardholder-name" name="cardholder-name" placeholder="John Doe" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="card-number" class="form-label">Card Number</label>
+                                <div id="card-number" class="form-control"></div>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="amount" name="amount" value="100">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Make Payment</button>
+                    </form>
+                </div>
+            </div>
 
         </div>
     </div>

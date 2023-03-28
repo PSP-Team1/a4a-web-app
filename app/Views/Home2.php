@@ -3,10 +3,50 @@
 <html lang="en">
 
 <head>
+
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Everybody Welcome</title>
+   <style type="text/css">
+    #terms-and-conditions {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: none;
+    }
+
+    #terms-and-conditions-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+    }
+
+    #terms-and-conditions-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 500px;
+        max-height: 80%;
+        overflow-y: auto;
+        background-color: white;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+   
+</style>
+   
    <link href="<?= base_url(); ?>/assets/css/style_theme.css" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
    <link rel="stylesheet" href="./assets/css/accessiblity.css" />
@@ -86,6 +126,35 @@
 </head>
 
 <body>
+<div id="terms-and-conditions">
+    <div id="terms-and-conditions-overlay"></div>
+    <div id="terms-and-conditions-content">
+        <h2>Terms and Conditions</h2>
+        <p>  Acceptance of Terms: By using this website, you agree to be bound by these terms and conditions. This website is for personal use only. You may not use this website for any commercial purpose without prior written permission.
+             You agree to use this website in a manner that is lawful, ethical, and respectful of others. You may not use this website to harass, harm, or threaten others.
+             All content on this website is the property of the website owner or its licensors and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or modify any content on this website without prior written permission.
+             This website is provided on an "as is" and "as available" basis. The website owner makes no warranties, express or implied, regarding the website's operation or the information, content, or materials provided on the website.
+             The website owner will not be liable for any damages of any kind arising from the use of this website, including but not limited to direct, indirect, incidental, punitive, and consequential damages.
+             You agree to indemnify and hold the website owner harmless from any claim, demand, or damage arising from your use of this website.
+             The website owner may terminate your access to this website at any time for any reason.
+             These terms and conditions shall be governed by and construed in accordance with the laws of [insert jurisdiction].
+             The website owner reserves the right to modify these terms and conditions at any time. Your continued use of this website after any such modifications shall constitute your acceptance of the modified terms and conditions. </p>
+        <button onclick="acceptTerms()">I Agree</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function acceptTerms() {
+        document.getElementById('terms-and-conditions').style.display = 'none';
+        document.body.classList.remove('blur');
+    }
+
+    window.onload = function() {
+        document.getElementById('terms-and-conditions').style.display = 'block';
+        document.body.classList.add('blur');
+    }
+</script>
+
    
    <button aria-label="scroll to top" class="btn-scroll-top" title="Scroll to top"><i class="fa fa-chevron-up"></i></button>
 
@@ -577,7 +646,6 @@
          });
       });
    </script>
-
 
 </body>
 

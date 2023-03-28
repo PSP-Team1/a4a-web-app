@@ -169,7 +169,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Dashboard</span>
             </a>
 
-            <a href="<?= base_url() ?>/ViewAudits" class="nav_link <?= ($activePage == "ViewAudits" ? "active" : "") ?>">
+            <a href="<?= base_url() ?>/Audit" class="nav_link <?= ($activePage == "ViewAudits" ? "active" : "") ?>">
               <i class='bx bx-list-ul nav_icon'></i>
               <span class="nav_name">View Audit(s)</span>
             </a>

@@ -3,6 +3,14 @@
 
 <?php
 
+
+$avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
+
+
+?>
+
+<?php
+
 // Customize the view per user
 date_default_timezone_set('Europe/London');
 
@@ -250,26 +258,7 @@ $contact = $session->get('name');
                                              <a class="btn btn-success btn-outline" href="/CustomerDashboard/ViewVenue/<?= $venue['id'] ?>" role="button">
                                                 <i class="fas fa-eye"></i> View
                                              </a>
-                                             <a class="btn btn-danger btn-outline" href="#" role="button" data-toggle="modal" data-target="#deleteVenueModal<?= $venue['id'] ?>">
-                                                <i class="fas fa-trash"></i> Delete
-                                             </a>
-                                             <!-- Modal -->
-                                             <div class="modal fade" id="deleteVenueModal<?= $venue['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteVenueModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                   <div class="modal-content">
-                                                      <div class="modal-header">
-                                                         <h2 class="modal-title" id="deleteVenueModalLabel">Confirm Deletion</h2>
-                                                      </div>
-                                                      <div class="modal-body">
-                                                         Are you sure you want to delete <?= $venue['venue_name'] ?>?
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                         <a class="btn btn-danger" href="/CustomerDashboard/deleteVenue/<?= $venue['id'] ?>">Delete</a>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
+
                                              <?php if ($progress != 100) { ?>
                                                 <a class="btn btn-danger btn disabled" href="/AdminDashboard/ViewCompany/<?= $venue['id'] ?>" role="button">
                                                    <i class="fas fa-x"></i> Publish
@@ -340,98 +329,86 @@ $contact = $session->get('name');
                                        </tr>
                                     <?php endforeach; ?>
                                  </tbody>
-                                 <tfoot>
-                                    <tr>
-                                       <td colspan="5" class="footable-visible">
-                                          <ul class="pagination float-right">
-                                             <li class="footable-page-arrow disabled"><a data-page="first" href="#first">«</a>
-                                             </li>
-                                             <li class="footable-page-arrow disabled"><a data-page="prev" href="#prev">‹</a></li>
-                                             <li class="footable-page active"><a data-page="0" href="#">1</a></li>
-                                             <li class="footable-page"><a data-page="1" href="#">2</a></li>
-                                             <li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li>
-                                             <li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li>
-                                          </ul>
-                                       </td>
-                                    </tr>
-                                 </tfoot>
-                              </table>
-                           <?php endif; ?>
 
-                           <a class="btn btn-success btn-outline" href="/CustomerNewVenue" role="button">
-                              <i class="fa fa-plus"></i> Add New Venue
-                           </a>
+                              </table>
+
+                              <a class="btn btn-success btn-outline" href="/CustomerNewVenue" role="button">
+                                 <i class="fa fa-plus"></i> Add New Venue
+                              </a>
                            </div>
+                        <?php endif; ?>
                         </div>
                   </div>
 
-                  <div class="col-lg-4">
 
-                     <div class="ibox ">
+               </div>
+            </div>
 
-                        <div class="ibox-title">
-                           Live Updates
-                        </div>
+            <div class="col-lg-4">
 
-                        <div class="ibox-content">
+               <div class="ibox ">
 
-                           <div>
-                              <div class="chat-activity-list">
+                  <div class="ibox-title">
+                     Live Updates
+                  </div>
 
-                                 <div class="chat-element">
-                                    <a href="#" class="float-left">
-                                       <img alt="image" class="rounded-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                       <small class="float-right text-navy">1m ago</small>
-                                       <strong>Mike Smith</strong>
-                                       <p class="m-b-xs">
-                                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                       </p>
-                                       <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                    </div>
-                                 </div>
+                  <div class="ibox-content">
 
-                                 <div class="chat-element right">
-                                    <a href="#" class="float-right">
-                                       <img alt="image" class="rounded-circle" src="img/a4.jpg">
-                                    </a>
-                                    <div class="media-body text-right ">
-                                       <small class="float-left">5m ago</small>
-                                       <strong>John Smith</strong>
-                                       <p class="m-b-xs">
-                                          Lorem Ipsum is simply dummy text of the printing.
-                                       </p>
-                                       <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                    </div>
-                                 </div>
+                     <div>
+                        <div class="chat-activity-list">
 
-                                 <div class="chat-element ">
-                                    <a href="#" class="float-left">
-                                       <img alt="image" class="rounded-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                       <small class="float-right">2h ago</small>
-                                       <strong>Mike Smith</strong>
-                                       <p class="m-b-xs">
-                                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                       </p>
-                                       <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                    </div>
-                                 </div>
+                           <div class="chat-element">
+                              <a href="#" class="float-left">
+                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
+                              </a>
+                              <div class="media-body ">
+                                 <small class="float-right text-navy">1m ago</small>
+                                 <strong>Mike Smith</strong>
+                                 <p class="m-b-xs">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                 </p>
+                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
                               </div>
                            </div>
-                           <div class="chat-form">
-                              <form role="form">
-                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Message"></textarea>
-                                 </div>
-                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Send message</strong></button>
-                                 </div>
-                              </form>
+
+                           <div class="chat-element right">
+                              <a href="#" class="float-right">
+                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
+
+                              </a>
+                              <div class="media-body text-right ">
+                                 <small class="float-left">5m ago</small>
+                                 <strong>John Smith</strong>
+                                 <p class="m-b-xs">
+                                    Lorem Ipsum is simply dummy text of the printing.
+                                 </p>
+                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                              </div>
+                           </div>
+
+                           <div class="chat-element ">
+                              <a href="#" class="float-left">
+                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
+
+                              </a>
+                              <div class="media-body ">
+                                 <small class="float-right">2h ago</small>
+                                 <strong>Mike Smith</strong>
+                                 <p class="m-b-xs">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                 </p>
+                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                              </div>
                            </div>
                         </div>
+                     </div>
+                     <div class="chat-form">
+                        <form role="form">
+                           <div class="form-group">
+                              <textarea class="form-control" placeholder="Message"></textarea>
+                           </div>
+
+                        </form>
                      </div>
                   </div>
                </div>

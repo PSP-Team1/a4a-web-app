@@ -131,7 +131,7 @@ $user = $session->get('name');
             <div class="ibox-title">
                <h2>Quick Links</h2>
             </div>
-            <div class="ibox-content">
+            <div class="ibox-content" style="display: flex; justify-content: center">
                <div class="row">
                   <div class="col-md-12">
                      <div class="btn-group" role="group" aria-label="Quick Links">
@@ -160,19 +160,19 @@ $user = $session->get('name');
             <div class="ibox-title">
                <h2>Revenue Management</h2>
             </div>
-            <div class="ibox-content">
+            <div class="ibox-content" style="max-height: 330px; overflow-y: auto;">
                <div class="row">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eius qui minus aspernatur eum quam beatae laudantium libero, ipsum quo quia. Velit blanditiis cumque debitis accusantium? Harum ab ullam placeat?
                   Accusamus pariatur numquam tenetur dicta sit, vel illum quisquam itaque doloribus quam obcaecati voluptatibus enim! Eaque, delectus aspernatur dicta consequatur doloribus eos praesentium atque tempora aliquid? Voluptates unde quisquam ipsum.
                   Quisquam possimus modi, voluptatibus labore minima praesentium quam repudiandae, ducimus illum totam iusto perspiciatis dignissimos dolor eius expedita enim recusandae in nisi. Illo explicabo, maxime beatae facere aliquam blanditiis quam!
                   Amet doloribus corporis sint modi aspernatur tempora eveniet, asperiores facilis molestiae maxime doloremque fugit enim, voluptatibus numquam laudantium voluptatem possimus, distinctio autem accusantium? Praesentium aut blanditiis fugit tempora, numquam maiores!
-                  Illo non, est, beatae molestias dolore similique modi accusantium cumque voluptatum amet officiis quaerat qui consequatur ut adipisci eos quis incidunt vitae atque fugiat deserunt ratione? Corporis rem laudantium assumenda?
-                  Consectetur voluptatum beatae voluptates ad reiciendis placeat suscipit sunt quidem aliquid ex accusantium quas ratione inventore ipsam recusandae illo earum doloribus, vero impedit vitae necessitatibus ducimus molestiae optio adipisci. Libero?
-                  Unde incidunt consectetur eum iure ab recusandae tenetur repellat temporibus animi, itaque nostrum ullam repellendus! Quas, repellendus laborum, odio alias libero totam asperiores earum ipsam harum, illum eveniet obcaecati delectus.
-                  Itaque omnis voluptate tempore quia praesentium quos ex, nam veritatis possimus ab impedit ratione. Deleniti repudiandae totam ut? Dicta reprehenderit recusandae voluptatum consectetur rerum unde molestiae obcaecati temporibus architecto culpa.
-                  Animi accusamus vel mollitia, voluptatibus repellat error quam ab nam facere eius ipsa laboriosam soluta, eveniet quidem aliquam maxime! Placeat temporibus delectus officia enim alias eligendi qui veniam doloremque iusto.
-                  Accusantium consequatur voluptatibus similique repudiandae odit? Tenetur, quia? Quibusdam aliquid nemo consectetur nisi libero? Porro corporis velit ex excepturi, dolorum est pariatur? Illum, vero neque tempora cum ratione commodi esse!
-
+                  Test Test Test Test Test Test Test Test
+                  Amet doloribus corporis sint modi aspernatur tempora eveniet, asperiores facilis molestiae maxime doloremque fugit enim, voluptatibus numquam laudantium voluptatem possimus, distinctio autem accusantium? Praesentium aut blanditiis fugit tempora, numquam maiores!
+                  Test Test Test Test Test Test Test Test
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eius qui minus aspernatur eum quam beatae laudantium libero, ipsum quo quia. Velit blanditiis cumque debitis accusantium? Harum ab ullam placeat?
+                  Accusamus pariatur numquam tenetur dicta sit, vel illum quisquam itaque doloribus quam obcaecati voluptatibus enim! Eaque, delectus aspernatur dicta consequatur doloribus eos praesentium atque tempora aliquid? Voluptates unde quisquam ipsum.
+                  Quisquam possimus modi, voluptatibus labore minima praesentium quam repudiandae, ducimus illum totam iusto perspiciatis dignissimos dolor eius expedita enim recusandae in nisi. Illo explicabo, maxime beatae facere aliquam blanditiis quam!
+                  Amet doloribus corporis sint modi aspernatur tempora eveniet, asperiores facilis molestiae maxime doloremque fugit enim, voluptatibus numquam laudantium voluptatem possimus, distinctio autem accusantium? Praesentium aut blanditiis fugit tempora, numquam maiores!
                </div>
             </div>
          </div>
@@ -187,7 +187,7 @@ $user = $session->get('name');
 
    <div class="row">
       <div class="col-md-6">
-         <div class="ibox-title text-center">
+         <div class="ibox-title">
             <h2>Application Statistics (This Week)</h2>
          </div>
          <div class="ibox-content">
@@ -219,7 +219,7 @@ $user = $session->get('name');
       </div>
 
       <div class="col-md-6">
-         <div class="ibox-title text-center">
+         <div class="ibox-title">
             <h2>Application Statistics (All Time)</h2>
          </div>
          <div class="ibox-content">
@@ -252,6 +252,8 @@ $user = $session->get('name');
       </div>
    </div>
 
+   <br>
+
    <div class="row">
       <div class="col-lg-12">
 
@@ -280,7 +282,6 @@ $user = $session->get('name');
                      <tr>
                         <th data-type="all" class="footable-visible footable-sortable">Company Name<span class="footable-sort-indicator"></span></th>
                         <th data-type="all" class="footable-visible footable-sortable">Number of Venues<span class="footable-sort-indicator"></span></th>
-                        <!-- <th data-type="all" class="footable-visible footable-sortable">Address<span class="footable-sort-indicator"></span></th> -->
                         <th data-type="all" class="footable-visible footable-sortable">Creation Date<span class="footable-sort-indicator"></span></th>
                         <th class="footable-visible footable-last-column footable-sortable">Action<span class="footable-sort-indicator"></span></th>
                      </tr>

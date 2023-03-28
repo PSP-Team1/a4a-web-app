@@ -222,7 +222,7 @@ class AuditModel extends Model
                 FROM
                     company c
                 JOIN company_venue cv ON cv.company_id = c.id
-                GROUP BY cid) agg ON agg.cid = c.id;";
+                GROUP BY cid) agg ON agg.cid = c.id order by c.date_created asc;";
 
 
         $query = $db->query($sql);

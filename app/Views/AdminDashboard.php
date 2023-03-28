@@ -158,7 +158,7 @@ $user = $session->get('name');
       <div class="col-lg-6">
          <div class="ibox">
             <div class="ibox-title">
-               <h2>Revenue Management</h2>
+            <h2>Revenue Management</h2>
             </div>
             <div class="ibox-content" style="max-height: 330px; overflow-y: auto;">
                <div class="row">
@@ -206,7 +206,7 @@ $user = $session->get('name');
          <div class="ibox-content">
             <div class="left-box">
                <div style="background-color: rgba(54, 162, 235, 0.3); background: linear-gradient(to top, rgba(54, 162, 235, 0.5), #ffffff);" class="round-box-week">
-                  <h3><i class="bi bi-people"></i>Customers Registered</h3>
+                  <h3><i class="bi bi-people"></i> Customers Registered</h3>
                   <br>
                   <?php if (count($customersWeek) == 1) { ?>
                      <h4><?= count($customersWeek) ?> Customer!</h4>
@@ -314,10 +314,10 @@ $user = $session->get('name');
                            ?>
                            <td style=" footable-visible"><?= date("F j Y", strtotime($company['date_created'])) ?></td>
                            <td class="footable-visible footable-last-column">
-                              <a class="btn btn-success" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button">
+                              <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button">
                                  <i class="bi bi-eye"></i> View
                               </a>
-                              <a class="btn btn-danger" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button">
+                              <a class="btn btn-danger btn-outline" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button">
                                  <i class="bi bi-trash"></i> Delete
                               </a>
                         </tr>
@@ -399,26 +399,20 @@ $user = $session->get('name');
 
 <script>
 
-// Get a reference to the table and tbody elements
 const table = document.querySelector('table');
 const tbody = table.querySelector('tbody');
 
-// Create arrays to store the labels and data for the chart
 const labels = [];
 const data = [];
 
-// Loop through each row in the table body
 tbody.querySelectorAll('tr').forEach(row => {
-// Extract the label and data values from the row
 const label = row.querySelector('td:first-of-type').textContent.trim();
 const value = parseFloat(row.querySelector('td:last-of-type').textContent.replace(/[^0-9.-]+/g,""));
 
-// Add the label and data values to the respective arrays
 labels.push(label);
 data.push(value);
 });
 
-// Create a new Chart.js bar chart
 const chart = new Chart(document.getElementById('revenue-chart'), {
 type: 'bar',
 data: {

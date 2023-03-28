@@ -143,7 +143,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }

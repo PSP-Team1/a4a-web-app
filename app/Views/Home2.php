@@ -8,6 +8,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Everybody Welcome</title>
+   
    <style type="text/css">
     #terms-and-conditions {
         position: fixed;
@@ -44,8 +45,9 @@
     }
 </style>
 
+
    
-</style>
+
    
    <link href="<?= base_url(); ?>/assets/css/style_theme.css" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -135,21 +137,63 @@
    font-size: 20px;
    }
 
+   #video-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
 
 
- 
 
-   </style>
-
+</style>
 
 
 
 
+<script type="text/javascript">
+    function acceptTerms() {
+        document.getElementById('terms-and-conditions').style.display = 'none';
+        document.body.classList.remove('blur');
+    }
 
+    window.onload = function() {
+        document.getElementById('terms-and-conditions').style.display = 'block';
+        document.body.classList.add('blur');
+    }
+</script>
 
 </head>
 
 <body>
+
+
+<div id="video-popup">
+<div class="popup-header">
+    <h2>Getting started? Click here to find out how to search</h2>
+  </div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/4Hz7_sxOMf4?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+   <button id="close-button">Close</button>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    var popup = document.getElementById('video-popup');
+    popup.style.display = 'block';
+    document.getElementById('close-button').addEventListener('click', function() {
+      popup.style.display = 'none';
+    });
+  });
+</script>
+
+
+
+
+
 <div id="terms-and-conditions">
     <div id="terms-and-conditions-overlay"></div>
     <div id="terms-and-conditions-content">
@@ -167,19 +211,9 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    function acceptTerms() {
-        document.getElementById('terms-and-conditions').style.display = 'none';
-        document.body.classList.remove('blur');
-    }
 
-    window.onload = function() {
-        document.getElementById('terms-and-conditions').style.display = 'block';
-        document.body.classList.add('blur');
-    }
-</script>
 
-   
+
    <button aria-label="scroll to top" class="btn-scroll-top" title="Scroll to top"><i class="fa fa-chevron-up"></i></button>
 
    <!-- <button type="button" class="btn btn-primary" id="showLoaderBtn">
@@ -212,6 +246,8 @@
                <li class="nav-item me-3">
    <a class="nav-link active btn btn-outline-tertiary" aria-current="page" href="/FAQ">FAQ</a>
 </li>
+
+
             </ul>
          </div>
       </div>

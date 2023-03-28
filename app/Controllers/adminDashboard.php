@@ -21,6 +21,7 @@ class AdminDashboard extends BaseController
         $data['customersAllTime'] = $adminModel->getAllCustomers();
         $data['venueWeek'] = $adminModel->getRecentVenues();
         $data['venueAllTime'] = $adminModel->getAllVenues();
+        $data['revenues'] = $adminModel->getRevenueTrends();
         return view('AdminDashboard', $data);
     }
 

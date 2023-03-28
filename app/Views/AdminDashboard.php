@@ -162,17 +162,29 @@ $user = $session->get('name');
             </div>
             <div class="ibox-content" style="max-height: 330px; overflow-y: auto;">
                <div class="row">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eius qui minus aspernatur eum quam beatae laudantium libero, ipsum quo quia. Velit blanditiis cumque debitis accusantium? Harum ab ullam placeat?
-                  Accusamus pariatur numquam tenetur dicta sit, vel illum quisquam itaque doloribus quam obcaecati voluptatibus enim! Eaque, delectus aspernatur dicta consequatur doloribus eos praesentium atque tempora aliquid? Voluptates unde quisquam ipsum.
-                  Quisquam possimus modi, voluptatibus labore minima praesentium quam repudiandae, ducimus illum totam iusto perspiciatis dignissimos dolor eius expedita enim recusandae in nisi. Illo explicabo, maxime beatae facere aliquam blanditiis quam!
-                  Amet doloribus corporis sint modi aspernatur tempora eveniet, asperiores facilis molestiae maxime doloremque fugit enim, voluptatibus numquam laudantium voluptatem possimus, distinctio autem accusantium? Praesentium aut blanditiis fugit tempora, numquam maiores!
-                  Test Test Test Test Test Test Test Test
-                  Amet doloribus corporis sint modi aspernatur tempora eveniet, asperiores facilis molestiae maxime doloremque fugit enim, voluptatibus numquam laudantium voluptatem possimus, distinctio autem accusantium? Praesentium aut blanditiis fugit tempora, numquam maiores!
-                  Test Test Test Test Test Test Test Test
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eius qui minus aspernatur eum quam beatae laudantium libero, ipsum quo quia. Velit blanditiis cumque debitis accusantium? Harum ab ullam placeat?
-                  Accusamus pariatur numquam tenetur dicta sit, vel illum quisquam itaque doloribus quam obcaecati voluptatibus enim! Eaque, delectus aspernatur dicta consequatur doloribus eos praesentium atque tempora aliquid? Voluptates unde quisquam ipsum.
-                  Quisquam possimus modi, voluptatibus labore minima praesentium quam repudiandae, ducimus illum totam iusto perspiciatis dignissimos dolor eius expedita enim recusandae in nisi. Illo explicabo, maxime beatae facere aliquam blanditiis quam!
-                  Amet doloribus corporis sint modi aspernatur tempora eveniet, asperiores facilis molestiae maxime doloremque fugit enim, voluptatibus numquam laudantium voluptatem possimus, distinctio autem accusantium? Praesentium aut blanditiis fugit tempora, numquam maiores!
+               <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded">
+                  <thead>
+                     <tr>
+                        <th data-type="all" class="footable-visible footable-sortable">Month<span class="footable-sort-indicator"></span></th>
+                        <th data-type="all" class="footable-visible footable-sortable">Payment Amount<span class="footable-sort-indicator"></span></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <?php foreach ($revenues as $revenue) : ?>
+                        <tr class="footable-even">
+                        <td style="footable-visible">
+                              <?php
+                                 $dateStr = $revenue['month'];
+                                 $date = DateTime::createFromFormat('Y-m', $dateStr);
+                                 echo $date->format('F Y');
+                              ?>
+                           </td>
+
+                           <td style="footable-visible">£<?= number_format($revenue['total_payment_amount'], 2) ?></td>
+
+                        </tr>
+                     <?php endforeach; ?>
+               </table>
                </div>
             </div>
          </div>

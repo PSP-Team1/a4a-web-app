@@ -162,7 +162,7 @@ $user = $session->get('name');
             </div>
             <div class="ibox-content" style="max-height: 330px; overflow-y: auto;">
                <div class="row">
-               <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded">
+               <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded" hidden>
                   <thead>
                      <tr>
                         <th data-type="all" class="footable-visible footable-sortable">Month<span class="footable-sort-indicator"></span></th>
@@ -185,6 +185,7 @@ $user = $session->get('name');
                         </tr>
                      <?php endforeach; ?>
                </table>
+               <canvas id="revenue-chart"></canvas>
                </div>
             </div>
          </div>
@@ -394,6 +395,52 @@ $user = $session->get('name');
          }
       }
    });
+</script>
+
+<script>
+
+// Get a reference to the table and tbody elements
+const table = document.querySelector('table');
+const tbody = table.querySelector('tbody');
+
+// Create arrays to store the labels and data for the chart
+const labels = [];
+const data = [];
+
+// Loop through each row in the table body
+tbody.querySelectorAll('tr').forEach(row => {
+// Extract the label and data values from the row
+const label = row.querySelector('td:first-of-type').textContent.trim();
+const value = parseFloat(row.querySelector('td:last-of-type').textContent.replace(/[^0-9.-]+/g,""));
+
+// Add the label and data values to the respective arrays
+labels.push(label);
+data.push(value);
+});
+
+// Create a new Chart.js bar chart
+const chart = new Chart(document.getElementById('revenue-chart'), {
+type: 'bar',
+data: {
+labels: labels,
+datasets: [{
+label: 'Total Revenue Per Month',
+data: data,
+backgroundColor: 'rgba(75, 192, 192, 0.7)',
+borderColor: 'rgba(75, 192, 192, 0.7)',
+borderWidth: 1
+}]
+},
+options: {
+scales: {
+yAxes: [{
+ticks: {
+beginAtZero: true
+}
+}]
+}
+}
+});
 </script>
 
 <?= view('templates/footer'); ?>

@@ -102,5 +102,8 @@
          });
          
          </script>
+         <script>
+         sessionStorage.removeItem('videoShown');
+         </script>
    </body>
 </html>

@@ -180,17 +180,21 @@
    <button id="close-button">Close</button>
 </div>
 
+
+
 <script>
   window.addEventListener('load', function() {
     var popup = document.getElementById('video-popup');
-    popup.style.display = 'block';
+    var videoShown = localStorage.getItem('videoShown');
+    if (!videoShown || videoShown === 'false') {
+      popup.style.display = 'block';
+      localStorage.setItem('videoShown', 'true');
+    }
     document.getElementById('close-button').addEventListener('click', function() {
       popup.style.display = 'none';
     });
   });
 </script>
-
-
 
 
 

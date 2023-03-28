@@ -25,7 +25,7 @@
 	<div class="container">
 		
     <h1 class="h1">Frequently Asked Questions</h1>
-	<h2>Standard Questions </h2>
+	<h2>User Questions </h2>
   
 		<div class="card">
 			<div class="card-header">
@@ -74,7 +74,7 @@
 
 		</div>
 		<br>
-		<h2>Business Questions </h2>
+		<h2>Business User Questions </h2>
     <div class="card">
 		<div class="card-header">
 			<h3 class="mb-0">

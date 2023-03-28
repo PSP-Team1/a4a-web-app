@@ -113,11 +113,35 @@
          opacity: 0;
          transition: opacity 0.3s ease-in-out;
       }
-
+        
       .btn-scroll-top:hover {
          opacity: 1;
       }
+
+      .search-btn:hover {
+  font-size: 20px;
+}
+.search-btn:hover::before {
+  font-size: 20px;
+}
+
+
+
+ .navbar-nav-scroll .nav-link:hover {
+   font-size: 20px;
+   }
+
+   .navbar-nav-scroll .nav-link:hover::before {
+   font-size: 20px;
+   }
+
+
+
+ 
+
    </style>
+
+
 
 
 
@@ -178,15 +202,15 @@
          <div class="collapse navbar-collapse " id="navbarScroll">
 
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-               <li class="nav-item me-3">
+               <li class="nav-item me-1">
                   <a class="nav-link active btn btn-primary" aria-current="page" href="<?= base_url() ?>/Login">Login / Register</a>
                </li>
-               <li class="nav-item me-3">
+               <li class="nav-item me-2">
                   <a class="nav-link active btn btn-outline-secondary btn-success" aria-current="page" href="/Affiliates">Affiliates</a>
 
                </li>
                <li class="nav-item me-3">
-   <a class="nav-link active btn btn-outline-secondary" aria-current="page" href="/FAQ">FAQ</a>
+   <a class="nav-link active btn btn-outline-tertiary" aria-current="page" href="/FAQ">FAQ</a>
 </li>
             </ul>
          </div>
@@ -199,8 +223,9 @@
             <img src="<?= base_url(); ?>/assets/img/Making-Everybody-Welcome.png" alt="Bootstrap" height="80">
 
             <div class="input-group">
-               <input id="search-input" type="text" placeholder="Search for location..." class="form-control search-input">
-               <span class="input-group-append"> <button aria-label="search for attractions" type="button" class="search-btn btn btn-primary">
+               <input id="search-input" type="text" placeholder="Search for location..." class="form-control search-input" title="Enter the location you are looking for here">
+               <span class="input-group-append">
+                   <button aria-label="search for attractions" type="button" class="search-btn btn btn-primary"  title="Search for attractions" >
                      <i class="fa fa-map-marker fa-3x text-white"></i>
                   </button>
                </span>
@@ -208,6 +233,7 @@
          </div>
       </div>
    </div>
+   
 
    <div class="container-fluid main-content">
 

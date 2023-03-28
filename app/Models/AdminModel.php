@@ -24,7 +24,25 @@ class AdminModel extends Model{
     public function getAllVenues()
     {
         return $this->db->table('company_venue')->get()->getResult();
-    }    
+    }   
+    
+    public function getRevenueTrends()
+    {
+        $query = $this->db->query("
+        SELECT 
+        DATE_FORMAT(created_at, '%Y-%m') AS month,
+        SUM(payment_amount) AS total_payment_amount
+        FROM 
+            credit_transactions
+        WHERE 
+            created_at >= DATE_SUB(NOW(), INTERVAL 12 MONTH)
+        GROUP BY 
+            DATE_FORMAT(created_at, '%Y-%m')
+        ORDER BY 
+            DATE_FORMAT(created_at, '%Y-%m');");
+        return $query->getResult('array');
+    }
+    
 
     public function updateUser($id, $name, $email) {
 

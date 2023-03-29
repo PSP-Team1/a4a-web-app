@@ -1,4 +1,3 @@
-<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header'); ?>
 
 <?php

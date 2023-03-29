@@ -53,7 +53,18 @@ $email = $session->get('email');
                      <h2 class="modal-title" id="deleteVenueModalLabel">Confirm Deletion</h2>
                   </div>
                   <div class="modal-body">
-                     Are you sure you want to delete <?= $venue['venue_name'] ?>?
+                     <div class="row">
+
+                        <div class="col-lg-4">
+                           <i class="fa fa-warning fa-2x text-danger"></i>
+
+                        </div>
+                        <div class="col-lg-8">
+
+
+                           Are you sure you want to delete <?= $venue['venue_name'] ?>?
+                        </div>
+                     </div>
                   </div>
                   <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -190,6 +201,12 @@ $email = $session->get('email');
                <button type="submit" class="btn btn-outline-success">Update Details</button>
                <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
             </form>
+
+            <hr>
+
+            <a class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal<?= $venue['id'] ?>">
+               <i class="fas fa-paper-plane-o"></i> Audit this Venue
+            </a>
          </div>
          <div id="tab2" class="tabcontent">
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateOpeningHours" onsubmit="return validateForm()">
@@ -547,6 +564,15 @@ $email = $session->get('email');
                padding: 5px;
                width: 100%;
             }
+
+
+            /* Audit table */
+
+            .table {
+               width: 100%;
+               max-width: 1400px;
+               margin: auto;
+            }
          </style>
          <script>
             function openTab(evt, tabName) {
@@ -587,50 +613,71 @@ $email = $session->get('email');
             });
          </script>
          <div id="tab5" class="tabcontent">
-            <style>
-               .table {
-                  width: 100%;
-                  max-width: 1400px;
-                  margin: auto;
-               }
-            </style>
-            <table class="table table-hover margin bottom">
-               <thead>
-                  <tr>
-                     <th>Version</th>
-                     <th>Status</th>
-                     <th>View</th>
-                     <th>Audit Date</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <?php foreach ($audit_data as $item) {
-                     $qCount = $item['audit_total'];
-                     $cCount = $item['audit_prog'];
-                     $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
-                  ?>
-                     <tr>
-                        <td><?= $item['audit_version'] ?></td>
-                        <td>
-                           <div class="progress progress-small">
-                              <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
+            <div class="row">
+
+               <div class="col-lg-12">
+
+                  <table class="table table-hover margin bottom table-responsive">
+                     <thead>
+                        <tr>
+                           <th>Version</th>
+                           <th>Status</th>
+                           <th>View</th>
+                           <th>Audit Date</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <?php foreach ($audit_data as $item) {
+                           $qCount = $item['audit_total'];
+                           $cCount = $item['audit_prog'];
+                           $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
+                        ?>
+                           <tr>
+                              <td><?= $item['audit_version'] ?></td>
+                              <td>
+                                 <div class="progress progress-small">
+                                    <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
+                                 </div>
+                              </td>
+                              <td class="text-center">
+                                 <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
+                                    <i class="fa fa-eye"></i> View</a>
+                              </td>
+                              <td>
+                                 <?php
+                                 $datetime = new DateTime($item['date_created']);
+                                 $formattedDate = $datetime->format('Y-m-d');
+                                 ?>
+                                 <?= $formattedDate ?>
+                              </td>
+                           </tr>
+                        <?php } ?>
+                     </tbody>
+                  </table>
+
+                  <a class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal<?= $venue['id'] ?>">
+                     <i class="fas fa-paper-plane-o"></i> Audit this Venue
+                  </a>
+
+                  <div class="modal fade" id="performAuditModal<?= $venue['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="performAuditModalLabel" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h2 class="modal-title" id="performAuditModalLabel">Venue Accessibility Audit</h2>
                            </div>
-                        </td>
-                        <td class="text-center">
-                           <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
-                              <i class="fa fa-eye"></i> View</a>
-                        </td>
-                        <td>
-                           <?php
-                           $datetime = new DateTime($item['date_created']);
-                           $formattedDate = $datetime->format('Y-m-d');
-                           ?>
-                           <?= $formattedDate ?>
-                        </td>
-                     </tr>
-                  <?php } ?>
-               </tbody>
-            </table>
+                           <div class="modal-body">
+                              Select Audit Type
+                              <?= $venue['venue_name'] ?>?
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                              <a class="btn btn-danger" href="/CustomerDashboard/deleteVenue/<?= $venue['id'] ?>">Delete</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
    </div>

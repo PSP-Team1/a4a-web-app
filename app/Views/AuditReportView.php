@@ -97,12 +97,9 @@
 
   <div class="container">
 
-    <h1 style="font-size: 32px; color: #333;">Access For All - <span style="color: #4CAF50;">Audit Report <i class="far fa-file-alt"></i></span></h1>
+    <h1 style="font-size: 32px; color: #333;">
+      <?= $company_info['companyName'] ?> <span style="color: #4CAF50;"> Accessibility Report <i class="far fa-file-alt"></i></span></h1>
 
-
-
-    <br>
-    <h2 style="font-size: 26px; color: #333;">Company Audit Results</h2>
     <br>
     <table>
       <thead>

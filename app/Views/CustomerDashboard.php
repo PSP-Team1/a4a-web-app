@@ -7,11 +7,29 @@
 $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
 
 
-?>
+// Widgets for audit status
+$noOfVenues = count($venues);
+$auditStatusNew = 0;
+$auditStatusComplete = 0;
+$auditStatusNull = 0;
 
-<?php
+foreach ($venue_audits as $audit) {
 
-// Customize the view per user
+   switch ($audit['audit_status']) {
+      case 'New':
+         $auditStatusNew += 1;
+         break;
+      case 'Complete':
+         $auditStatusComplete += 1;
+         break;
+      case Null:
+         $auditStatusNull += 1;
+         break;
+   }
+}
+
+
+//Greeting settings
 date_default_timezone_set('Europe/London');
 
 $hour = date('G');
@@ -128,14 +146,16 @@ $contact = $session->get('name');
       <?php endif; ?>
       <div class="container">
 
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+            <p>What would you like to do today? You can edit your existing audits, audit a new venue as well as publish and unpublish audits depending on their completion progress.</p>
+            <small>Last login: <?= date('Y M d'); ?></small><br>
+            <button class="btn btn-info mt-2" data-dismiss="alert"><i class="fa fa-info-circle"></i> OK</button>
+         </div>
          <div class="row">
+
             <div class="col-lg-12">
-               <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
-                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-                  <small>Last login: <?= date('Y M d'); ?></small><br>
-                  <button class="btn btn-info mt-2" data-dismiss="alert"><i class="fa fa-info-circle"></i> OK</button>
-               </div>
 
                <div class="ibox">
                   <div class="ibox-title">
@@ -161,63 +181,77 @@ $contact = $session->get('name');
 
                   <div class="ibox-content">
                      <div class="row">
-                        <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
-                        <h4>What would you like to do today? You can edit your existing audits, audit a new venue as well as publish and unpublish audits depending on their completion progress.</h4>
+
+
                         <p>
-                           <a class="btn btn-success btn-outline" href="/Audit" role="button">
+                           <!-- <a class="btn btn-success btn-outline" href="/Audit" role="button">
                               <i class="fas fa-search"></i> View My Accessibility Audit(s)
-                           </a>
+                           </a> -->
 
-                        </p>
+                        <div class="col-lg-3">
+                           <div class="widget style1 navy-bg">
+                              <div class="row">
+                                 <div class="col-4">
+                                    <i class="fa fa-trophy fa-3x"></i>
+                                 </div>
+                                 <div class="col-8 text-right">
+                                    <span> Overall Rating</span>
+                                    <h2 class="font-bold">90%</h2>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div>
+
+                        <div class="col-lg-3">
+                           <div class="widget style1 lazur-bg">
+                              <div class="row">
+                                 <div class="col-4">
+                                    <i class="fa fa-check-square-o fa-3x"></i>
+                                 </div>
+                                 <div class="col-8 text-right">
+                                    <span> Venues Audited</span>
+                                    <h2 class="font-bold"><?= $auditStatusComplete . " / " . $noOfVenues ?></h2>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="widget style1 lazur-bg">
+                              <div class="row">
+                                 <div class="col-4">
+                                    <i class="fa fa-search fa-3x"></i>
+                                 </div>
+                                 <div class="col-8 text-right">
+                                    <span> Venue Searches</span>
+                                    <h2 class="font-bold">XXX</h2>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div>
+                        <div class="col-lg-3">
+
+                           <div class="widget style1 yellow-bg">
+                              <div class="row">
+                                 <div class="col-4">
+                                    <i class="fa fa-bell fa-3x"></i>
+                                 </div>
+                                 <div class="col-8 text-right">
+                                    <span> Actions</span>
+                                    <h2 class="font-bold">XXX</h2>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
                      </div>
                   </div>
                </div>
             </div>
 
-            <div class="col-lg-4">
-               <div class="widget style1 lazur-bg">
-                  <div class="row">
-                     <div class="col-4">
-                        <i class="fa fa-shield fa-5x"></i>
-                     </div>
-                     <div class="col-8 text-right">
-                        <span> Audits Completed</span>
-                        <h2 class="font-bold"></h2>
-                     </div>
-                  </div>
-               </div>
 
-
-
-               <div class="widget style1 lazur-bg">
-                  <div class="row">
-                     <div class="col-4">
-                        <i class="fa fa-envelope-o fa-5x"></i>
-                     </div>
-                     <div class="col-8 text-right">
-                        <span> Venues Audited </span>
-                        <h2 class="font-bold">260</h2>
-                     </div>
-                  </div>
-               </div>
-
-
-
-            </div>
-
-            <div class="col-lg-6">
-               <div class="widget style1 lazur-bg">
-                  <div class="row">
-                     <div class="col-4">
-                        <i class="fa fa-envelope-o fa-5x"></i>
-                     </div>
-                     <div class="col-8 text-right">
-                        <span> New messages </span>
-                        <h2 class="font-bold">260</h2>
-                     </div>
-                  </div>
-               </div>
-            </div>
 
 
 

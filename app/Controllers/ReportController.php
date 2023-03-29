@@ -12,6 +12,7 @@ class ReportController extends BaseController
         $data['summary'] = $am->getAuditSummary($i);
         $data['question_data'] = $am->getQuestions($i);
         $data['audit_id'] = $i;
+        $data['company_info'] = $am->getCompanyByAudit($i);
         return view('AuditReportView', $data);
     }
 }

@@ -18,8 +18,6 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
-<link rel="stylesheet" href="./assets/css/accessibilityPortal.css" />
-<script src="./assets/js/accessibility.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
@@ -101,7 +99,7 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
 </div>
 
 
-<div class="container">
+<div class="container" a-status="<?= $audit_status ?>">
 
   <div class="ibox">
     <div class=" progress progress-small">
@@ -116,10 +114,26 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
           Results are saved automatically.</small>
       </div>
       <div class="col-lg-4">
-        <?= $rtSubmit = ($percComplete == 100) ?>
-        <a id="rpt-button" data-bs-toggle="modal" href="#confirm-modal" class="btn <?= ($rtSubmit) ? 'btn-success' : 'btn-outline-danger' ?> pull-right mr-25<?= ($rtSubmit) ? '' : ' disabled' ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= ($rtSubmit) ? 'Audit complete' : 'Audit incomplete' ?>">
-          <i class="fa fa-<?= ($rtSubmit) ? "check" : "warning" ?>"></i> <?= ($rtSubmit) ? "Finished" : "Audit Incomplete" ?>
-        </a>
+        <?php $rtSubmit = ($percComplete == 100);
+
+        if (!$rtSubmit) { ?>
+
+          <a id="rpt-button" data-bs-toggle="modal" href="#confirm-modal" class="btn btn-outline-danger pull-right mr-25 disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Audit incomplete">
+            <i class="fa fa-warning"></i> Audit Incomplete
+          </a>
+
+        <?php
+        } else { ?>
+
+          <a id="rpt-button" href="<?= base_url() ?>/Audit/auditResults/<?= $audit_id ?>" class="btn btn-info pull-right mr-25" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to View Report">
+            <i class="fa fa-eye"></i> View Report
+          </a>
+
+        <?php
+        }
+
+        ?>
+
       </div>
 
 
@@ -262,7 +276,7 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
 
             viewReportBtn.classList.add('btn', 'btn-primary', 'w-100');
             viewReportBtn.addEventListener('click', () => {
-              window.location.href = `/Audit/auditConfirmation/${auditId}`;
+              window.location.href = `/Audit/auditResults/${auditId}`;
             });
 
             const cancelBtn = document.getElementById('cancel-btn');

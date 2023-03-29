@@ -264,7 +264,66 @@ class AuditModel extends Model
         return $query->getResultArray();
     }
 
-    public function getCompaniesAudited()
+
+    // not used for now
+    public function getVenueAuditStatusByCompany()
     {
+
+
+        $db = db_connect();
+
+        $sql = "SELECT 
+            c.companyName, 
+            cv.venue_name,
+            cav.audit_status
+            FROM company c
+            
+            left join company_venue cv on cv.company_id = c.id
+            
+            LEFT JOIN company_venue_audit cav ON cav.venue_id = cv.id";
+
+        $type = session()->get('type');
+        $id = session()->get('company_id');
+        $filter = ($type != 'client') ? ' where company_id = ' . $id : '';
+        $sql .= $filter;
+
+        $query = $db->query($sql);
+
+        return $query->getResultArray();
+    }
+
+    public function getAuditStatus($id)
+    {
+        $db = db_connect();
+        $query = "SELECT audit_status from company_venue_audit WHERE id =?";
+        $result = $db->query($query, [$id])->getRowArray();
+        $db->close();
+
+        if ($result) {
+            return $result['audit_status'];
+        } else {
+            // set this temporarily to avoid no classification
+            return 'ERROR';
+        }
+    }
+
+    public function getCompanyByAudit($id)
+    {
+        $db = db_connect();
+        $query = "
+        select 
+
+            c.companyName,
+            c.address
+
+            from company_venue_audit cva
+
+            left join company_venue cv on cva.venue_id = cv.id
+            left join company c on c.id = cv.company_id
+
+            where cva.id = ? limit 1";
+        $result = $db->query($query, [$id])->getRowArray();
+
+        return $result;
     }
 }

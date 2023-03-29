@@ -102,11 +102,11 @@
 
       .btn-scroll-top {
          position: fixed;
-         bottom: 20px;
+         bottom: 50px;
          right: 20px;
          width: 50px;
          height: 50px;
-         background-color: #2ec1cd;
+         background-color: rgb(114, 131, 181);
          color: #fff;
          border: none;
          border-radius: 50%;
@@ -148,7 +148,21 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
 
+      .nav-item {
 
+         background-color: rgb(114, 131, 181) !important;
+
+      }
+
+      footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1px;
+  background-color: rgb(114, 131, 181);
+  color: white;
+}
 
 </style>
 
@@ -237,14 +251,14 @@
 
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                <li class="nav-item me-1">
-                  <a class="nav-link active btn btn-primary" aria-current="page" href="<?= base_url() ?>/Login">Login / Register</a>
+                  <a class="nav-link active btn btn-primary" aria-current="page" href="<?= base_url() ?>/Login" style="background-color:rgb(114, 131, 181);">Login / Register</a>
                </li>
                <li class="nav-item me-2">
-                  <a class="nav-link active btn btn-outline-secondary btn-success" aria-current="page" href="/Affiliates">Affiliates</a>
+                  <a class="nav-link active btn btn-outline-secondary btn-success"  aria-current="page" href="/Affiliates" style="background-color:rgb(114, 131, 181);">Affiliates</a>
 
                </li>
                <li class="nav-item me-3">
-   <a class="nav-link active btn btn-outline-tertiary" aria-current="page" href="/FAQ">FAQ</a>
+   <a class="nav-link active btn btn-outline-tertiary" aria-current="page" style="color: white;" href="/FAQ">FAQ</a>
 </li>
 
 
@@ -717,7 +731,9 @@
          });
       });
    </script>
-
+<footer> 
+   <p> © Access & Inclusion UK, all rights reserved </p>
+   </footer>
 </body>
 
 </html>

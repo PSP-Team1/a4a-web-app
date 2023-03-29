@@ -86,7 +86,8 @@
 
 
       #update-results-btn {
-         display: none;
+         background-color:rgb(21, 115, 71);
+         border-color:rgb(21, 115, 71);
       }
 
       /* sticky banner FIXME - disappears after certain scroll distance */
@@ -711,10 +712,7 @@
 
          if (searchTags !== loadedSearchKey) {
             updateResultsBtn.style.display = 'block';
-         } else {
-            updateResultsBtn.style.display = 'none';
-
-         }
+         } 
       };
    </script>
 

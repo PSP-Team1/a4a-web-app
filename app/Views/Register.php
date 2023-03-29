@@ -260,7 +260,7 @@
                         
                      </script>
                      <div class="form-group mb-3">
-                        <input name="phoneNumber" placeholder="Phone Number" class="form-control" pattern="^(\+44|0)\d{10}$" title="Please enter a valid UK phone number (e.g. +44 7123 456789 or 07123 456789)" required>
+                        <input name="phoneNumber" placeholder="Phone Number" class="form-control" pattern="^(\+44|0)\d{10}$" title="Please enter a valid UK phone number (e.g. +44 7123456789 or 07123456789)" required>
                      </div>
                      <div class="form-group mb-3">
                         <input maxlength="240" name="address" placeholder="Company Address" class="form-control" required>

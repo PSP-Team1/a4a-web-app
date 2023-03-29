@@ -102,11 +102,11 @@
 
       .btn-scroll-top {
          position: fixed;
-         bottom: 20px;
+         bottom: 50px;
          right: 20px;
          width: 50px;
          height: 50px;
-         background-color: #2ec1cd;
+         background-color: rgb(114, 131, 181);
          color: #fff;
          border: none;
          border-radius: 50%;
@@ -153,6 +153,16 @@
          background-color: rgb(114, 131, 181) !important;
 
       }
+
+      footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1px;
+  background-color: rgb(114, 131, 181);
+  color: white;
+}
 
 </style>
 
@@ -248,7 +258,7 @@
 
                </li>
                <li class="nav-item me-3">
-   <a class="nav-link active btn btn-outline-tertiary" aria-current="page" href="/FAQ">FAQ</a>
+   <a class="nav-link active btn btn-outline-tertiary" aria-current="page" style="color: white;" href="/FAQ">FAQ</a>
 </li>
 
 
@@ -720,7 +730,9 @@
          });
       });
    </script>
-
+<footer> 
+   <p> © Access & Inclusion UK, all rights reserved </p>
+   </footer>
 </body>
 
 </html>

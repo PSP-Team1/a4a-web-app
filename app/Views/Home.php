@@ -164,6 +164,13 @@
   color: white;
 }
 
+.navbar-collapse {
+   background-color: rgb(92, 105, 145);
+}
+
+.bg-body-tertiary{
+   background-color: rgb(92, 105, 145) !important;
+}
 </style>
 
 

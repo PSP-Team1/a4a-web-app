@@ -154,7 +154,7 @@ $contact = $session->get('name');
                   <div class="ibox-content">
                      <div class="row">
                         <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
-                        <h4>What would you like to do today?</h4>
+                        <h4>What would you like to do today? You can edit your existing audits, audit a new venue as well as publish and unpublish audits depending on their completion progress.</h4>
                         <p>
                            <a class="btn btn-success btn-outline" href="/Audit" role="button">
                               <i class="fas fa-search"></i> View My Accessibility Audit(s)

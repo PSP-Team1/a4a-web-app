@@ -45,7 +45,7 @@ class VenueSearchModel extends Model
     {
         $db = db_connect();
 
-        $sql = "SELECT * from company_venue";
+        $sql = "SELECT * from company_venue where published = 1";
         $query = $db->query($sql);
 
         return $query->getResult();

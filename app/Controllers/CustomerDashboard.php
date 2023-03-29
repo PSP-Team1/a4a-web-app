@@ -14,9 +14,11 @@ class CustomerDashboard extends BaseController
     {
         $venueModel = new VenueModel();
         $actModel = new ActivityLogModel();
+        $audMdel = new AuditModel();
 
         $data['venues'] = $venueModel->getVenues();
         $data['activity'] = $actModel->getActivity();
+        $data['audits'] = $audMdel->getCompaniesAudited();
 
         return view('CustomerDashboard', $data);
     }

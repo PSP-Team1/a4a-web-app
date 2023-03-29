@@ -130,9 +130,16 @@ $contact = $session->get('name');
 
          <div class="row">
             <div class="col-lg-12">
+               <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
+                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                  <small>Last login: <?= date('Y M d'); ?></small><br>
+                  <button class="btn btn-info mt-2" data-dismiss="alert"><i class="fa fa-info-circle"></i> OK</button>
+               </div>
+
                <div class="ibox">
                   <div class="ibox-title">
-                     <h2><?php echo $contact ?>'s Dashboard</h2>
+                     <h2><?php echo $contact ?>'s Summary Dashboard</h2>
                      <div class="ibox-tools">
                         <a class="collapse-link">
                            <i class="fa fa-chevron-up"></i>
@@ -151,6 +158,7 @@ $contact = $session->get('name');
                         </a>
                      </div>
                   </div>
+
                   <div class="ibox-content">
                      <div class="row">
                         <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
@@ -165,6 +173,52 @@ $contact = $session->get('name');
                   </div>
                </div>
             </div>
+
+            <div class="col-lg-4">
+               <div class="widget style1 lazur-bg">
+                  <div class="row">
+                     <div class="col-4">
+                        <i class="fa fa-shield fa-5x"></i>
+                     </div>
+                     <div class="col-8 text-right">
+                        <span> Audits Completed</span>
+                        <h2 class="font-bold"><?= ?></h2>
+                     </div>
+                  </div>
+               </div>
+
+
+
+               <div class="widget style1 lazur-bg">
+                  <div class="row">
+                     <div class="col-4">
+                        <i class="fa fa-envelope-o fa-5x"></i>
+                     </div>
+                     <div class="col-8 text-right">
+                        <span> Venues Audited </span>
+                        <h2 class="font-bold">260</h2>
+                     </div>
+                  </div>
+               </div>
+
+
+
+            </div>
+
+            <div class="col-lg-6">
+               <div class="widget style1 lazur-bg">
+                  <div class="row">
+                     <div class="col-4">
+                        <i class="fa fa-envelope-o fa-5x"></i>
+                     </div>
+                     <div class="col-8 text-right">
+                        <span> New messages </span>
+                        <h2 class="font-bold">260</h2>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
 
 
          </div>

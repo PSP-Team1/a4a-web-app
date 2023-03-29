@@ -1,3 +1,4 @@
+<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header'); ?>
 <?php
    date_default_timezone_set('Europe/London');
@@ -89,6 +90,8 @@
    color: #515A5A;
    }
 </style>
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<script src="./assets/js/accessibility.js"></script>
 <div class="container">
 <div class="row">
    <div class="col-lg-6">

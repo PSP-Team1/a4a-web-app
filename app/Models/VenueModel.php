@@ -34,6 +34,17 @@ class VenueModel extends Model
         return $results;
     }
 
+    public function getVenueIdHomepage($id)
+    {
+        $db = db_connect();
+
+        $sql = "select * from company_venue
+        where id = $id";
+
+        $results = $db->query($sql)->getResult('array');
+        return $results;
+    }
+
     public function getVenueById($id)
     {
         return $this->asArray()

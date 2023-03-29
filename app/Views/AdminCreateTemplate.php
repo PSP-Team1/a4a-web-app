@@ -737,3 +737,4 @@
             });
     });
 </script>
+<?= view('templates/footer'); ?>

@@ -115,4 +115,9 @@ class PaymentController extends BaseController
 
         return $chartData;
     }
+
+    public function balanceManagement()
+    {
+        return view('payment/BalanceManagement');
+    }
 }

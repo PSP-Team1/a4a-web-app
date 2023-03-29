@@ -171,12 +171,17 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
 
             <a href="<?= base_url() ?>/Audit" class="nav_link <?= ($activePage == "ViewAudits" ? "active" : "") ?>">
               <i class='bx bx-list-ul nav_icon'></i>
-              <span class="nav_name">View Audit(s)</span>
+              <span class="nav_name">View Audits</span>
             </a>
-            <div class="dropdown">
+            <a href="<?= base_url() ?>/AdminSettings" class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">
+              <i class='bx bx-cog nav_icon'></i>
+              <span class="nav_name">Settings</span>
+            </a>
 
-              </a>
-            </div>
+            <a href="<?= base_url() ?>/Products" class="nav_link <?= ($activePage == "Products" ? "active" : "") ?>">
+              <i class='bx bxs-credit-card-front'></i>
+              <span class="nav_name">My Services</span>
+            </a>
           </div>
         <?php endif; ?>
 

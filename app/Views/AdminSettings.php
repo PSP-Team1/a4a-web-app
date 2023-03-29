@@ -11,7 +11,7 @@
         <div class="ibox ">
 
             <div class="ibox-title">
-                <h2>Admin Settings</h2>
+                <h2>Settings</h2>
             </div>
 
             <div class="ibox-content">
@@ -40,6 +40,26 @@
 
 
             <br>
+
+            <?php if ($_SESSION['type']  == 'customer') {
+                echo "";
+            ?>
+                <div style="border: 1px solid #99A3A4;">
+
+                    <div class="ibox-title">
+                        <h2>Credit Management</h2>
+                    </div>
+
+                    <div class="ibox-content">
+                        <a class="btn btn-outline btn-secondary" href="<?php echo base_url(); ?>/AdminChangeDetails" role="button"> <i class="fa fa-stripe"></i> Add Credit</a>
+                    </div>
+
+                </div>
+
+
+                <br>
+
+            <?php } ?>
 
             <div style="border: 1px solid #3498DB;">
 

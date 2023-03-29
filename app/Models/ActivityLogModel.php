@@ -29,6 +29,7 @@ class ActivityLogModel extends Model
             su.avatar,
             al.action,
             al.ref_id,
+            al.meta,
             al.date_created,
             su.company_type
             from activity_log al

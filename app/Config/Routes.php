@@ -80,6 +80,12 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');
     $routes->get('/ViewAudits', 'ViewAuditController::index');
     $routes->get('/Review', 'ReviewController::index');
+
+
+    $routes->get('/ManageProducts', 'ProductManagement::index');
+    $routes->get('/ManageProducts/activate/(:num)', 'ProductManagement::activate/$1');
+    $routes->get('/ManageProducts/deactivate/(:num)', 'ProductManagement::deactivate/$1');
+    $routes->get('/ManageProducts/addPromoCode/', 'ProductManagement::addPromoCode');
 });
 
 $routes->get('/HomeViewVenue/(:num)', 'Home::viewVenueDetails/$1');

@@ -158,6 +158,12 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Settings</span>
             </a>
 
+
+            <a href="<?= base_url() ?>/ManageProducts" class="nav_link <?= ($activePage == "ManageProducts" ? "active" : "") ?>">
+              <i class='bx bxs-balloon'></i>
+              <span class="nav_name">Products & Offers</span>
+            </a>
+
           </div>
         <?php endif; ?>
 

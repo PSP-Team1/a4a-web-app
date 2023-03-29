@@ -174,7 +174,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">View Audit(s)</span>
             </a>
             <div class="dropdown">
-              
+
               </a>
             </div>
           </div>

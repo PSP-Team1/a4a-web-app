@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <?= view('templates/accessibility'); ?>
-<title>Our Partners</title>
+<title>About Us</title>
 <head>
 <link rel="shortcut icon" href="./assets/img/favicon.ico">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -34,8 +34,10 @@
 <body>
 <div class="container">
 		
-        <h1 class="h1" >Our Partners</h1>
-      
+        <h1 class="h1" >About us</h1>
+Access Consultancy, Training, Auditing and Inclusive Design Specialists
+Professional access consultancy, training, auditing and design appraisal services to clients large and small across all sectors. People are at the heart of everything we do because people make change happen. Working in partnership, we enable people to create places, services and experiences which are accessible and inclusive for all.
+      <h1 class="h1"> Our Partners </h1>
             <div class="card">
                 <div class="card-header">
                     <h3 class="mb-0">

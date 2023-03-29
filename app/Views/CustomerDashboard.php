@@ -332,11 +332,12 @@ $contact = $session->get('name');
 
                               </table>
 
-                              <a class="btn btn-success btn-outline" href="/CustomerNewVenue" role="button">
-                                 <i class="fa fa-plus"></i> Add New Venue
-                              </a>
+
                            </div>
                         <?php endif; ?>
+                        <a class="btn btn-success btn-outline" href="/CustomerNewVenue" role="button">
+                           <i class="fa fa-plus"></i> Add New Venue
+                        </a>
                         </div>
                   </div>
 
@@ -345,6 +346,7 @@ $contact = $session->get('name');
             </div>
 
             <div class="col-lg-4">
+
 
                <div class="ibox ">
 
@@ -356,51 +358,44 @@ $contact = $session->get('name');
 
                      <div>
                         <div class="chat-activity-list">
+                           <?php foreach ($activity as $log) : ?>
+                              <div class="chat-element <?= ($log['company_type'] == 'client') ? 'right' : '' ?>">
+                                 <a href="#" class="float-<?= ($log['company_type'] == 'client') ? 'right' : 'left' ?>">
+                                    <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $log['avatar'] ?>">
+                                 </a>
+                                 <div class="media-body <?= ($log['company_type'] == 'client') ? 'text-right' : '' ?>">
 
-                           <div class="chat-element">
-                              <a href="#" class="float-left">
-                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
-                              </a>
-                              <div class="media-body ">
-                                 <small class="float-right text-navy">1m ago</small>
-                                 <strong>Mike Smith</strong>
-                                 <p class="m-b-xs">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                 </p>
-                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                    <strong><?= $log['name'] ?></strong>
+                                    <p class="m-b-xs">
+
+                                       <?php
+
+
+                                       switch ($log['action']) {
+                                          case 'VEN_CREATE':
+                                             echo "i equals 0";
+                                             break;
+                                          case 'VEN_AUDIT':
+                                             echo "i equals 1";
+                                             break;
+                                          case 'AUD_COMPLETE':
+                                             echo 'Completed audit for venue <a href="/AuditReportView/' . $log['ref_id'] . '">' . $log['meta'] . '</a>';
+                                             break;
+                                          case 'USER_PAYMENT':
+                                             echo "i equals 1";
+                                             break;
+                                       }
+                                       ?>
+
+
+
+                                    </p>
+                                    <small class="float-<?= ($log['company_type'] == 'client') ? 'left' : 'right' ?> text-navy"><?= date('m/d/Y h:i a', strtotime($log['date_created'])) ?></small>
+                                 </div>
                               </div>
-                           </div>
-
-                           <div class="chat-element right">
-                              <a href="#" class="float-right">
-                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
-
-                              </a>
-                              <div class="media-body text-right ">
-                                 <small class="float-left">5m ago</small>
-                                 <strong>John Smith</strong>
-                                 <p class="m-b-xs">
-                                    Lorem Ipsum is simply dummy text of the printing.
-                                 </p>
-                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                              </div>
-                           </div>
-
-                           <div class="chat-element ">
-                              <a href="#" class="float-left">
-                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
-
-                              </a>
-                              <div class="media-body ">
-                                 <small class="float-right">2h ago</small>
-                                 <strong>Mike Smith</strong>
-                                 <p class="m-b-xs">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                 </p>
-                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                              </div>
-                           </div>
+                           <?php endforeach; ?>
                         </div>
+
                      </div>
                      <div class="chat-form">
                         <form role="form">

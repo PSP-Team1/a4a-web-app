@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\VenueModel;
+
 class Home extends BaseController
 {
 
@@ -10,6 +12,13 @@ class Home extends BaseController
         $session = session();
         $data['user'] = $session->get('name');
         return view('home', $data);
+    }
+
+    public function viewVenueDetails($venueId)
+    {
+        $venueModel = new VenueModel();
+        $data['venues'] = $venueModel->getVenueIdHomepage($venueId);
+        return view('HomeViewVenue', $data);
     }
 }
 ?>

@@ -478,6 +478,7 @@
 
             // Create each venue item - some of this needs refactoring
             data.venues.forEach(function(venue) {
+               const venueId = venue.id;
                const venueName = venue.venue_name;
                const venueAbout = venue.about;
 
@@ -558,7 +559,7 @@
                viewVenueButtonElement.style.marginLeft = 'auto';
 
                viewVenueButtonElement.addEventListener('click', () => {
-               window.location.href = '<https://example.com/venue>';
+               window.location.href = `/HomeViewVenue/${venueId}`;
                });
 
 

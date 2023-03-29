@@ -265,7 +265,7 @@
 
                </li>
                <li class="nav-item me-3">
-   <a class="nav-link active btn btn-outline-tertiary" aria-current="page" style="color: white;" href="/FAQ">FAQ</a>
+   <a class="nav-link active btn btn-outline-tertiary"  aria-current="page" style="border-color: rgb(114, 131, 181); color: white;" href="/FAQ">FAQ</a>
 </li>
 
 

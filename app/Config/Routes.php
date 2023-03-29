@@ -81,6 +81,7 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/Review', 'ReviewController::index');
 });
 
+$routes->get('/HomeViewVenue/(:num)', 'Home::viewVenueDetails/$1');
 $routes->get('/Login', 'LoginController::index');
 $routes->get('/Register', 'RegisterController::index');
 $routes->get('/RegisterSuccess', 'RegisterSuccessController::index');

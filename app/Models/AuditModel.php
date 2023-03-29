@@ -28,12 +28,12 @@ class AuditModel extends Model
             count(car.response) AS audit_prog,
             count(car.id) AS audit_total,
             ca.date_created
-            FROM company_audit ca
+            FROM company_venue_audit ca
             inner JOIN company c ON
             ca.audit_template = c.id
             inner JOIN audit_template atemp ON 
             ca.audit_template = atemp.id
-            JOIN company_audit_response car ON 
+            JOIN company_venue_audit_response car ON 
             car.audit_id = ca.id
             GROUP BY ca.id";
         $results = $db->query($sql)->getResult('array');
@@ -58,12 +58,12 @@ class AuditModel extends Model
             car.notes
 
             FROM company c
-            inner JOIN company_audit ca ON
+            inner JOIN company_venue_audit ca ON
             ca.audit_template = c.id
 
             inner JOIN audit_template atemp ON 
             ca.audit_template = atemp.id
-            JOIN company_audit_response car ON 
+            JOIN company_venue_audit_response car ON 
             car.audit_id = ca.id
 
             LEFT JOIN audit_questions aq ON aq.id = car.question_id
@@ -92,7 +92,7 @@ class AuditModel extends Model
 
         if (isset($data['id'])) {
             // If the ID is set, update the existing record
-            $query = "UPDATE `company_audit_response` SET  `response` = ?,  `notes` = ? WHERE `id` = ?";
+            $query = "UPDATE `company_venue_audit_response` SET  `response` = ?,  `notes` = ? WHERE `id` = ?";
             $params = [$data['response'],  $data['notes'], $data['id']];
             $db->query($query, $params);
         }
@@ -118,12 +118,12 @@ class AuditModel extends Model
                 ca.company_id,
                 count(car.response) AS audit_prog,
                 count(car.id) AS audit_total
-            FROM company_audit ca
+            FROM company_venue_audit ca
             INNER JOIN company c ON
                 ca.audit_template = c.id
             INNER JOIN audit_template atemp ON 
                 ca.audit_template = atemp.id
-            JOIN company_audit_response car ON 
+            JOIN company_venue_audit_response car ON 
                 car.audit_id = ca.id
             WHERE audit_id = " . $id . "
             GROUP BY ca.id";
@@ -140,8 +140,8 @@ class AuditModel extends Model
         $sql = "
         SELECT COUNT(id) AS qCount, 
             COUNT(response) AS qComp 
-            FROM company_audit_response 
-            where audit_id = (SELECT audit_id FROM company_audit_response WHERE id = " . $tid . ")
+            FROM company_venue_audit_response 
+            where audit_id = (SELECT audit_id FROM company_venue_audit_response WHERE id = " . $tid . ")
             GROUP BY audit_id limit 1";
 
         $results = $db->query($sql)->getResult('array');
@@ -159,7 +159,7 @@ class AuditModel extends Model
     public function getLatestCompleteAudit($companyId)
     {
         //Get latest audit. Should be in complete state
-        $sql = "SELECT ca.id AS audit_id FROM company_audit ca
+        $sql = "SELECT ca.id AS audit_id FROM company_venue_audit ca
         LEFT JOIN audit_template atemp ON atemp.id = ca.audit_template
         WHERE company_id = ?
         AND audit_status = 'Complete'
@@ -176,7 +176,7 @@ class AuditModel extends Model
 
     public function setAuditComplete($auditId)
     {
-        $sql = "SELECT response FROM company_audit_response WHERE audit_id = ?";
+        $sql = "SELECT response FROM company_venue_audit_response WHERE audit_id = ?";
 
         $query = $this->db->query($sql, [$auditId]);
         $rows = $query->getResultArray();
@@ -188,7 +188,7 @@ class AuditModel extends Model
         });
 
         if (count($validResponses) === count($allResponses)) {
-            $sql = "UPDATE company_audit SET audit_status = 'Complete' WHERE id = ?";
+            $sql = "UPDATE company_venue_audit SET audit_status = 'Complete' WHERE id = ?";
             $this->db->query($sql, [$auditId]);
             return ['success' => true, 'message' => 'Audit set to complete.'];
         } else {
@@ -248,13 +248,13 @@ class AuditModel extends Model
                     car.response,
                     car.notes
                 FROM company c
-                INNER JOIN company_audit ca ON c.id = ca.company_id
+                INNER JOIN company_venue_audit ca ON c.id = ca.company_id
                 INNER JOIN audit_template atemp ON ca.audit_template = atemp.id
-                JOIN company_audit_response car ON car.audit_id = ca.id
+                JOIN company_venue_audit_response car ON car.audit_id = ca.id
                 LEFT JOIN audit_questions aq ON aq.id = car.question_id
                 INNER JOIN (
                     SELECT company_id, MAX(date_created) AS max_date
-                    FROM company_audit
+                    FROM company_venue_audit
                     WHERE company_id = $companyId AND audit_status = 'Complete'
                     GROUP BY company_id
                 ) AS subquery ON ca.company_id = subquery.company_id AND ca.date_created = subquery.max_date

@@ -95,11 +95,11 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
       <div class="header_img">
 
       </div>
-      <img src="/assets/img/Making-Everybody-Welcome.png" alt="Description of the image" max-width:="" 50px;="" style="
+      <a href="/dashboard"><img src="/assets/img/Making-Everybody-Welcome.png" alt="Description of the image" max-width:="" 50px;="" style="
     max-width: 100px;
     position: relative;
     left: 0px;
-">
+"></a>
       <?php if ($role == "client") : ?>
         <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access & Inclusion - <span style="color: purple">Admin Portal</h4>
       <?php endif; ?>

@@ -148,7 +148,11 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
 
+      .nav-item {
 
+         background-color: rgb(114, 131, 181) !important;
+
+      }
 
 </style>
 

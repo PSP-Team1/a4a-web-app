@@ -1,6 +1,6 @@
 .fluid-banner {
 
-    background-color: rgb(46, 193, 205);
+    background-color: rgb(114, 131, 181);
  }
 
  .banner-search {
@@ -133,7 +133,7 @@
  }
 
  .accordion-button:not(.collapsed) {
-    background-color: rgb(46, 193, 205);
+    background-color: rgb(114, 131, 181);
     color: white;
  }
 

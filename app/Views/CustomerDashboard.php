@@ -264,7 +264,7 @@ $contact = $session->get('name');
                                        }
                                        $progress = round(($completedFields / count($venueFields)) * 100);
                                        ?>
-                                       <tr class="footable-even" style="">
+                                       <tr class="footable-even">
                                           <td class="footable-visible footable-first-column"><span class="footable-toggle"></span><?= $venue['venue_name'] ?></td>
                                           <td class="footable-visible footable-last-column">
                                              <div class="progress">

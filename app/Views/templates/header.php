@@ -101,10 +101,10 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
     left: 0px;
 ">
       <?php if ($role == "client") : ?>
-        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access For All - <span style="color: purple">Admin Portal</h4>
+        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access & Inclusion - <span style="color: purple">Admin Portal</h4>
       <?php endif; ?>
       <?php if ($role == "customer") : ?>
-        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access For All - <span style="color: purple">Customer Portal</h4>
+        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access & Inclusion - <span style="color: purple">Customer Portal</h4>
       <?php endif; ?>
     </div>
 

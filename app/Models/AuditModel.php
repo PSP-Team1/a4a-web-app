@@ -24,7 +24,7 @@ class AuditModel extends Model
             atemp.audit_version,
             atemp.published_status,
             atemp.legislation_version,
-            ca.company_id,
+            ca.venue_id,
             count(car.response) AS audit_prog,
             count(car.id) AS audit_total,
             ca.date_created
@@ -50,7 +50,7 @@ class AuditModel extends Model
             ca.id AS audit_id,
             atemp.audit_version,
             atemp.legislation_version,
-            ca.company_id,
+            ca.venue_id,
             aq.category,
             aq.question,
             car.id AS car_id,
@@ -115,7 +115,7 @@ class AuditModel extends Model
                 atemp.audit_version,
                 atemp.published_status,
                 atemp.legislation_version,
-                ca.company_id,
+                ca.venue_id,
                 count(car.response) AS audit_prog,
                 count(car.id) AS audit_total
             FROM company_venue_audit ca
@@ -241,14 +241,14 @@ class AuditModel extends Model
                     ca.id AS audit_id,
                     atemp.audit_version,
                     atemp.legislation_version,
-                    ca.company_id,
+                    ca.venue_id,
                     aq.category,
                     aq.question,
                     car.id AS car_id,
                     car.response,
                     car.notes
                 FROM company c
-                INNER JOIN company_venue_audit ca ON c.id = ca.company_id
+                INNER JOIN company_venue_audit ca ON c.id = ca.venue_id
                 INNER JOIN audit_template atemp ON ca.audit_template = atemp.id
                 JOIN company_venue_audit_response car ON car.audit_id = ca.id
                 LEFT JOIN audit_questions aq ON aq.id = car.question_id
@@ -257,7 +257,7 @@ class AuditModel extends Model
                     FROM company_venue_audit
                     WHERE company_id = $companyId AND audit_status = 'Complete'
                     GROUP BY company_id
-                ) AS subquery ON ca.company_id = subquery.company_id AND ca.date_created = subquery.max_date
+                ) AS subquery ON ca.venue_id = subquery.company_id AND ca.date_created = subquery.max_date
                 ORDER BY aq.category ASC, car.response DESC;
             ");
 

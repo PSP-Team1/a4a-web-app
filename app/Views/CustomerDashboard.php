@@ -182,7 +182,7 @@ $contact = $session->get('name');
                      </div>
                      <div class="col-8 text-right">
                         <span> Audits Completed</span>
-                        <h2 class="font-bold"><?= ?></h2>
+                        <h2 class="font-bold"></h2>
                      </div>
                   </div>
                </div>

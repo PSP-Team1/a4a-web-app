@@ -102,7 +102,7 @@
 
       .btn-scroll-top {
          position: fixed;
-         bottom: 20px;
+         bottom: 50px;
          right: 20px;
          width: 50px;
          height: 50px;
@@ -148,6 +148,16 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
 
+  
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1px;
+  background-color: rgb(46, 193, 205);
+  color: white;
+}
 
 
 </style>
@@ -712,6 +722,12 @@
          });
       });
    </script>
+
+
+<footer> 
+   <p> © Access & Inclusion UK, all rights reserved </p>
+   </footer>
+
 
 </body>
 

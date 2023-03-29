@@ -102,7 +102,7 @@
 
       .btn-scroll-top {
          position: fixed;
-         bottom: 20px;
+         bottom: 50px;
          right: 20px;
          width: 50px;
          height: 50px;
@@ -148,6 +148,16 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
 
+  
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1px;
+  background-color: rgb(46, 193, 205);
+  color: white;
+}
 
 
 </style>
@@ -180,17 +190,21 @@
    <button id="close-button">Close</button>
 </div>
 
+
+
 <script>
   window.addEventListener('load', function() {
     var popup = document.getElementById('video-popup');
-    popup.style.display = 'block';
+    var videoShown = localStorage.getItem('videoShown');
+    if (!videoShown || videoShown === 'false') {
+      popup.style.display = 'block';
+      localStorage.setItem('videoShown', 'true');
+    }
     document.getElementById('close-button').addEventListener('click', function() {
       popup.style.display = 'none';
     });
   });
 </script>
-
-
 
 
 
@@ -259,7 +273,7 @@
             <img src="<?= base_url(); ?>/assets/img/Making-Everybody-Welcome.png" alt="Bootstrap" height="80">
 
             <div class="input-group">
-               <input id="search-input" type="text" placeholder="Search for location..." class="form-control search-input" title="Enter the location you are looking for here">
+               <input id="search-input" type="text" placeholder="Search for venues by location or type and find out all you need to know, including disability accessibility" class="form-control search-input" title="Enter the location you are looking for here">
                <span class="input-group-append">
                    <button aria-label="search for attractions" type="button" class="search-btn btn btn-primary"  title="Search for attractions" >
                      <i class="fa fa-map-marker fa-3x text-white"></i>
@@ -708,6 +722,12 @@
          });
       });
    </script>
+
+
+<footer> 
+   <p> © Access & Inclusion UK, all rights reserved </p>
+   </footer>
+
 
 </body>
 

@@ -1,3 +1,4 @@
+<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header'); ?>
 <?php
    date_default_timezone_set('Europe/London');
@@ -89,6 +90,8 @@
    color: #515A5A;
    }
 </style>
+<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
+<script src="./assets/js/accessibility.js"></script>
 <div class="container">
 <div class="row">
    <div class="col-lg-6">
@@ -101,7 +104,7 @@
                <div class="col-12">
                   <h2><?php echo $timeOfDay . " " .  $user ?>!</h2>
                   <br>
-                  <p>Welcome to your own Admin Dashboard, here you can manage everything from audit templates, viewing companies and their venues and also view your revenue.</p>
+                  <p>Welcome to your own Admin Dashboard, here you can manage everything from audit templates, viewing companies and their venues and also view your revenue. Templates will be accessible to premium customers to utilise as an audit.</p>
                </div>
                <div class="col-md-8">
                </div>

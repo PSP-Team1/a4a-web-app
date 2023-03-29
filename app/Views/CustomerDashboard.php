@@ -130,9 +130,16 @@ $contact = $session->get('name');
 
          <div class="row">
             <div class="col-lg-12">
+               <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
+                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                  <small>Last login: <?= date('Y M d'); ?></small><br>
+                  <button class="btn btn-info mt-2" data-dismiss="alert"><i class="fa fa-info-circle"></i> OK</button>
+               </div>
+
                <div class="ibox">
                   <div class="ibox-title">
-                     <h2><?php echo $contact ?>'s Dashboard</h2>
+                     <h2><?php echo $contact ?>'s Summary Dashboard</h2>
                      <div class="ibox-tools">
                         <a class="collapse-link">
                            <i class="fa fa-chevron-up"></i>
@@ -151,10 +158,11 @@ $contact = $session->get('name');
                         </a>
                      </div>
                   </div>
+
                   <div class="ibox-content">
                      <div class="row">
                         <h3><?php echo $timeOfDay . " " .  $contact ?>!</h3>
-                        <h4>What would you like to do today?</h4>
+                        <h4>What would you like to do today? You can edit your existing audits, audit a new venue as well as publish and unpublish audits depending on their completion progress.</h4>
                         <p>
                            <a class="btn btn-success btn-outline" href="/Audit" role="button">
                               <i class="fas fa-search"></i> View My Accessibility Audit(s)
@@ -165,6 +173,52 @@ $contact = $session->get('name');
                   </div>
                </div>
             </div>
+
+            <div class="col-lg-4">
+               <div class="widget style1 lazur-bg">
+                  <div class="row">
+                     <div class="col-4">
+                        <i class="fa fa-shield fa-5x"></i>
+                     </div>
+                     <div class="col-8 text-right">
+                        <span> Audits Completed</span>
+                        <h2 class="font-bold"></h2>
+                     </div>
+                  </div>
+               </div>
+
+
+
+               <div class="widget style1 lazur-bg">
+                  <div class="row">
+                     <div class="col-4">
+                        <i class="fa fa-envelope-o fa-5x"></i>
+                     </div>
+                     <div class="col-8 text-right">
+                        <span> Venues Audited </span>
+                        <h2 class="font-bold">260</h2>
+                     </div>
+                  </div>
+               </div>
+
+
+
+            </div>
+
+            <div class="col-lg-6">
+               <div class="widget style1 lazur-bg">
+                  <div class="row">
+                     <div class="col-4">
+                        <i class="fa fa-envelope-o fa-5x"></i>
+                     </div>
+                     <div class="col-8 text-right">
+                        <span> New messages </span>
+                        <h2 class="font-bold">260</h2>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
 
 
          </div>
@@ -332,11 +386,12 @@ $contact = $session->get('name');
 
                               </table>
 
-                              <a class="btn btn-success btn-outline" href="/CustomerNewVenue" role="button">
-                                 <i class="fa fa-plus"></i> Add New Venue
-                              </a>
+
                            </div>
                         <?php endif; ?>
+                        <a class="btn btn-success btn-outline" href="/CustomerNewVenue" role="button">
+                           <i class="fa fa-plus"></i> Add New Venue
+                        </a>
                         </div>
                   </div>
 
@@ -345,6 +400,7 @@ $contact = $session->get('name');
             </div>
 
             <div class="col-lg-4">
+
 
                <div class="ibox ">
 
@@ -356,51 +412,44 @@ $contact = $session->get('name');
 
                      <div>
                         <div class="chat-activity-list">
+                           <?php foreach ($activity as $log) : ?>
+                              <div class="chat-element <?= ($log['company_type'] == 'client') ? 'right' : '' ?>">
+                                 <a href="#" class="float-<?= ($log['company_type'] == 'client') ? 'right' : 'left' ?>">
+                                    <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $log['avatar'] ?>">
+                                 </a>
+                                 <div class="media-body <?= ($log['company_type'] == 'client') ? 'text-right' : '' ?>">
 
-                           <div class="chat-element">
-                              <a href="#" class="float-left">
-                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
-                              </a>
-                              <div class="media-body ">
-                                 <small class="float-right text-navy">1m ago</small>
-                                 <strong>Mike Smith</strong>
-                                 <p class="m-b-xs">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                 </p>
-                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                    <strong><?= $log['name'] ?></strong>
+                                    <p class="m-b-xs">
+
+                                       <?php
+
+
+                                       switch ($log['action']) {
+                                          case 'VEN_CREATE':
+                                             echo "i equals 0";
+                                             break;
+                                          case 'VEN_AUDIT':
+                                             echo "i equals 1";
+                                             break;
+                                          case 'AUD_COMPLETE':
+                                             echo 'Completed audit for venue <a href="/AuditReportView/' . $log['ref_id'] . '">' . $log['meta'] . '</a>';
+                                             break;
+                                          case 'USER_PAYMENT':
+                                             echo "i equals 1";
+                                             break;
+                                       }
+                                       ?>
+
+
+
+                                    </p>
+                                    <small class="float-<?= ($log['company_type'] == 'client') ? 'left' : 'right' ?> text-navy"><?= date('m/d/Y h:i a', strtotime($log['date_created'])) ?></small>
+                                 </div>
                               </div>
-                           </div>
-
-                           <div class="chat-element right">
-                              <a href="#" class="float-right">
-                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
-
-                              </a>
-                              <div class="media-body text-right ">
-                                 <small class="float-left">5m ago</small>
-                                 <strong>John Smith</strong>
-                                 <p class="m-b-xs">
-                                    Lorem Ipsum is simply dummy text of the printing.
-                                 </p>
-                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                              </div>
-                           </div>
-
-                           <div class="chat-element ">
-                              <a href="#" class="float-left">
-                                 <img alt="image" class="rounded-circle" src="/assets/img/avatars/<?= $avatar ?>">
-
-                              </a>
-                              <div class="media-body ">
-                                 <small class="float-right">2h ago</small>
-                                 <strong>Mike Smith</strong>
-                                 <p class="m-b-xs">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                 </p>
-                                 <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                              </div>
-                           </div>
+                           <?php endforeach; ?>
                         </div>
+
                      </div>
                      <div class="chat-form">
                         <form role="form">

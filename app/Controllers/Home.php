@@ -9,7 +9,7 @@ class Home extends BaseController
     {
         $session = session();
         $data['user'] = $session->get('name');
-        return view('home2', $data);
+        return view('home', $data);
     }
 }
 ?>

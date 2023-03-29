@@ -12,7 +12,7 @@ class VenueController extends BaseController
 
     public function index()
     {
-        return view('Home2');
+        return view('Home');
     }
 
 

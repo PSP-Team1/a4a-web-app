@@ -13,7 +13,7 @@
     </div>
     <div class="ibox ">
       <div class="ibox-title">
-        <h2>View Company - <b><span style="color: navy"><?php echo $company['companyName'] ?></b></h2>
+        <h2>Company Details - <b><span style="color: purple"><?php echo $company['companyName'] ?></b></h2>
       </div>
 
       <style>
@@ -36,7 +36,14 @@
         .table tbody tr:hover {
             background-color: #f5f5f5;
         }
+        .custom-progress-bar {
+         background-color: #52BE80;
+      }
     </style>
+
+    <div class="row">
+
+    <div class="col-lg-12">
 
     <div class="ibox-content">
         <table class="table">
@@ -73,16 +80,16 @@
         </table>
     </div>
 
-    </div>
+    <br>
 
+    <div class="row">
+    <div class="col-lg-6">
     <div class="ibox ">
       <div class="ibox-title">
         <h2>View Company Venue(s)</h2>
       </div>
 
-      <div class="ibox-content">
-
-      <div class="row">
+      <div class="ibox-content" style="max-height: 500px; overflow-y: auto;">
 
         <?php if (empty($venues)): ?>
             <p>There are no venues to display.</p>
@@ -93,14 +100,9 @@
 
                     <th data-toggle="true" class="footable-visible footable-first-column footable-sortable">
                         Venue Name<span class="footable-sort-indicator"></span></th>
-                    <th class="footable-visible footable-sortable">Venue Address<span
-                            class="footable-sort-indicator"></span>
-                    </th>
-                    <th data-type="all" class="footable-visible footable-sortable">Venue Postcode<span
-                            class="footable-sort-indicator"></span></th>
-                    <th data-type="all" class="footable-visible footable-sortable">Action<span
+                    <th data-type="all" class="footable-visible footable-sortable">Venue Completion<span
                     class="footable-sort-indicator"></span></th>
-                    <th class="footable-visible footable-last-column footable-sortable">Venue Completion<span
+                    <th class="footable-visible footable-last-column footable-sortable">Action<span
                     class="footable-sort-indicator"></span></th>
                 </tr>
             </thead>
@@ -120,17 +122,18 @@
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column"><span
                             class="footable-toggle"></span><?= $venue['venue_name'] ?></td>
-                    <td class="footable-visible"><?= $venue['address'] ?></td>
-                    <td class="footable-visible"><?= $venue['postcode'] ?></td>
+                            <td class="footable-visible footable-last-column">
+                            <div class="progress">
+                                                <div class="progress-bar <?php if ($progress == 100) {
+                                                                              echo 'custom-progress-bar';
+                                                                           } ?> <?php if ($progress != 100) {
+                                                                                    echo 'progress-bar-striped animated';
+                                                                                 } ?>" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $progress; ?>%</div>
+                                             </div>
                     <td class="footable-visible footable-last-column">
                     <a class="btn btn-success btn-outline" href="/CustomerDashboard/ViewVenue/<?= $venue['id'] ?>" role="button">
                         <i class="fas fa-eye"></i> View
                     </a>
-
-                    <td class="footable-visible footable-last-column">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-success animated" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $progress; ?>%</div>
-                    </div>
 
                     <style>
 
@@ -151,27 +154,20 @@
                 </tr>
                 <?php endforeach; ?>
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="5" class="footable-visible">
-                        <ul class="pagination float-right">
-                            <li class="footable-page-arrow disabled"><a data-page="first" href="#first">«</a>
-                            </li>
-                            <li class="footable-page-arrow disabled"><a data-page="prev" href="#prev">‹</a></li>
-                            <li class="footable-page active"><a data-page="0" href="#">1</a></li>
-                            <li class="footable-page"><a data-page="1" href="#">2</a></li>
-                            <li class="footable-page-arrow"><a data-page="next" href="#next">›</a></li>
-                            <li class="footable-page-arrow"><a data-page="last" href="#last">»</a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </tfoot>
         </table>
         <?php endif; ?>
 
         </div>
 
       </div>
+    </div>
+    <div class="col-lg-6">
+
+    <div class="ibox-title">
+        <h2>View Company Audit(s)</h2>
+      </div>
+
+    <div class="ibox-content" style="max-height: 500px; overflow-y: auto;" >
     </div>
   </div>
 </div>

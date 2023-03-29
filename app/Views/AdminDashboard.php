@@ -149,7 +149,7 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <?php foreach ($revenues as $revenue) : ?>
+                     <?php foreach ($revenues as $revenue) :  ?>
                      <tr class="footable-even">
                         <td style="footable-visible">
                            <?php
@@ -180,7 +180,7 @@
       <div class="ibox-content">
          <div class="left-box">
             <div style="background-color: rgba(54, 162, 235, 0.3); background: linear-gradient(to top, rgba(54, 162, 235, 0.5), #ffffff);" class="round-box-week">
-               <h3><i class="bi bi-people"></i> Customers Registered</h3>
+               <h3><i class="bi bi-people"></i> New Customers</h3>
                <br>
                <?php if (count($customersWeek) == 1) { ?>
                <h4><?= count($customersWeek) ?> Customer!</h4>
@@ -211,7 +211,7 @@
       <div class="ibox-content">
          <div class="left-box">
             <div style="background-color: rgba(255, 206, 86, 0.3); background: linear-gradient(to top, rgba(255, 206, 86, 0.5), #ffffff);" class="round-box-alltime">
-               <h3><i class="bi bi-people"></i> Customers Registered</h3>
+               <h3><i class="bi bi-people"></i> Total Customers</h3>
                <br>
                <?php if (count($customersAllTime) == 1) { ?>
                <h4><?= count($customersAllTime) ?> Customer!</h4>
@@ -257,39 +257,46 @@
             <h2>View All Companies</h2>
          </div>
          <div class="ibox-content">
-            <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded">
-               <thead>
-                  <tr>
-                     <th data-type="all" class="footable-visible footable-sortable">Company Name<span class="footable-sort-indicator"></span></th>
-                     <th data-type="all" class="footable-visible footable-sortable">Number of Venues<span class="footable-sort-indicator"></span></th>
-                     <th data-type="all" class="footable-visible footable-sortable">Creation Date<span class="footable-sort-indicator"></span></th>
-                     <th class="footable-visible footable-last-column footable-sortable">Action<span class="footable-sort-indicator"></span></th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <?php foreach ($companies as $company) : ?>
-                  <tr class="footable-even">
-                     <td style="footable-visible"><?= $company['companyName'] ?></td>
-                     <?php
-                        if ($company['v_cnt'] == 1) {
-                           echo '<td style=" footable-visible">1 Venue</td>';
-                        } elseif ($company['v_cnt'] == 0) {
-                           echo '<td style=" footable-visible">No Venues</td>';
-                        } else {
-                           echo '<td style=" footable-visible">' . $company['v_cnt'] . ' Venues</td>';
-                        }
-                        ?>
-                     <td style=" footable-visible"><?= date("F j Y", strtotime($company['date_created'])) ?></td>
-                     <td class="footable-visible footable-last-column">
-                        <a class="btn btn-success btn-outline" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button">
-                        <i class="bi bi-eye"></i> View
-                        </a>
-                        <a class="btn btn-danger btn-outline" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button">
-                        <i class="bi bi-trash"></i> Delete
-                        </a>
-                  </tr>
-                  <?php endforeach; ?>
-            </table>
+         <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded">
+   <thead>
+      <tr>
+         <th data-type="all" class="footable-visible footable-sortable">Company Name<span class="footable-sort-indicator"></span></th>
+         <th data-type="all" class="footable-visible footable-sortable">Number of Venues<span class="footable-sort-indicator"></span></th>
+         <th data-type="all" class="footable-visible footable-sortable">Creation Date<span class="footable-sort-indicator"></span></th>
+         <th class="footable-visible footable-last-column footable-sortable">Action<span class="footable-sort-indicator"></span></th>
+      </tr>
+   </thead>
+   <tbody>
+      <?php foreach ($companies as $company) : ?>
+      <tr class="footable-even">
+         <td style="footable-visible"><?= $company['companyName'] ?></td>
+         <?php
+            if ($company['v_cnt'] == 1) {
+               echo '<td style=" footable-visible">1 Venue</td>';
+            } elseif ($company['v_cnt'] == 0) {
+               echo '<td style=" footable-visible">No Venues</td>';
+            } else {
+               echo '<td style=" footable-visible">' . $company['v_cnt'] . ' Venues</td>';
+            }
+            ?>
+         <td style=" footable-visible"><?= date("F j Y", strtotime($company['date_created'])) ?></td>
+         <div style="text-align: center;">
+         <td class="footable-visible footable-last-column">
+            <a class="btn btn-success" href="/AdminDashboard/ViewCompany/<?= $company['id'] ?>" role="button">
+               <i class="bi bi-eye"></i> View Company Details
+            </a>
+         </td>
+         </div>
+
+      </tr>
+      <?php endforeach; ?>
+      </table>
+
+      <style>
+         table .footable-last-column {
+            width: 18%;
+         }
+      </style>
          </div>
       </div>
    </div>

@@ -263,4 +263,8 @@ class AuditModel extends Model
 
         return $query->getResultArray();
     }
+
+    public function getCompaniesAudited()
+    {
+    }
 }

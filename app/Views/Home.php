@@ -122,13 +122,13 @@
       </script>
    </head>
    <body>
-      <div id="video-popup">
+      <!-- <div id="video-popup">
          <div class="popup-header">
             <h2>Getting started? Click here to find out how to search</h2>
          </div>
          <iframe width="560" height="315" src="https://www.youtube.com/embed/4Hz7_sxOMf4?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
          <button id="close-button">Close</button>
-      </div>
+      </div> -->
       <script>
          window.addEventListener('load', function() {
            var popup = document.getElementById('video-popup');
@@ -152,7 +152,9 @@
                These terms and conditions shall be governed by and construed in accordance with the laws of [insert jurisdiction].
                The website owner reserves the right to modify these terms and conditions at any time. Your continued use of this website after any such modifications shall constitute your acceptance of the modified terms and conditions. 
             </p>
-            <button onclick="acceptTerms()">I Agree</button>
+            <a onclick="acceptTerms()" style="border-color: #fff; background-color: #2e8184; color: white;" class="btn btn-primary" aria-current="page">
+            <i class="bi bi-check"></i> I Agree
+            </a>
          </div>
       </div>
       <button aria-label="scroll to top" class="btn-scroll-top" title="Scroll to top"><i class="fa fa-chevron-up"></i></button>

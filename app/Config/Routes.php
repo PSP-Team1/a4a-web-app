@@ -71,15 +71,24 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/Checkout', 'PaymentController::checkout');
     $routes->get('/CustomerInbox', 'InboxController::customerInbox');
     $routes->get('/Audit', 'AuditController::index');
-    // $routes->get('/Audit/auditConfirmation', 'AuditController::auditConfirmation');
+    // $routes->get('/Audit/auditResults', 'AuditController::auditResults');
     $routes->get('success', 'PaymentController::success');
-    $routes->get('/Audit/auditConfirmation/(:num)', 'AuditController::auditConfirmation/$1');
+    $routes->get('showTransactions', 'PaymentController::showTransactions');
+    $routes->get('/Products', 'PaymentController::balanceManagement');
+    $routes->get('/Audit/auditResults/(:num)', 'AuditController::auditResults/$1');
     $routes->get('/AuditController/OpenAudit/(:num)', 'AuditController::openAudit/$1');
     $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');
     $routes->get('/ViewAudits', 'ViewAuditController::index');
     $routes->get('/Review', 'ReviewController::index');
+
+
+    $routes->get('/ManageProducts', 'ProductManagement::index');
+    $routes->get('/ManageProducts/activate/(:num)', 'ProductManagement::activate/$1');
+    $routes->get('/ManageProducts/deactivate/(:num)', 'ProductManagement::deactivate/$1');
+    $routes->get('/ManageProducts/addPromoCode/', 'ProductManagement::addPromoCode');
 });
 
+$routes->get('/HomeViewVenue/(:num)', 'Home::viewVenueDetails/$1');
 $routes->get('/Login', 'LoginController::index');
 $routes->get('/Register', 'RegisterController::index');
 $routes->get('/RegisterSuccess', 'RegisterSuccessController::index');
@@ -123,5 +132,5 @@ $routes->group('', ['filter' => 'cors'], function ($routes) {
 // $routes->get('/ViewAudits', 'ViewAuditController::index');
 // $routes->get('/ForgotPassword', 'LoginController::ForgotPassword');
 
-// $routes->get('/Audit/auditConfirmation', 'AuditController::auditConfirmation');
+// $routes->get('/Audit/auditResults', 'AuditController::auditResults');
 // $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');

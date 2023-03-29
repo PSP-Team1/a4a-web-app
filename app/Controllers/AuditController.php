@@ -102,6 +102,8 @@ class AuditController extends BaseController
     {
 
         $am = new AuditModel();
+
+        $data['audit_status'] = $am->getAuditStatus($i);
         $data['summary'] = $am->getAuditSummary($i);
         $data['question_data'] = $am->getQuestions($i);
         $data['audit_id'] = $i;
@@ -119,14 +121,14 @@ class AuditController extends BaseController
     }
 
 
-    public function auditConfirmation($i)
+    public function auditResults($i)
     {
 
         $am = new AuditModel();
         $data['summary'] = $am->getAuditSummary($i);
         $data['question_data'] = $am->getQuestions($i);
         $data['audit_id'] = $i;
-        return view('AuditConfirmation', $data);
+        return view('auditResults', $data);
     }
 
     public function completeAudit()

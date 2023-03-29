@@ -81,11 +81,12 @@ navLinks.forEach(function (link) {
 });
 
 
-// progress update
+// When progress is complete enable submit is enabled
 
 const enableSubmit = () => {
   const submit = document.getElementById('rpt-button');
   submit.classList.remove('disabled');
+  submit.setAttribute('href', '#confirm-modal');
   submit.classList.add('btn-primary');
   submit.classList.remove('btn-outline-danger');
   submit.removeAttribute('disabled');
@@ -187,5 +188,23 @@ scrollToTopButton.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
+
+
+
+// Protected on back end anyway, but this is just for cosmetic purposes
+const container = document.querySelector('.container');
+const aStatus = container.getAttribute('a-status');
+
+const lockForm =  () =>{
+
+  const inputs = container.querySelectorAll('button, input, textarea, a.btn');
+  inputs.forEach(item => {
+    item.disabled = true;
+  });
+}
+
+if(aStatus === 'Complete'){
+  lockForm();
+}
 
 

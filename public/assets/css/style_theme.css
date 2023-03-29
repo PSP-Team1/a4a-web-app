@@ -1555,7 +1555,7 @@ button:focus {
   min-width: 120px;
 }
 .btn-primary.btn-outline {
-  color: #007bff;
+  color: #1ab394;
 }
 .btn-success.btn-outline {
   color: #1c84c6;
@@ -1606,7 +1606,7 @@ button:focus {
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #18a689;
-  border-color: #18a689;
+  border-color: rgb(114, 131, 181);
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -1637,7 +1637,7 @@ button:focus {
 .show > .btn-success.dropdown-toggle {
   color: #fff;
   background-color: #1a7bb9;
-  border-color: #1a7bb9;
+  border-color: rgb(114, 131, 181);
 }
 .btn-success:not(:disabled):not(.disabled):active:focus,
 .btn-success:not(:disabled):not(.disabled).active:focus,
@@ -1978,7 +1978,7 @@ button.dim:active:before {
 }
 .label-primary,
 .badge-primary {
-  background-color: #007bff;
+  background-color: #1ab394;
   color: #ffffff;
 }
 .label-success,

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="<?= base_url() ?>/assets/img/favicon.ico">
+  <link rel="shortcut icon" href="<?= base_url() ?>/assets/img/favicon_io/favicon.ico">
   <meta name="theme-color" content="#ffffff">
 
   <!-- CSS only -->
@@ -95,16 +95,16 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
       <div class="header_img">
 
       </div>
-      <img src="/assets/img/Making-Everybody-Welcome.png" alt="Description of the image" max-width:="" 50px;="" style="
+      <a href="/dashboard"><img src="/assets/img/Making-Everybody-Welcome.png" alt="Description of the image" max-width:="" 50px;="" style="
     max-width: 100px;
     position: relative;
     left: 0px;
-">
+"></a>
       <?php if ($role == "client") : ?>
-        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access For All - <span style="color: purple">Admin Portal</h4>
+        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access & Inclusion - <span style="color: purple">Admin Portal</h4>
       <?php endif; ?>
       <?php if ($role == "customer") : ?>
-        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access For All - <span style="color: purple">Customer Portal</h4>
+        <h4 style="position: relative; top: 10px; left: 15px;" class="nav-title">Access & Inclusion - <span style="color: purple">Customer Portal</h4>
       <?php endif; ?>
     </div>
 
@@ -158,6 +158,12 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Settings</span>
             </a>
 
+
+            <a href="<?= base_url() ?>/ManageProducts" class="nav_link <?= ($activePage == "ManageProducts" ? "active" : "") ?>">
+              <i class='bx bxs-balloon'></i>
+              <span class="nav_name">Products & Offers</span>
+            </a>
+
           </div>
         <?php endif; ?>
 
@@ -169,14 +175,19 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Dashboard</span>
             </a>
 
-            <a href="<?= base_url() ?>/ViewAudits" class="nav_link <?= ($activePage == "ViewAudits" ? "active" : "") ?>">
+            <a href="<?= base_url() ?>/Audit" class="nav_link <?= ($activePage == "ViewAudits" ? "active" : "") ?>">
               <i class='bx bx-list-ul nav_icon'></i>
-              <span class="nav_name">View Audit(s)</span>
+              <span class="nav_name">View Audits</span>
             </a>
-            <div class="dropdown">
-              
-              </a>
-            </div>
+            <a href="<?= base_url() ?>/AdminSettings" class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">
+              <i class='bx bx-cog nav_icon'></i>
+              <span class="nav_name">Settings</span>
+            </a>
+
+            <a href="<?= base_url() ?>/Products" class="nav_link <?= ($activePage == "Products" ? "active" : "") ?>">
+              <i class='bx bxs-credit-card-front'></i>
+              <span class="nav_name">My Services</span>
+            </a>
           </div>
         <?php endif; ?>
 

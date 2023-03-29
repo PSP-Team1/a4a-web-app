@@ -10,9 +10,11 @@ class Dashboard extends BaseController
     public function index()
     {
 
-        $appModel = new DashboardModel();
-        $data['companies'] = $appModel->getCompanies();
-
-        return view('Dashboard', $data);
+        // Redurect request
+        if (session()->get('type') === 'client') {
+            return redirect()->to('AdminDashboard');
+        } else {
+            return redirect()->to('CustomerDashboard');
+        }
     }
 }

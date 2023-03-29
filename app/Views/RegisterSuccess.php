@@ -3,14 +3,13 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="./assets/img/favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="shortcut icon" href="./assets/img/favicon_io/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/registerStyle.css" />
     <script src="/assets/js/accessibility.js"></script>
-    <link rel="stylesheet" href="/assets/css/accessibilityPortal.css"/>
+    <link rel="stylesheet" href="/assets/css/accessibilityPortal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
@@ -30,8 +29,7 @@
 
             <section class="Login-form">
 
-                <div class="fusion-separator fusion-no-medium-visibility fusion-no-large-visibility fusion-full-width-sep"
-                    style="align-self: center;margin-left: auto;margin-right: auto;margin-top:100px;margin-bottom:10px;width:100%;">
+                <div class="fusion-separator fusion-no-medium-visibility fusion-no-large-visibility fusion-full-width-sep" style="align-self: center;margin-left: auto;margin-right: auto;margin-top:100px;margin-bottom:10px;width:100%;">
                 </div>
 
                 <div class="alert alert-success" role="alert">
@@ -55,12 +53,12 @@
 
     <script>
         var count = 10;
-        var interval = setInterval(function () {
+        var interval = setInterval(function() {
             document.getElementById("countdown").innerHTML = count;
             count--;
             if (count === 0) {
                 clearInterval(interval);
-                window.location.href = "<?=base_url()?>/Login";
+                window.location.href = "<?= base_url() ?>/Login";
             }
         }, 1000);
     </script>

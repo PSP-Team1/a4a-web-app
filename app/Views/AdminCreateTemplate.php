@@ -82,7 +82,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <p class="mt-2"><i class="fa fa-info-circle"></i> give your template a unique name</p>
+                            <p class="mt-2"><i class="fa fa-info-circle"></i> Give your template a unique name</p>
 
                         </div>
                     </div>
@@ -92,7 +92,7 @@
 
                         <h2> <b>2</b> Add question data </h2>
 
-                        <p class="mt-2"><i class="fa fa-info-circle"></i> add brand new questions or save time and import them from existing template.</p>
+                        <p class="mt-2"><i class="fa fa-info-circle"></i> Add brand new questions or save time and import them from existing template.</p>
 
                         <div class="col-lg-4">
 
@@ -737,3 +737,4 @@
             });
     });
 </script>
+<?= view('templates/footer'); ?>

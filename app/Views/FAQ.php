@@ -1,32 +1,43 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>FAQ Page</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-	body {
-            background-image: url('https://images.wallpaperscraft.com/image/single/texture_spots_lemon_143188_1920x1080.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            }
+<?= view('templates/accessibility'); ?>
 
-            .h1{
-              color: purple;
-            }
-            </style>
-             <div class="logo-container">
-  <img style="position: relative; top: 10px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff); width: 15%;" src="/assets/img/Making-Everybody-Welcome.png" alt="">
-</div>
+<head>
+	<link rel="shortcut icon" href="./assets/img/favicon_io/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="stylesheet" href="./assets/css/accessiblity.css" />
+	<script src="./assets/js/accessibility.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<title>FAQ Page</title>
+	<style>
+		body {
+			background-image: url('https://images.wallpaperscraft.com/image/single/texture_spots_lemon_143188_1920x1080.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+
+		.h1 {
+			color: purple;
+		}
+	</style>
+	<div class="logo-container">
+		<img style="position: relative; top: 10px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff); width: 15%;" src="/assets/img/Making-Everybody-Welcome.png" alt="">
+	</div>
 </head>
+
 <body>
 	<div class="container">
-		
-    <h1 class="h1">Frequently Asked Questions</h1>
-	<h2>Standard Questions </h2>
-  
+
+		<h1 class="h1">Frequently Asked Questions</h1>
+		<h2>User Questions </h2>
+
 		<div class="card">
 			<div class="card-header">
 				<h3 class="mb-0">
@@ -43,71 +54,71 @@
 			</div>
 
 			<div class="card">
-			<div class="card-header">
-				<h3 class="mb-0">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse1">
-						Question: How can I find businesses to visit?
-					</button>
-				</h3>
-			</div>
-			<div id="collapse6" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
-				<div class="card-body">
-					There a multiple ways to find businesses on our search page, as you can search by location or type to find somewhere that fits your needs
+				<div class="card-header">
+					<h3 class="mb-0">
+						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse1">
+							Question: How can I find businesses to visit?
+						</button>
+					</h3>
+				</div>
+				<div id="collapse6" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+					<div class="card-body">
+						There a multiple ways to find businesses on our search page, as you can search by location or type to find somewhere that fits your needs
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">
-				<h3 class="mb-0">
-					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse1">
-						Question: Is there any way to leave feedback?
-					</button>
-				</h3>
-			</div>
-			<div id="collapse7" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
-				<div class="card-body">
-					We have a review system that allows you to give your thoughts on a business you have visited which can then be used by other people
-					considering visiting to further inform their visit along with the data provided through the audit
+			<div class="card">
+				<div class="card-header">
+					<h3 class="mb-0">
+						<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse1">
+							Question: Is there any way to leave feedback?
+						</button>
+					</h3>
+				</div>
+				<div id="collapse7" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
+					<div class="card-body">
+						We have a review system that allows you to give your thoughts on a business you have visited which can then be used by other people
+						considering visiting to further inform their visit along with the data provided through the audit
+					</div>
 				</div>
 			</div>
-		</div>
 
 		</div>
 		<br>
-		<h2>Business Questions </h2>
-    <div class="card">
-		<div class="card-header">
-			<h3 class="mb-0">
-				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-					Question: I have a business, how can i get started with your system?
-				</button>
-			</h3>
-		</div>
-		<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
-			<div class="card-body">
-				To get started, you can register for an account and upload your business to our site.
-				This will allow you to begin with a simple audit to allow us to give you a basic accessibility ranking and recieve
-				a listing on our business search page. More in depth audits can be accquired as part of our premium offerings
+		<h2>Business User Questions </h2>
+		<div class="card">
+			<div class="card-header">
+				<h3 class="mb-0">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+						Question: I have a business, how can i get started with your system?
+					</button>
+				</h3>
+			</div>
+			<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+				<div class="card-body">
+					To get started, you can register for an account and upload your business to our site.
+					This will allow you to begin with a simple audit to allow us to give you a basic accessibility ranking and recieve
+					a listing on our business search page. More in depth audits can be accquired as part of our premium offerings
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="card">
-		<div class="card-header">
-			<h3 class="mb-0">
-				<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-					Question: How is the pricing for premium offerings?
-				</button>
-			</h3>
-		</div>
-		<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
-			<div class="card-body">
-				All pricings for premium audit offerings can be accessed from within the business dashboard.
-			</div>
-		</div>
-	</div>
 
-	<div class="card">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="mb-0">
+					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+						Question: How is the pricing for premium offerings?
+					</button>
+				</h3>
+			</div>
+			<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+				<div class="card-body">
+					All pricings for premium audit offerings can be accessed from within the business dashboard.
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
 			<div class="card-header">
 				<h3 class="mb-0">
 					<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapse1">
@@ -123,17 +134,16 @@
 			</div>
 		</div>
 
-	<br>
-	<a href="<?= base_url() ?>/home" class="btn btn-light">Return To Homepage</a>
-	<br>
-	<br>
-	
-</div>
+		<br>
+		<a href="<?= base_url() ?>/home" class="btn btn-light">Return To Homepage</a>
+		<br>
+		<br>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
-		
-	

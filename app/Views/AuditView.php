@@ -1,8 +1,7 @@
-<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header'); ?>
 
 <head>
-  
+
     </style>
     <link href="<?= base_url(); ?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="<?= base_url(); ?>/assets/css/plugins/iCheck/custom.css" rel="stylesheet">
@@ -13,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="/assets/css/accessibilityPortal.css"/>
+    <link rel="stylesheet" href="/assets/css/accessibilityPortal.css" />
     <script src="/assets/js/accessibility.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
@@ -23,7 +22,6 @@
         }
     </style>
 </head>
-
 
 
 
@@ -159,15 +157,4 @@
     </div>
 </div>
 
-
-
-
-<!-- Full screen modal -->
-
-
-</div>
-
-
-</body>
-
-</html>
+<?= view('templates/footer'); ?>

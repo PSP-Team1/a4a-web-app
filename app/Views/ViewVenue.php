@@ -199,7 +199,7 @@ $email = $session->get('email');
                      <table id="opening-hours" name="opening-hours" style="width: 100%; font-size: 18px">
                         <tr>
                            <th>Day</th>
-                           <th>Hours</th>
+                           <th>Hours (24HR)</th>
                            <th>Open/Closed</th>
                         </tr>
                         <tr>

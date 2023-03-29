@@ -263,7 +263,7 @@
             <img src="<?= base_url(); ?>/assets/img/Making-Everybody-Welcome.png" alt="Bootstrap" height="80">
 
             <div class="input-group">
-               <input id="search-input" type="text" placeholder="Search for location..." class="form-control search-input" title="Enter the location you are looking for here">
+               <input id="search-input" type="text" placeholder="Search for venues by location or type and find out all you need to know, including disability accessibility" class="form-control search-input" title="Enter the location you are looking for here">
                <span class="input-group-append">
                    <button aria-label="search for attractions" type="button" class="search-btn btn btn-primary"  title="Search for attractions" >
                      <i class="fa fa-map-marker fa-3x text-white"></i>

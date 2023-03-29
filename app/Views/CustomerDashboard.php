@@ -271,6 +271,8 @@ $contact = $session->get('name');
                      <?php if (empty($venues)) : ?>
                         <p>There are no venues to display.</p>
                      <?php else : ?>
+
+                        <p><i class="fa fa-info"></i> Add new venues to your organization. Once complete you can <b class="text-success">publish</b> it as a listing in the search page.</p>
                         <div class="row">
                            <div class="col-lg-12">
 
@@ -328,16 +330,16 @@ $contact = $session->get('name');
                                              <?php if ($venue['published'] == 0) { ?>
                                                 <?php
                                                 if ($venue['published'] == 0 && $progress == 100) {
-                                                   echo "<b><p style='color: green;'>Ready To Publish</p></b>";
+                                                   echo "<span class='badge badge-primary'><i class='bx bx-broadcast'></i> Ready</span>";
                                                 } else {
-                                                   echo "<b><p style='color: #E74C3C;'>Unpublished</p></b>";
+                                                   echo "<span class='badge '>Incomplete</span>";
                                                 }
                                                 ?>
 
                                              <?php } ?>
                                              <?php if ($venue['published'] == 1) { ?>
                                                 <b>
-                                                   <p style="color: green;">Published</p>
+                                                   <span class='badge badge-primary'><i class='bx bx-broadcast'></i> Live</span>
                                                 </b>
                                              <?php } ?>
                                           </td>

@@ -241,10 +241,10 @@
 
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                <li class="nav-item me-1">
-                  <a class="nav-link active btn btn-primary" aria-current="page" href="<?= base_url() ?>/Login">Login / Register</a>
+                  <a class="nav-link active btn btn-primary" aria-current="page" href="<?= base_url() ?>/Login" style="background-color:rgb(114, 131, 181);">Login / Register</a>
                </li>
                <li class="nav-item me-2">
-                  <a class="nav-link active btn btn-outline-secondary btn-success" aria-current="page" href="/Affiliates">Affiliates</a>
+                  <a class="nav-link active btn btn-outline-secondary btn-success"  aria-current="page" href="/Affiliates" style="background-color:rgb(114, 131, 181);">Affiliates</a>
 
                </li>
                <li class="nav-item me-3">

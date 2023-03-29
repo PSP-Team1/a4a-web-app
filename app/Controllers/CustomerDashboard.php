@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\VenueModel;
 use App\Models\AuditModel;
+use App\Models\ActivityLogModel;
+
 
 
 class CustomerDashboard extends BaseController
@@ -11,8 +13,10 @@ class CustomerDashboard extends BaseController
     public function index()
     {
         $venueModel = new VenueModel();
+        $actModel = new ActivityLogModel();
+
         $data['venues'] = $venueModel->getVenues();
-        $data['venues'] = $venueModel->getVenues();
+        $data['activity'] = $actModel->getActivity();
 
         return view('CustomerDashboard', $data);
     }
@@ -58,7 +62,7 @@ class CustomerDashboard extends BaseController
         $venueModel = new VenueModel();
         $venueModel->updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags);
 
-        return redirect()->to('CustomerDashboard/ViewVenue/'.$venueId.'?tab=1');
+        return redirect()->to('CustomerDashboard/ViewVenue/' . $venueId . '?tab=1');
     }
 
     public function updateOpeningHours()
@@ -114,13 +118,13 @@ class CustomerDashboard extends BaseController
                 'ampm_closing' => $this->request->getPost('sunday-ampm-closing'),
                 'closed' => $this->request->getPost('sunday-openclosed'),
             ]
-            ];
-            
+        ];
+
 
         $venueModel = new VenueModel();
         $venueModel->updateOpeningHours($venueId, $openingHours);
 
-        return redirect()->to('CustomerDashboard/ViewVenue/'.$venueId.'?tab=2');
+        return redirect()->to('CustomerDashboard/ViewVenue/' . $venueId . '?tab=2');
     }
 
     public function updateAccessibility()
@@ -131,7 +135,7 @@ class CustomerDashboard extends BaseController
         $venueModel = new VenueModel();
         $venueModel->updateAccessibility($venueId, $accessibilityInfo);
 
-        return redirect()->to('CustomerDashboard/ViewVenue/'.$venueId.'?tab=3');
+        return redirect()->to('CustomerDashboard/ViewVenue/' . $venueId . '?tab=3');
     }
 
     public function updateImages()
@@ -139,7 +143,7 @@ class CustomerDashboard extends BaseController
         $files = $this->request->getFiles();
 
         $images = [];
-    
+
         foreach ($files['imageUpload'] as $file) {
             if ($file->isValid() && $file->getSize() > 0) {
                 $newName = $file->getRandomName();
@@ -147,14 +151,13 @@ class CustomerDashboard extends BaseController
                 $images[] = $newName;
             }
         }
-    
+
         $id = $this->request->getPost('id');
-    
+
         $venueModel = new VenueModel();
         $venueModel->updateImages($id, $images);
-    
+
         return redirect()->to(base_url('CustomerDashboard'))->with('success', 'Images updated successfully');
-    
     }
 
     public function publishVenue()
@@ -185,6 +188,4 @@ class CustomerDashboard extends BaseController
 
         return view('ViewVenue', $data);
     }
-
-   
 }

@@ -246,7 +246,8 @@
          <div class="container v-search-container pt-2">
             <div class="row">
                <div class="col-lg-2">
-                  <button aria-label="update search results button" class="btn btn-primary" id="update-results-btn">Update Results <span id="search-changes"></span></button>
+                  <button style="border-radius: 10px; border-color: #fff; background-color: #F1C40F; color: black; padding: 5px; font-size: 16px;" aria-label="update search results button" class="btn btn-secondary" id="update-results-btn">Update Results <span id="search-changes"></span></button>
+                  <br>
                </div>
                <div class="col-lg-10">
                   <div class="chip-container">

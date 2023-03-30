@@ -267,16 +267,16 @@
                            <div id="venueTypeSubMenu" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#venueTypeAccordion">
                               <div class="accordion-body">
                                  <ul class="list-group venue-types">
-                                    <li><a href="#" data-venue-type="1075">Museum</a></li>
-                                    <li><a href="#" data-venue-type="1075">Theme Park</a></li>
-                                    <li><a href="#" data-venue-type="1075">Castles &amp; Stately Homes</a></li>
-                                    <li><a href="#" data-venue-type="1075">Gardens, Nature &amp; Open Spaces</a></li>
-                                    <li><a href="#" data-venue-type="1075">Places of Worship</a></li>
-                                    <li><a href="#" data-venue-type="1075">Zoos &amp; Safari Parks</a></li>
-                                    <li><a href="#" data-venue-type="1075">Tourist Attractions</a></li>
-                                    <li><a href="#" data-venue-type="1075">Art Gallery</a></li>
-                                    <li><a href="#" data-venue-type="1075">Farm</a></li>
-                                    <li><a href="#" data-venue-type="1075">Exhibition and Conference Centre</a></li>
+                                    <li><a data-venue-type="1075 " onclick="scrollToHalfway()">Museum</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Theme Park</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Castles &amp; Stately Homes</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Gardens, Nature &amp; Open Spaces</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Places of Worship</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Zoos &amp; Safari Parks</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Tourist Attractions</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Art Gallery</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Farm</a></li>
+                                    <li><a data-venue-type="1075" onclick="scrollToHalfway()">Exhibition and Conference Centre</a></li>
                                  </ul>
                               </div>
                            </div>
@@ -293,11 +293,11 @@
                            <div id="socialSubMenu" class="accordion-collapse show " aria-labelledby="headingTwo" data-bs-parent="#socialAccordion">
                               <div class="accordion-body">
                                  <ul class="list-group venue-types">
-                                    <li><a href="#" data-venue-type="1115">Restaurants</a></li>
-                                    <li><a href="#" data-venue-type="1115">Pubs &amp; Bars</a></li>
-                                    <li><a href="#" data-venue-type="1115">Café, Cafés &amp; Coffee Shops</a></li>
-                                    <li><a href="#" data-venue-type="1115">Takeaways &amp; Fast Food</a></li>
-                                    <li><a href="#" data-venue-type="1115">Nightclubs</a></li>
+                                    <li><a data-venue-type="1115" onclick="scrollToHalfway()">Restaurants</a></li>
+                                    <li><a data-venue-type="1115" onclick="scrollToHalfway()">Pubs &amp; Bars</a></li>
+                                    <li><a data-venue-type="1115" onclick="scrollToHalfway()">Café, Cafés &amp; Coffee Shops</a></li>
+                                    <li><a data-venue-type="1115" onclick="scrollToHalfway()">Takeaways &amp; Fast Food</a></li>
+                                    <li><a data-venue-type="1115" onclick="scrollToHalfway()">Nightclubs</a></li>
                                  </ul>
                               </div>
                            </div>
@@ -314,15 +314,15 @@
                            <div id="activitiesSubMenu" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#activitiesAccordion">
                               <div class="accordion-body">
                                  <ul class="list-group  venue-types">
-                                    <li><a href="#" data-venue-type="1120">Art &amp; Design</a></li>
-                                    <li><a href="#" data-venue-type="1120">Music &amp; Singing</a></li>
-                                    <li><a href="#" data-venue-type="1120">Stadiums &amp; Sports Venues</a></li>
-                                    <li><a href="#" data-venue-type="1120">Sport &amp; Exercise</a></li>
-                                    <li><a href="#" data-venue-type="1120">Outdoor Activities</a></li>
-                                    <li><a href="#" data-venue-type="1120">Cinema</a></li>
-                                    <li><a href="#" data-venue-type="1120">Theatres &amp; Concert Halls</a></li>
-                                    <li><a href="#" data-venue-type="1120">Casino</a></li>
-                                    <li><a href="#" data-venue-type="1120">Bingo</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Art &amp; Design</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Music &amp; Singing</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Stadiums &amp; Sports Venues</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Sport &amp; Exercise</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Outdoor Activities</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Cinema</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Theatres &amp; Concert Halls</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Casino</a></li>
+                                    <li><a data-venue-type="1120" onclick="scrollToHalfway()">Bingo</a></li>
                                  </ul>
                               </div>
                            </div>
@@ -339,11 +339,11 @@
                            <div id="accommodationSubMenu" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#venueTypeAccordion">
                               <div class="accordion-body">
                                  <ul class="list-group venue-types">
-                                    <li><a href="#" data-venue-type="1128">Hotels &amp; Guesthouses</a></li>
-                                    <li><a href="#" data-venue-type="1128">Camping &amp; Caravanning</a></li>
-                                    <li><a href="#" data-venue-type="1128">Self-Catering</a></li>
-                                    <li><a href="#" data-venue-type="1128">Youth Hostels</a></li>
-                                    <li><a href="#" data-venue-type="1128">Respite Care</a></li>
+                                    <li><a data-venue-type="1128" onclick="scrollToHalfway()">Hotels &amp; Guesthouses</a></li>
+                                    <li><a data-venue-type="1128" onclick="scrollToHalfway()">Camping &amp; Caravanning</a></li>
+                                    <li><a data-venue-type="1128" onclick="scrollToHalfway()">Self-Catering</a></li>
+                                    <li><a data-venue-type="1128" onclick="scrollToHalfway()">Youth Hostels</a></li>
+                                    <li><a data-venue-type="1128" onclick="scrollToHalfway()">Respite Care</a></li>
                                  </ul>
                                  <div class="card-footer">Footer</div>
                               </div>
@@ -678,6 +678,15 @@
          behavior: 'smooth'
          });
          });
+
+         function scrollToHalfway() {
+         const halfwayPosition = window.innerHeight / 1; 
+         window.scroll({
+            top: halfwayPosition,
+            behavior: 'smooth' 
+         });
+         }
+
          
          
       </script>

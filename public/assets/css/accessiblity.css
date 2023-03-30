@@ -31,8 +31,7 @@
   }
 
 .accessButton:hover {
-  background-color: rgb(114, 131, 181);;
-  box-shadow: 0px 15px 20px rgb(15, 15, 15);;
+  background-color: #2e8184;
   color: #fff;
   transform: translateY(-10px);
 }

@@ -104,6 +104,10 @@
       <br>
       <h3 style="font-size: 18px; color: #333;"><?= $venue['about'] ?></h3>
       <br><br>
+      <h1 style="font-size: 26px; color: #333">Venue Accessibility<span> <i class="fas fa-wheelchair"></i></span></h1>
+      <br>
+      <h3 style="font-size: 18px; color: #333;"><?= $venue['accessibility'] ?></h3>
+      <br><br>
       <h1 style="font-size: 26px; color: #333">Opening Hours<span> <i class="far fa-clock"></i></span></h1>
       <br>
       <?php

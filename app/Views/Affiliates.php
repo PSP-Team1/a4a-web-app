@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <style>
         body {
-            background-image: url('https://images.wallpaperscraft.com/image/single/texture_spots_lemon_143188_1920x1080.jpg');
+
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -38,44 +38,21 @@
         <h1 class="h1">About us</h1>
         Access Consultancy, Training, Auditing and Inclusive Design Specialists
         Professional access consultancy, training, auditing and design appraisal services to clients large and small across all sectors. People are at the heart of everything we do because people make change happen. Working in partnership, we enable people to create places, services and experiences which are accessible and inclusive for all.
-        <h1 class="h1"> Our Partners </h1>
-        <div class="card">
-            <div class="card-header">
-                <h3 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                        The Ramp People: Wheelchair Ramps
-                    </button>
-                </h3>
-            </div>
-            <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
-                <div class="card-body">
-                    The Ramp People has the most comprehensive range of wheelchair ramps in the UK. Renowned for high quality & excellent value, our range includes economy and premium folding wheelchair ramps, channel ramps, fibreglass, threshold and modular wheelchair ramps.
-                    <a href="https://www.theramppeople.co.uk/wheelchair-ramps?gclid=CjwKCAjw_YShBhAiEiwAMomsEKuL0HFsLubpa7pn5sv8LXWO3H42uq3261GUEDCykHnCkLqeqQahShoCePIQAvD_BwE">Visit website</a>
-                    <img style="position: relative; top: 10px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff); width: 15%;" src="/assets/img/ramppeoplelogo.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse1">
-                        SafetyBuyer.com: Braille and Tactile Signs
-                    </button>
-                </h3>
-            </div>
-            <div id="collapse2" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
-                <div class="card-body">
-                    At Safety Buyer, we understand the importance of ensuring that everyone is kept safe from harm while on your premises. We have a range of braille and tactile signs that provide valuable information to the visually impaired, including warning signs, fire evacuation procedures and key location signs.
-                    <a href="https://www.safetybuyer.com/safety-signs/information-signs/braille-signs.html?gclid=CjwKCAjw_YShBhAiEiwAMomsEFfVrKROGgOyP4k8tUiqMKLgkXrsckK4AY5rdwPRAwJd4DvJBp1JDRoCVZkQAvD_BwE">Visit website</a>
-                    <br>
-                    <img style="position: relative; top: 10px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff); width: 15%;" src="/assets/img/safetybuyerlogo.png" alt="">
-                </div>
-            </div>
-        </div>
         <br>
-        <a href="<?= base_url() ?>/home" class="btn btn-light">Return To Homepage</a>
+        Our training programmes are designed and delivered by learning professionals who are members of the Chartered Institute of Personnel and Development.
 
+Our access and inclusion audits are carried out by Centre for Accessible Environments trained auditors with extensive experience.
+
+Our design appraisal work and consultancy is provided by friendly consultants with comprehensive expertise.
+
+Our lived experience of disability means that we bring first-hand knowledge and a practical approach to everything we do.
+        <h1 class="h1"> Our Partners </h1>
+        <img style="position: relative; top: 10px; right: -30px; filter: drop-shadow(1px 2px 1px #ffffff); width: 80%;" src="/assets/img/a4apartners.jpg" alt="">
     </div>
+    <br>
+    <br>
+		<a href="<?= base_url() ?>/home" class="btn btn-light">Return To Homepage</a>
+		<br>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

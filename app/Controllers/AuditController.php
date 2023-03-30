@@ -152,4 +152,19 @@ class AuditController extends BaseController
         // FIX ME: at the moment this only returns status of setting audit to
         return $this->response->setJSON($result);
     }
+
+
+    public function assignAudit()
+    {
+        $model = new AuditModel();
+
+        $data = [
+            'template_id' => $this->request->getPost('template_id'),
+            'venue_id' => $this->request->getPost('venue_id'),
+        ];
+
+        $aId = $model->assignAuditToVenue($data);
+
+        return redirect()->to('/openAudit/' . $aId);
+    }
 }

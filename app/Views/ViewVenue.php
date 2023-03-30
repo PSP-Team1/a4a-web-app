@@ -204,9 +204,9 @@ $email = $session->get('email');
 
             <hr>
 
-            <a class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal<?= $venue['id'] ?>">
+            <button class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal">
                <i class="fas fa-paper-plane-o"></i> Audit this Venue
-            </a>
+            </button>
          </div>
          <div id="tab2" class="tabcontent">
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateOpeningHours" onsubmit="return validateForm()">
@@ -655,34 +655,43 @@ $email = $session->get('email');
                      </tbody>
                   </table>
 
-                  <a class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal<?= $venue['id'] ?>">
+                  <a class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal">
                      <i class="fas fa-paper-plane-o"></i> Audit this Venue
                   </a>
 
-                  <div class="modal fade" id="performAuditModal<?= $venue['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="performAuditModalLabel" aria-hidden="true">
-                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <h2 class="modal-title" id="performAuditModalLabel">Venue Accessibility Audit</h2>
-                           </div>
-                           <div class="modal-body">
-                              Select Audit Type
-                              <?= $venue['venue_name'] ?>?
-                           </div>
-                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                              <a class="btn btn-danger" href="/CustomerDashboard/deleteVenue/<?= $venue['id'] ?>">Delete</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+
                </div>
             </div>
          </div>
       </div>
    </div>
-</div>
-</div>
-</div>
+
+   <div class="modal fade" id="performAuditModal" tabindex="-1" role="dialog" aria-labelledby="performAuditModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h2 class="modal-title" id="performAuditModalLabel">Proceed with Audit</h2>
+            </div>
+            <form action="<?= base_url('AuditController/assignAudit') ?>" method="post">
+               <div class="modal-body">
+                  <div class="form-group">
+                     <p>Select audit from the list</p>
+                     <input type="hidden" name="venue_id" value="<?= $venue['id'] ?>">
+                     <select class="form-control" id="productSelect" name="template_id">
+                        <?php foreach ($audit_templates as $audit) : ?>
+                           <option value="<?= $audit['id'] ?>"><?= $audit['audit_version'] ?></option>
+                        <?php endforeach; ?>
+                     </select>
+                  </div>
+
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane-o"></i> Begin</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
 </div>
 <?= view('templates/footer'); ?>

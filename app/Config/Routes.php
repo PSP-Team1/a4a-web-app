@@ -71,12 +71,15 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/Checkout', 'PaymentController::checkout');
     $routes->get('/CustomerInbox', 'InboxController::customerInbox');
     $routes->get('/Audit', 'AuditController::index');
+
+    $routes->get('/assignAudit', 'AuditController::assignAudit');
     // $routes->get('/Audit/auditResults', 'AuditController::auditResults');
     $routes->get('success', 'PaymentController::success');
     $routes->get('showTransactions', 'PaymentController::showTransactions');
     $routes->get('/Products', 'PaymentController::balanceManagement');
     $routes->get('/Audit/auditResults/(:num)', 'AuditController::auditResults/$1');
     $routes->get('/AuditController/OpenAudit/(:num)', 'AuditController::openAudit/$1');
+    $routes->get('/openAudit/(:num)', 'AuditController::openAudit/$1');
     $routes->post('/Audit/completeAudit', 'AuditController::completeAudit');
     $routes->get('/ViewAudits', 'ViewAuditController::index');
     $routes->get('/Review', 'ReviewController::index');

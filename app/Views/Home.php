@@ -182,7 +182,7 @@
                   </li>
                   <li style="margin-right: 10px;">
                      <a style="border-color: #fff; background-color: #2e8184; color: white;" class="btn btn-success" aria-current="page" href="/Affiliates">
-                     <i class="bi bi-people"></i> Affiliates
+                     <i class="bi bi-people"></i> About Us
                      </a>
                   </li>
                   <li>

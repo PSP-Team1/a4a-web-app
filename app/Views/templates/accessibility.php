@@ -4,7 +4,7 @@
          <b>Accessibility</b>
          </button>
       </div>
-
+      <link rel="stylesheet" href="/assets/css/accessiblity.css" />
    <div id="accessibilityModal" class="modal fade">
       <div class="modal-dialog">
          <div class="modal-content">
@@ -36,9 +36,9 @@
                   </label>
                </div>
                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="light-background">
-                  <label class="form-check-label" for="light-background">
-                     Light Background
+                  <input class="form-check-input" type="checkbox" id="light-mode-toggle">
+                  <label class="form-check-label" for="light-mode-toggle">
+                     Light mode
                   </label>
                </div>
 
@@ -56,3 +56,4 @@
          </div>
       </div>
    </div>
+   <script src="./assets/js/accessibility.js"></script>

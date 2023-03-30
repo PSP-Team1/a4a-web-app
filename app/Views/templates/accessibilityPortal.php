@@ -1,8 +1,5 @@
 
       
-      
-      
-      
       <div id="accessibilityModal" class="modal fade">
          <div class="modal-dialog">
             <div class="modal-content">
@@ -48,8 +45,10 @@
                </div>
             </div>
          </div>
+         
       </div>
-      <script src="/assets/js/accessibility.js"></script>
+
+      
 
 
 

@@ -51,16 +51,19 @@ document.getElementById("grayscale-toggle").addEventListener("change", function(
 });
 
 // Light background
-const lightBackgroundToggle = document.getElementById("light-background");
+document.addEventListener('DOMContentLoaded', function() {
+  const lightModeToggle = document.getElementById('light-mode-toggle');
+  const body = document.body;
 
-lightBackgroundToggle.addEventListener("change", function() {
-  if (this.checked) {
-     document.body.classList.add("light-background");
-     localStorage.setItem("light-background", true);
-  } else {
-     document.body.classList.remove("light-background");
-     localStorage.setItem("light-background", false);
-  }
+  lightModeToggle.addEventListener('click', function() {
+    if (body.classList.contains('light-mode')) {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode');
+    }
+  });
 });
 
 // Text to speech

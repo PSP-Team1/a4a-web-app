@@ -57,3 +57,11 @@ filter: invert(100%);
 filter: invert(1) hue-rotate(180deg);
 background: black;
 }
+
+body {
+  background-color: #fff;
+}
+
+.light-mode {
+  filter: brightness(150%) contrast(120%) hue-rotate(0deg);
+}

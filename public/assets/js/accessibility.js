@@ -141,7 +141,10 @@ if (localStorage.getItem("text-to-speech")) {
 const resetButton = document.querySelector('#reset-button');
 
 // Add an event listener to the reset button
-resetButton.addEventListener('click', function() {
+resetButton.addEventListener('click', function(event) {
+  // Prevent the default behavior of the button, which is to submit a form or reload the page
+  event.preventDefault();
+
   // Clear all saved preferences from local storage
   localStorage.clear();
 
@@ -154,12 +157,21 @@ function setDefaultAccessibilitySettings() {
   // Set font size to default (16px)
   document.body.style.fontSize = '16px';
 
-  // Uncheck all checkboxes
+  // Turn off accessibility features
   document.querySelector('#negative-contrast-button').checked = false;
+  document.body.classList.remove("negative-contrast");
+
   document.querySelector('#high-contrast-button').checked = false;
+  document.body.classList.remove("high-contrast");
+
   document.querySelector('#grayscale-toggle').checked = false;
+  document.body.classList.remove("grayscale");
+
   document.querySelector('#light-background').checked = false;
+  document.body.classList.remove("light-background");
+
   document.querySelector('#text-speech').checked = false;
+  document.body.classList.remove("text-speech");
 
   // Stop text to speech if it's currently active
   window.speechSynthesis.cancel();

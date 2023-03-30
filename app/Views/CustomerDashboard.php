@@ -104,8 +104,6 @@ $contact = $session->get('name');
    </style>
 
    <head>
-      <link rel="stylesheet" href="./assets/css/accessibilityPortal.css" />
-      <script src="./assets/js/accessibility.js"></script>
       <script>
          toastr.options.progressBar = true;
       </script>

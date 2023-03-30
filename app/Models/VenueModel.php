@@ -10,6 +10,17 @@ class VenueModel extends Model
 {
     protected $table = 'company_venue';
 
+    public function getVenueImages()
+    {
+        $session_id = session()->get('id');
+        $db = db_connect();
+
+        $sql = "select * from venue_media";
+       
+        $results = $db->query($sql)->getResult('array');
+        return $results;
+    }
+
     public function getVenues()
     {
         $session_id = session()->get('id');

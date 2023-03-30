@@ -223,7 +223,7 @@
                <div class="col-md-6">
                   <div class="box">
                      <br><br><br>
-                     <h2 style="font-size: 44px; color: white; font-family: 'Bradley Hand', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">Welcome to Access and Inclusion UK!</h2>
+                     <h2 style="font-size: 44px; color: white; font-family: 'Bradley Hand', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">Welcome to<br> Access and Inclusion UK!</h2>
                      <br><br>
                      <p style="font-size: 16px; color: white; font-family: 'Arial', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">
                         Access & Inclusion UK is a company dedicated to providing accessibility solutions for businesses and public spaces across the UK. Our mission is to create an inclusive environment where everyone, regardless of their ability, can access the services they need. We offer a range of services, including access audits, disability awareness training, and consultancy on accessibility issues.
@@ -438,7 +438,13 @@
                   const venueName = venue.venue_name;
                   const venueAbout = venue.about;
                   const venueAccessibility = venue.accessibility;
-         
+
+                  const image_links = <?php echo json_encode($image_links); ?>;
+
+                  const filtered_image_links = image_links.filter(function(image_link) {
+                     return image_link.venue_id === venueId;
+                  });
+  
                   const venueElement = document.createElement('div');
                   venueElement.classList.add('ibox');
          
@@ -481,16 +487,20 @@
                   const photosElement = document.createElement('div');
                   photosElement.classList.add('photos');
          
-                  for (let i = 0; i < 4; i++) {
+                  filtered_image_links.forEach(function(image_link) {
                      const photoLinkElement = document.createElement('a');
                      photoLinkElement.setAttribute('href', '#');
+                     photoLinkElement.style.display = 'inline-block'; 
                      const photoElement = document.createElement('img');
                      photoElement.setAttribute('alt', 'image');
                      photoElement.classList.add('feed-photo');
-                     photoElement.setAttribute('src', 'https://picsum.photos/100?random');
+                     photoElement.style.width = '160px'; 
+                     photoElement.style.height = '160px'; 
+                     photoElement.setAttribute('src', image_link.path);
                      photoLinkElement.appendChild(photoElement);
                      photosElement.appendChild(photoLinkElement);
-                  }
+                  });
+
          
                   rightColumnElement.appendChild(photosElement);
          
@@ -522,9 +532,6 @@
                      accessIconGroupElement.appendChild(iconElement);
                   }
                   }
-
-
-
 
                   const viewVenueButtonElement = document.createElement('button');
                   viewVenueButtonElement.classList.add('btn', 'btn-success');

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?= view('templates/accessibility'); ?>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
@@ -192,6 +191,7 @@
             </div>
          </div>
       </nav>
+      <?= view('templates/accessibility'); ?>
       <div style="background-image: url('https://i.imgur.com/3pF1T5w.png'); 
          background-size: contain; 
          background-position: center center; 

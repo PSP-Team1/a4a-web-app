@@ -1,4 +1,4 @@
-<body class="animate__animated animate__fadeIn">
+
       <div class="dropdown">
          <button href="#accessibilityModal" data-bs-toggle="modal" class="accessButton floating-btn" type="button">
          <b>Accessibility</b>

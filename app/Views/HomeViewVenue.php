@@ -89,7 +89,7 @@
       <div class="container">
       <header style="background-color: lightblue; width: 100%;">
          <img src="http://localhost:8080/assets/img/Making-Everybody-Welcome.png" alt="Everybody Welcome Logo" style="margin-top: 10px; margin-left: 10px;" width="200px">
-         <a href="/Home" class="btn btn-primary" style="position: absolute; top: 50px; right: 300px;">
+         <a href="<?= base_url() ?>/home" class="btn btn-primary" style="position: absolute; top: 50px; right: 300px;">
          Return to Homepage <span class="fas fa-arrow-right"></span>
          </a>
       </header>

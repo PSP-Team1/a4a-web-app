@@ -122,7 +122,7 @@
                      <a class="btn btn-success btn-outline" href="/AdminDeleteTemplate" role="button">
                      <i class="fa fa-eye"></i> View Audit Templates
                      </a>
-                     <a class="btn btn-outline btn-secondary" href="/AdminSettings" role="button">
+                     <a class="btn btn-outline btn-secondary" href="/Settings" role="button">
                      <i class="fa fa-cog"></i> View Profile Settings
                      </a>
                      <a class="btn btn-outline btn-danger" href="/ManageProducts" role="button">

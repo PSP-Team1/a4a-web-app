@@ -153,7 +153,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Delete Template(s)</span>
             </a>
 
-            <a href="<?= base_url() ?>/AdminSettings" class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">
+            <a href="<?= base_url() ?>/Settings" class="nav_link <?= ($activePage == "Settings" ? "active" : "") ?>">
               <i class='bx bx-cog nav_icon'></i>
               <span class="nav_name">Profile Settings</span>
             </a>
@@ -179,9 +179,9 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <i class='bx bx-list-ul nav_icon'></i>
               <span class="nav_name">View Audits</span>
             </a>
-            <a href="<?= base_url() ?>/AdminSettings" class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">
+            <a href="<?= base_url() ?>/Settings" class="nav_link <?= ($activePage == "Settings" ? "active" : "") ?>">
               <i class='bx bx-cog nav_icon'></i>
-              <span class="nav_name">Settings</span>
+              <span class="nav_name">Profile Settings</span>
             </a>
 
             <a href="<?= base_url() ?>/Products" class="nav_link <?= ($activePage == "Products" ? "active" : "") ?>">

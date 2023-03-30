@@ -28,7 +28,7 @@ $email = $session->get('email');
         </div>
         <div class="ibox-content">
 
-            <form method="post" action="<?php echo base_url(); ?>/AdminSettingsController/updateDetails">
+            <form method="post" action="<?php echo base_url(); ?>/SettingsController/updateDetails">
 
                 <input type="hidden" name="id" value="<?php echo $id ?>">
 
@@ -47,7 +47,7 @@ $email = $session->get('email');
                 <br>
 
                 <button type="submit" class="btn btn-outline-success">Update Details</button>
-                <a href="<?= base_url() ?>/AdminSettings" class="btn btn-outline-secondary">Return To Settings</a>
+                <a href="<?= base_url() ?>/Settings" class="btn btn-outline-secondary">Return To Settings</a>
             </form>
 
         </div>

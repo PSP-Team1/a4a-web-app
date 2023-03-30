@@ -43,7 +43,7 @@ function validateForm() {
         </div>
         <div class="ibox-content">
 
-        <form method="post" action="<?php echo base_url(); ?>/AdminSettingsController/changePassword" onsubmit="return validateForm()">
+        <form method="post" action="<?php echo base_url(); ?>/SettingsController/changePassword" onsubmit="return validateForm()">
 
                 <input type="hidden" name="id" value="<?php echo $id ?>">
 
@@ -62,7 +62,7 @@ function validateForm() {
                 <br>
 
                 <button type="submit" class="btn btn-outline-success">Update Password</button>
-                <a href="<?= base_url() ?>/AdminSettings" class="btn btn-outline-secondary">Return To Settings</a>
+                <a href="<?= base_url() ?>/Settings" class="btn btn-outline-secondary">Return To Settings</a>
             </form>
 
         </div>

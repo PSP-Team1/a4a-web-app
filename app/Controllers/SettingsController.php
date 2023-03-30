@@ -3,27 +3,27 @@
 namespace App\Controllers;
 use App\Models\AdminModel;
 
-class AdminSettingsController extends BaseController
+class SettingsController extends BaseController
 {
     
     public function index()
     {
-        return view('AdminSettings');
+        return view('Settings');
     }
 
     public function changeDetails()
     {
-        return view('AdminChangeDetails');
+        return view('ChangeDetails');
     }
 
     public function changePicture()
     {
-        return view('AdminChangePicture');
+        return view('ChangePicture');
     }
 
     public function updatePassword()
     {
-        return view('AdminUpdatePassword');
+        return view('UpdatePassword');
     }
 
     public function updateDetails()
@@ -35,7 +35,7 @@ class AdminSettingsController extends BaseController
         $adminModel = new AdminModel();
         $adminModel->updateUser($id, $name, $email);
 
-        return redirect()->to('AdminSettings');
+        return redirect()->to('Settings');
 
     }
     public function updatePicture()
@@ -54,7 +54,7 @@ class AdminSettingsController extends BaseController
         $adminModel = new AdminModel();
         $adminModel->updatePicture($id, $newName);
 
-        return redirect()->to(base_url('AdminSettings'))->with('success', 'Picture updated successfully');
+        return redirect()->to(base_url('Settings'))->with('success', 'Picture updated successfully');
 
     }
     public function changePassword()
@@ -66,6 +66,6 @@ class AdminSettingsController extends BaseController
         $adminModel = new AdminModel();
         $adminModel->updatePassword($id, $newPassword);
 
-        return redirect()->to('AdminSettings');
+        return redirect()->to('Settings');
     }
 }

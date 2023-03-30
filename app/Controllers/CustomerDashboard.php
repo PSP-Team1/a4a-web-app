@@ -142,6 +142,7 @@ class CustomerDashboard extends BaseController
 
     public function updateImages()
     {
+        $venueId = $this->request->getPost('id');
         $files = $this->request->getFiles();
 
         $images = [];
@@ -159,7 +160,7 @@ class CustomerDashboard extends BaseController
         $venueModel = new VenueModel();
         $venueModel->updateImages($id, $images);
 
-        return redirect()->to(base_url('CustomerDashboard'))->with('success', 'Images updated successfully');
+        return redirect()->to('CustomerDashboard/ViewVenue/' . $venueId . '?tab=4');
     }
 
     public function publishVenue()

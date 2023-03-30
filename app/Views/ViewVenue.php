@@ -1,12 +1,12 @@
 <?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header');
-$session = session();
-$id = $session->get('id');
-$user = $session->get('name');
-$email = $session->get('email');
-
-?>
-
+   $session = session();
+   $id = $session->get('id');
+   $user = $session->get('name');
+   $email = $session->get('email');
+   $role = $session->get('type');
+   
+   ?>
 <head>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
@@ -20,31 +20,29 @@ $email = $session->get('email');
    function validateForm() {
       var newPassword = document.getElementById("newPassword").value;
       var confirmPassword = document.getElementById("confirmPassword").value;
-
+   
       if (newPassword !== confirmPassword) {
          alert("Passwords do not match.");
          return false;
       }
-
+   
       return true;
    }
 </script>
 <style>
    .container {
-      max-width: 100%;
+   max-width: 100%;
    }
-
    label {
-      font-size: 1.5rem !important;
+   font-size: 1.5rem !important;
    }
 </style>
 <div class="container">
    <div class="ibox">
       <div class="ibox-title">
          <h2><?php echo $venue['venue_name'] ?>'s Details</h2>
-
          <a class="btn btn-danger btn-outline pull-right" href="#" role="button" data-toggle="modal" data-target="#deleteVenueModal<?= $venue['id'] ?>">
-            <i class="fas fa-trash"></i> Delete
+         <i class="fas fa-trash"></i> Delete
          </a>
          <div class="modal fade" id="deleteVenueModal<?= $venue['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteVenueModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -54,14 +52,10 @@ $email = $session->get('email');
                   </div>
                   <div class="modal-body">
                      <div class="row">
-
                         <div class="col-lg-4">
                            <i class="fa fa-warning fa-2x text-danger"></i>
-
                         </div>
                         <div class="col-lg-8">
-
-
                            Are you sure you want to delete <?= $venue['venue_name'] ?>?
                         </div>
                      </div>
@@ -84,7 +78,12 @@ $email = $session->get('email');
          </div>
          <br>
          <div id="tab1" class="tabcontent">
+            <?php if ($role == "customer") : ?>
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateVenueDetails" onsubmit="return validateForm()">
+               <?php endif; ?>
+               <?php if ($role == "client") : ?>
+            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateVenueDetails" onsubmit="return validateForm()">
+               <?php endif; ?>
                <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
                <div style="display: flex;">
                   <div class="form-group" style="flex: 1; margin-right: 10px;">
@@ -112,12 +111,12 @@ $email = $session->get('email');
                   <h2>Choose Venue Tags</h2>
                   <div class="input-group mb-3">
                      <?php
-                     $tag_names = array_column($tags, 'tag');
-                     array_multisort($tag_names, SORT_ASC, $tags);
-                     ?>
+                        $tag_names = array_column($tags, 'tag');
+                        array_multisort($tag_names, SORT_ASC, $tags);
+                        ?>
                      <select class="form-control select2" id="tag-select" style="height: 38px;">
                         <?php foreach ($tags as $tag) { ?>
-                           <option value="<?php echo $tag['id']; ?>"><?php echo $tag['tag']; ?></option>
+                        <option value="<?php echo $tag['id']; ?>"><?php echo $tag['tag']; ?></option>
                         <?php } ?>
                      </select>
                      <script>
@@ -139,7 +138,7 @@ $email = $session->get('email');
                      $('#add-tag-btn').click(function() {
                         var selectedTag = $('#tag-select option:selected').text().trim();
                         var currentTags = $('#tags').val().trim();
-
+                  
                         try {
                            currentTags = JSON.parse(currentTags);
                            if (!Array.isArray(currentTags)) {
@@ -148,17 +147,17 @@ $email = $session->get('email');
                         } catch (e) {
                            currentTags = [];
                         }
-
+                  
                         currentTags.push({
                            value: selectedTag
                         });
                         $('#tags').val(JSON.stringify(currentTags));
                      });
-
+                  
                      $('#remove-tag-btn').click(function() {
                         var selectedTag = $('#tag-select option:selected').text().trim();
                         var currentTags = $('#tags').val().trim();
-
+                  
                         try {
                            currentTags = JSON.parse(currentTags);
                            if (!Array.isArray(currentTags)) {
@@ -167,20 +166,20 @@ $email = $session->get('email');
                         } catch (e) {
                            currentTags = [];
                         }
-
+                  
                         currentTags = currentTags.filter(function(tag) {
                            return tag.value !== selectedTag;
                         });
-
+                  
                         $('#tags').val(JSON.stringify(currentTags));
                      });
-
+                  
                      $('#remove-all-tags-btn').click(function() {
                         if (confirm("Are you sure you want to remove all tags?")) {
                            $('#tags').val('');
                         }
                      });
-
+                  
                      $('#tags').on('change', function() {
                         var currentValue = $(this).val().trim();
                         try {
@@ -199,17 +198,25 @@ $email = $session->get('email');
                </script>
                <br>
                <button type="submit" class="btn btn-outline-success">Update Details</button>
+               <?php if ($role == "customer") : ?>
                <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+               <?php endif; ?>
+               <?php if ($role == "client") : ?>
+               <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+               <?php endif; ?>
             </form>
-
             <hr>
-
             <button class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal">
-               <i class="fas fa-paper-plane-o"></i> Audit this Venue
+            <i class="fas fa-paper-plane-o"></i> Audit this Venue
             </button>
          </div>
          <div id="tab2" class="tabcontent">
+            <?php if ($role == "customer") : ?>
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateOpeningHours" onsubmit="return validateForm()">
+               <?php endif; ?>
+               <?php if ($role == "client") : ?>
+            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateOpeningHours" onsubmit="return validateForm()">
+               <?php endif; ?>
                <div style="display: flex; justify-content: center;">
                   <div class="form-group" style="flex: 1; margin-right: 10px;">
                      <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
@@ -382,7 +389,7 @@ $email = $session->get('email');
                            const ampmOpeningElement = document.getElementById(`${day}-ampm-opening`);
                            const ampmClosingElement = document.getElementById(`${day}-ampm-closing`);
                            const closed = openingHours[day].closed;
-
+                        
                            openingHoursElement.value = openingHours[day].opening_hours;
                            closingHoursElement.value = openingHours[day].closing_hours;
                            ampmOpeningElement.value = openingHours[day].ampm_opening;
@@ -392,7 +399,12 @@ $email = $session->get('email');
                      </script>
                      <br>
                      <button type="submit" class="btn btn-outline-success">Update Opening Hours</button>
+                     <?php if ($role == "customer") : ?>
                      <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                     <?php endif; ?>
+                     <?php if ($role == "client") : ?>
+                     <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                     <?php endif; ?>
                   </div>
                </div>
             </form>
@@ -403,24 +415,34 @@ $email = $session->get('email');
                could explain how the venue has accessible toilets, accessible parking, wheelchair access and any
                other accessibility information.
             </p>
+            <?php if ($role == "customer") : ?>
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateAccessibility" onsubmit="return validateForm()">
+               <?php endif; ?>
+               <?php if ($role == "client") : ?>
+            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateAccessibility" onsubmit="return validateForm()">
+               <?php endif; ?>
                <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
                <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="98" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
                <p id="char-count">0 / 500</p>
                <br>
                <button type="submit" class="btn btn-outline-success">Update Accessibility</button>
+               <?php if ($role == "customer") : ?>
                <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+               <?php endif; ?>
+               <?php if ($role == "client") : ?>
+               <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+               <?php endif; ?>
             </form>
             <script>
                const textarea = document.querySelector('#other-accessibility-info');
                const charCount = document.querySelector('#char-count');
-
+               
                const currentCharCount = textarea.value.length;
                charCount.textContent = currentCharCount + ' / 500';
                if (currentCharCount === 500) {
                   charCount.style.color = 'red';
                }
-
+               
                textarea.addEventListener('input', function() {
                   const currentCharCount = textarea.value.length;
                   charCount.textContent = currentCharCount + ' / 500';
@@ -433,7 +455,12 @@ $email = $session->get('email');
             </script>
          </div>
          <div id="tab4" class="tabcontent">
+            <?php if ($role == "customer") : ?>
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateImages" onsubmit="return validateForm()" enctype="multipart/form-data">
+               <?php endif; ?>
+               <?php if ($role == "client") : ?>
+            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateImages" onsubmit="return validateForm()" enctype="multipart/form-data">
+               <?php endif; ?>
                <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
                <p>Please provide any venue images which will be displayed on the homepage.</p>
                <input type="file" id="imageUpload" name="imageUpload[]" accept="image/*" multiple>
@@ -441,35 +468,38 @@ $email = $session->get('email');
                <div id="imagePreview"></div>
                <br>
                <button type="submit" class="btn btn-outline-success">Update Images</button>
+               <?php if ($role == "customer") : ?>
                <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+               <?php endif; ?>
+               <?php if ($role == "client") : ?>
+               <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+               <?php endif; ?>
             </form>
          </div>
          <style>
             .preview-img {
-               width: 150px;
-               height: 150px;
-               object-fit: cover;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
             }
-
             .preview-img-container {
-               position: relative;
-               display: inline-block;
-               margin-right: 10px;
-               margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
             }
-
             .delete-btn {
-               position: absolute;
-               bottom: 0;
-               left: 50%;
-               transform: translateX(-50%);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             }
          </style>
          <script>
             function previewImages() {
                var preview = document.querySelector('#imagePreview');
                var files = document.querySelector('input[type=file]').files;
-
+            
                preview.innerHTML = '';
                if (files.length === 0) {
                   var p = document.createElement('p');
@@ -496,7 +526,7 @@ $email = $session->get('email');
                         var imgContainer = this.parentNode;
                         preview.removeChild(imgContainer);
                      });
-
+            
                      var imgContainer = document.createElement('div');
                      imgContainer.classList.add('preview-img-container');
                      imgContainer.appendChild(img);
@@ -505,73 +535,62 @@ $email = $session->get('email');
                   }
                }
             }
-
+            
             document.querySelector('#imageUpload').addEventListener('change', previewImages);
          </script>
          <br>
          <style>
             .tabcontent {
-               display: none;
+            display: none;
             }
-
             .tablinks {
-               background-color: #eee;
-               color: #333;
-               border: none;
-               padding: 10px;
-               cursor: pointer;
+            background-color: #eee;
+            color: #333;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
             }
-
             .opening-hours {
-               display: flex;
-               justify-content: center;
-               align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             }
-
             table {
-               border-collapse: collapse;
-               width: 100%;
-               max-width: 600px;
-               font-family: Arial, sans-serif;
-               color: #444;
-               background-color: #fff;
-               border-radius: 5px;
-               box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            font-family: Arial, sans-serif;
+            color: #444;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             }
-
             thead {
-               background-color: #f7f7f7;
-               font-weight: bold;
+            background-color: #f7f7f7;
+            font-weight: bold;
             }
-
             th,
             td {
-               padding: 10px;
-               text-align: left;
+            padding: 10px;
+            text-align: left;
             }
-
             th {
-               border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
             }
-
             tr {
-               background-color: #f2f2f2;
+            background-color: #f2f2f2;
             }
-
             input[id="day"] {
-               border: none;
-               border-radius: 5px;
-               padding: 5px;
-               width: 100%;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            width: 100%;
             }
-
-
             /* Audit table */
-
             .table {
-               width: 100%;
-               max-width: 1400px;
-               margin: auto;
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
             }
          </style>
          <script>
@@ -588,11 +607,11 @@ $email = $session->get('email');
                document.getElementById(tabName).style.display = "block";
                evt.currentTarget.className += " active";
             }
-
+            
             window.onload = function() {
                var urlParams = new URLSearchParams(window.location.search);
                var tabIndexFromUrl = urlParams.get('tab');
-
+            
                if (tabIndexFromUrl !== null) {
                   var tabs = document.querySelectorAll('.tablinks');
                   var tabButton = tabs[tabIndexFromUrl - 1];
@@ -606,7 +625,7 @@ $email = $session->get('email');
                   }
                }
             };
-
+            
             var input = document.querySelector('#tags');
             new Tagify(input, {
                removable: true
@@ -614,9 +633,7 @@ $email = $session->get('email');
          </script>
          <div id="tab5" class="tabcontent">
             <div class="row">
-
                <div class="col-lg-12">
-
                   <table class="table table-hover margin bottom table-responsive">
                      <thead>
                         <tr>
@@ -631,41 +648,37 @@ $email = $session->get('email');
                            $qCount = $item['audit_total'];
                            $cCount = $item['audit_prog'];
                            $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
-                        ?>
-                           <tr>
-                              <td><?= $item['audit_version'] ?></td>
-                              <td>
-                                 <div class="progress progress-small">
-                                    <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
-                                 </div>
-                              </td>
-                              <td class="text-center">
-                                 <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
-                                    <i class="fa fa-eye"></i> View</a>
-                              </td>
-                              <td>
-                                 <?php
+                           ?>
+                        <tr>
+                           <td><?= $item['audit_version'] ?></td>
+                           <td>
+                              <div class="progress progress-small">
+                                 <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
+                              </div>
+                           </td>
+                           <td class="text-center">
+                              <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
+                              <i class="fa fa-eye"></i> View</a>
+                           </td>
+                           <td>
+                              <?php
                                  $datetime = new DateTime($item['date_created']);
                                  $formattedDate = $datetime->format('Y-m-d');
                                  ?>
-                                 <?= $formattedDate ?>
-                              </td>
-                           </tr>
+                              <?= $formattedDate ?>
+                           </td>
+                        </tr>
                         <?php } ?>
                      </tbody>
                   </table>
-
                   <a class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal">
-                     <i class="fas fa-paper-plane-o"></i> Audit this Venue
+                  <i class="fas fa-paper-plane-o"></i> Audit this Venue
                   </a>
-
-
                </div>
             </div>
          </div>
       </div>
    </div>
-
    <div class="modal fade" id="performAuditModal" tabindex="-1" role="dialog" aria-labelledby="performAuditModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
          <div class="modal-content">
@@ -679,11 +692,10 @@ $email = $session->get('email');
                      <input type="hidden" name="venue_id" value="<?= $venue['id'] ?>">
                      <select class="form-control" id="productSelect" name="template_id">
                         <?php foreach ($audit_templates as $audit) : ?>
-                           <option value="<?= $audit['id'] ?>"><?= $audit['audit_version'] ?></option>
+                        <option value="<?= $audit['id'] ?>"><?= $audit['audit_version'] ?></option>
                         <?php endforeach; ?>
                      </select>
                   </div>
-
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

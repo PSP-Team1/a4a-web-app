@@ -167,10 +167,10 @@
                                                                                  } ?>" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $progress; ?>%</div>
                                              </div>
                                              <td class="footable-visible footable-last-column" style="text-align: center;">
-    <a class="btn btn-success btn-sm" href="/AdminDashboard/ViewVenue/<?= $venue['id'] ?>" role="button">
-        <i class="fas fa-eye"></i> View Venue Details
-    </a>
-</td>
+                                <a class="btn btn-success btn-sm" href="/AdminDashboard/ViewVenue/<?= $venue['id'] ?>" role="button">
+                                    <i class="fas fa-eye"></i> View Venue Details
+                                </a>
+                            </td>
 
 
                     <style>

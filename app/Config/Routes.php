@@ -57,7 +57,6 @@ $routes->get('/venue/search', 'VenueController::search');
 
 //grouped routes
 $routes->group('', ['filter' => 'authGuard'], function ($routes) {
-    $routes->get('/Home', 'Home::index');
     $routes->get('/AdminDashboard', 'AdminDashboard::index');
     $routes->get('/AdminCreateTemplate', 'CreateTemplateController::index');
     $routes->get('/AdminDeleteTemplate', 'DeleteTemplateController::index');
@@ -91,6 +90,7 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/ManageProducts/addPromoCode/', 'ProductManagement::addPromoCode');
 });
 
+$routes->get('/Home', 'Home::index');
 $routes->get('/HomeViewVenue/(:num)', 'Home::viewVenueDetails/$1');
 $routes->get('/Login', 'LoginController::index');
 $routes->get('/Register', 'RegisterController::index');

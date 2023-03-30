@@ -132,10 +132,10 @@ class CustomerDashboard extends BaseController
     public function updateAccessibility()
     {
         $venueId = $this->request->getPost('id');
-        $accessibilityInfo = $this->request->getPost('other-accessibility-info');
+        $venueAccessibility = $this->request->getPost('accessibilityTypes');
 
         $venueModel = new VenueModel();
-        $venueModel->updateAccessibility($venueId, $accessibilityInfo);
+        $venueModel->updateAccessibility($venueId, $venueAccessibility);
 
         return redirect()->to('CustomerDashboard/ViewVenue/' . $venueId . '?tab=3');
     }

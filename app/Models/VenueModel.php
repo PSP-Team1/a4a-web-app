@@ -75,7 +75,7 @@ class VenueModel extends Model
         $this->logActivity($action, $ref, $venueName);
     }
 
-    public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags,)
+    public function updateVenue($venueId, $venueName, $venueAddress, $venuePostcode, $venueDescription, $venueTags)
     {
         $db = db_connect();
 
@@ -113,11 +113,29 @@ class VenueModel extends Model
         $db->close();
     }
 
-    public function updateAccessibility($venueId, $accessibilityInfo)
+    public function updateAccessibility($venueId, $accessibilityTypes)
     {
+        try {
+            $tagsArray = json_decode($accessibilityTypes);
+
+            if ($tagsArray !== null) {
+                $tagValues = array();
+                foreach ($tagsArray as $tagObject) {
+                    if (isset($tagObject->value)) {
+                        $tagValues[] = $tagObject->value;
+                    }
+                }
+                $tags = implode(', ', $tagValues);
+            } else {
+                $tags = '';
+            }
+        } catch (Exception $e) {
+            $tags = '';
+        }
+        
         $db = db_connect();
         $query = "UPDATE company_venue SET accessibility=? WHERE id=?";
-        $db->query($query, [$accessibilityInfo, $venueId]);
+        $db->query($query, [$tags, $venueId]);
         $db->close();
     }
 

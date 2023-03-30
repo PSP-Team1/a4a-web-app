@@ -191,6 +191,21 @@
                            $(this).val(JSON.stringify(currentValue));
                         }
                      });
+
+                     $('#accessibilityTypes').on('change', function() {
+                        var currentValue = $(this).val().trim();
+                        try {
+                           currentValue = JSON.parse(currentValue);
+                        } catch (e) {}
+                        if (!Array.isArray(currentValue)) {
+                           currentValue = currentValue.split(',').map(function(tag) {
+                              return {
+                                 value: tag.trim()
+                              };
+                           });
+                           $(this).val(JSON.stringify(currentValue));
+                        }
+                     });
                   });
                </script>
                <br>
@@ -407,49 +422,181 @@
             </form>
          </div>
          <div id="tab3" class="tabcontent">
-            <h2>Accessibility Information</h2>
-            <p>Please provide any accessibility information about the venue. For example, you
-               could explain how the venue has accessible toilets, accessible parking, wheelchair access and any
-               other accessibility information.
-            </p>
-            <?php if ($role == "customer") : ?>
+         <?php if ($role == "customer") : ?>
             <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateAccessibility" onsubmit="return validateForm()">
+            <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
                <?php endif; ?>
                <?php if ($role == "client") : ?>
             <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateAccessibility" onsubmit="return validateForm()">
+            <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
                <?php endif; ?>
-               <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-               <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="98" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
-               <p id="char-count">0 / 500</p>
+            <h2>Accessibility Information</h2>
+            <p>Please provide any accessibility information about the venue. For example, you could add that your venue has disabled parking or wheelchair access.
+            </p>
+
+            <div class="form-group">
                <br>
-               <button type="submit" class="btn btn-outline-success">Update Accessibility</button>
+                  <h2>Choose Accessibility Type</h2>
+                  <div class="input-group mb-3">
+                     <select class="form-control select3" id="accessibility-select" style="height: 38px;">
+                        <option value="hearing-assistance">Hearing Assistance</option>
+                        <option value="visual-assistance">Visual Assistance</option>
+                        <option value="service-animal-friendly">Service Animal Friendly</option>
+                        <option value="ramp-access">Ramp Access</option>
+                        <option value="elevator-access">Elevator Access</option>
+                        <option value="braille-menu">Braille Menu</option>
+                        <option value="large-print-menu">Large Print Menu</option>
+                        <option value="quiet-area">Quiet Area</option>
+                        <option value="low-sensory-environment">Low Sensory Environment</option>
+                        <option value="sign-language-interpreters">Sign Language Interpreters</option>
+                        <option value="closed-captioning">Closed Captioning</option>
+                        <option value="audio-description">Audio Description</option>
+                     </select>
+                     <script>
+                        $(document).ready(function() {
+                           $('.select3').select3();
+                        });
+                     </script>
+                     <div class="input-group-append" style="margin-left: 5px;">
+                        <button class="btn btn-primary" type="button" id="add-type-btn">Add Type</button>
+                        <button class="btn btn-secondary" type="button" id="remove-type-btn">Remove Type</button>
+                        <button class="btn btn-danger" type="button" id="remove-all-types-btn">Remove All Accessibility</button>
+                     </div>
+                  </div>
+                  <br>
+                  <h2>Current Accessibility Settings</h2>
+                  <input name="accessibilityTypes" id="accessibilityTypes" value="<?php echo $venue['accessibility'] ?>" class="form-control" readonly>
+               </div>
+               <br>
+
+               <script>
+               $(document).ready(function() {
+                  $('#add-type-btn').click(function() {
+                     var selectedTag = $('#accessibility-select option:selected').text().trim();
+                     var currentTags = $('#accessibilityTypes').val().trim();
+
+                     try {
+                        currentTags = JSON.parse(currentTags);
+                        if (!Array.isArray(currentTags)) {
+                           currentTags = [];
+                        }
+                     } catch (e) {
+                        currentTags = [];
+                     }
+
+                     currentTags.push({
+                        value: selectedTag
+                     });
+                     $('#accessibilityTypes').val(JSON.stringify(currentTags));
+                  });
+
+                  $('#remove-type-btn').click(function() {
+                     var selectedTag = $('#accessibility-select option:selected').text().trim();
+                     var currentTags = $('#accessibilityTypes').val().trim();
+
+                     try {
+                        currentTags = JSON.parse(currentTags);
+                        if (!Array.isArray(currentTags)) {
+                           currentTags = [];
+                        }
+                     } catch (e) {
+                        currentTags = [];
+                     }
+
+                     currentTags = currentTags.filter(function(tag) {
+                        return tag.value !== selectedTag;
+                     });
+
+                     $('#accessibilityTypes').val(JSON.stringify(currentTags));
+                  });
+
+                  $('#remove-all-types-btn').click(function() {
+                     if (confirm("Are you sure you want to remove accessibility?")) {
+                        $('#accessibilityTypes').val('');
+                     }
+                  });
+
+                  $('#accessibilityTypes').on('change', function() {
+                     var currentValue = $(this).val().trim();
+                     try {
+                        currentValue = JSON.parse(currentValue);
+                     } catch (e) {}
+                     if (!Array.isArray(currentValue)) {
+                        currentValue = currentValue.split(',').map(function(tag) {
+                           return {
+                              value: tag.trim()
+                           };
+                        });
+                        $(this).val(JSON.stringify(currentValue));
+                     }
+                  });
+
+                  $('.select3').on('select2:select', function (e) {
+                     var selectedTag = e.params.data.text;
+                     var currentTags = $('#accessibilityTypes').val().trim();
+
+                     try {
+                        currentTags = JSON.parse(currentTags);
+                        if (!Array.isArray(currentTags)) {
+                           currentTags = [];
+                        }
+                     } catch (e) {
+                        currentTags = [];
+                     }
+
+                     currentTags.push({
+                        value: selectedTag
+                     });
+                     $('#accessibilityTypes').val(JSON.stringify(currentTags));
+                  });
+
+                  $('.select3').on('select2:unselect', function (e) {
+                     var selectedTag = e.params.data.text;
+                     var currentTags = $('#accessibilityTypes').val().trim();
+
+                     try {
+                        currentTags = JSON.parse(currentTags);
+                        if (!Array.isArray(currentTags)) {
+                           currentTags = [];
+                        }
+                     } catch (e) {
+                        currentTags = [];
+                     }
+
+                     currentTags = currentTags.filter(function(tag) {
+                        return tag.value !== selectedTag;
+                     });
+
+                     $('#accessibilityTypes').val(JSON.stringify(currentTags));
+                  });
+
+                  var currentTags = $('#accessibilityTypes').val().trim();
+                  try {
+                     currentTags = JSON.parse(currentTags);
+                     if (!Array.isArray(currentTags)) {
+                        currentTags = [];
+                     }
+                  } catch (e) {
+                     currentTags = [];
+                  }
+
+                  currentTags.forEach(function(tag) {
+                     var option = new Option(tag.value, tag.value, true, true);
+                     $('.select3').append(option).trigger('change');
+                  });
+               });
+            </script>
+
+
+<button type="submit" class="btn btn-outline-success">Update Accessibility</button>
                <?php if ($role == "customer") : ?>
                <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
                <?php endif; ?>
                <?php if ($role == "client") : ?>
                <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
                <?php endif; ?>
+
             </form>
-            <script>
-               const textarea = document.querySelector('#other-accessibility-info');
-               const charCount = document.querySelector('#char-count');
-               
-               const currentCharCount = textarea.value.length;
-               charCount.textContent = currentCharCount + ' / 500';
-               if (currentCharCount === 500) {
-                  charCount.style.color = 'red';
-               }
-               
-               textarea.addEventListener('input', function() {
-                  const currentCharCount = textarea.value.length;
-                  charCount.textContent = currentCharCount + ' / 500';
-                  if (currentCharCount === 500) {
-                     charCount.style.color = 'red';
-                  } else {
-                     charCount.style.color = '';
-                  }
-               });
-            </script>
          </div>
          <div id="tab4" class="tabcontent">
             <?php if ($role == "customer") : ?>
@@ -625,6 +772,11 @@
             
             var input = document.querySelector('#tags');
             new Tagify(input, {
+               removable: true
+            });
+
+            var input2 = document.querySelector('#accessibilityTypes');
+            new Tagify(input2, {
                removable: true
             });
          </script>

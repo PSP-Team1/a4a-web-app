@@ -58,13 +58,30 @@ document.addEventListener('DOMContentLoaded', function() {
   lightModeToggle.addEventListener('click', function() {
     if (body.classList.contains('light-mode')) {
       body.classList.remove('light-mode');
-      body.classList.add('dark-mode');
+      body.classList.add('dark-mode-1');
     } else {
-      body.classList.remove('dark-mode');
+      body.classList.remove('dark-mode-1');
       body.classList.add('light-mode');
     }
   });
 });
+
+// Light background
+document.addEventListener('DOMContentLoaded', function() {
+  const lightModeToggle = document.getElementById('dark-mode-toggle');
+  const body = document.body;
+
+  lightModeToggle.addEventListener('click', function() {
+    if (body.classList.contains('dark-mode')) {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode-1');
+    } else {
+      body.classList.remove('light-mode-1');
+      body.classList.add('dark-mode');
+    }
+  });
+});
+
 
 // Text to speech
 var speaking = false;

@@ -40,9 +40,8 @@
   filter: grayscale(100%) !important;
 }
 
-.light-background {
-  background: white !important;
-}
+
+
 
 
 
@@ -63,4 +62,10 @@ body {
 
 .light-mode {
   filter: brightness(150%) contrast(120%) hue-rotate(0deg);
+}
+
+.dark-mode{
+  filter: brightness(60%) contrast(60%);
+  color: #fff;
+  background-color: #000;
 }

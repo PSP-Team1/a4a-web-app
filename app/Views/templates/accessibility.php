@@ -38,7 +38,13 @@
                <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" id="light-mode-toggle">
                   <label class="form-check-label" for="light-mode-toggle">
-                     Light mode
+                     Light mode (very bright)
+                  </label>
+               </div>
+               <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="dark-mode-toggle">
+                  <label class="form-check-label" for="dark-mode-toggle">
+                   Dark mode (decrease brightness)
                   </label>
                </div>
 

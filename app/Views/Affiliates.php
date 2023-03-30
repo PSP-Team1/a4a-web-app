@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-   <?= view('templates/accessibility'); ?>
+
    <title>About Us</title>
    <head>
       <link rel="shortcut icon" href="./assets/img/favicon_io/favicon.ico">
@@ -22,6 +22,7 @@
          color: purple;
          }
       </style>
+      <?= view('templates/accessibility'); ?>
    </head>
 </html>
 <!DOCTYPE html>
@@ -59,6 +60,7 @@
       </style>
    </head>
    <body>
+
       <br>
       <div class="container">
          <header style="background-color: white; width: 100%;">

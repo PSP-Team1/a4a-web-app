@@ -60,7 +60,7 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/Home', 'Home::index');
     $routes->get('/AdminDashboard', 'AdminDashboard::index');
     $routes->get('/AdminCreateTemplate', 'CreateTemplateController::index');
-    $routes->get('/AdminDeleteTemplate', 'DeleteTemplateController::index');
+    $routes->get('/ManageTemplates', 'ManageTemplates::index');
     $routes->get('/AdminInbox', 'InboxController::adminInbox');
     $routes->get('/AdminSettings', 'AdminSettingsController::index');
     $routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');

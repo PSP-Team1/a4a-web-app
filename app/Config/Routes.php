@@ -62,10 +62,10 @@ $routes->group('', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/AdminCreateTemplate', 'CreateTemplateController::index');
     $routes->get('/ManageTemplates', 'ManageTemplates::index');
     $routes->get('/AdminInbox', 'InboxController::adminInbox');
-    $routes->get('/AdminSettings', 'AdminSettingsController::index');
-    $routes->get('/AdminChangeDetails', 'AdminSettingsController::changeDetails');
-    $routes->get('/AdminUpdatePassword', 'AdminSettingsController::updatePassword');
-    $routes->get('/AdminChangePicture', 'AdminSettingsController::changePicture');
+    $routes->get('/Settings', 'SettingsController::index');
+    $routes->get('/ChangeDetails', 'SettingsController::changeDetails');
+    $routes->get('/UpdatePassword', 'SettingsController::updatePassword');
+    $routes->get('/ChangePicture', 'SettingsController::changePicture');
     $routes->get('/CustomerDashboard', 'CustomerDashboard::index');
     $routes->get('/CustomerNewVenue', 'CustomerDashboard::newVenue');
     $routes->get('/Checkout', 'PaymentController::checkout');

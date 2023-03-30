@@ -51,40 +51,70 @@ document.getElementById("grayscale-toggle").addEventListener("change", function(
 });
 
 // Light background
-const lightBackgroundToggle = document.getElementById("light-background");
+document.addEventListener('DOMContentLoaded', function() {
+  const lightModeToggle = document.getElementById('light-mode-toggle');
+  const body = document.body;
 
-lightBackgroundToggle.addEventListener("change", function() {
-  if (this.checked) {
-     document.body.classList.add("light-background");
-     localStorage.setItem("light-background", true);
-  } else {
-     document.body.classList.remove("light-background");
-     localStorage.setItem("light-background", false);
-  }
+  lightModeToggle.addEventListener('click', function() {
+    if (body.classList.contains('light-mode')) {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode-1');
+    } else {
+      body.classList.remove('dark-mode-1');
+      body.classList.add('light-mode');
+    }
+  });
 });
 
+// Light background
+document.addEventListener('DOMContentLoaded', function() {
+  const lightModeToggle = document.getElementById('dark-mode-toggle');
+  const body = document.body;
+
+  lightModeToggle.addEventListener('click', function() {
+    if (body.classList.contains('dark-mode')) {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode-1');
+    } else {
+      body.classList.remove('light-mode-1');
+      body.classList.add('dark-mode');
+    }
+  });
+});
+
+
 // Text to speech
-function speakPageText() {
-  var textToSpeak = document.body.innerText;
-  var speech = new SpeechSynthesisUtterance();
-  speech.text = textToSpeak;
-  speech.lang = "en-UK";
-  window.speechSynthesis.speak(speech);
-  localStorage.setItem("text-to-speech", true);
+var speaking = false;
+
+function speakTextOnHover(e) {
+  if (!speaking) {
+    var target = e.target;
+    var textToSpeak = target.innerText;
+    var speech = new SpeechSynthesisUtterance();
+    speech.text = textToSpeak;
+    speech.lang = "en-UK";
+    window.speechSynthesis.speak(speech);
+    speaking = true;
+  }
 }
 
 function stopSpeaking() {
   window.speechSynthesis.cancel();
-  localStorage.setItem("text-to-speech", false);
+  speaking = false;
+  localStorage.setItem("text-speech", false);
 }
 
 document.getElementById("text-speech").addEventListener("change", function() {
   if (this.checked) {
-    speakPageText();
+    document.body.addEventListener('mouseover', speakTextOnHover);
+    document.body.addEventListener('mouseout', stopSpeaking);
   } else {
+    document.body.removeEventListener('mouseover', speakTextOnHover);
+    document.body.removeEventListener('mouseout', stopSpeaking);
     stopSpeaking();
   }
 });
+
 
 // Reset button
 document.getElementById("reset-button").addEventListener("click", function() {
@@ -131,7 +161,10 @@ if (localStorage.getItem("text-to-speech")) {
 const resetButton = document.querySelector('#reset-button');
 
 // Add an event listener to the reset button
-resetButton.addEventListener('click', function() {
+resetButton.addEventListener('click', function(event) {
+  // Prevent the default behavior of the button, which is to submit a form or reload the page
+  event.preventDefault();
+
   // Clear all saved preferences from local storage
   localStorage.clear();
 
@@ -144,12 +177,21 @@ function setDefaultAccessibilitySettings() {
   // Set font size to default (16px)
   document.body.style.fontSize = '16px';
 
-  // Uncheck all checkboxes
+  // Turn off accessibility features
   document.querySelector('#negative-contrast-button').checked = false;
+  document.body.classList.remove("negative-contrast");
+
   document.querySelector('#high-contrast-button').checked = false;
+  document.body.classList.remove("high-contrast");
+
   document.querySelector('#grayscale-toggle').checked = false;
+  document.body.classList.remove("grayscale");
+
   document.querySelector('#light-background').checked = false;
+  document.body.classList.remove("light-background");
+
   document.querySelector('#text-speech').checked = false;
+  document.body.classList.remove("text-speech");
 
   // Stop text to speech if it's currently active
   window.speechSynthesis.cancel();

@@ -64,27 +64,37 @@ lightBackgroundToggle.addEventListener("change", function() {
 });
 
 // Text to speech
-function speakPageText() {
-  var textToSpeak = document.body.innerText;
-  var speech = new SpeechSynthesisUtterance();
-  speech.text = textToSpeak;
-  speech.lang = "en-UK";
-  window.speechSynthesis.speak(speech);
-  localStorage.setItem("text-to-speech", true);
+var speaking = false;
+
+function speakTextOnHover(e) {
+  if (!speaking) {
+    var target = e.target;
+    var textToSpeak = target.innerText;
+    var speech = new SpeechSynthesisUtterance();
+    speech.text = textToSpeak;
+    speech.lang = "en-UK";
+    window.speechSynthesis.speak(speech);
+    speaking = true;
+  }
 }
 
 function stopSpeaking() {
   window.speechSynthesis.cancel();
-  localStorage.setItem("text-to-speech", false);
+  speaking = false;
+  localStorage.setItem("text-speech", false);
 }
 
 document.getElementById("text-speech").addEventListener("change", function() {
   if (this.checked) {
-    speakPageText();
+    document.body.addEventListener('mouseover', speakTextOnHover);
+    document.body.addEventListener('mouseout', stopSpeaking);
   } else {
+    document.body.removeEventListener('mouseover', speakTextOnHover);
+    document.body.removeEventListener('mouseout', stopSpeaking);
     stopSpeaking();
   }
 });
+
 
 // Reset button
 document.getElementById("reset-button").addEventListener("click", function() {

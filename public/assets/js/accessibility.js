@@ -1,22 +1,30 @@
 // Get the current font size from localStorage, or use a default value
-let fontSize = localStorage.getItem('fontSize') || 16;
+let fontSize = localStorage.getItem('fontSize') || 14;
 
-// Set the font size of the document body
-document.body.style.fontSize = fontSize + 'px';
+// Set the font size of all elements on the page
+document.querySelectorAll('*').forEach(function(node) {
+  node.style.fontSize = fontSize + 'px';
+});
 
 // Increase font size
 document.getElementById('increase-font').addEventListener('click', function() {
+  console.log("Increase button clicked!");
   fontSize++;
-  document.body.style.fontSize = fontSize + 'px';
+  document.querySelectorAll('*').forEach(function(node) {
+    node.style.fontSize = fontSize + 'px';
+  });
   localStorage.setItem('fontSize', fontSize);
 });
 
 // Decrease font size
 document.getElementById('decrease-font').addEventListener('click', function() {
   fontSize--;
-  document.body.style.fontSize = fontSize + 'px';
+  document.querySelectorAll('*').forEach(function(node) {
+    node.style.fontSize = fontSize + 'px';
+  });
   localStorage.setItem('fontSize', fontSize);
 });
+
 // Negative contrast
 document.getElementById("negative-contrast-button").addEventListener("change", function() {
   if (this.checked) {

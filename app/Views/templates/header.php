@@ -143,14 +143,9 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
               <span class="nav_name">Admin Dashboard</span>
             </a>
 
-            <a href="<?= base_url() ?>/AdminCreateTemplate" class="nav_link <?= ($activePage == "AdminCreateTemplate" ? "active" : "") ?>">
+            <a href="<?= base_url() ?>/ManageTemplates" class="nav_link <?= ($activePage == "AdminCreateTemplate" ? "active" : "") ?>">
               <i class='bx bx-list-ul nav_icon'></i>
-              <span class="nav_name">Create Template(s)</span>
-            </a>
-
-            <a href="<?= base_url() ?>/AdminDeleteTemplate" class="nav_link <?= ($activePage == "AdminDeleteTemplate" ? "active" : "") ?>">
-              <i class='bx bx-trash nav_icon'></i>
-              <span class="nav_name">Delete Template(s)</span>
+              <span class="nav_name">Audit Templates</span>
             </a>
 
             <a href="<?= base_url() ?>/Settings" class="nav_link <?= ($activePage == "Settings" ? "active" : "") ?>">

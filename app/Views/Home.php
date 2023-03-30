@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Everybody Welcome</title>
+      <title>Access and Inclusion UK</title>
       <style type="text/css">
          #terms-and-conditions {
          position: fixed;
@@ -223,10 +223,10 @@
                <div class="col-md-6">
                   <div class="box">
                      <br><br><br>
-                     <h2 style="font-size: 44px; color: white; font-family: 'Bradley Hand', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">Welcome to Access For All!</h2>
+                     <h2 style="font-size: 44px; color: white; font-family: 'Bradley Hand', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">Welcome to Access and Inclusion UK!</h2>
                      <br><br>
                      <p style="font-size: 16px; color: white; font-family: 'Arial', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">
-                        Access For All UK is a company dedicated to providing accessibility solutions for businesses and public spaces across the UK. Our mission is to create an inclusive environment where everyone, regardless of their ability, can access the services they need. We offer a range of services, including access audits, disability awareness training, and consultancy on accessibility issues.
+                        Access & Inclusion UK is a company dedicated to providing accessibility solutions for businesses and public spaces across the UK. Our mission is to create an inclusive environment where everyone, regardless of their ability, can access the services they need. We offer a range of services, including access audits, disability awareness training, and consultancy on accessibility issues.
                      </p>
                      <br><br><br>
                   </div>

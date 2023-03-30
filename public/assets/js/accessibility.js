@@ -40,7 +40,7 @@ document.getElementById("high-contrast-button").addEventListener("change", funct
 });
 
 // Greyscale
-document.getElementById("grayscale-toggle").addEventListener("change", function() {
+document.getElementById("grayscale-toggle").addEventListener("change", function() {       
   if (this.checked) {
      document.body.classList.add("grayscale");
      localStorage.setItem("grayscale", true);
@@ -72,6 +72,19 @@ function speakPageText() {
   window.speechSynthesis.speak(speech);
   localStorage.setItem("text-to-speech", true);
 }
+
+function stopSpeaking() {
+  window.speechSynthesis.cancel();
+  localStorage.setItem("text-to-speech", false);
+}
+
+document.getElementById("text-speech").addEventListener("change", function() {
+  if (this.checked) {
+    speakPageText();
+  } else {
+    stopSpeaking();
+  }
+});
 
 // Reset button
 document.getElementById("reset-button").addEventListener("click", function() {

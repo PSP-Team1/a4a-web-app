@@ -42,8 +42,10 @@
 }
 
 .light-background {
-  background: white;
+  background: white !important;
 }
+
+
 
 .high-contrast {
 background: black;

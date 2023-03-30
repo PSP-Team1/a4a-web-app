@@ -439,18 +439,12 @@
                   <h2>Choose Accessibility Type</h2>
                   <div class="input-group mb-3">
                      <select class="form-control select3" id="accessibility-select" style="height: 38px;">
+                        <option value="wheelchair-access">Wheelchair Access</option>
+                        <option value="disabled-parking">Disabled Parking</option>
+                        <option value="wheelchair-access">Accessible Toilets</option>
+                        <option value="elevator-access">Elevator Access</option>
                         <option value="hearing-assistance">Hearing Assistance</option>
                         <option value="visual-assistance">Visual Assistance</option>
-                        <option value="service-animal-friendly">Service Animal Friendly</option>
-                        <option value="ramp-access">Ramp Access</option>
-                        <option value="elevator-access">Elevator Access</option>
-                        <option value="braille-menu">Braille Menu</option>
-                        <option value="large-print-menu">Large Print Menu</option>
-                        <option value="quiet-area">Quiet Area</option>
-                        <option value="low-sensory-environment">Low Sensory Environment</option>
-                        <option value="sign-language-interpreters">Sign Language Interpreters</option>
-                        <option value="closed-captioning">Closed Captioning</option>
-                        <option value="audio-description">Audio Description</option>
                      </select>
                      <script>
                         $(document).ready(function() {

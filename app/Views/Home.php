@@ -437,6 +437,7 @@
                   const venueId = venue.id;
                   const venueName = venue.venue_name;
                   const venueAbout = venue.about;
+                  const venueAccessibility = venue.accessibility;
          
                   const venueElement = document.createElement('div');
                   venueElement.classList.add('ibox');
@@ -504,11 +505,27 @@
                   const accessIconGroupElement = document.createElement('div');
          
                   accessIconGroupElement.classList.add('access-icon-group');
-         
-                  const wheelchairIconElement = document.createElement('i');
-                  wheelchairIconElement.classList.add('fa', 'fa-3x', 'fa-wheelchair');
-                  const lowVisionIconElement = document.createElement('i');
-                  lowVisionIconElement.classList.add('fa', 'fa-3x', 'fa-low-vision');
+
+                  const accessibilityOptions = [
+                  { name: 'Wheelchair Access', icon: 'fa-wheelchair' },
+                  { name: 'Disabled Parking', icon: 'fa-car' },
+                  { name: 'Accessible Toilets', icon: 'fa-bath' },
+                  { name: 'Elevator Access', icon: 'fa-arrow-up' },
+                  { name: 'Hearing Assistance', icon: 'fa-assistive-listening-systems' },
+                  { name: 'Visual Assistance', icon: 'fa-low-vision' }
+                  ];
+
+                  for (let option of accessibilityOptions) {
+                  if (venueAccessibility.includes(option.name)) {
+                     const iconElement = document.createElement('i');
+                     iconElement.classList.add('fa', 'fa-3x', option.icon);
+                     accessIconGroupElement.appendChild(iconElement);
+                  }
+                  }
+
+
+
+
                   const viewVenueButtonElement = document.createElement('button');
                   viewVenueButtonElement.classList.add('btn', 'btn-success');
                   viewVenueButtonElement.innerHTML = '<i class="fa fa-eye"></i> View Venue Details';
@@ -522,9 +539,6 @@
                   window.location.href = `/HomeViewVenue/${venueId}`;
                   });
          
-         
-                  accessIconGroupElement.appendChild(wheelchairIconElement);
-                  accessIconGroupElement.appendChild(lowVisionIconElement);
                   accessIconGroupElement.appendChild(viewVenueButtonElement);
                   footerElement.appendChild(accessIconGroupElement);
                   contentElement.appendChild(footerElement);

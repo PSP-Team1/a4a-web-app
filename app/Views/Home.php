@@ -91,6 +91,7 @@
          cursor: pointer;
          opacity: 0;
          transition: opacity 0.3s ease-in-out;
+         z-index: 9999;
          }
          .btn-scroll-top:hover {
          opacity: 1;

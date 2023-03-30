@@ -9,7 +9,7 @@
   height: 60px;    
   font-size: 32px; 
   cursor: pointer; 
-  z-index: 999;
+  z-index: 9999;
 }
 
 .accessButton {

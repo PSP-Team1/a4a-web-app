@@ -71,11 +71,8 @@ document.getElementById("light-mode-toggle").addEventListener("change", function
 });
 
 
-
-
-
 // Dark mode
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('click', function() {
   const lightModeToggle = document.getElementById('dark-mode-toggle');
   const body = document.body;
 
@@ -194,7 +191,13 @@ resetButton.addEventListener('click', function(event) {
   // Function to set all accessibility features to their default values
   function setDefaultAccessibilitySettings() {
     // Set font size to default (16px)
-    document.body.style.fontSize = '16px';
+    // Reset font size to default value (14)
+    fontSize = 14;
+    document.querySelectorAll('*').forEach(function(node) {
+      node.style.fontSize = fontSize + 'px';
+    });
+    localStorage.setItem('fontSize', fontSize);
+
 
     // Turn off accessibility features
     document.querySelector('#negative-contrast-button').checked = false;
@@ -212,10 +215,10 @@ resetButton.addEventListener('click', function(event) {
     document.querySelector('#text-speech').checked = false;
     document.body.classList.remove("text-speech");
 
-    document.querySelector('#light-mode-toggle').checked = false;
+    document.querySelector('#light-mode').checked = false;
     document.body.classList.remove("light-mode");
 
-    document.querySelector('#dark-mode-toggle').checked = false;
+    document.querySelector('#dark-mode').checked = false;
     document.body.classList.remove("dark-mode-toggle");
 
 

@@ -1,6 +1,5 @@
-<?= view('templates/accessibilityPortal') ?>
-<?= view('templates/header');
-
+<?= view('templates/header')?>
+<?php
 $session = session();
 $id = $session->get('id');
 $user = $session->get('name');
@@ -18,8 +17,6 @@ $email = $session->get('email');
         font-size: 1.5rem !important;
     }
 </style>
-<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
-<script src="./assets/js/accessibility.js"></script>
 <div class="container">
 
     <div class="ibox">

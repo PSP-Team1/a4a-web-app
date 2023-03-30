@@ -1,4 +1,3 @@
-<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header');
    $session = session();
    $id = $session->get('id');
@@ -10,8 +9,6 @@
 <head>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
-   <link rel="stylesheet" href="/assets/css/accessibilityPortal.css" />
-   <script src="/assets/js/accessibility.js"></script>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

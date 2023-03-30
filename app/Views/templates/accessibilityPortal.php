@@ -1,11 +1,8 @@
 
-<body class="animate__animated animate__fadeIn">
-      <div class="dropdown">
-         <button href="#accessibilityModal" data-bs-toggle="modal" class="accessButton floating-btn" type="button">
-         <b>Accessibility</b>
-         </button>
-      </div>
-
+      
+      
+      
+      
       <div id="accessibilityModal" class="modal fade">
          <div class="modal-dialog">
             <div class="modal-content">
@@ -52,7 +49,7 @@
             </div>
          </div>
       </div>
-
+      <script src="/assets/js/accessibility.js"></script>
 
 
 

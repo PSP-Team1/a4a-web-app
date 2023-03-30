@@ -361,7 +361,16 @@
          document.addEventListener("DOMContentLoaded", function() {
          
          
-            let tags = [];
+            let dummyTags = ['Museum', 'Castle', 'Culture', 'Royal', 'History', 'Church'];
+            for (let i = dummyTags.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [dummyTags[i], dummyTags[j]] = [dummyTags[j], dummyTags[i]];
+            }
+
+            let selectedTags = dummyTags.slice(0, 5);
+            let tags = selectedTags;
+
+
             let searchTerm = '';
             let encTags;
             let encTerm;
@@ -501,12 +510,12 @@
                   const lowVisionIconElement = document.createElement('i');
                   lowVisionIconElement.classList.add('fa', 'fa-3x', 'fa-low-vision');
                   const viewVenueButtonElement = document.createElement('button');
-         viewVenueButtonElement.classList.add('btn', 'btn-success');
-         viewVenueButtonElement.innerHTML = '<i class="fa fa-eye"></i> View Venue Details';
-         viewVenueButtonElement.style.marginLeft = 'auto';
-         viewVenueButtonElement.style.backgroundColor = '#F1C40F';
-         viewVenueButtonElement.style.borderColor = 'black';
-         viewVenueButtonElement.style.color = 'black';
+                  viewVenueButtonElement.classList.add('btn', 'btn-success');
+                  viewVenueButtonElement.innerHTML = '<i class="fa fa-eye"></i> View Venue Details';
+                  viewVenueButtonElement.style.marginLeft = 'auto';
+                  viewVenueButtonElement.style.backgroundColor = '#F1C40F';
+                  viewVenueButtonElement.style.borderColor = 'black';
+                  viewVenueButtonElement.style.color = 'black';
          
          
                   viewVenueButtonElement.addEventListener('click', () => {

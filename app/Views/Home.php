@@ -83,7 +83,7 @@
          right: 20px;
          width: 50px;
          height: 50px;
-         background-color: #0081C9;
+         background-color: #2e8184;
          color: #fff;
          border: none;
          border-radius: 50%;
@@ -129,7 +129,7 @@
          </div>
          <iframe width="560" height="315" src="https://www.youtube.com/embed/4Hz7_sxOMf4?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
          <button id="close-button">Close</button>
-      </div> -->
+         </div> -->
       <script>
          window.addEventListener('load', function() {
            var popup = document.getElementById('video-popup');
@@ -212,7 +212,7 @@
             <div class="input-group">
                <input style="margin-right: 50px; border-radius: 20px;" id="search-input" type="text" placeholder="Search For Venue..." class="form-control search-input" title="Enter the location you are looking for here">
                <div class="input-group-append">
-                  <a style="border-radius: 10px; margin-right: 50px; border-color: #fff; background-color: #F1C40F; color: black; padding: 15px 25px; font-size: 18px;" class="btn btn-primary" aria-current="page">
+                  <a style="border-radius: 10px; margin-right: 50px; border-color: #fff; background-color: #F1C40F; color: black; padding: 15px 25px; font-size: 18px;" class="btn-find-venues btn btn-primary" aria-current="page">
                   <i class="fa fa-search"></i> Find Venues
                   </a>
                </div>
@@ -224,7 +224,7 @@
             <div class="row">
                <div class="col-md-6">
                   <div class="box">
-                     <br><br>
+                     <br><br><br>
                      <h2 style="font-size: 44px; color: white; font-family: 'Bradley Hand', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">Welcome to Access For All!</h2>
                      <br><br>
                      <p style="font-size: 16px; color: white; font-family: 'Arial', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">
@@ -235,10 +235,11 @@
                </div>
                <div class="col-md-6">
                   <div class="video">
-                     <iframe style="margin-left: 12px; margin-top: 45px; box-shadow: 3px 3px 7px rgba(0,0,0,0.5);" width="100%" height="250" src="https://www.youtube.com/embed/4Hz7_sxOMf4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                     <iframe style="margin-left: 12px; margin-top: 45px; box-shadow: 3px 3px 7px rgba(0,0,0,0.5);" width="100%" height="300" src="https://www.youtube.com/embed/4Hz7_sxOMf4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                </div>
             </div>
+            <br><br>
          </div>
       </div>
       <div style="background: linear-gradient(to bottom, #498071, white);" class="container-fluid">
@@ -665,6 +666,19 @@
                behavior: 'smooth'
             });
          });
+         
+         
+         const btnFindVenues = document.querySelector('.btn-find-venues');
+         
+         btnFindVenues.addEventListener('click', () => {
+         const pageHeight = window.innerHeight;
+         window.scrollTo({
+         top: pageHeight / 1,
+         behavior: 'smooth'
+         });
+         });
+         
+         
       </script>
    </body>
 </html>

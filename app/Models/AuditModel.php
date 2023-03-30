@@ -326,4 +326,22 @@ class AuditModel extends Model
 
         return $result;
     }
+
+    public function getAvailableTemplates()
+    {
+
+        $db = db_connect();
+        $sql = "SELECT id, audit_version FROM ci_app.audit_template where published_status = 'published';";
+        $query = $db->query($sql);
+
+        return $query->getResultArray();
+    }
+
+    public function assignAuditToVenue($data)
+    {
+        $db = db_connect();
+        $sql = "INSERT INTO `company_venue_audit` (`audit_template`, `venue_id`) VALUES (:template_id:, :venue_id:)";
+        $query = $db->query($sql, $data);
+        return $db->insertID();
+    }
 }

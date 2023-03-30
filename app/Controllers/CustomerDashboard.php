@@ -187,6 +187,7 @@ class CustomerDashboard extends BaseController
         $data['venue'] = $venue;
         $data['tags'] = $tags;
         $data['audit_data'] = $am->getAudits();
+        $data['audit_templates'] = $am->getAvailableTemplates();
 
         return view('ViewVenue', $data);
     }

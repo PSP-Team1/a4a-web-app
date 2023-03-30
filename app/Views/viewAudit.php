@@ -105,112 +105,112 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
     <div class=" progress progress-small">
       <div class="bg-success" id="prog" style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
     </div>
-    <div class="ibox-title main-title"">
-    <div class=" row">
-      <div class="col-lg-8">
-        <h1><?= $summary['audit_version']; ?><span id=" title-percent"></h1>
-        <small class="text-right"><?= intval($percComplete) ?>%</span> complete. Once the survey is complete you will be
-          able to download the report.
-          Results are saved automatically.</small>
+    <div class="ibox-title main-title">
+      <div class=" row">
+        <div class="col-lg-8">
+          <h1><?= $summary['audit_version']; ?><span id=" title-percent"></h1>
+          <small class="text-right"><?= intval($percComplete) ?>%</span> complete. Once the survey is complete you will be
+            able to download the report.
+            Results are saved automatically.</small>
+        </div>
+        <div class="col-lg-4">
+          <?php $rtSubmit = ($percComplete == 100);
+
+          if (!$rtSubmit) { ?>
+
+            <a id="rpt-button" data-bs-toggle="modal" href="#confirm-modal" class="btn btn-outline-danger pull-right mr-25 disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Audit incomplete">
+              <i class="fa fa-warning"></i> Audit Incomplete
+            </a>
+
+          <?php
+          } else { ?>
+
+            <a id="rpt-button" href="<?= base_url() ?>/Audit/auditConfirmation/<?= $audit_id ?>" class="btn btn-info pull-right mr-25" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to View Report">
+              <i class="fa fa-eye"></i> View Report
+            </a>
+
+          <?php
+          }
+
+          ?>
+
+        </div>
+
+
       </div>
-      <div class="col-lg-4">
-        <?php $rtSubmit = ($percComplete == 100);
-
-        if (!$rtSubmit) { ?>
-
-          <a id="rpt-button" data-bs-toggle="modal" href="#confirm-modal" class="btn btn-outline-danger pull-right mr-25 disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="Audit incomplete">
-            <i class="fa fa-warning"></i> Audit Incomplete
-          </a>
-
-        <?php
-        } else { ?>
-
-          <a id="rpt-button" href="<?= base_url() ?>/Audit/auditResults/<?= $audit_id ?>" class="btn btn-info pull-right mr-25" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to View Report">
-            <i class="fa fa-eye"></i> View Report
-          </a>
-
-        <?php
-        }
-
-        ?>
-
-      </div>
-
 
     </div>
-
-  </div>
-  <div class=" ibox-content p-0">
-    <div class="tab-container">
-      <ul class="tab-list">
-        <?php
-        $c = 1;
-        foreach ($question_data as $k => $v) {
-          echo '<li class="wizard-nav-item' . ($c == 1 ? " active" : "") . '" data-target="sec-' . $c . '"><h3>' . $k . '</h3></li>';
-          $c++;
-        }
-        ?>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active">
-
+    <div class=" ibox-content p-0">
+      <div class="tab-container">
+        <ul class="tab-list">
           <?php
           $c = 1;
           foreach ($question_data as $k => $v) {
-            echo '<section  id="sec-' . $c . '">';
-            echo '<div class="section-title"><h1>' . $k . '</h1></div>';
-            foreach ($question_data[$k] as $q_item) { ?>
+            echo '<li class="wizard-nav-item' . ($c == 1 ? " active" : "") . '" data-target="sec-' . $c . '"><h3>' . $k . '</h3></li>';
+            $c++;
+          }
+          ?>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active">
+
+            <?php
+            $c = 1;
+            foreach ($question_data as $k => $v) {
+              echo '<section  id="sec-' . $c . '">';
+              echo '<div class="section-title"><h1>' . $k . '</h1></div>';
+              foreach ($question_data[$k] as $q_item) { ?>
 
 
-              <div class="ibox qbox" id="qcontent-<?php echo $q_item['car_id']; ?>" data-id="<?php echo $q_item['car_id']; ?>">
-                <div class="ibox-title bg-muted">
-                  <h2><strong><?php echo $q_item['question']; ?></strong></h2>
-                </div>
-                <div class="ibox-content">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="respOptions">
-                        <label class="radio-inline">
-                          <input type="radio" name="resp-<?= $q_item['car_id'] ?>" value="1" <?php if ($q_item['response'] == '1') echo 'checked="checked"'; ?>>
-                          Yes
-                        </label>
-                        <label class="radio-inline">
-                          <input type="radio" name="resp-<?= $q_item['car_id'] ?>" value="0" <?php if ($q_item['response'] == '0') echo 'checked="checked"'; ?>>
-                          No
-                        </label>
-                      </div>
-                      <textarea class="text-notes form-control" placeholder="Write comment..."><?= $q_item['notes'] ?></textarea>
-
-                    </div>
-                    <div class="col-sm-6">
-                      <!-- Image upload -->
-                      <div class="upload__box">
-                        <div class="upload__btn-box">
-                          <label class="btn btn-success ">
-                            <i class="fa fa-camera"></i> Upload
-                            <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
+                <div class="ibox qbox" id="qcontent-<?php echo $q_item['car_id']; ?>" data-id="<?php echo $q_item['car_id']; ?>">
+                  <div class="ibox-title bg-muted">
+                    <h2><strong><?php echo $q_item['question']; ?></strong></h2>
+                  </div>
+                  <div class="ibox-content">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="respOptions">
+                          <label class="radio-inline">
+                            <input type="radio" name="resp-<?= $q_item['car_id'] ?>" value="1" <?php if ($q_item['response'] == '1') echo 'checked="checked"'; ?>>
+                            Yes
+                          </label>
+                          <label class="radio-inline">
+                            <input type="radio" name="resp-<?= $q_item['car_id'] ?>" value="0" <?php if ($q_item['response'] == '0') echo 'checked="checked"'; ?>>
+                            No
                           </label>
                         </div>
-                        <div class="upload__img-wrap"></div>
+                        <textarea class="text-notes form-control" placeholder="Write comment..."><?= $q_item['notes'] ?></textarea>
+
+                      </div>
+                      <div class="col-sm-6">
+                        <!-- Image upload -->
+                        <div class="upload__box">
+                          <div class="upload__btn-box">
+                            <label class="btn btn-success ">
+                              <i class="fa fa-camera"></i> Upload
+                              <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
+                            </label>
+                          </div>
+                          <div class="upload__img-wrap"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
 
-          <?php }
-            echo '</section>';
-            $c++;
-          } ?>
+            <?php }
+              echo '</section>';
+              $c++;
+            } ?>
 
+          </div>
         </div>
       </div>
+
+
     </div>
-
-
   </div>
-</div>
 </div>
 <button class="btn btn-success btn-outline" id="scroll-to-top-btn"><i class="fa fa-chevron-circle-up"></i></button>
 
@@ -276,7 +276,7 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
 
             viewReportBtn.classList.add('btn', 'btn-primary', 'w-100');
             viewReportBtn.addEventListener('click', () => {
-              window.location.href = `/Audit/auditResults/${auditId}`;
+              window.location.href = `/Audit/auditConfirmation/${auditId}`;
             });
 
             const cancelBtn = document.getElementById('cancel-btn');

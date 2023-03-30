@@ -1,5 +1,4 @@
 
-      
       <div id="accessibilityModal" class="modal fade">
          <div class="modal-dialog">
             <div class="modal-content">

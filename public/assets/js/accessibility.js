@@ -59,7 +59,7 @@ document.getElementById("grayscale-toggle").addEventListener("change", function(
 });
 
 
-// Greyscale
+// Light mode
 document.getElementById("light-mode-toggle").addEventListener("change", function() {       
   if (this.checked) {
      document.body.classList.add("light-mode");
@@ -71,22 +71,17 @@ document.getElementById("light-mode-toggle").addEventListener("change", function
 });
 
 
+
 // Dark mode
-document.addEventListener('click', function() {
-  const lightModeToggle = document.getElementById('dark-mode-toggle');
-  const body = document.body;
-
-  lightModeToggle.addEventListener('click', function() {
-    if (body.classList.contains('dark-mode')) {
-      body.classList.remove('dark-mode');
-      body.classList.add('light-mode-1');
-    } else {
-      body.classList.remove('light-mode-1');
-      body.classList.add('dark-mode');
-    }
-  });
+document.getElementById("dark-mode-toggle").addEventListener("change", function() {    
+  if (this.checked) {
+     document.body.classList.add("dark-mode");
+     localStorage.setItem("dark-mode", true);
+  } else {
+     document.body.classList.remove("dark-mode");
+     localStorage.setItem("dark-mode", false);
+  }
 });
-
 
 // Text to speech
 var speaking = false;
@@ -149,12 +144,6 @@ if (localStorage.getItem("grayscale")) {
      document.getElementById("grayscale-toggle").checked = true;
   }
 }
-if (localStorage.getItem("light-background")) {
-  if (localStorage.getItem("light-background") === "true") {
-     document.body.classList.add("light-background");
-     document.getElementById("light-background").checked = true;
-  }
-}
 if (localStorage.getItem("text-to-speech")) {
   if (localStorage.getItem("text-to-speech") === "true") {
      document.body.classList.add("text-speech");
@@ -168,7 +157,7 @@ if (localStorage.getItem("light-mode")) {
   }
 }
 if (localStorage.getItem("dark-mode")) {
-  if (localStorage.getItem("ddark-mode") === "true") {
+  if (localStorage.getItem("dark-mode") === "true") {
      document.body.classList.add("dark-mode");
      document.getElementById("dark-mode-toggle").checked = true;
   }
@@ -209,17 +198,14 @@ resetButton.addEventListener('click', function(event) {
     document.querySelector('#grayscale-toggle').checked = false;
     document.body.classList.remove("grayscale");
 
-    document.querySelector('#light-background').checked = false;
-    document.body.classList.remove("light-background");
-
     document.querySelector('#text-speech').checked = false;
     document.body.classList.remove("text-speech");
 
-    document.querySelector('#light-mode').checked = false;
-    document.body.classList.remove("light-mode");
+    document.querySelector('#dark-mode-toggle').checked = false;
+    document.body.classList.remove("dark-mode");
 
-    document.querySelector('#dark-mode').checked = false;
-    document.body.classList.remove("dark-mode-toggle");
+    document.querySelector('#light-mode-toggle').checked = false;
+    document.body.classList.remove("light-mode");
 
 
     // Stop text to speech if it's currently active

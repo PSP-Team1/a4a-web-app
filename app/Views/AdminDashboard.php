@@ -119,17 +119,14 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="btn-group" role="group" aria-label="Quick Links">
-                     <a class="btn btn-success btn-outline" href="/AdminCreateTemplate" role="button">
-                     <i class="fa fa-plus"></i> Create Template(s)
-                     </a>
-                     <a class="btn btn-success btn-outline" href="/AdminSettings" role="button">
-                     <i class="fa fa-eye"></i> View Companies
-                     </a>
-                     <a class="btn btn-outline btn-danger" href="/AdminDeleteTemplate" role="button">
-                     <i class="fa fa-trash-o"></i> Delete Template(s)
+                     <a class="btn btn-success btn-outline" href="/AdminDeleteTemplate" role="button">
+                     <i class="fa fa-eye"></i> View Audit Templates
                      </a>
                      <a class="btn btn-outline btn-secondary" href="/AdminSettings" role="button">
-                     <i class="fa fa-cog"></i> View Settings
+                     <i class="fa fa-cog"></i> View Profile Settings
+                     </a>
+                     <a class="btn btn-outline btn-danger" href="/ManageProducts" role="button">
+                     <i class="bx bxs-balloon"></i> Products & Services
                      </a>
                   </div>
                </div>
@@ -142,7 +139,7 @@
          <div class="ibox-title">
             <h2>Revenue Management</h2>
          </div>
-         <div class="ibox-content" style="max-height: 330px; overflow-y: auto;">
+         <div class="ibox-content" style="max-height: 370px; overflow-y: auto;">
             <div class="row">
                <table class="footable table table-stripped toggle-arrow-tiny tablet breakpoint footable-loaded" hidden>
                   <thead>

@@ -155,7 +155,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
 
             <a href="<?= base_url() ?>/AdminSettings" class="nav_link <?= ($activePage == "AdminSettings" ? "active" : "") ?>">
               <i class='bx bx-cog nav_icon'></i>
-              <span class="nav_name">Settings</span>
+              <span class="nav_name">Profile Settings</span>
             </a>
 
 

@@ -116,7 +116,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="btn-group" role="group" aria-label="Quick Links">
-                     <a class="btn btn-success btn-outline" href="/AdminDeleteTemplate" role="button">
+                     <a class="btn btn-success btn-outline" href="/ManageTemplates" role="button">
                      <i class="fa fa-eye"></i> View Audit Templates
                      </a>
                      <a class="btn btn-outline btn-secondary" href="/Settings" role="button">
@@ -398,5 +398,15 @@
    }
    }
    });
+   
 </script>
+<div class="video">
+   <div class="popup-header">
+
+
+              <h2>Getting started?</h2>
+              <h2>Click here to find out how to use the customer portal</h2>
+         </div>
+              <iframe style="margin-left: 1px; margin-top: 1px; box-shadow: 3px 3px 7px rgba(0,0,0,0.5);" width="50%" height="300" src="https://www.youtube.com/embed/4Hz7_sxOMf4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
 <?= view('templates/footer'); ?>

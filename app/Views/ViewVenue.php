@@ -204,6 +204,21 @@ $role = $session->get('type');
                               $(this).val(JSON.stringify(currentValue));
                            }
                         });
+
+                        $('#accessibilityTypes').on('change', function() {
+                           var currentValue = $(this).val().trim();
+                           try {
+                              currentValue = JSON.parse(currentValue);
+                           } catch (e) {}
+                           if (!Array.isArray(currentValue)) {
+                              currentValue = currentValue.split(',').map(function(tag) {
+                                 return {
+                                    value: tag.trim()
+                                 };
+                              });
+                              $(this).val(JSON.stringify(currentValue));
+                           }
+                        });
                      });
                   </script>
                   <br>
@@ -692,6 +707,11 @@ $role = $session->get('type');
 
             var input = document.querySelector('#tags');
             new Tagify(input, {
+               removable: true
+            });
+
+            var input2 = document.querySelector('#accessibilityTypes');
+            new Tagify(input2, {
                removable: true
             });
          </script>

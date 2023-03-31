@@ -1,4 +1,4 @@
-<body class="animate__animated animate__fadeIn">
+
       <div class="dropdown">
          <button href="#accessibilityModal" data-bs-toggle="modal" class="accessButton floating-btn" type="button">
          <b>Accessibility</b>
@@ -53,7 +53,7 @@
                <label class="form-check-label" for="text-speech">
                   Text to speech
                </label>
-   </div>
+           </div>
             </div>
             <div class="modal-footer">
                <button class="btn btn-secondary" id="reset-button">Reset</button>

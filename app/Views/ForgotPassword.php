@@ -1,4 +1,4 @@
-<?= view('templates/accessibility'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +19,7 @@
 </script>`
 
 <body class="animate__animated animate__fadeIn">
+   <?= view('templates/accessibility'); ?>
    <div class="login-container">
       <section class="Login-form">
          <div class="fusion-separator fusion-no-medium-visibility fusion-no-large-visibility fusion-full-width-sep" style="align-self: center;margin-left: auto;margin-right: auto;margin-top:80px;margin-bottom:10px;width:100%;">

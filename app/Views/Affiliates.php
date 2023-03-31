@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-   <?= view('templates/accessibility'); ?>
+
    <title>About Us</title>
    <head>
       <link rel="shortcut icon" href="./assets/img/favicon_io/favicon.ico">
@@ -22,6 +22,7 @@
          color: purple;
          }
       </style>
+      <?= view('templates/accessibility'); ?>
    </head>
 </html>
 <!DOCTYPE html>
@@ -59,15 +60,16 @@
       </style>
    </head>
    <body>
+
       <br>
       <div class="container">
          <header style="background-color: white; width: 100%;">
             <img src="http://localhost:8080/assets/img/Making-Everybody-Welcome.png" alt="Everybody Welcome Logo" style="margin-top: 10px; margin-left: 10px;" width="200px">
-            <a href="/Home" class="btn btn-success" style="position: absolute; top: 50px; right: 300px;">
+            <a href="<?= base_url() ?>/home" class="btn btn-success" style="position: absolute; top: 50px; right: 300px;">
             Return to Homepage <span class="fas fa-arrow-right"></span>
             </a>
          </header>
-         <h1 style="color: #498071" class="h1"><b>About Us</b></h1>
+         <h1 style="color: #498071" class="h1"><b>About Us</b></h1><br>
          Access Consultancy, Training, Auditing and Inclusive Design Specialists
          Professional access consultancy, training, auditing and design appraisal services to clients large and small across all sectors. People are at the heart of everything we do because people make change happen. Working in partnership, we enable people to create places, services and experiences which are accessible and inclusive for all.
          <br><br>
@@ -75,7 +77,7 @@
          Our access and inclusion audits are carried out by Centre for Accessible Environments trained auditors with extensive experience.
          Our design appraisal work and consultancy is provided by friendly consultants with comprehensive expertise.
          Our lived experience of disability means that we bring first-hand knowledge and a practical approach to everything we do.
-         <br><br><h1 style="color: #498071" class="h1"><b>Our Partners</b></h1>
+         <br><br><br><h1 style="color: #498071" class="h1"><b>Our Partners</b></h1>
          <div style="text-align: center;">
   <img style="position: relative; filter: drop-shadow(1px 2px 1px #ffffff); width: 80%;" src="/assets/img/a4apartners.jpg" alt="">
 </div>

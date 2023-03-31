@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<?= view('templates/accessibility'); ?>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Everybody Welcome</title>
+      <title>Access and Inclusion UK</title>
       <style type="text/css">
          #terms-and-conditions {
          position: fixed;
@@ -192,6 +191,7 @@
             </div>
          </div>
       </nav>
+      <?= view('templates/accessibility'); ?>
       <div style="background-image: url('https://i.imgur.com/3pF1T5w.png'); 
          background-size: contain; 
          background-position: center center; 
@@ -223,10 +223,10 @@
                <div class="col-md-6">
                   <div class="box">
                      <br><br><br>
-                     <h2 style="font-size: 44px; color: white; font-family: 'Bradley Hand', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">Welcome to Access For All!</h2>
+                     <h2 style="font-size: 44px; color: white; font-family: 'Bradley Hand', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">Welcome to<br> Access and Inclusion UK!</h2>
                      <br><br>
                      <p style="font-size: 16px; color: white; font-family: 'Arial', cursive, sans-serif; text-shadow: 2px 2px 0px #006633;">
-                        Access For All UK is a company dedicated to providing accessibility solutions for businesses and public spaces across the UK. Our mission is to create an inclusive environment where everyone, regardless of their ability, can access the services they need. We offer a range of services, including access audits, disability awareness training, and consultancy on accessibility issues.
+                        Access & Inclusion UK is a company dedicated to providing accessibility solutions for businesses and public spaces across the UK. Our mission is to create an inclusive environment where everyone, regardless of their ability, can access the services they need. We offer a range of services, including access audits, disability awareness training, and consultancy on accessibility issues.
                      </p>
                      <br><br><br>
                   </div>
@@ -361,7 +361,16 @@
          document.addEventListener("DOMContentLoaded", function() {
          
          
-            let tags = [];
+            let dummyTags = ['Museum', 'Castle', 'Culture', 'Royal', 'History', 'Church'];
+            for (let i = dummyTags.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [dummyTags[i], dummyTags[j]] = [dummyTags[j], dummyTags[i]];
+            }
+
+            let selectedTags = dummyTags.slice(0, 5);
+            let tags = selectedTags;
+
+
             let searchTerm = '';
             let encTags;
             let encTerm;
@@ -428,7 +437,14 @@
                   const venueId = venue.id;
                   const venueName = venue.venue_name;
                   const venueAbout = venue.about;
-         
+                  const venueAccessibility = venue.accessibility;
+
+                  const image_links = <?php echo json_encode($image_links); ?>;
+
+                  const filtered_image_links = image_links.filter(function(image_link) {
+                     return image_link.venue_id === venueId;
+                  });
+  
                   const venueElement = document.createElement('div');
                   venueElement.classList.add('ibox');
          
@@ -471,16 +487,20 @@
                   const photosElement = document.createElement('div');
                   photosElement.classList.add('photos');
          
-                  for (let i = 0; i < 4; i++) {
+                  filtered_image_links.forEach(function(image_link) {
                      const photoLinkElement = document.createElement('a');
                      photoLinkElement.setAttribute('href', '#');
+                     photoLinkElement.style.display = 'inline-block'; 
                      const photoElement = document.createElement('img');
                      photoElement.setAttribute('alt', 'image');
                      photoElement.classList.add('feed-photo');
-                     photoElement.setAttribute('src', 'https://picsum.photos/100?random');
+                     photoElement.style.width = '160px'; 
+                     photoElement.style.height = '160px'; 
+                     photoElement.setAttribute('src', image_link.path);
                      photoLinkElement.appendChild(photoElement);
                      photosElement.appendChild(photoLinkElement);
-                  }
+                  });
+
          
                   rightColumnElement.appendChild(photosElement);
          
@@ -495,27 +515,37 @@
                   const accessIconGroupElement = document.createElement('div');
          
                   accessIconGroupElement.classList.add('access-icon-group');
-         
-                  const wheelchairIconElement = document.createElement('i');
-                  wheelchairIconElement.classList.add('fa', 'fa-3x', 'fa-wheelchair');
-                  const lowVisionIconElement = document.createElement('i');
-                  lowVisionIconElement.classList.add('fa', 'fa-3x', 'fa-low-vision');
+
+                  const accessibilityOptions = [
+                  { name: 'Wheelchair Access', icon: 'fa-wheelchair' },
+                  { name: 'Disabled Parking', icon: 'fa-car' },
+                  { name: 'Accessible Toilets', icon: 'fa-bath' },
+                  { name: 'Elevator Access', icon: 'fa-arrow-up' },
+                  { name: 'Hearing Assistance', icon: 'fa-assistive-listening-systems' },
+                  { name: 'Visual Assistance', icon: 'fa-low-vision' }
+                  ];
+
+                  for (let option of accessibilityOptions) {
+                  if (venueAccessibility.includes(option.name)) {
+                     const iconElement = document.createElement('i');
+                     iconElement.classList.add('fa', 'fa-3x', option.icon);
+                     accessIconGroupElement.appendChild(iconElement);
+                  }
+                  }
+
                   const viewVenueButtonElement = document.createElement('button');
-         viewVenueButtonElement.classList.add('btn', 'btn-success');
-         viewVenueButtonElement.innerHTML = '<i class="fa fa-eye"></i> View Venue Details';
-         viewVenueButtonElement.style.marginLeft = 'auto';
-         viewVenueButtonElement.style.backgroundColor = '#F1C40F';
-         viewVenueButtonElement.style.borderColor = 'black';
-         viewVenueButtonElement.style.color = 'black';
+                  viewVenueButtonElement.classList.add('btn', 'btn-success');
+                  viewVenueButtonElement.innerHTML = '<i class="fa fa-eye"></i> View Venue Details';
+                  viewVenueButtonElement.style.marginLeft = 'auto';
+                  viewVenueButtonElement.style.backgroundColor = '#F1C40F';
+                  viewVenueButtonElement.style.borderColor = 'black';
+                  viewVenueButtonElement.style.color = 'black';
          
          
                   viewVenueButtonElement.addEventListener('click', () => {
                   window.location.href = `/HomeViewVenue/${venueId}`;
                   });
          
-         
-                  accessIconGroupElement.appendChild(wheelchairIconElement);
-                  accessIconGroupElement.appendChild(lowVisionIconElement);
                   accessIconGroupElement.appendChild(viewVenueButtonElement);
                   footerElement.appendChild(accessIconGroupElement);
                   contentElement.appendChild(footerElement);

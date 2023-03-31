@@ -14,7 +14,7 @@
          margin: 1.5cm;
          }
          body {
-         background-color: #e8e8e8;
+         background-color: #498071;
          font-family: Arial, sans-serif;
          font-size: 12pt;
          line-height: 1.5;
@@ -37,7 +37,7 @@
          border-bottom: 2px solid #4CAF50;
          }
          th {
-         background-color: royalblue;
+         background-color: #498071;
          color: white;
          font-size: 16px;
          }
@@ -60,7 +60,7 @@
          background-color: #f2f2f2;
          }
          tr:hover {
-         background-color: #85C1E9;
+         background-color: lightgreen;
          }
          th:first-child,
          th:nth-child(2),
@@ -77,7 +77,7 @@
          width: 900px;
          margin: 0 auto;
          padding: 25px;
-         background-color: lightblue;
+         background-color: white;
          border-radius: 50px;
          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
          }
@@ -87,14 +87,14 @@
    <body>
       <br>
       <div class="container">
-      <header style="background-color: lightblue; width: 100%;">
+      <header style="background-color: white; width: 100%;">
          <img src="http://localhost:8080/assets/img/Making-Everybody-Welcome.png" alt="Everybody Welcome Logo" style="margin-top: 10px; margin-left: 10px;" width="200px">
-         <a href="/Home" class="btn btn-primary" style="position: absolute; top: 50px; right: 300px;">
+         <a href="<?= base_url() ?>/home" class="btn btn-success" style="position: absolute; top: 50px; right: 300px;">
          Return to Homepage <span class="fas fa-arrow-right"></span>
          </a>
       </header>
       <br>
-      <h1 style="font-weight: bold; font-size: 44px; color: royalblue"><?= $venue['venue_name'] ?> <span><i class="far fa-building"></i></span></h1>
+      <h1 style="font-weight: bold; font-size: 44px; color: #498071"><?= $venue['venue_name'] ?> <span><i class="far fa-building"></i></span></h1>
       <br><br>
       <h1 style="font-size: 26px; color: #333">Venue Location<span> <i class="far fa-map"></i></span></h1>
       <br>
@@ -103,6 +103,10 @@
       <h1 style="font-size: 26px; color: #333">Venue Description<span> <i class="fas fa-pencil-alt"></i></span></h1>
       <br>
       <h3 style="font-size: 18px; color: #333;"><?= $venue['about'] ?></h3>
+      <br><br>
+      <h1 style="font-size: 26px; color: #333">Venue Accessibility<span> <i class="fas fa-wheelchair"></i></span></h1>
+      <br>
+      <h3 style="font-size: 18px; color: #333;"><?= $venue['accessibility'] ?></h3>
       <br><br>
       <h1 style="font-size: 26px; color: #333">Opening Hours<span> <i class="far fa-clock"></i></span></h1>
       <br>
@@ -139,11 +143,8 @@
       <br>
       <h3 style="font-size: 18px; color: #333;"><?= $venue['tags'] ?></h3>
       <br><br>
-      <h1 style="font-size: 26px; color: #333">Venue Creation Date<span> <i class="far fa-calendar-alt"></i></span></h1>
-      <br>
-      <h3 style="font-size: 18px; color: #333;"><?= $venue['date_created'] ?></h3>
       </div>
-               </div>
-               <br>
+      </div>
+      <br>
    </body>
 </html>

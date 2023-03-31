@@ -1,4 +1,3 @@
-<?= view('templates/accessibility'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +11,7 @@
 </head>
 
 <body class="animate__animated animate__fadeIn">
+<?= view('templates/accessibility'); ?>
     <div class="wrapper">
 
         <style>

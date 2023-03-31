@@ -104,7 +104,7 @@ $venue = $venues[0];
    <div class="container">
       <header style="background-color: white; width: 100%;">
          <img src="http://localhost:8080/assets/img/Making-Everybody-Welcome.png" alt="Everybody Welcome Logo" style="margin-top: 10px; margin-left: 10px;" width="200px">
-         <a href="<?= base_url() ?>/home" class="btn btn-success" style="position: absolute; top: 50px; right: 300px;">
+         <a href="<?= base_url() ?>/home" class="btn btn-success" style="position: absolute; top: 50px; right: 550px;">
             Return to Homepage <span class="fas fa-arrow-right"></span>
          </a>
       </header>
@@ -122,6 +122,10 @@ $venue = $venues[0];
       <h1 style="font-size: 26px; color: #333">Venue Accessibility<span> <i class="fas fa-wheelchair"></i></span></h1>
       <br>
       <h3 style="font-size: 18px; color: #333;"><?= $venue['accessibility'] ?></h3>
+
+      <br><br>
+      <h1 style="font-size: 26px; color: #333">Accessibility Reports<span> <i class="fas fa-file"></i></span></h1>
+      <br>
       <table class="table table-striped <?= (!count($detailed_audit_links)) ? ' d-none' : '' ?>">
          <thead>
             <tr>

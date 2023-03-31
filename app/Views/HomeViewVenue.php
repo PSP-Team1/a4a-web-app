@@ -164,7 +164,7 @@ $venue = $venues[0];
                      <td>Yes</td>
                   <?php else : ?>
                      <td><?= $hours['opening_hours'] ?> <?= $hours['ampm_opening'] == '1' ? 'am' : 'pm' ?></td>
-                     <td><?= $hours['closing_hours'] ?> <?= $hours['ampm_closing'] == '1' ? 'am' : 'pm' ?></td>
+                     <td><?= $hours['closing_hours'] ?> <?= $hours['ampm_closing'] == '1' ? 'pm' : 'am' ?></td>
                      <td>No</td>
                   <?php endif; ?>
                </tr>

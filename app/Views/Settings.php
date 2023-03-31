@@ -55,14 +55,41 @@
             ?>
                 <div style="border: 1px solid #3498DB;">
                     <div class="ibox-title">
-                        <h2>User Settings</h2>
+                        <h2>Admin Settings</h2>
                     </div>
                     <div class="ibox-content">
                         <div>
                             <p>
-                                <a class="btn btn-success btn-outline" href="<?php echo base_url(); ?>/AdminController/addUser" role="button">
-                                    <i class="fa fa-plus "></i> Add Admin User(s)
-                                </a>
+                            <a class="btn btn-success btn-outline" data-toggle="modal" data-target="#addUserModal" role="button">
+                                <i class="fa fa-plus"></i> Add Admin User(s)
+                            </a>
+
+                            <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title" id="addUserModalLabel">Add Admin User(s)</h2>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="<?php echo base_url(); ?>/AdminController/addAdminUser">
+                                                    <label for="email">Email:</label>
+                                                    <input type="text" class="form-control" name="email" id="email" required>
+                                                <br>
+                                                    <label for="password">Password:</label>
+                                                    <input type="password" class="form-control" name="password" id="password" required>
+
+                                                <br>
+
+                                                <button type="submit" name="submit" class="btn btn-success">Add Admin User</button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             </p>
                             <div>
                             </div>
@@ -84,8 +111,26 @@
 
                 <div>
 
-                    <p>
-                        <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
+                <p>
+                    <a class="btn btn-outline btn-danger" data-toggle="modal" data-target="#deleteModal" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
+
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h2>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete your account? This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/deleteAccount" role="button">Delete Account</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
                     </p>
                     <div>
                     </div>
@@ -106,11 +151,25 @@
                 <div>
 
                     <p>
-                        <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
+                    <a class="btn btn-outline btn-danger" data-toggle="modal" data-target="#deleteModal" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
 
-                        <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteUser" role="button"> <i class="fa fa-trash-o"></i> Delete Admin User(s)</a>
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h2>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete your account? This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button">Delete Account</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
 
-                        <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteUser" role="button"> <i class="fa fa-trash-o"></i> Delete Business User(s)</a>
                     </p>
                     <div>
                     </div>

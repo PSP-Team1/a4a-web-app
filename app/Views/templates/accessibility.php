@@ -53,7 +53,7 @@
                <label class="form-check-label" for="text-speech">
                   Text to speech
                </label>
-   </div>
+           </div>
             </div>
             <div class="modal-footer">
                <button class="btn btn-secondary" id="reset-button">Reset</button>

@@ -76,12 +76,22 @@ document.getElementById("light-mode-toggle").addEventListener("change", function
 document.getElementById("dark-mode-toggle").addEventListener("change", function() {    
   if (this.checked) {
      document.body.classList.add("dark-mode");
-     localStorage.setItem("dark-mode", true);
+     localStorage.setItem("dark-mode", "true"); // store as a string
   } else {
      document.body.classList.remove("dark-mode");
-     localStorage.setItem("dark-mode", false);
+     localStorage.setItem("dark-mode", "false"); // store as a string
   }
 });
+
+// check the value of dark-mode in localStorage when the page loads
+if (localStorage.getItem("dark-mode") === "true") { // compare with the string "true"
+  document.body.classList.add("dark-mode");
+  document.getElementById("dark-mode-toggle").checked = true;
+} else {
+  document.body.classList.remove("dark-mode");
+  document.getElementById("dark-mode-toggle").checked = false;
+}
+
 
 // Text to speech
 var speaking = false;

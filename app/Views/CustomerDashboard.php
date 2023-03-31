@@ -6,6 +6,7 @@
 $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
 
 
+
 // Widgets for audit status
 $noOfVenues = count($venues);
 $auditStatusNew = 0;
@@ -50,6 +51,14 @@ $contact = $session->get('name');
 <head>
    <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <style>
+     .video .popup-header{
+         margin-left: 1px;
+         
+      }
+      </style>
+      
+
    <style>
       .container {
          max-width: 95%;
@@ -497,4 +506,13 @@ $contact = $session->get('name');
             </div>
 
          </div>
+         <div class="video">
+   <div class="popup-header">
+
+
+              <h2>Getting started?</h2>
+              <h2>Click here to find out how to use the customer portal</h2>
+         </div>
+              <iframe style="margin-left: 1px; margin-top: 1px; box-shadow: 3px 3px 7px rgba(0,0,0,0.5);" width="50%" height="300" src="https://www.youtube.com/embed/4Hz7_sxOMf4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
          <?= view('templates/footer'); ?>

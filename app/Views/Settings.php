@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="ibox-content">
-                        <a class="btn btn-outline btn-secondary" href="<?php echo base_url(); ?>/ChangeDetails" role="button"> <i class="fa fa-stripe"></i> Add Credit</a>
+                        <a class="btn btn-outline btn-secondary" href="<?php echo base_url(); ?>/Checkout" role="button"> <i class="fa fa-stripe"></i> Add Credit</a>
                     </div>
 
                 </div>
@@ -50,7 +50,7 @@
             <?php } ?>
 
 
-            <?php 
+            <?php
             if ($_SESSION['type']  == 'client') {
             ?>
                 <div style="border: 1px solid #3498DB;">
@@ -60,9 +60,9 @@
                     <div class="ibox-content">
                         <div>
                             <p>
-                            <a class="btn btn-success btn-outline" data-toggle="modal" data-target="#addUserModal" role="button">
-                                <i class="fa fa-plus"></i> Add Admin User(s)
-                            </a>
+                                <a class="btn btn-success btn-outline" data-toggle="modal" data-target="#addUserModal" role="button">
+                                    <i class="fa fa-plus"></i> Add Admin User(s)
+                                </a>
 
                             <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -72,11 +72,11 @@
                                         </div>
                                         <div class="modal-body">
                                             <form method="post" action="<?php echo base_url(); ?>/AdminController/addAdminUser">
-                                                    <label for="email">Email:</label>
-                                                    <input type="text" class="form-control" name="email" id="email" required>
+                                                <label for="email">Email:</label>
+                                                <input type="text" class="form-control" name="email" id="email" required>
                                                 <br>
-                                                    <label for="password">Password:</label>
-                                                    <input type="password" class="form-control" name="password" id="password" required>
+                                                <label for="password">Password:</label>
+                                                <input type="password" class="form-control" name="password" id="password" required>
 
                                                 <br>
 
@@ -98,84 +98,84 @@
                 </div>
             <?php } ?>
 
-            <?php 
+            <?php
             if ($_SESSION['type']  == 'customer') {
             ?>
-            <div style="border: 1px solid red;">
+                <div style="border: 1px solid red;">
 
-            <div class="ibox-title">
-                <h2>Danger Zone</h2>
-            </div>
-
-            <div class="ibox-content">
-
-                <div>
-
-                <p>
-                    <a class="btn btn-outline btn-danger" data-toggle="modal" data-target="#deleteModal" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
-
-                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h2>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to delete your account? This action cannot be undone.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/deleteAccount" role="button">Delete Account</a>
-                        </div>
-                        </div>
-                    </div>
+                    <div class="ibox-title">
+                        <h2>Danger Zone</h2>
                     </div>
 
-                    </p>
-                    <div>
+                    <div class="ibox-content">
+
+                        <div>
+
+                            <p>
+                                <a class="btn btn-outline btn-danger" data-toggle="modal" data-target="#deleteModal" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
+
+                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h2>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete your account? This action cannot be undone.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/deleteAccount" role="button">Delete Account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </p>
+                            <div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            </div>
-            <?php 
+            <?php
             } else { ?>
-            <br>
-            <div style="border: 1px solid red;">
+                <br>
+                <div style="border: 1px solid red;">
 
-            <div class="ibox-title">
-                <h2>Danger Zone</h2>
-            </div>
-
-            <div class="ibox-content">
-
-                <div>
-
-                    <p>
-                    <a class="btn btn-outline btn-danger" data-toggle="modal" data-target="#deleteModal" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
-
-                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h2>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to delete your account? This action cannot be undone.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button">Delete Account</a>
-                        </div>
-                        </div>
-                    </div>
+                    <div class="ibox-title">
+                        <h2>Danger Zone</h2>
                     </div>
 
-                    </p>
-                    <div>
+                    <div class="ibox-content">
+
+                        <div>
+
+                            <p>
+                                <a class="btn btn-outline btn-danger" data-toggle="modal" data-target="#deleteModal" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
+
+                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h2>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete your account? This action cannot be undone.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button">Delete Account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </p>
+                            <div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            </div>
             <?php } ?>
 
             <?= view('templates/footer'); ?>

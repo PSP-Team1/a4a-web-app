@@ -1,7 +1,7 @@
 .floating-btn {
   position: fixed; 
   bottom: 20px;
-  left: 20px;   
+  left: 1620px;   
   color: #fff;    
   border: none;    
   border-radius: 50%;  
@@ -46,9 +46,9 @@
 
 
 .high-contrast {
-background: black;
-color: white;
-filter: invert(100%);
+background: black !important;
+color: white !important;
+filter: invert(100%) !important;
 }
 
 .negative-contrast {

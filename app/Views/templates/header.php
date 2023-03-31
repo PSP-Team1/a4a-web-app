@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="UTF-8">
@@ -17,7 +16,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
 
   <link href="<?= base_url(); ?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -86,7 +84,7 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
 </style>
 
 <body id="body-pd">
-<?= view('templates/accessibilityPortal')?>
+<?= view('templates/accessibility'); ?>
   <header class="header" id="header">
 
     <div class="header_toggle">
@@ -193,7 +191,6 @@ $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
       </a>
     </nav>
   </div>
-
   <!-- Notify -->
   <script src="./assets/js/accessibility.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">

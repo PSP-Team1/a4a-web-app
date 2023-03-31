@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\VenueModel;
+use App\Models\VenueSearchModel;
 use App\Models\AuditModel;
 use App\Models\ActivityLogModel;
 
@@ -182,6 +183,7 @@ class CustomerDashboard extends BaseController
     {
         $model = new VenueModel();
         $am = new AuditModel();
+        $vsm = new VenueSearchModel();
         $venue = $model->getVenueById($id);
         $tags = $model->getDefaultTags();
 
@@ -189,6 +191,7 @@ class CustomerDashboard extends BaseController
         $data['tags'] = $tags;
         $data['audit_data'] = $am->getAudits();
         $data['audit_templates'] = $am->getAvailableTemplates();
+        $data['venue_images'] = $vsm->getMedia($id);
 
         return view('ViewVenue', $data);
     }

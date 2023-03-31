@@ -1,10 +1,10 @@
-<body class="animate__animated animate__fadeIn">
+
       <div class="dropdown">
          <button href="#accessibilityModal" data-bs-toggle="modal" class="accessButton floating-btn" type="button">
          <b>Accessibility</b>
          </button>
       </div>
-
+      <link rel="stylesheet" href="/assets/css/accessiblity.css" />
    <div id="accessibilityModal" class="modal fade">
       <div class="modal-dialog">
          <div class="modal-content">
@@ -36,9 +36,15 @@
                   </label>
                </div>
                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="light-background">
-                  <label class="form-check-label" for="light-background">
-                     Light Background
+                  <input class="form-check-input" type="checkbox" id="light-mode-toggle">
+                  <label class="form-check-label" for="light-mode-toggle">
+                     Light mode (very bright)
+                  </label>
+               </div>
+               <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="dark-mode-toggle">
+                  <label class="form-check-label" for="dark-mode-toggle">
+                   Dark mode (decrease brightness)
                   </label>
                </div>
 
@@ -47,7 +53,7 @@
                <label class="form-check-label" for="text-speech">
                   Text to speech
                </label>
-   </div>
+           </div>
             </div>
             <div class="modal-footer">
                <button class="btn btn-secondary" id="reset-button">Reset</button>
@@ -56,3 +62,4 @@
          </div>
       </div>
    </div>
+   <script src="./assets/js/accessibility.js"></script>

@@ -1,7 +1,7 @@
 .floating-btn {
   position: fixed; 
   bottom: 20px;
-  left: 20px;   
+  left: 1634px;   
   color: #fff;    
   border: none;    
   border-radius: 50%;  
@@ -9,7 +9,7 @@
   height: 60px;    
   font-size: 32px; 
   cursor: pointer; 
-  z-index: 999;
+  z-index: 9999;
 }
 
 .accessButton {
@@ -31,8 +31,7 @@
   }
 
 .accessButton:hover {
-  background-color: rgb(114, 131, 181);;
-  box-shadow: 0px 15px 20px rgb(15, 15, 15);;
+  background-color: #2e8184;
   color: #fff;
   transform: translateY(-10px);
 }
@@ -41,17 +40,32 @@
   filter: grayscale(100%) !important;
 }
 
-.light-background {
-  background: white;
-}
+
+
+
+
 
 .high-contrast {
-background: black;
-color: white;
-filter: invert(100%);
+background: black !important;
+color: white !important;
+filter: invert(100%) !important;
 }
 
 .negative-contrast {
 filter: invert(1) hue-rotate(180deg);
 background: black;
+}
+
+body {
+  background-color: #fff;
+}
+
+.light-mode {
+  filter: brightness(150%) contrast(120%) hue-rotate(0deg);
+}
+
+.dark-mode{
+  filter: brightness(60%) contrast(60%);
+  color: #fff;
+  background-color: #000;
 }

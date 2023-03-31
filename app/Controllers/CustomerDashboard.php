@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\VenueModel;
+use App\Models\VenueSearchModel;
 use App\Models\AuditModel;
 use App\Models\ActivityLogModel;
 
@@ -132,16 +133,17 @@ class CustomerDashboard extends BaseController
     public function updateAccessibility()
     {
         $venueId = $this->request->getPost('id');
-        $accessibilityInfo = $this->request->getPost('other-accessibility-info');
+        $venueAccessibility = $this->request->getPost('accessibilityTypes');
 
         $venueModel = new VenueModel();
-        $venueModel->updateAccessibility($venueId, $accessibilityInfo);
+        $venueModel->updateAccessibility($venueId, $venueAccessibility);
 
         return redirect()->to('CustomerDashboard/ViewVenue/' . $venueId . '?tab=3');
     }
 
     public function updateImages()
     {
+        $venueId = $this->request->getPost('id');
         $files = $this->request->getFiles();
 
         $images = [];
@@ -159,7 +161,7 @@ class CustomerDashboard extends BaseController
         $venueModel = new VenueModel();
         $venueModel->updateImages($id, $images);
 
-        return redirect()->to(base_url('CustomerDashboard'))->with('success', 'Images updated successfully');
+        return redirect()->to('CustomerDashboard/ViewVenue/' . $venueId . '?tab=4');
     }
 
     public function publishVenue()
@@ -181,6 +183,7 @@ class CustomerDashboard extends BaseController
     {
         $model = new VenueModel();
         $am = new AuditModel();
+        $vsm = new VenueSearchModel();
         $venue = $model->getVenueById($id);
         $tags = $model->getDefaultTags();
 
@@ -188,6 +191,7 @@ class CustomerDashboard extends BaseController
         $data['tags'] = $tags;
         $data['audit_data'] = $am->getAudits();
         $data['audit_templates'] = $am->getAvailableTemplates();
+        $data['venue_images'] = $vsm->getMedia($id);
 
         return view('ViewVenue', $data);
     }

@@ -1,9 +1,6 @@
-<?= view('templates/accessibilityPortal') ?>
 <?= view('templates/header');
 
 ?>
-<link rel="stylesheet" href="/assets/css/accessibilityPortal.css"/>
-<script src="/assets/js/accessibility.js"></script>
 
 <div class="container">
 
@@ -14,6 +11,9 @@
     <div class="ibox ">
       <div class="ibox-title">
         <h2>Company Details - <b><span style="color: purple"><?php echo $company['companyName'] ?></b></h2>
+        <a class="btn btn-primary btn-outline pull-right" href="/AdminDashboard" role="button">
+            <i class="fas fa-home"></i> Return To Dashboard
+         </a>
       </div>
 
       <style>
@@ -38,6 +38,10 @@
         }
         .custom-progress-bar {
          background-color: #52BE80;
+        }
+         table .footable-last-column {
+            width: 27%;
+         }
       }
     </style>
 
@@ -76,6 +80,35 @@
                     <th>Date Created:</th>
                     <td><?php echo $company['date_created']; ?></td>
                 </tr>
+
+                <tr>
+                    <th>Company Management</th>
+                    <td>
+                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">
+                        <i class="fas fa-trash"></i> Delete <?= $company['companyName'] ?>
+                    </a>
+
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="deleteModalLabel">Delete Company</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete <?= $company['companyName'] ?>?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <a href="/adminDashboard/deleteCompany/<?= $company['id'] ?>" type="button" class="btn btn-danger" id="deleteButton">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -83,7 +116,7 @@
     <br>
 
     <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
     <div class="ibox ">
       <div class="ibox-title">
         <h2>View Company Venue(s)</h2>
@@ -102,7 +135,7 @@
                         Venue Name<span class="footable-sort-indicator"></span></th>
                     <th data-type="all" class="footable-visible footable-sortable">Venue Completion<span
                     class="footable-sort-indicator"></span></th>
-                    <th class="footable-visible footable-last-column footable-sortable">Action<span
+                    <th style="text-align: center" class="footable-visible footable-last-column footable-sortable">Action<span
                     class="footable-sort-indicator"></span></th>
                 </tr>
             </thead>
@@ -119,7 +152,7 @@
                     $progress = round(($completedFields / count($venueFields)) * 100);
                 ?>
 
-                <tr class="footable-even" style="">
+                <tr style="width: 60%;" class="footable-even" style="">
                     <td class="footable-visible footable-first-column"><span
                             class="footable-toggle"></span><?= $venue['venue_name'] ?></td>
                             <td class="footable-visible footable-last-column">
@@ -130,10 +163,12 @@
                                                                                     echo 'progress-bar-striped animated';
                                                                                  } ?>" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $progress; ?>%</div>
                                              </div>
-                    <td class="footable-visible footable-last-column">
-                    <a class="btn btn-success btn-outline" href="/CustomerDashboard/ViewVenue/<?= $venue['id'] ?>" role="button">
-                        <i class="fas fa-eye"></i> View
-                    </a>
+                                             <td class="footable-visible footable-last-column" style="text-align: center;">
+                                <a class="btn btn-success btn-sm" href="/AdminDashboard/ViewVenue/<?= $venue['id'] ?>" role="button">
+                                    <i class="fas fa-eye"></i> View Venue Details
+                                </a>
+                            </td>
+
 
                     <style>
 
@@ -160,14 +195,6 @@
         </div>
 
       </div>
-    </div>
-    <div class="col-lg-6">
-
-    <div class="ibox-title">
-        <h2>View Company Audit(s)</h2>
-      </div>
-
-    <div class="ibox-content" style="max-height: 500px; overflow-y: auto;" >
     </div>
   </div>
 </div>

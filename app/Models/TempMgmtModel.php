@@ -57,4 +57,28 @@ class TempMgmtModel extends Model
             $this->db->table('audit_questions')->insert($data);
         }
     }
+
+    public function getTemplateUsage()
+    {
+
+
+        $db = db_connect();
+        $sql = "select * from audit_template atemp
+        left join
+        (SELECT audit_template, count(audit_template) as usage_count FROM ci_app.company_venue_audit group by 1) temp_usage
+        on temp_usage.audit_template = atemp.id order by temp_usage.usage_count desc";
+
+        $query = $db->query($sql);
+
+        return $query->getResult('array');
+    }
+
+
+    public function setStatus($id, $status)
+    {
+        $db = db_connect();
+        $sql = "UPDATE audit_template SET published_status = ? WHERE id = ?";
+
+        $db->query($sql, [$status, $id]);
+    }
 }

@@ -6,6 +6,7 @@
 $avatar = (isset($_SESSION['avatar'])) ? $_SESSION['avatar'] : "Jack.jpg";
 
 
+
 // Widgets for audit status
 $noOfVenues = count($venues);
 $auditStatusNew = 0;
@@ -50,6 +51,14 @@ $contact = $session->get('name');
 <head>
    <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <style>
+     .video .popup-header{
+         margin-left: 1px;
+         
+      }
+      </style>
+      
+
    <style>
       .container {
          max-width: 95%;
@@ -104,8 +113,6 @@ $contact = $session->get('name');
    </style>
 
    <head>
-      <link rel="stylesheet" href="./assets/css/accessibilityPortal.css" />
-      <script src="./assets/js/accessibility.js"></script>
       <script>
          toastr.options.progressBar = true;
       </script>
@@ -499,4 +506,5 @@ $contact = $session->get('name');
             </div>
 
          </div>
+         
          <?= view('templates/footer'); ?>

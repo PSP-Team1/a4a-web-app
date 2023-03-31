@@ -50,4 +50,18 @@ class VenueSearchModel extends Model
 
         return $query->getResult();
     }
+
+
+
+    public function getMedia($venue_ids_str)
+    {
+        $db = db_connect();
+
+        $sql = "SELECT cm.id, vm.path, vm.media_type, vm.venue_id
+        FROM venue_media vm 
+        JOIN company_venue cm ON cm.id = vm.venue_id 
+        WHERE cm.id IN ($venue_ids_str)";
+        $query = $db->query($sql);
+        return $query->getResult('array');
+    }
 }

@@ -1,6 +1,5 @@
-<?= view('templates/accessibilityPortal') ?>
-<?= view('templates/header');
-
+<?= view('templates/header')?>
+<?php
 $session = session();
 $id = $session->get('id');
 $user = $session->get('name');
@@ -18,8 +17,6 @@ $email = $session->get('email');
         font-size: 1.5rem !important;
     }
 </style>
-<link rel="stylesheet" href="./assets/css/accessibilityPortal.css"/>
-<script src="./assets/js/accessibility.js"></script>
 <div class="container">
 
     <div class="ibox">
@@ -28,7 +25,7 @@ $email = $session->get('email');
         </div>
         <div class="ibox-content">
 
-            <form method="post" enctype="multipart/form-data"  action="<?php echo base_url(); ?>/AdminSettingsController/updatePicture">
+            <form method="post" enctype="multipart/form-data"  action="<?php echo base_url(); ?>/SettingsController/updatePicture">
                 <input type="file" name="picture" id="picture" accept="image/*">
 
                 <br>
@@ -76,7 +73,7 @@ $email = $session->get('email');
                 <br>
 
                 <button type="submit" class="btn btn-outline-success">Update Picture</button>
-                <a href="<?= base_url() ?>/AdminSettings" class="btn btn-outline-secondary">Return To Settings</a>
+                <a href="<?= base_url() ?>/Settings" class="btn btn-outline-secondary">Return To Settings</a>
             </form>
 
         </div>

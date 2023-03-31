@@ -28,4 +28,16 @@ class CompanyModel extends Model
         return $query->getResult();
 
     }
+
+    public function deleteCompany($id)
+    {
+        $db = db_connect();
+        
+        $db->table('company')
+            ->where('id', $id)
+            ->delete();
+    
+        return true;
+    }
+    
 }

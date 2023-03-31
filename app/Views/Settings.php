@@ -55,7 +55,7 @@
             ?>
                 <div style="border: 1px solid #3498DB;">
                     <div class="ibox-title">
-                        <h2>User Settings</h2>
+                        <h2>Admin Settings</h2>
                     </div>
                     <div class="ibox-content">
                         <div>
@@ -106,7 +106,25 @@
                 <div>
 
                     <p>
-                        <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
+                    <a class="btn btn-outline btn-danger" data-toggle="modal" data-target="#deleteModal" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
+
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="deleteModalLabel">Confirm Account Deletion</h2>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete your account? This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button">Delete Account</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
                     </p>
                     <div>
                     </div>

@@ -1,11 +1,12 @@
 <?= view('templates/header');
-   $session = session();
-   $id = $session->get('id');
-   $user = $session->get('name');
-   $email = $session->get('email');
-   $role = $session->get('type');
-   
-   ?>
+$session = session();
+$id = $session->get('id');
+$user = $session->get('name');
+$email = $session->get('email');
+$role = $session->get('type');
+
+?>
+
 <head>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
@@ -17,21 +18,33 @@
    function validateForm() {
       var newPassword = document.getElementById("newPassword").value;
       var confirmPassword = document.getElementById("confirmPassword").value;
-   
+
       if (newPassword !== confirmPassword) {
          alert("Passwords do not match.");
          return false;
       }
-   
+
       return true;
    }
 </script>
 <style>
    .container {
-   max-width: 100%;
+      max-width: 100%;
    }
+
    label {
-   font-size: 1.5rem !important;
+      font-size: 1.5rem !important;
+   }
+
+
+   .img-preview {
+      max-width: 50px;
+      border: 1px solid #ccc;
+      padding: 5px;
+   }
+
+   .img-preview img {
+      max-width: 80%;
    }
 </style>
 <div class="container">
@@ -39,7 +52,7 @@
       <div class="ibox-title">
          <h2><?php echo $venue['venue_name'] ?>'s Details</h2>
          <a class="btn btn-danger btn-outline pull-right" href="#" role="button" data-toggle="modal" data-target="#deleteVenueModal<?= $venue['id'] ?>">
-         <i class="fas fa-trash"></i> Delete
+            <i class="fas fa-trash"></i> Delete
          </a>
          <div class="modal fade" id="deleteVenueModal<?= $venue['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteVenueModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -76,335 +89,335 @@
          <br>
          <div id="tab1" class="tabcontent">
             <?php if ($role == "customer") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateVenueDetails" onsubmit="return validateForm()">
+               <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateVenueDetails" onsubmit="return validateForm()">
                <?php endif; ?>
                <?php if ($role == "client") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateVenueDetails" onsubmit="return validateForm()">
-               <?php endif; ?>
-               <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-               <div style="display: flex;">
-                  <div class="form-group" style="flex: 1; margin-right: 10px;">
-                     <h2>Venue Name</h2>
-                     <input type="text" name="venueName" id="venueName" value="<?php echo $venue['venue_name'] ?>" class="form-control" required>
+                  <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateVenueDetails" onsubmit="return validateForm()">
+                  <?php endif; ?>
+                  <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                  <div style="display: flex;">
+                     <div class="form-group" style="flex: 1; margin-right: 10px;">
+                        <h2>Venue Name</h2>
+                        <input type="text" name="venueName" id="venueName" value="<?php echo $venue['venue_name'] ?>" class="form-control" required>
+                     </div>
+                     <div class="form-group" style="flex: 1; margin-left: 10px;">
+                        <h2>Venue Address</h2>
+                        <input type="text" name="venueAddress" id="venueAddress" value="<?php echo $venue['address'] ?>" class="form-control" required>
+                     </div>
                   </div>
-                  <div class="form-group" style="flex: 1; margin-left: 10px;">
-                     <h2>Venue Address</h2>
-                     <input type="text" name="venueAddress" id="venueAddress" value="<?php echo $venue['address'] ?>" class="form-control" required>
+                  <br>
+                  <div style="display: flex;">
+                     <div class="form-group" style="flex: 1; margin-right: 10px;">
+                        <h2>Venue Postcode</h2>
+                        <input type="text" name="venuePostcode" id="venuePostcode" value="<?php echo $venue['postcode'] ?>" class="form-control" required>
+                     </div>
+                     <div class="form-group" style="flex: 1; margin-left: 10px;">
+                        <h2>Description</h2>
+                        <input type="text" name="venueDescription" id="venueDescription" value="<?php echo $venue['about'] ?>" class="form-control">
+                     </div>
                   </div>
-               </div>
-               <br>
-               <div style="display: flex;">
-                  <div class="form-group" style="flex: 1; margin-right: 10px;">
-                     <h2>Venue Postcode</h2>
-                     <input type="text" name="venuePostcode" id="venuePostcode" value="<?php echo $venue['postcode'] ?>" class="form-control" required>
-                  </div>
-                  <div class="form-group" style="flex: 1; margin-left: 10px;">
-                     <h2>Description</h2>
-                     <input type="text" name="venueDescription" id="venueDescription" value="<?php echo $venue['about'] ?>" class="form-control">
-                  </div>
-               </div>
-               <br>
-               <div class="form-group">
-                  <h2>Choose Venue Tags</h2>
-                  <div class="input-group mb-3">
-                     <?php
+                  <br>
+                  <div class="form-group">
+                     <h2>Choose Venue Tags</h2>
+                     <div class="input-group mb-3">
+                        <?php
                         $tag_names = array_column($tags, 'tag');
                         array_multisort($tag_names, SORT_ASC, $tags);
                         ?>
-                     <select class="form-control select2" id="tag-select" style="height: 38px;">
-                        <?php foreach ($tags as $tag) { ?>
-                        <option value="<?php echo $tag['id']; ?>"><?php echo $tag['tag']; ?></option>
-                        <?php } ?>
-                     </select>
-                     <script>
-                        $(document).ready(function() {
-                           $('.select2').select2();
-                        });
-                     </script>
-                     <div class="input-group-append" style="margin-left: 5px;">
-                        <button class="btn btn-primary" type="button" id="add-tag-btn">Add Tag</button>
-                        <button class="btn btn-secondary" type="button" id="remove-tag-btn">Remove Tag</button>
-                        <button class="btn btn-danger" type="button" id="remove-all-tags-btn">Remove All Tags</button>
-                     </div>
-                  </div>
-                  <h2>Current Venue Tags</h2>
-                  <input name="tags" id="tags" value="<?php echo $venue['tags'] ?>" class="form-control" readonly>
-               </div>
-               <script>
-                  $(document).ready(function() {
-                     $('#add-tag-btn').click(function() {
-                        var selectedTag = $('#tag-select option:selected').text().trim();
-                        var currentTags = $('#tags').val().trim();
-                  
-                        try {
-                           currentTags = JSON.parse(currentTags);
-                           if (!Array.isArray(currentTags)) {
-                              currentTags = [];
-                           }
-                        } catch (e) {
-                           currentTags = [];
-                        }
-                  
-                        currentTags.push({
-                           value: selectedTag
-                        });
-                        $('#tags').val(JSON.stringify(currentTags));
-                     });
-                  
-                     $('#remove-tag-btn').click(function() {
-                        var selectedTag = $('#tag-select option:selected').text().trim();
-                        var currentTags = $('#tags').val().trim();
-                  
-                        try {
-                           currentTags = JSON.parse(currentTags);
-                           if (!Array.isArray(currentTags)) {
-                              currentTags = [];
-                           }
-                        } catch (e) {
-                           currentTags = [];
-                        }
-                  
-                        currentTags = currentTags.filter(function(tag) {
-                           return tag.value !== selectedTag;
-                        });
-                  
-                        $('#tags').val(JSON.stringify(currentTags));
-                     });
-                  
-                     $('#remove-all-tags-btn').click(function() {
-                        if (confirm("Are you sure you want to remove all tags?")) {
-                           $('#tags').val('');
-                        }
-                     });
-                  
-                     $('#tags').on('change', function() {
-                        var currentValue = $(this).val().trim();
-                        try {
-                           currentValue = JSON.parse(currentValue);
-                        } catch (e) {}
-                        if (!Array.isArray(currentValue)) {
-                           currentValue = currentValue.split(',').map(function(tag) {
-                              return {
-                                 value: tag.trim()
-                              };
+                        <select class="form-control select2" id="tag-select" style="height: 38px;">
+                           <?php foreach ($tags as $tag) { ?>
+                              <option value="<?php echo $tag['id']; ?>"><?php echo $tag['tag']; ?></option>
+                           <?php } ?>
+                        </select>
+                        <script>
+                           $(document).ready(function() {
+                              $('.select2').select2();
                            });
-                           $(this).val(JSON.stringify(currentValue));
-                        }
+                        </script>
+                        <div class="input-group-append" style="margin-left: 5px;">
+                           <button class="btn btn-primary" type="button" id="add-tag-btn">Add Tag</button>
+                           <button class="btn btn-secondary" type="button" id="remove-tag-btn">Remove Tag</button>
+                           <button class="btn btn-danger" type="button" id="remove-all-tags-btn">Remove All Tags</button>
+                        </div>
+                     </div>
+                     <h2>Current Venue Tags</h2>
+                     <input name="tags" id="tags" value="<?php echo $venue['tags'] ?>" class="form-control" readonly>
+                  </div>
+                  <script>
+                     $(document).ready(function() {
+                        $('#add-tag-btn').click(function() {
+                           var selectedTag = $('#tag-select option:selected').text().trim();
+                           var currentTags = $('#tags').val().trim();
+
+                           try {
+                              currentTags = JSON.parse(currentTags);
+                              if (!Array.isArray(currentTags)) {
+                                 currentTags = [];
+                              }
+                           } catch (e) {
+                              currentTags = [];
+                           }
+
+                           currentTags.push({
+                              value: selectedTag
+                           });
+                           $('#tags').val(JSON.stringify(currentTags));
+                        });
+
+                        $('#remove-tag-btn').click(function() {
+                           var selectedTag = $('#tag-select option:selected').text().trim();
+                           var currentTags = $('#tags').val().trim();
+
+                           try {
+                              currentTags = JSON.parse(currentTags);
+                              if (!Array.isArray(currentTags)) {
+                                 currentTags = [];
+                              }
+                           } catch (e) {
+                              currentTags = [];
+                           }
+
+                           currentTags = currentTags.filter(function(tag) {
+                              return tag.value !== selectedTag;
+                           });
+
+                           $('#tags').val(JSON.stringify(currentTags));
+                        });
+
+                        $('#remove-all-tags-btn').click(function() {
+                           if (confirm("Are you sure you want to remove all tags?")) {
+                              $('#tags').val('');
+                           }
+                        });
+
+                        $('#tags').on('change', function() {
+                           var currentValue = $(this).val().trim();
+                           try {
+                              currentValue = JSON.parse(currentValue);
+                           } catch (e) {}
+                           if (!Array.isArray(currentValue)) {
+                              currentValue = currentValue.split(',').map(function(tag) {
+                                 return {
+                                    value: tag.trim()
+                                 };
+                              });
+                              $(this).val(JSON.stringify(currentValue));
+                           }
+                        });
                      });
-                  });
-               </script>
-               <br>
-               <button type="submit" class="btn btn-outline-success">Update Details</button>
-               <?php if ($role == "customer") : ?>
-               <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-               <?php endif; ?>
-               <?php if ($role == "client") : ?>
-               <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-               <?php endif; ?>
-            </form>
-            <hr>
-            <button class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal">
-            <i class="fas fa-paper-plane-o"></i> Audit this Venue
-            </button>
+                  </script>
+                  <br>
+                  <button type="submit" class="btn btn-outline-success">Update Details</button>
+                  <?php if ($role == "customer") : ?>
+                     <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                  <?php endif; ?>
+                  <?php if ($role == "client") : ?>
+                     <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                  <?php endif; ?>
+                  </form>
+                  <hr>
+                  <button class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal">
+                     <i class="fas fa-paper-plane-o"></i> Audit this Venue
+                  </button>
          </div>
          <div id="tab2" class="tabcontent">
             <?php if ($role == "customer") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateOpeningHours" onsubmit="return validateForm()">
+               <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateOpeningHours" onsubmit="return validateForm()">
                <?php endif; ?>
                <?php if ($role == "client") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateOpeningHours" onsubmit="return validateForm()">
-               <?php endif; ?>
-               <div style="display: flex; justify-content: center;">
-                  <div class="form-group" style="flex: 1; margin-right: 10px;">
-                     <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-                     <table id="opening-hours" name="opening-hours" style="width: 100%; font-size: 18px">
-                        <tr>
-                           <th>Day</th>
-                           <th>Hours (24HR)</th>
-                           <th>Open/Closed</th>
-                        </tr>
-                        <tr>
-                           <td>Monday</td>
-                           <td>
-                              <input id="monday-opening-hours" type="text" name="monday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="monday-ampm-opening" name="monday-ampm-opening">
-                                 <option value="1">AM</option>
-                                 <option value="2">PM</option>
-                              </select>
-                              <span> - </span>
-                              <input id="monday-closing-hours" type="text" name="monday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="monday-ampm-closing" name="monday-ampm-closing">
-                                 <option value="1">PM</option>
-                                 <option value="2">AM</option>
-                              </select>
-                           </td>
-                           <td>
-                              <select id="monday-openclosed" name="monday-openclosed">
-                                 <option value="1">Open</option>
-                                 <option value="2">Closed</option>
-                              </select>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Tuesday</td>
-                           <td>
-                              <input id="tuesday-opening-hours" type="text" name="tuesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="tuesday-ampm-opening" name="tuesday-ampm-opening">
-                                 <option value="1">AM</option>
-                                 <option value="2">PM</option>
-                              </select>
-                              <span> - </span>
-                              <input id="tuesday-closing-hours" type="text" name="tuesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="tuesday-ampm-closing" name="tuesday-ampm-closing">
-                                 <option value="1">PM</option>
-                                 <option value="2">AM</option>
-                              </select>
-                           </td>
-                           <td>
-                              <select id="tuesday-openclosed" name="tuesday-openclosed">
-                                 <option value="1">Open</option>
-                                 <option value="2">Closed</option>
-                              </select>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Wednesday</td>
-                           <td>
-                              <input id="wednesday-opening-hours" type="text" name="wednesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="wednesday-ampm-opening" name="wednesday-ampm-opening">
-                                 <option value="1">AM</option>
-                                 <option value="2">PM</option>
-                              </select>
-                              <span> - </span>
-                              <input id="wednesday-closing-hours" type="text" name="wednesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="wednesday-ampm-closing" name="wednesday-ampm-closing">
-                                 <option value="1">PM</option>
-                                 <option value="2">AM</option>
-                              </select>
-                           </td>
-                           <td>
-                              <select id="wednesday-openclosed" name="wednesday-openclosed">
-                                 <option value="1">Open</option>
-                                 <option value="2">Closed</option>
-                              </select>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Thursday</td>
-                           <td>
-                              <input id="thursday-opening-hours" type="text" name="thursday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="thursday-ampm-opening" name="thursday-ampm-opening">
-                                 <option value="1">AM</option>
-                                 <option value="2">PM</option>
-                              </select>
-                              <span> - </span>
-                              <input id="thursday-closing-hours" type="text" name="thursday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="thursday-ampm-closing" name="thursday-ampm-closing">
-                                 <option value="1">PM</option>
-                                 <option value="2">AM</option>
-                              </select>
-                           </td>
-                           <td>
-                              <select id="thursday-openclosed" name="thursday-openclosed">
-                                 <option value="1">Open</option>
-                                 <option value="2">Closed</option>
-                              </select>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Friday</td>
-                           <td>
-                              <input id="friday-opening-hours" type="text" name="friday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="friday-ampm-opening" name="friday-ampm-opening">
-                                 <option value="1">AM</option>
-                                 <option value="2">PM</option>
-                              </select>
-                              <span> - </span>
-                              <input id="friday-closing-hours" type="text" name="friday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="friday-ampm-closing" name="friday-ampm-closing">
-                                 <option value="1">PM</option>
-                                 <option value="2">AM</option>
-                              </select>
-                           </td>
-                           <td>
-                              <select id="friday-openclosed" name="friday-openclosed">
-                                 <option value="1">Open</option>
-                                 <option value="2">Closed</option>
-                              </select>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Saturday</td>
-                           <td>
-                              <input id="saturday-opening-hours" type="text" name="saturday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="saturday-ampm-opening" name="saturday-ampm-opening">
-                                 <option value="1">AM</option>
-                                 <option value="2">PM</option>
-                              </select>
-                              <span> - </span>
-                              <input id="saturday-closing-hours" type="text" name="saturday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="saturday-ampm-closing" name="saturday-ampm-closing">
-                                 <option value="1">PM</option>
-                                 <option value="2">AM</option>
-                              </select>
-                           </td>
-                           <td>
-                              <select id="saturday-openclosed" name="saturday-openclosed">
-                                 <option value="1">Open</option>
-                                 <option value="2">Closed</option>
-                              </select>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Sunday</td>
-                           <td>
-                              <input id="sunday-opening-hours" type="text" name="sunday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="sunday-ampm-opening" name="sunday-ampm-opening">
-                                 <option value="1">AM</option>
-                                 <option value="2">PM</option>
-                              </select>
-                              <span> - </span>
-                              <input id="sunday-closing-hours" type="text" name="sunday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
-                              <select id="sunday-ampm-closing" name="sunday-ampm-closing">
-                                 <option value="1">PM</option>
-                                 <option value="2">AM</option>
-                              </select>
-                           </td>
-                           <td>
-                              <select id="sunday-openclosed" name="sunday-openclosed">
-                                 <option value="1">Open</option>
-                                 <option value="2">Closed</option>
-                              </select>
-                           </td>
-                        </tr>
-                     </table>
-                     <script>
-                        const openingHours = <?php echo $venue['opening_hours'] ?>;
-                        for (const day in openingHours) {
-                           const openingHoursElement = document.getElementById(`${day}-opening-hours`);
-                           const closingHoursElement = document.getElementById(`${day}-closing-hours`);
-                           const ampmOpeningElement = document.getElementById(`${day}-ampm-opening`);
-                           const ampmClosingElement = document.getElementById(`${day}-ampm-closing`);
-                           const closed = openingHours[day].closed;
-                        
-                           openingHoursElement.value = openingHours[day].opening_hours;
-                           closingHoursElement.value = openingHours[day].closing_hours;
-                           ampmOpeningElement.value = openingHours[day].ampm_opening;
-                           ampmClosingElement.value = openingHours[day].ampm_closing;
-                           document.getElementById(`${day}-openclosed`).value = closed;
-                        }
-                     </script>
-                     <br>
-                     <button type="submit" class="btn btn-outline-success">Update Opening Hours</button>
-                     <?php if ($role == "customer") : ?>
-                     <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-                     <?php endif; ?>
-                     <?php if ($role == "client") : ?>
-                     <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-                     <?php endif; ?>
+                  <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateOpeningHours" onsubmit="return validateForm()">
+                  <?php endif; ?>
+                  <div style="display: flex; justify-content: center;">
+                     <div class="form-group" style="flex: 1; margin-right: 10px;">
+                        <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                        <table id="opening-hours" name="opening-hours" style="width: 100%; font-size: 18px">
+                           <tr>
+                              <th>Day</th>
+                              <th>Hours (24HR)</th>
+                              <th>Open/Closed</th>
+                           </tr>
+                           <tr>
+                              <td>Monday</td>
+                              <td>
+                                 <input id="monday-opening-hours" type="text" name="monday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="monday-ampm-opening" name="monday-ampm-opening">
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
+                                 </select>
+                                 <span> - </span>
+                                 <input id="monday-closing-hours" type="text" name="monday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="monday-ampm-closing" name="monday-ampm-closing">
+                                    <option value="1">PM</option>
+                                    <option value="2">AM</option>
+                                 </select>
+                              </td>
+                              <td>
+                                 <select id="monday-openclosed" name="monday-openclosed">
+                                    <option value="1">Open</option>
+                                    <option value="2">Closed</option>
+                                 </select>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Tuesday</td>
+                              <td>
+                                 <input id="tuesday-opening-hours" type="text" name="tuesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="tuesday-ampm-opening" name="tuesday-ampm-opening">
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
+                                 </select>
+                                 <span> - </span>
+                                 <input id="tuesday-closing-hours" type="text" name="tuesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="tuesday-ampm-closing" name="tuesday-ampm-closing">
+                                    <option value="1">PM</option>
+                                    <option value="2">AM</option>
+                                 </select>
+                              </td>
+                              <td>
+                                 <select id="tuesday-openclosed" name="tuesday-openclosed">
+                                    <option value="1">Open</option>
+                                    <option value="2">Closed</option>
+                                 </select>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Wednesday</td>
+                              <td>
+                                 <input id="wednesday-opening-hours" type="text" name="wednesday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="wednesday-ampm-opening" name="wednesday-ampm-opening">
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
+                                 </select>
+                                 <span> - </span>
+                                 <input id="wednesday-closing-hours" type="text" name="wednesday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="wednesday-ampm-closing" name="wednesday-ampm-closing">
+                                    <option value="1">PM</option>
+                                    <option value="2">AM</option>
+                                 </select>
+                              </td>
+                              <td>
+                                 <select id="wednesday-openclosed" name="wednesday-openclosed">
+                                    <option value="1">Open</option>
+                                    <option value="2">Closed</option>
+                                 </select>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Thursday</td>
+                              <td>
+                                 <input id="thursday-opening-hours" type="text" name="thursday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="thursday-ampm-opening" name="thursday-ampm-opening">
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
+                                 </select>
+                                 <span> - </span>
+                                 <input id="thursday-closing-hours" type="text" name="thursday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="thursday-ampm-closing" name="thursday-ampm-closing">
+                                    <option value="1">PM</option>
+                                    <option value="2">AM</option>
+                                 </select>
+                              </td>
+                              <td>
+                                 <select id="thursday-openclosed" name="thursday-openclosed">
+                                    <option value="1">Open</option>
+                                    <option value="2">Closed</option>
+                                 </select>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Friday</td>
+                              <td>
+                                 <input id="friday-opening-hours" type="text" name="friday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="friday-ampm-opening" name="friday-ampm-opening">
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
+                                 </select>
+                                 <span> - </span>
+                                 <input id="friday-closing-hours" type="text" name="friday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="friday-ampm-closing" name="friday-ampm-closing">
+                                    <option value="1">PM</option>
+                                    <option value="2">AM</option>
+                                 </select>
+                              </td>
+                              <td>
+                                 <select id="friday-openclosed" name="friday-openclosed">
+                                    <option value="1">Open</option>
+                                    <option value="2">Closed</option>
+                                 </select>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Saturday</td>
+                              <td>
+                                 <input id="saturday-opening-hours" type="text" name="saturday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="saturday-ampm-opening" name="saturday-ampm-opening">
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
+                                 </select>
+                                 <span> - </span>
+                                 <input id="saturday-closing-hours" type="text" name="saturday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="saturday-ampm-closing" name="saturday-ampm-closing">
+                                    <option value="1">PM</option>
+                                    <option value="2">AM</option>
+                                 </select>
+                              </td>
+                              <td>
+                                 <select id="saturday-openclosed" name="saturday-openclosed">
+                                    <option value="1">Open</option>
+                                    <option value="2">Closed</option>
+                                 </select>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>Sunday</td>
+                              <td>
+                                 <input id="sunday-opening-hours" type="text" name="sunday-opening-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="sunday-ampm-opening" name="sunday-ampm-opening">
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
+                                 </select>
+                                 <span> - </span>
+                                 <input id="sunday-closing-hours" type="text" name="sunday-closing-hours" value="" size="3" pattern="[0-9:]+" required>
+                                 <select id="sunday-ampm-closing" name="sunday-ampm-closing">
+                                    <option value="1">PM</option>
+                                    <option value="2">AM</option>
+                                 </select>
+                              </td>
+                              <td>
+                                 <select id="sunday-openclosed" name="sunday-openclosed">
+                                    <option value="1">Open</option>
+                                    <option value="2">Closed</option>
+                                 </select>
+                              </td>
+                           </tr>
+                        </table>
+                        <script>
+                           const openingHours = <?php echo $venue['opening_hours'] ?>;
+                           for (const day in openingHours) {
+                              const openingHoursElement = document.getElementById(`${day}-opening-hours`);
+                              const closingHoursElement = document.getElementById(`${day}-closing-hours`);
+                              const ampmOpeningElement = document.getElementById(`${day}-ampm-opening`);
+                              const ampmClosingElement = document.getElementById(`${day}-ampm-closing`);
+                              const closed = openingHours[day].closed;
+
+                              openingHoursElement.value = openingHours[day].opening_hours;
+                              closingHoursElement.value = openingHours[day].closing_hours;
+                              ampmOpeningElement.value = openingHours[day].ampm_opening;
+                              ampmClosingElement.value = openingHours[day].ampm_closing;
+                              document.getElementById(`${day}-openclosed`).value = closed;
+                           }
+                        </script>
+                        <br>
+                        <button type="submit" class="btn btn-outline-success">Update Opening Hours</button>
+                        <?php if ($role == "customer") : ?>
+                           <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                        <?php endif; ?>
+                        <?php if ($role == "client") : ?>
+                           <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                        <?php endif; ?>
+                     </div>
                   </div>
-               </div>
-            </form>
+                  </form>
          </div>
          <div id="tab3" class="tabcontent">
             <h2>Accessibility Information</h2>
@@ -413,90 +426,135 @@
                other accessibility information.
             </p>
             <?php if ($role == "customer") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateAccessibility" onsubmit="return validateForm()">
+               <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateAccessibility" onsubmit="return validateForm()">
                <?php endif; ?>
                <?php if ($role == "client") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateAccessibility" onsubmit="return validateForm()">
-               <?php endif; ?>
-               <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-               <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="98" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
-               <p id="char-count">0 / 500</p>
-               <br>
-               <button type="submit" class="btn btn-outline-success">Update Accessibility</button>
-               <?php if ($role == "customer") : ?>
-               <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-               <?php endif; ?>
-               <?php if ($role == "client") : ?>
-               <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-               <?php endif; ?>
-            </form>
-            <script>
-               const textarea = document.querySelector('#other-accessibility-info');
-               const charCount = document.querySelector('#char-count');
-               
-               const currentCharCount = textarea.value.length;
-               charCount.textContent = currentCharCount + ' / 500';
-               if (currentCharCount === 500) {
-                  charCount.style.color = 'red';
-               }
-               
-               textarea.addEventListener('input', function() {
-                  const currentCharCount = textarea.value.length;
-                  charCount.textContent = currentCharCount + ' / 500';
-                  if (currentCharCount === 500) {
-                     charCount.style.color = 'red';
-                  } else {
-                     charCount.style.color = '';
-                  }
-               });
-            </script>
+                  <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateAccessibility" onsubmit="return validateForm()">
+                  <?php endif; ?>
+                  <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                  <textarea id="other-accessibility-info" name="other-accessibility-info" rows="4" cols="98" maxlength="500" style="resize: none;"><?php echo $venue['accessibility'] ?></textarea>
+                  <p id="char-count">0 / 500</p>
+                  <br>
+                  <button type="submit" class="btn btn-outline-success">Update Accessibility</button>
+                  <?php if ($role == "customer") : ?>
+                     <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                  <?php endif; ?>
+                  <?php if ($role == "client") : ?>
+                     <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                  <?php endif; ?>
+                  </form>
+                  <script>
+                     const textarea = document.querySelector('#other-accessibility-info');
+                     const charCount = document.querySelector('#char-count');
+
+                     const currentCharCount = textarea.value.length;
+                     charCount.textContent = currentCharCount + ' / 500';
+                     if (currentCharCount === 500) {
+                        charCount.style.color = 'red';
+                     }
+
+                     textarea.addEventListener('input', function() {
+                        const currentCharCount = textarea.value.length;
+                        charCount.textContent = currentCharCount + ' / 500';
+                        if (currentCharCount === 500) {
+                           charCount.style.color = 'red';
+                        } else {
+                           charCount.style.color = '';
+                        }
+                     });
+                  </script>
          </div>
          <div id="tab4" class="tabcontent">
+
+
+            <div class="col-lg-6">
+               <div class="ibox ">
+
+                  <div class="ibox-content">
+
+                     <h2>Venue Images</h2>
+
+                     <div class="lightBoxGallery">
+
+                        <div class="row">
+
+                           <?php foreach ($venue_images as $image) { ?>
+
+
+
+                              <div class="col-lg-4">
+                                 <a href="<?= $image['path'] ?>" title="<?= $image['media_type'] ?> data-gallery=""><img style=" max-width:150px;" src=" <?= $image['path'] ?>"></a>
+                              </div>
+
+
+                           <?php } ?>
+                        </div>
+
+                        <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+                        <div id="blueimp-gallery" class="blueimp-gallery">
+                           <div class="slides"></div>
+                           <h3 class="title"></h3>
+                           <a class="prev">‹</a>
+                           <a class="next">›</a>
+                           <a class="close">×</a>
+                           <a class="play-pause"></a>
+                           <ol class="indicator"></ol>
+                        </div>
+
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+
+
             <?php if ($role == "customer") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateImages" onsubmit="return validateForm()" enctype="multipart/form-data">
+               <form method="post" action="<?php echo base_url(); ?>/CustomerDashboard/updateImages" onsubmit="return validateForm()" enctype="multipart/form-data">
                <?php endif; ?>
                <?php if ($role == "client") : ?>
-            <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateImages" onsubmit="return validateForm()" enctype="multipart/form-data">
-               <?php endif; ?>
-               <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
-               <p>Please provide any venue images which will be displayed on the homepage.</p>
-               <input type="file" id="imageUpload" name="imageUpload[]" accept="image/*" multiple>
-               <br><br>
-               <div id="imagePreview"></div>
-               <br>
-               <button type="submit" class="btn btn-outline-success">Update Images</button>
-               <?php if ($role == "customer") : ?>
-               <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-               <?php endif; ?>
-               <?php if ($role == "client") : ?>
-               <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
-               <?php endif; ?>
-            </form>
+                  <form method="post" action="<?php echo base_url(); ?>/AdminDashboard/updateImages" onsubmit="return validateForm()" enctype="multipart/form-data">
+                  <?php endif; ?>
+                  <input type="hidden" name="id" value="<?php echo $venue['id'] ?>">
+                  <p>Please provide any venue images which will be displayed on the homepage.</p>
+                  <input type="file" id="imageUpload" name="imageUpload[]" accept="image/*" multiple>
+                  <br><br>
+                  <div id="imagePreview"></div>
+                  <br>
+                  <button type="submit" class="btn btn-outline-success">Update Images</button>
+                  <?php if ($role == "customer") : ?>
+                     <a href="<?= base_url() ?>/CustomerDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                  <?php endif; ?>
+                  <?php if ($role == "client") : ?>
+                     <a href="<?= base_url() ?>/AdminDashboard" class="btn btn-outline-secondary">Return To Dashboard</a>
+                  <?php endif; ?>
+                  </form>
          </div>
          <style>
             .preview-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
+               width: 150px;
+               height: 150px;
+               object-fit: cover;
             }
+
             .preview-img-container {
-            position: relative;
-            display: inline-block;
-            margin-right: 10px;
-            margin-bottom: 10px;
+               position: relative;
+               display: inline-block;
+               margin-right: 10px;
+               margin-bottom: 10px;
             }
+
             .delete-btn {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+               position: absolute;
+               bottom: 0;
+               left: 50%;
+               transform: translateX(-50%);
             }
          </style>
          <script>
             function previewImages() {
                var preview = document.querySelector('#imagePreview');
                var files = document.querySelector('input[type=file]').files;
-            
+
                preview.innerHTML = '';
                if (files.length === 0) {
                   var p = document.createElement('p');
@@ -523,7 +581,7 @@
                         var imgContainer = this.parentNode;
                         preview.removeChild(imgContainer);
                      });
-            
+
                      var imgContainer = document.createElement('div');
                      imgContainer.classList.add('preview-img-container');
                      imgContainer.appendChild(img);
@@ -532,62 +590,71 @@
                   }
                }
             }
-            
+
             document.querySelector('#imageUpload').addEventListener('change', previewImages);
          </script>
          <br>
          <style>
             .tabcontent {
-            display: none;
+               display: none;
             }
+
             .tablinks {
-            background-color: #eee;
-            color: #333;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
+               background-color: #eee;
+               color: #333;
+               border: none;
+               padding: 10px;
+               cursor: pointer;
             }
+
             .opening-hours {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+               display: flex;
+               justify-content: center;
+               align-items: center;
             }
+
             table {
-            border-collapse: collapse;
-            width: 100%;
-            max-width: 600px;
-            font-family: Arial, sans-serif;
-            color: #444;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+               border-collapse: collapse;
+               width: 100%;
+               max-width: 600px;
+               font-family: Arial, sans-serif;
+               color: #444;
+               background-color: #fff;
+               border-radius: 5px;
+               box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             }
+
             thead {
-            background-color: #f7f7f7;
-            font-weight: bold;
+               background-color: #f7f7f7;
+               font-weight: bold;
             }
+
             th,
             td {
-            padding: 10px;
-            text-align: left;
+               padding: 10px;
+               text-align: left;
             }
+
             th {
-            border-bottom: 2px solid #ddd;
+               border-bottom: 2px solid #ddd;
             }
+
             tr {
-            background-color: #f2f2f2;
+               background-color: #f2f2f2;
             }
+
             input[id="day"] {
-            border: none;
-            border-radius: 5px;
-            padding: 5px;
-            width: 100%;
+               border: none;
+               border-radius: 5px;
+               padding: 5px;
+               width: 100%;
             }
+
             /* Audit table */
             .table {
-            width: 100%;
-            max-width: 1400px;
-            margin: auto;
+               width: 100%;
+               max-width: 1400px;
+               margin: auto;
             }
          </style>
          <script>
@@ -604,11 +671,11 @@
                document.getElementById(tabName).style.display = "block";
                evt.currentTarget.className += " active";
             }
-            
+
             window.onload = function() {
                var urlParams = new URLSearchParams(window.location.search);
                var tabIndexFromUrl = urlParams.get('tab');
-            
+
                if (tabIndexFromUrl !== null) {
                   var tabs = document.querySelectorAll('.tablinks');
                   var tabButton = tabs[tabIndexFromUrl - 1];
@@ -622,7 +689,7 @@
                   }
                }
             };
-            
+
             var input = document.querySelector('#tags');
             new Tagify(input, {
                removable: true
@@ -645,31 +712,31 @@
                            $qCount = $item['audit_total'];
                            $cCount = $item['audit_prog'];
                            $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
-                           ?>
-                        <tr>
-                           <td><?= $item['audit_version'] ?></td>
-                           <td>
-                              <div class="progress progress-small">
-                                 <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
-                              </div>
-                           </td>
-                           <td class="text-center">
-                              <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
-                              <i class="fa fa-eye"></i> View</a>
-                           </td>
-                           <td>
-                              <?php
+                        ?>
+                           <tr>
+                              <td><?= $item['audit_version'] ?></td>
+                              <td>
+                                 <div class="progress progress-small">
+                                    <div style="width: <?= $percComplete; ?>%;" class="progress-bar"></div>
+                                 </div>
+                              </td>
+                              <td class="text-center">
+                                 <a class="btn btn-success btn-outline" href="/AuditController/OpenAudit/<?= $item['audit_id'] ?>" role="button">
+                                    <i class="fa fa-eye"></i> View</a>
+                              </td>
+                              <td>
+                                 <?php
                                  $datetime = new DateTime($item['date_created']);
                                  $formattedDate = $datetime->format('Y-m-d');
                                  ?>
-                              <?= $formattedDate ?>
-                           </td>
-                        </tr>
+                                 <?= $formattedDate ?>
+                              </td>
+                           </tr>
                         <?php } ?>
                      </tbody>
                   </table>
                   <a class="btn btn-primary btn-outline mt-5" href="#" role="button" data-toggle="modal" data-target="#performAuditModal">
-                  <i class="fas fa-paper-plane-o"></i> Audit this Venue
+                     <i class="fas fa-paper-plane-o"></i> Audit this Venue
                   </a>
                </div>
             </div>
@@ -689,7 +756,7 @@
                      <input type="hidden" name="venue_id" value="<?= $venue['id'] ?>">
                      <select class="form-control" id="productSelect" name="template_id">
                         <?php foreach ($audit_templates as $audit) : ?>
-                        <option value="<?= $audit['id'] ?>"><?= $audit['audit_version'] ?></option>
+                           <option value="<?= $audit['id'] ?>"><?= $audit['audit_version'] ?></option>
                         <?php endforeach; ?>
                      </select>
                   </div>

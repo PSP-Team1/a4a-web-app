@@ -124,7 +124,7 @@ $percComplete = ($qCount > 0) ? 100 / $qCount * $cCount : 0;
           <?php
           } else { ?>
 
-            <a id="rpt-button" href="<?= base_url() ?>/Audit/auditConfirmation/<?= $audit_id ?>" class="btn btn-info pull-right mr-25" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to View Report">
+            <a id="rpt-button" href="<?= base_url() ?>/Audit/auditResults/<?= $audit_id ?>" class="btn btn-info pull-right mr-25" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to View Report">
               <i class="fa fa-eye"></i> View Report
             </a>
 

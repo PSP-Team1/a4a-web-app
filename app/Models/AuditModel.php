@@ -344,4 +344,17 @@ class AuditModel extends Model
         $query = $db->query($sql, $data);
         return $db->insertID();
     }
+
+
+    public function getCompletedAuditsByVenue($id)
+    {
+
+        $db = db_connect();
+        $sql = "select * from audit_template atemp
+        inner join company_venue_audit cva on atemp.id = cva.audit_template
+        where cva.audit_status = 'Complete' and cva.venue_id = " . $id;
+        $query = $db->query($sql);
+
+        return $query->getResultArray();
+    }
 }

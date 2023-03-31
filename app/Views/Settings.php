@@ -107,10 +107,6 @@
 
                     <p>
                         <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button"> <i class="fa fa-trash-o"></i> Delete My Account</a>
-
-                        <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteUser" role="button"> <i class="fa fa-trash-o"></i> Delete Admin User(s)</a>
-
-                        <a class="btn btn-outline btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteUser" role="button"> <i class="fa fa-trash-o"></i> Delete Business User(s)</a>
                     </p>
                     <div>
                     </div>

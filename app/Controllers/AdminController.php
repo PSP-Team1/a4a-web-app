@@ -2,36 +2,28 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminModel;
+
 class AdminController extends BaseController
 {
-    public function adminDeleteAccount()
+    public function deleteAccount()
     {
         $session = session();
         $id = $session->get('id');
-        $db = db_connect();
 
-        $sql = "DELETE FROM sys_users 
-        WHERE id ='$id'";
-
-        $results = $db->query($sql);
-
-        $session->destroy();
+        $adminModel = new AdminModel();
+        $adminModel->deleteUser($id);
         return redirect()->to('/Login');
     }
 
     public function addAdminUser()
     {
-        $session = session();
-        $id = $session->get('id');
-        $db = db_connect();
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
 
-        $sql = "DELETE FROM sys_users 
-        WHERE id ='$id'";
-
-        $results = $db->query($sql);
-
-        $session->destroy();
-        return redirect()->to('/Login');
+        $adminModel = new AdminModel();
+        $adminModel->addAdminUser($email, $password);
+        return redirect()->to('/Settings');
     }
 
 }

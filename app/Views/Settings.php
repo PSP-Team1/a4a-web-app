@@ -71,20 +71,20 @@
                                             <h2 class="modal-title" id="addUserModalLabel">Add Admin User(s)</h2>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label for="username">Email:</label>
-                                                    <input type="text" class="form-control" id="username">
-                                                </div><br>
-                                                <div class="form-group">
+                                            <form method="post" action="<?php echo base_url(); ?>/AdminController/addAdminUser">
+                                                    <label for="email">Email:</label>
+                                                    <input type="text" class="form-control" name="email" id="email" required>
+                                                <br>
                                                     <label for="password">Password:</label>
-                                                    <input type="password" class="form-control" id="password">
-                                                </div>
+                                                    <input type="password" class="form-control" name="password" id="password" required>
+
+                                                <br>
+
+                                                <button type="submit" name="submit" class="btn btn-success">Add Admin User</button>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-success">Add User(s)</button>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/adminDeleteAccount" role="button">Delete Account</a>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>/AdminController/deleteAccount" role="button">Delete Account</a>
                         </div>
                         </div>
                     </div>

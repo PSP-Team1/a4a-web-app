@@ -167,14 +167,12 @@
                   and premium customer status, all of which mix together to ensure that more compelete businesses will be featured further up in the search rankings
                </div>
             </div>
-<div>
+		<div>
+		</div>
 
+		<br>
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-</div>
-
-
-            <h2>Tutorial videos </h2>
+        <h2>Tutorial Videos </h2>
          <br>
          <div class="card">
             <div class="card-header">

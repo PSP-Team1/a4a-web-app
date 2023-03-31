@@ -108,4 +108,30 @@ class AdminModel extends Model{
         $session->set('avatar', $user->avatar);
 
     }
+
+    public function addAdminUser($email, $password) {
+        $db = db_connect();
+        $ct = 'client';
+
+        //Generate a random avatar for the user
+        $avatar_url = "https://avatars.dicebear.com/api/avataaars/{$email}.svg";
+        $avatar_data = file_get_contents($avatar_url);
+        $avatar_directory = "assets/img/avatars/{$email}.svg";
+        $avatar_filename = "{$email}.svg";
+        file_put_contents($avatar_directory, $avatar_data);
+    
+        $query = "INSERT INTO sys_users (email, password, company_type, avatar) VALUES (?, ?, ?, ?)";
+        $db->query($query, [$email, $password, $ct, $avatar_filename]);
+        $db->close();
+        return redirect()->to('/Settings');
+    }
+
+    public function deleteUser($id) {
+        $db = db_connect();
+
+        $sql = "DELETE FROM sys_users 
+        WHERE id ='$id'";
+
+        $results = $db->query($sql);
+    }
 }

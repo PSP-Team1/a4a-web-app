@@ -233,7 +233,7 @@
                </div>
                <div class="col-md-6">
                   <div class="video">
-                     <iframe style="margin-left: 12px; margin-top: 45px; box-shadow: 3px 3px 7px rgba(0,0,0,0.5);" width="100%" height="300" src="https://www.youtube.com/embed/4Hz7_sxOMf4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                     <iframe style="margin-left: 12px; margin-top: 45px; box-shadow: 3px 3px 7px rgba(0,0,0,0.5);" width="100%" height="300" src="https://www.youtube.com/embed/SKKlXXOOnRA"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                </div>
             </div>

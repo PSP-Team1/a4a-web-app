@@ -56,6 +56,7 @@
          width: 900px;
          margin: 0 auto;
          padding: 25px;
+         padding-bottom: 700px;
          background-color: white;
          border-radius: 50px;
          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
@@ -166,6 +167,31 @@
                   and premium customer status, all of which mix together to ensure that more compelete businesses will be featured further up in the search rankings
                </div>
             </div>
+<div>
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</div>
+
+
+            <h2>Tutorial videos </h2>
+         <br>
+         <div class="card">
+            <div class="card-header">
+               <h3 class="mb-0">
+               <div class="popup-header">
+            <h2>Admin</h2>
+         </div>
+               <div class="col-md-6">
+                  <div class="video">
+                     <iframe style="margin-left: 200px; margin-top: 45px; box-shadow: 3px 3px 7px rgba(0,0,0,0.5);" width="100%" height="300" src="https://www.youtube.com/embed/s6Z91No6UkY"   title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+               </div>
+               </h3>
+            </div>
+           
+         </div>
+
          </div>
       </div>
 	  <br>
